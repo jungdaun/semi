@@ -46,13 +46,14 @@ public class CartDAO {
 		}
 	}
 	
-	public ArrayList<CartDTO> showData(int store_idx, int c_idx){
+	public ArrayList<CartDTO> showData(int store_idx, Integer c_idx){
 		try{
 			conn = semi.db.SemiDb.getConn();
-			String sql="select * from cart where store_idx=?, customer_idx=?";
+			String sql="select * from cart where store_idx=? & customer_idx=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, store_idx);
-			ps.setInt(2, c_idx);
+			ps.setInt(2, (c_idx !=null? c_idx.intValue() : 0));
+			
 			rs = ps.executeQuery();
 			ArrayList<CartDTO> arr = new ArrayList<CartDTO>();
 			
@@ -61,7 +62,7 @@ public class CartDAO {
 				int food_price = rs.getInt("food_price");
 				int food_count = rs.getInt("food_count");
 				int total_price = rs.getInt("total_price");
-				CartDTO dto = new CartDTO(store_idx, c_idx, food_name, food_price, food_count, total_price);
+				CartDTO dto = new CartDTO(food_name, food_price, food_count, total_price);
 				arr.add(dto);				
 			}
 			return arr;

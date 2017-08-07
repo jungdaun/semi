@@ -3,9 +3,11 @@
 <%request.setCharacterEncoding("utf-8");%>
 <%@ page import="java.util.*" %>
 <%@ page import="semi.food.*" %>
+<%@ page import="semi.cart.*" %>
 <jsp:useBean id="fdao" class="semi.food.FoodDAO"></jsp:useBean>
 <jsp:useBean id="fdto" class="semi.food.FoodDTO"></jsp:useBean>
 <jsp:setProperty property="*" name="fdto"/>
+
 <jsp:useBean id="cdao" class="semi.cart.CartDAO"></jsp:useBean>
 <jsp:useBean id="cdto" class="semi.cart.CartDTO"></jsp:useBean>
 <jsp:setProperty property="*" name="cdto"/>
@@ -80,6 +82,29 @@ else{
 }%>
 	</table>
 	<br><br><br><br><br>
+</article>
+
+<article>
+<%
+Integer c_idx = (Integer) session.getAttribute("c_idx");
+
+ArrayList<CartDTO> brr = cdao.showData(store_idx, c_idx);
+%>
+	<fieldset>장바구니</fieldset>
+	<table>
+		<%
+		if(brr.size()==0 || brr==null){%>
+		<tr>
+			<td>주문 내역이 없습니다.</td>
+		</tr>
+		<% }
+		else{
+			%>
+			<jsp:include page="cart.jsp?store_idx=<%=store_idx %>"/>
+			<% 
+		}
+		%>
+		</table>
 </article>
 
 </section>

@@ -11,10 +11,8 @@ public class CartDTO {
 	
 	public CartDTO() { }
 
-	public CartDTO(int store_idx, int customer_idx, String food_name, int food_price, int food_count, int total_price) {
+	public CartDTO(String food_name, int food_price, int food_count, int total_price) {
 		super();
-		this.store_idx = store_idx;
-		this.customer_idx = customer_idx;
 		this.food_name = food_name;
 		this.food_price = food_price;
 		this.food_count = food_count;

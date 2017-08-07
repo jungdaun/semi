@@ -10,15 +10,13 @@
 
  
 <%
+Integer c_idx = (Integer) session.getAttribute("c_idx");
 String store_idx_s = request.getParameter("store_idx");
 int store_idx = Integer.parseInt(store_idx_s);
-Integer c_idx = (Integer) session.getAttribute("c_idx");
 
 ArrayList<CartDTO> arr = cdao.showData(store_idx, c_idx);
-
-
 %>
-<!-- github test -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -27,36 +25,39 @@ ArrayList<CartDTO> arr = cdao.showData(store_idx, c_idx);
 </head>
 <body>
 
-<section>
-<article>
-
-	<fieldset>
-		<legend>장바구니</legend>
-		<table>
-		<%
-		if(arr.size()==0 || arr==null){%>
-		<tr>
-			<td>주문 내역이 없습니다.</td>
-		</tr>
-		<% }
-		else{%>
-		<tr>
-			<th></th>
-			<!-- 어떤 스타일의 table을 만들지 생각하기 -->
-		</tr>
-			<% 
-			for(int i=0; i<arr.size(); i++){
-				%><tr>
-				
-				
-			</tr><%
+	<table border="1" width="450" cellspacing="0">
+		<thead>
+			<tr>
+				<th>음식명</th>
+				<th>음식 가격</th>
+				<th>개수</th>
+				<th>총 가격</th>
+			</tr>
+		</thead>
+		<tbody>
+			<%
+			if(arr==null||arr.size()==0){
+				%>
+				<tr>
+				 <td colspan="4" align="center">검색된 사원이 없습니다.</td>
+				</tr>
+				<% 
 			}
-		}
-		%>
-		</table>
-	</fieldset>
-</article>
-</section>
-
+			else{
+				for(int i=0; i<arr.size(); i++){
+					%>
+					<tr>
+					 <td><%=arr.get(i).getFood_name()%></td>
+					 <td><%=arr.get(i).getFood_price()%></td>
+					 <td><%=arr.get(i).getFood_count()%></td>
+					 <td><%=arr.get(i).getTotal_price()%></td>
+					 
+					</tr>
+					<% 
+				}
+			}%>
+		</tbody>
+	</table>
+	
 </body>
 </html>
