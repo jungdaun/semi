@@ -1,0 +1,35 @@
+/* @CHARSET "EUC-KR";
+
+body {
+	width: 680px;
+	margin:0px auto;
+	width: 1204; 
+	height: 1248;
+}
+header {
+	width: 1204; 
+	height: 1248;
+}
+
+header p {
+	text-align: right;
+	font-size: 10px;	
+}
+#badalImg{
+	float: left;
+	width:20%;height:200px;
+}
+#mainImg{
+	float:left;
+	width:80%;height:200px;
+}
+footer{
+clear:both;
+width: 1204; 
+height: 1248;
+
+}
+
+footer p{
+text-align: center;
+} */
