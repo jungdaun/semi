@@ -36,7 +36,7 @@
 
 </head>
 <body>
-	<form name="findAddress" action="findAddress_ok.jsp">
+	<form name="findAddress" action="findAddress2_ok.jsp">
 		<fieldset>
 			<legend>주소찾기</legend>
 			<select name="si" onchange="showgu()">

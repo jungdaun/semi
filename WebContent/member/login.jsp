@@ -23,8 +23,7 @@ fieldset p {
 		
 	}
 	function findPwd() {
-		window.self.close();
-		opener.location.href = 'findPwd.jsp';
+		window.open('findPwd.jsp', 'findPwd', 'width = 600, height = 200');
 	}
 </script>
 </head>

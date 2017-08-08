@@ -38,7 +38,6 @@ function a() {
 </script>
 </head>
 <body onload = "a()">
-	<%@include file="/header.jsp"%>
 
 	<section>
 		<article>

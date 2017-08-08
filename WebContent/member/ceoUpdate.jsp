@@ -33,13 +33,9 @@ function findAddress() {
 
 function aa() {
 	
-	var tel1 = document.update.tel1.value;
-	var tel2 = document.update.tel2.value;
-	var tel3 = document.update.tel3.value;
 	
 	var email1= document.update.email1.value;
 	var email2 = document.update.email2.value;
-	document.update.tel.value = tel1+tel2+tel3;
 	document.update.email.value = email1 + "@" + email2;
 	update.submit();
 }
@@ -65,29 +61,16 @@ function goOut() {
 function show(){
 	
 	document.update.id.value = '<%=sid%>';
-	j = document.update.tel1.length;
-	var a = '<%=dto.getTel().substring(0, 3)%>';
-	var b = '<%=dto.getTel().substring(3, 7)%>';
-	var c = '<%=dto.getTel().substring(7, 11)%>';
-	document.update.tel2.value = b;
-	document.update.tel3.value = c;
-	for(i = 0; i < j; i++) {
-		if(document.update.tel1[i].value==a) {
-			document.update.tel1.options[i].selected = true;
-		}
-	}
 	
-	var add1 = '<%=dto.getAddress()%>';
-	var add2 = '<%=dto.getAddress2()%>';
-	
-	document.update.address.value = add1;
-	document.update.address2.value = add2;
 	
 	var email = '<%=dto.getEmail()%>'.split('@');
 	
 	document.update.email1.value = email[0];
 	document.update.email2.value = email[1];
 	
+}
+function changePwd() {
+	location.href = 'changePwd.jsp';
 }
 </script>
 <style>
@@ -121,7 +104,7 @@ section p {
 <section>
 		<article>
 			<h2>회원정보수정</h2>
-			<form name="update" action="memberUpdate_ok.jsp" method = "post">
+			<form name="update" action="ceoUpdate_ok.jsp" method = "post">
 			<input type = "hidden" name = "id">
 				<fieldset>
 					<legend>회원  정보</legend>
@@ -129,22 +112,7 @@ section p {
 
 						<li><label>이름</label> <input type="text" name="name" value = "<%=dto.getName()%>">
 						</li>
-						
-						<li><label>전화번호</label>
-						<select name = "tel1">
-							<option value = "010">010</option>
-							<option value = "011">011</option>
-							<option value = "017">017</option>
-						</select> 
-						-<input type="text" name="tel2" size = "4" required="required">-<input type="text" name="tel3" size = "4" required="required">
-						<input type="hidden" name="tel">
-						</li>
 
-						<li><label>주소</label> <input type="text" name="address"
-						readonly="readonly" onclick="findAddress()">
-						<input type="button" value="주소찾기" onclick="findAddress()"></li>
-						
-						<li><label>상세주소</label><input type="text" name="address2" readonly="readonly"></li>
 						
 						<li><label>이메일</label> <input type="text" name="email1" required="required" size = "10">@</li>
 						

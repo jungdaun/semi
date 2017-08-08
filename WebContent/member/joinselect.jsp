@@ -15,7 +15,7 @@ function joinceo() {
 </script>
 </head>
 <body>
-<input type = "button" onclick = "join()" value = "怨좉컼�쉶�썝媛��엯">
-<input type = "button" onclick = "joinceo()" value = "�궗�옣�쉶�썝媛��엯">
+<input type = "button" onclick = "join()" value = "고객회원가입">
+<input type = "button" onclick = "joinceo()" value = "사장회원가입">
 </body>
 </html>
