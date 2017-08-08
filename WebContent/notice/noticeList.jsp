@@ -12,13 +12,16 @@ request.setCharacterEncoding("utf-8");
 
 
 
-/*/////////////paging관련
+/////////////paging관련
 
 
 
 //필수정보4가지
-int totalCnt= bdao.getTotalCnt(); 
-//총 게시물 수
+int totalCnt= ndao.getTotalCnt();
+
+
+
+
 //sql : select count (*) from jsp_bbs
 
 int listSize = 5; 
@@ -46,7 +49,6 @@ int userGp =cp/pageSize;
 if ( cp %pageSize==0){
 	userGp= userGp-1;
 }
-*/
 
 
 
@@ -80,19 +82,97 @@ if ( cp %pageSize==0){
 				
 			</thead>
 				
-	
+	  <tfoot>
+         
+            <tr>
+               <td colspan="2" align="center">
+               
+               <%
+
+
+            if (userGp !=0 ){
+            
+            %><a href="noticeList.jsp?cp=<%=(userGp-1)*pageSize+pageSize%>">&lt;&lt;</a>
+            
+            
+            <% 
+            
+            
+            }
+            
+            
+            for ( int i =userGp*pageSize+1; i<=userGp*pageSize+pageSize ; i ++){
+               
+               %>&nbsp;&nbsp;&nbsp;<a href="noticeList.jsp?cp=<%=i %>"><font <%=cp==i?"color='red'":"" %>> <%=i %> </font> </a>&nbsp;&nbsp;&nbsp;<%
+               if (i ==totalPg) break; 
+            }
+            
+            
+            if ( userGp!= (totalPg/pageSize -(totalPg%pageSize==0? 1:0)) ){
+               %><a href="noticeList.jsp?cp=<%=(userGp+1)*pageSize+1%>">&gt;&gt;</a><%
+            }
+            %>
+               
+               </td>
+               <td> 
+               <% 
+               
+               
+               
+               //////////// the people who has admin id can write notice 
+				String sid = (String)session.getAttribute("sid");
+				
+               
+               if (sid !=null ){
+                   System.out.println (sid);
+   				if (sid.equals("admin")){
+   					System.out.println ("true");
+   					out.println (" <a href='noticeWrite.jsp'>글쓰기</a>");
+   					
+   					
+   				}
+   				
+               }
+  
+
+		%>
+               
+              </td>
+            </tr>
+            <tr >
+            	<td colspan="4">
+	        	<form action="noticeSearch_ok.jsp" name="noticeSearch">
+	        		<select name="searchKey">
+	        			<option value="1">글번호</option>
+	        			<option value="2">글쓴이</option>
+	        			<option value="3">제목</option> 
+	        			<option value="4">제목+내용</option> 
+	        			
+	        		</select>
+	        		
+	        		<input type="text" name="searchValue">
+	        		<input type="submit" value="search" >
+	        	
+	        	
+	        	</form>
+            	</td>
+            
+            </tr>
+         
+         </tfoot>            
 			
 			
 			<tbody>
 			
 			<% 
-			ArrayList <NoticeDTO> arr = ndao.noticeList();
+			ArrayList <NoticeDTO> arr = ndao.noticeList(cp, listSize);
+			
 		
 			
 			if (arr== null|| arr.size()==0){
 				%>
 				<tr>
-					<td colspan="4" align="center"> 등록된 글이 없습니다.</td>
+					<td colspan="4" align="center"> 등록된 공지사항이 없습니다.</td>
 				</tr>
 				<%
 			}
@@ -117,7 +197,7 @@ if ( cp %pageSize==0){
 			
 			
 			<tr>
-				<td colspan="4">	<a href="noticeWrite.jsp">글쓰기</a></td>
+
 			</tr>
 			
 			
