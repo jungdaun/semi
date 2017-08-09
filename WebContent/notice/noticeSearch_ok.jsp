@@ -7,6 +7,9 @@
 <jsp:useBean id="ndao" class="semi.notice.NoticeDAO" scope="session"></jsp:useBean>
 <!-- //session영역에 쓴거 재활용 copy/paste 왜? 오타 방지  -->
 
+<%int searchKey =(Integer.parseInt( request.getParameter("searchKey")));%>
+<%String searchVal= request.getParameter("searchValue");%>
+
 <%
 request.setCharacterEncoding("utf-8");
 
@@ -14,14 +17,33 @@ request.setCharacterEncoding("utf-8");
 
 /////////////paging관련
 
+String msg = "";
+switch (searchKey){
+case 1:
+	msg = "글 번호가 "+searchVal+"인 글입니다.";
+	
+	break;
+case 2:
+	msg = "글쓴이가 "+ searchVal+"인 글입니다. ";
+	
+	break;
+case 3: 
+	msg = "글 제목에 "+searchVal+"이(가) 포함된 글입니다.";
+	
+	break;
+case 4:
+	msg = "제목 또는 내용에 "+searchVal +"이(가) 포함된 글입니다.";
+	break;
 
+
+}
 
 //필수정보4가지
-int totalCnt= ndao.getTotalCnt();
+int totalCnt= ndao.getTotalCnt(searchKey, searchVal);
 
+System.out.println (totalCnt);
 
-
-
+//총 게시물 수
 //sql : select count (*) from jsp_bbs
 
 int listSize = 5; 
@@ -68,7 +90,8 @@ if ( cp %pageSize==0){
 </head>
 <body>
 
-		<h2>공지사항</h2>
+		<h2>공지사항 검색 결과</h2>
+		<h3><%=msg %></h3>
 		<table>
 			<thead>
 				<tr>
@@ -92,7 +115,7 @@ if ( cp %pageSize==0){
 
             if (userGp !=0 ){
             
-            %><a href="noticeList.jsp?cp=<%=(userGp-1)*pageSize+pageSize%>">&lt;&lt;</a>
+            %><a href="noticeSearch_ok.jsp?cp=<%=(userGp-1)*pageSize+pageSize%>&searchKey=<%=searchKey%>&searchValue=<%=searchVal%>">&lt;&lt;</a>
             
             
             <% 
@@ -103,18 +126,21 @@ if ( cp %pageSize==0){
             
             for ( int i =userGp*pageSize+1; i<=userGp*pageSize+pageSize ; i ++){
                
-               %>&nbsp;&nbsp;&nbsp;<a href="noticeList.jsp?cp=<%=i %>"><font <%=cp==i?"color='red'":"" %>> <%=i %> </font> </a>&nbsp;&nbsp;&nbsp;<%
+               %>&nbsp;&nbsp;&nbsp;<a href="noticeSearch_ok.jsp?cp=<%=i %>&searchKey=<%=searchKey%>&searchValue=<%=searchVal%>"><font <%=cp==i?"color='red'":"" %>> <%=i %> </font> </a>&nbsp;&nbsp;&nbsp;<%
                if (i ==totalPg) break; 
             }
             
             
             if ( userGp!= (totalPg/pageSize -(totalPg%pageSize==0? 1:0)) ){
-               %><a href="noticeList.jsp?cp=<%=(userGp+1)*pageSize+1%>">&gt;&gt;</a><%
+               %><a href="noticeSearch_ok.jsp?cp=<%=(userGp+1)*pageSize+1%>&searchKey=<%=searchKey%>&searchValue=<%=searchVal%>">&gt;&gt;</a><%
             }
             %>
                
                </td>
+               <td><a href="noticeList.jsp">목록으로</a></td>
                <td> 
+               
+               
                <% 
                
                
@@ -132,14 +158,19 @@ if ( cp %pageSize==0){
    					
    				}
    				
+   				
+   				
                }
+               
   
 
 		%>
                
               </td>
+              
+              <
             </tr>
-            <tr >
+            <tr>
             	<td colspan="4">
 	        	<form action="noticeSearch_ok.jsp" name="noticeSearch">
 	        		<select name="searchKey">
@@ -147,7 +178,7 @@ if ( cp %pageSize==0){
 	        			<option value="2">글쓴이</option>
 	        			<option value="3">제목</option> 
 	        			<option value="4">제목+내용</option> 
-	        			
+	        			 
 	        		</select>
 	        		
 	        		<input type="text" name="searchValue">
@@ -165,7 +196,7 @@ if ( cp %pageSize==0){
 			<tbody>
 			
 			<% 
-			ArrayList <NoticeDTO> arr = ndao.noticeList(cp, listSize);
+			ArrayList <NoticeDTO> arr = ndao.noticeSearchedList(cp, listSize, searchVal, searchKey);
 			
 		
 			

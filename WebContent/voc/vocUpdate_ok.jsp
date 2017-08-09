@@ -1,21 +1,19 @@
-<%@page import="semi.notice.NoticeDTO"%>
+<%@page import="semi.voc.*"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
-<jsp:useBean id="ndto" class="semi.notice.NoticeDTO"/>
-<jsp:setProperty property="*" name="ndto"/>
-<jsp:useBean id="ndao" class="semi.notice.NoticeDAO" scope="session"/>
+<jsp:useBean id="vdto" class="semi.voc.VocDTO"/>
+<jsp:setProperty property="*" name="vdto"/>
+<jsp:useBean id="vdao" class="semi.voc.VocDAO" scope="session"/>
 <%request.setCharacterEncoding("utf-8");%>
     
 <%
 
-String idx_s = request.getParameter("notice_idx");
+String idx_s = request.getParameter("voc_idx");
 int idx = Integer.parseInt(idx_s);
 
-String title = request.getParameter("notice_title");
-String content = request.getParameter("notice_content");
+String pwd = request.getParameter("pwd");
 
-System.out.println (idx);
 
 
 /*
@@ -30,7 +28,7 @@ System.out.println (userPwd);
 
 
 <%
-int res = ndao.noticeUpdate(title, content, idx);
+int res = vdao.vocUpdate(vdto, pwd, idx);
 
 String msg = res>0?"success":"fail";
 
@@ -40,7 +38,7 @@ String msg = res>0?"success":"fail";
 
 <script>
 	window.alert ('<%=msg%>');
-	location.href='noticeList.jsp';
+	location.href='vocList.jsp';
 	
 </script>
     

@@ -10,13 +10,18 @@
 
 <%
 
+String user_id = (String) session.getAttribute("sid");
+int coupon_idx = Integer.parseInt(request.getParameter("coupon_idx"));
 
 
-int res = cdao.couponWrite(cdto);
+
+
+int res =cdao.receiveCoupon(user_id,coupon_idx );
+
 
 String msg = "";
 if (res>0){
-	msg = "사장님~쿠폰이 등록되었어요 ^.^";
+	msg = "쿠폰 받기 성공 ^.^";
 	
 }
 else {
@@ -44,10 +49,14 @@ window.location.href='couponList.jsp';
 </head>
 
 <body>
+
+<!-- 
 <%=request.getParameter("coupon_name") %>
 <%=request.getParameter("coupon_food_type") %>
 <%=request.getParameter("coupon_type") %>
 <%=request.getParameter("coupon_value") %>
 <%=request.getParameter("coupon_end") %>
+
+ -->
 </body>
 </html>

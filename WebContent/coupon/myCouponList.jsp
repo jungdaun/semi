@@ -9,7 +9,7 @@
 
 request.setCharacterEncoding("utf-8");
 
-String user_id=(String) session.getAttribute("sid");
+String sid=(String) session.getAttribute("sid");
 //System.out.println (user_id);
 
 
@@ -25,9 +25,8 @@ String user_id=(String) session.getAttribute("sid");
 
 		<%
 		
+		ArrayList<CouponDTO> dtos= cdao.myCouponList(sid);
 		
-		
-		ArrayList<CouponDTO> dtos= cdao.couponList(); 
 		
 		if ( dtos.size()==0|| dtos==null){
 			%>
@@ -79,10 +78,7 @@ String user_id=(String) session.getAttribute("sid");
 							
 							
 						</tr>
-						
-						<tr >
-							<td colspan="2"><a href="couponReceive.jsp?coupon_idx=<%=dtos.get(i).getCoupon_idx()%>">쿠폰받기</a></td>
-						</tr>
+
 				
 					
 					

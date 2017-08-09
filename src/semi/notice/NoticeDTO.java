@@ -13,6 +13,9 @@ public class NoticeDTO {
 	private String notice_title ; 
 	private String notice_content;
 	private Date notice_date ;
+	
+	
+	
 	public int getNotice_idx() {
 		return notice_idx;
 	}

@@ -2,8 +2,8 @@
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("utf-8");%>
 
-<%@ page import="semi.notice.NoticeDTO" %>
-<jsp:useBean id="ndao" class="semi.notice.NoticeDAO" scope="session"></jsp:useBean>
+<%@ page import="semi.voc.*" %>
+<jsp:useBean id="vdao" class="semi.voc.VocDAO" scope="session"></jsp:useBean>
 
 <!DOCTYPE html>
 <html>
@@ -19,7 +19,7 @@
 //System.out.println (userIdx);
 
 
-String userIdx_s = request.getParameter("notice_idx");
+String userIdx_s = request.getParameter("idx");
 int notice_idx ; 
 if (userIdx_s==null || userIdx_s.equals("")){
 	
@@ -44,7 +44,7 @@ session.setAttribute(userIdx+"", true);
 
 */
 
-NoticeDTO dto = ndao.noticeContent(notice_idx);
+VocDTO dto = vdao.vocContent(notice_idx);
 
 if (dto == null){
 
@@ -52,7 +52,7 @@ if (dto == null){
 <script type="text/javascript">
 
 window.alert ('잘못된 게시글 또는 삭제된 게시물입니다.');
-location.href='noticeList.jsp';
+location.href='vocList.jsp';
 
 
 </script>
@@ -71,44 +71,52 @@ return ;
 <body>
 
 
-		<h2 >공지사항-본문보기</h2>
+		<h2 >voc update</h2>
 		<table   border="1">
-			<form action="noticeUpdate_ok.jsp" name="noticeUpdate">
+			<form action="vocUpdate_ok.jsp" name="vocUpdate">
 			
 				
 				<tr>
 					
 					<th>idx</th>
-					<td><input type="text" readonly="readonly" name="notice_idx" value="<%=dto.getNotice_idx() %>">
+					<td><input type="text" readonly="readonly" name="voc_idx" value="<%=dto.getVod_idx() %>">
 					</td>
 					
 						<th>writeDate</th>
-					<td><%=dto.getNotice_date()  %></td>
+					<td><%=dto.getWritedate()  %></td>
 					
-				</tr>s
+				</tr>
 		
 				
 				<tr>
 					<th>title</th>
 					<td colspan="3">
-					<input type="text" value="<%=dto.getNotice_title() %>" name="notice_title">
+					<input type="text" value="<%=dto.getTitle() %>" name="title">
 					</td>
 				</tr>
 				<tr>
 					<th>writer</th>
-					<td><input type="text" name="notice_writer" value="<%=dto.getNotice_writer() %>">
+					<td><input type="text" name="writer" value="<%=dto.getWriter() %>">
 					
 					</td>
 				</tr>
 				<tr height="200">
 			
-					<td colspan="4"><textarea rows="10" cols="45" name="notice_content" maxlength="4000" >
-					<%=dto.getNotice_content().replaceAll("\n", "<br>") %>
+					<td colspan="4"><textarea rows="10" cols="45" name="content" maxlength="4000" >
+					<%=dto.getContent().replaceAll("\n", "<br>") %>
 				
 					
 					</textarea></td>
 					
 					
+				</tr>
+				<tr>
+				
+					<th>
+						비밀번호
+						
+					</th>
+					<td><input type="password" name="pwd"  > </td>
 				</tr>
 				<tr>
 					<td colspan="4" align="center">

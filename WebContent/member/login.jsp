@@ -10,7 +10,7 @@ fieldset li {
 	list-style-type: none;
 }
 fieldset label {
-	width: 90px;
+	width: 90px; 
 	float: Left;
 }
 fieldset p {
