@@ -9,7 +9,7 @@
 	background-color: #A6B8C4;
 	}
 	#headerinner{
-	
+	width:100%;
 	}
 	
 	</style>
