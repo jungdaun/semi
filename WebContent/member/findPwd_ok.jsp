@@ -6,6 +6,7 @@
 	String ans = request.getParameter("ans");
 	String userid = request.getParameter("id");
 	String type = request.getParameter("type");
+	System.out.print("TYPE = " + type);
 	String userPwd = mdao.getUserPwd(userid, ask, ans, type);
 	
 	%>
@@ -30,7 +31,7 @@
 %>
 <script>
 	window.open('changePwd.jsp', 'changePwd', 'width = 600, height = 200');
-	location.href = '/semi/index.jsp';
+	window.self.close();
 </script>
 <%
 	}

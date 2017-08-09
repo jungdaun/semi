@@ -58,7 +58,7 @@ section p {
 			
 			join.submit();
 		} else {
-			window.alert('鍮꾨�踰덊샇�� 鍮꾨�踰덊샇�솗�씤 媛믪씠 �떎由낅땲�떎.');
+			window.alert('비밀번호와 비밀번호확인 값이 다릅니다.');
 		}
 
 	}
@@ -84,26 +84,26 @@ section p {
 
 	<section>
 		<article>
-			<h2>怨좉컼�쉶�썝媛��엯</h2>
+			<h2>고객회원가입</h2>
 			<form name="join" action="join_ok.jsp" method = "post">
 				<fieldset>
-					<legend>�쉶�썝 媛��엯 �젙蹂�</legend>
+					<legend>회원 가입 정보</legend>
 					<ul>
 						<li><label>ID</label> <input type="text" name="id"
-							readonly="readonly" onclick="openIdCheck()"> <input type="button" value="以묐났寃��궗"
+							readonly="readonly" onclick="openIdCheck()"> <input type="button" value="중복검사"
 							onclick="openIdCheck()"></li>
 
 
-						<li><label>�씠由�</label> <input type="text" name="name" required="required">
+						<li><label>이름</label> <input type="text" name="name" required="required">
 						</li>
 
-						<li><label>鍮꾨�踰덊샇</label> <input type="password" name="password" required="required"> <font size=1px;>�쁺臾� �닽�옄 議고빀</font>
+						<li><label>비밀번호</label> <input type="password" name="password" required="required"> <font size=1px;>영문 숫자 조합</font>
 						</li>
 
-						<li><label>鍮꾨�踰덊샇�솗�씤</label> <input type="password" name="pwd2" required="required"> <font size=1px;>8~12�옄</font>
+						<li><label>비밀번호확인</label> <input type="password" name="pwd2" required="required"> <font size=1px;>8~12자</font>
 						</li>
 						
-						<li><label>�쟾�솕踰덊샇</label>
+						<li><label>전화번호</label>
 						<select name = "tel1">
 							<option value = "010">010</option>
 							<option value = "011">011</option>
@@ -113,40 +113,40 @@ section p {
 						<input type="hidden" name="tel">
 						</li>
 
-						<li><label>二쇱냼</label> <input type="text" name="address"
+						<li><label>주소</label> <input type="text" name="address"
 						readonly="readonly" onclick="findAddress()">
-						<input type="button" value="二쇱냼李얘린" onclick="findAddress()"></li>
+						<input type="button" value="주소찾기" onclick="findAddress()"></li>
 						
-						<li><label>�긽�꽭二쇱냼</label><input type="text" name="address2" readonly="readonly"></li>
+						<li><label>상세주소</label><input type="text" name="address2" readonly="readonly"></li>
 						
-						<li><label>�씠硫붿씪</label> <input type="text" name="email1" required="required" size = "10">@</li>
+						<li><label>이메일</label> <input type="text" name="email1" required="required" size = "10">@</li>
 						
 						<li><label>&nbsp;&nbsp;&nbsp;</label>
 						<input type = "text" name = "email2" required="required">
 						<select name = "email3" onchange = "selectEmail()">
 						
-						<option value = "0">吏곸젒�엯�젰</option>
-						<option value = "naver.com">�꽕�씠踰�</option>
-						<option value = "daum.net">�떎�쓬</option>
+						<option value = "0">직접입력</option>
+						<option value = "naver.com">네이버</option>
+						<option value = "daum.net">다음</option>
 						</select>
 						<input type="hidden" name="email"></li>
 						
 						
 						
 						
-						<li><label>2李⑤퉬諛�踰덊샇吏덈Ц</label>
+						<li><label>2차비밀번호질문</label>
 						<select name = "ask">
-							<option value = "�굹�쓽 泥� �궗�옉��?">�굹�쓽 泥� �궗�옉��?</option>
-							<option value = "�굹�쓽 異쒖떊 珥덈벑�븰援먮뒗?">�굹�쓽 異쒖떊 珥덈벑�븰援먮뒗?</option>
-							<option value = "�궡 蹂대Ъ 1�샇�뒗?">�궡 蹂대Ъ 1�샇�뒗?</option>
+							<option value = "나의 첫 사랑은?">나의 첫 사랑은?</option>
+							<option value = "나의 출신 초등학교는?">나의 출신 초등학교는?</option>
+							<option value = "내 보물 1호는?">내 보물 1호는?</option>
 						</select></li>
 						
-						<li><label>2李⑤퉬諛�踰덊샇�떟蹂�</label> <input type="text" name="ans" required="required"></li>
+						<li><label>2차비밀번호답변</label> <input type="text" name="ans" required="required"></li>
 					</ul>
 
 					<p>
-						<input type="button" onclick="javascript:aa()" value="�쉶�썝媛��엯">
-						<input type="reset" value="�떎�떆�옉�꽦">
+						<input type="button" onclick="javascript:aa()" value="회원가입">
+						<input type="reset" value="다시작성">
 					</p>
 				</fieldset>
 			</form>

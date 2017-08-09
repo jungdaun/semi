@@ -1,7 +1,6 @@
 package semi.member;
 
 import java.sql.*;
-import java.util.*;
 
 public class MemberDAO {
 
@@ -267,13 +266,15 @@ public class MemberDAO {
 		try {
 			conn = semi.db.SemiDb.getConn();
 			
+			System.out.print(userName + "1" + userEmail + "2" + type);
+			
 			String sql = null;
 			if(type.equals("고객")) {
 				sql = "select id, name from customer where email = ?";
 			} else {
-				sql = "select id, name from ceo0 where email = ?";
+				sql = "select id, name from ceo where email = ?";
 			}
-			
+			System.out.println(sql);
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, userEmail);
 			rs = ps.executeQuery();
@@ -303,7 +304,7 @@ public class MemberDAO {
 			String sql = null;
 			if(type.equals("고객")) {
 				sql = "select password, ask, ans from customer where id = ?";
-			} else {
+			} else if(type.equals("사장")) {
 				sql = "select password, ask, ans from ceo where id = ?";
 			}
 			ps = conn.prepareStatement(sql);
@@ -328,10 +329,17 @@ public class MemberDAO {
 		}
 	}
 	
-	public int getChangePwd(String password, String id) {
+	public int getChangePwd(String password, String id, String type) {
 		try {
 			conn = semi.db.SemiDb.getConn();
-			String sql = "update customer set password = ? where id = ?";
+			
+			String sql = null;
+			System.out.print("dd" + type);
+			if(type.equals("고객")) {
+				sql = "update customer set password = ? where id = ?";
+			} else if(type.equals("사장")){
+				sql = "update ceo set password = ? where id = ?";
+			}
 
 			PreparedStatement ps = conn.prepareStatement(sql);
 
@@ -361,33 +369,101 @@ public class MemberDAO {
 			String sql = null;
 			if(type.equals("고객")) {
 				sql = "select * from customer where id = ?";
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, id);
+				rs = ps.executeQuery();
+
+				if (rs.next()) {
+					String name = rs.getString("name");
+					String email = rs.getString("email");
+					String tel = rs.getString("tel");
+					String ask = rs.getString("ask");
+					String ans = rs.getString("ans");
+					String address = rs.getString("address");
+					String address2 = rs.getString("address2");
+					
+
+					dto = new MemberDTO(name, tel, email, ask, ans, address, address2);
+
+				}
 			} else if(type.equals("사장")) {
 				sql = "select * from ceo where id = ?";
+				ps = conn.prepareStatement(sql);
+				ps.setString(1, id);
+				rs = ps.executeQuery();
+
+				if (rs.next()) {
+					String name = rs.getString("name");
+					String email = rs.getString("email");
+					
+
+					dto = new MemberDTO(name, email);
+
+				}
 			}
 			
-			ps = conn.prepareStatement(sql);
-			ps.setString(1, id);
-			rs = ps.executeQuery();
 			
-			System.out.print(type + id);
-
-			if (rs.next()) {
-				String name = rs.getString("name");
-				String email = rs.getString("email");
-				String tel = rs.getString("tel");
-				String ask = rs.getString("ask");
-				String ans = rs.getString("ans");
-				String address = rs.getString("address");
-				String address2 = rs.getString("address2");
-				
-
-				dto = new MemberDTO(name, tel, email, ask, ans, address, address2);
-
-			}
 			return dto;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;
+		} finally { // 에러 발생 시, 아닐 시 상관 없이 파이널리 안에 있는 것 실행
+			try {
+				close2();
+			} catch (Exception e2) {
+
+			}
+		} // 자원반환시 위의 형식 필수
+	}
+	
+	public int update_ok(MemberDTO dto) {
+		try {
+			conn=semi.db.SemiDb.getConn();
+			String sql = "update customer set name = ?, tel = ?, address = ? , address2 = ?, email = ? where id = ?";
+
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setString(1, dto.getName());
+			ps.setString(2, dto.getTel());
+			ps.setString(3, dto.getAddress());
+			ps.setString(4, dto.getAddress2());
+			ps.setString(5, dto.getEmail());
+			ps.setString(6, dto.getId());
+			
+
+			int count = ps.executeUpdate();
+
+			return count;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		} finally { // 에러 발생 시, 아닐 시 상관 없이 파이널리 안에 있는 것 실행
+			try {
+				close2();
+			} catch (Exception e2) {
+
+			}
+		} // 자원반환시 위의 형식 필수
+	}
+	
+	public int ceoupdate_ok(MemberDTO dto) {
+		try {
+			conn=semi.db.SemiDb.getConn();
+			String sql = "update ceo set name = ?, email = ? where id = ?";
+
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setString(1, dto.getName());
+			ps.setString(2, dto.getEmail());
+			ps.setString(3, dto.getId());
+			
+
+			int count = ps.executeUpdate();
+
+			return count;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
 		} finally { // 에러 발생 시, 아닐 시 상관 없이 파이널리 안에 있는 것 실행
 			try {
 				close2();

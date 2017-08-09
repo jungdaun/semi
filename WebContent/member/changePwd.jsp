@@ -8,6 +8,7 @@
 <script>
 function a() {
 	document.changePwd.id.value = opener.document.happy.id.value;
+	
 }
 </script>
 </head>
@@ -23,10 +24,11 @@ function a() {
 					required="required"> <font size=1px;>8~12자</font></li>
 					
 					
-					
+						 
 				<li><input type = "submit" value = "변경"></li>
 			</ul>
 			<input type = "hidden" name = "id">
+			<input type = "hidden" name = "type">
 		</fieldset>
 
 

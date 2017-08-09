@@ -1,6 +1,6 @@
 package semi.member;
 
-import java.sql.*;
+
 
 public class MemberDTO {
 
@@ -22,6 +22,14 @@ public class MemberDTO {
 	
 	
 	
+	public MemberDTO(String name, String email) {
+		super();
+		this.name = name;
+		this.email = email;
+	}
+
+
+
 	public MemberDTO(String name, String id, String password, String email, String ans, String ask,int my_idx) {
 		super();
 		this.name = name;

@@ -12,56 +12,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script>
-
-function findAddress() {
-	window.open('findAddress.jsp', 'findAddress', 'width = 800, height = 400');
-}
-
-function aa() {
-
-	var a = document.join.password.value;
-	var b = document.join.pwd2.value;
-	
-	
-	var tel1 = document.join.tel1.value;
-	var tel2 = document.join.tel2.value;
-	var tel3 = document.join.tel3.value;
-	
-	var email1= document.join.email1.value;
-	var email2 = document.join.email2.value;
-
-
-	if (a == b) {
-		
-		document.join.tel.value = tel1+tel2+tel3;
-		document.join.email.value = email1 + "@" + email2;
-		
-		join.submit();
-	} else {
-		window.alert('비밀번호와 비밀번호확인 값이 다릅니다.');
-	}
-	
-
-}
-
-function selectEmail() {
-	
-	if(document.join.email3.value!="0") {
-		document.join.email2.value = document.join.email3.value;
-		document.join.email2.readOnly = true;
-	} else {
-		document.join.email2.value = "";
-		document.join.email2.readOnly = false;
-	}
-	
-	
-	
-}
-
-
-</script>
-</head>
 <%
 String stype = (String) session.getAttribute("stype");
 if(stype == null || stype.equals("")) {
@@ -75,11 +25,104 @@ MemberDTO dto = mdao.memberUpdate(mdto, stype, sid);
 
 
 %>
-<body>
+<script>
+
+function findAddress() {
+	window.open('findAddress2.jsp', 'findAddress', 'width = 800, height = 400');
+}
+
+function aa() {
+	
+	var tel1 = document.update.tel1.value;
+	var tel2 = document.update.tel2.value;
+	var tel3 = document.update.tel3.value;
+	
+	var email1= document.update.email1.value;
+	var email2 = document.update.email2.value;
+	document.update.tel.value = tel1+tel2+tel3;
+	document.update.email.value = email1 + "@" + email2;
+	update.submit();
+}
+
+function selectEmail() {
+	
+	if(document.update.email3.value!="0") {
+		document.update.email2.value = document.update.email3.value;
+		document.update.email2.readOnly = true;
+	} else {
+		document.update.email2.value = "";
+		document.update.email2.readOnly = false;
+	}
+	
+	
+	
+}
+
+function goOut() {
+	location.href = 'memberOut.jsp';
+}
+
+function show(){
+	
+	document.update.id.value = '<%=sid%>';
+	j = document.update.tel1.length;
+	var a = '<%=dto.getTel().substring(0, 3)%>';
+	var b = '<%=dto.getTel().substring(3, 7)%>';
+	var c = '<%=dto.getTel().substring(7, 11)%>';
+	document.update.tel2.value = b;
+	document.update.tel3.value = c;
+	for(i = 0; i < j; i++) {
+		if(document.update.tel1[i].value==a) {
+			document.update.tel1.options[i].selected = true;
+		}
+	}
+	
+	var add1 = '<%=dto.getAddress()%>';
+	var add2 = '<%=dto.getAddress2()%>';
+	
+	document.update.address.value = add1;
+	document.update.address2.value = add2;
+	
+	var email = '<%=dto.getEmail()%>'.split('@');
+	
+	document.update.email1.value = email[0];
+	document.update.email2.value = email[1];
+	
+}
+</script>
+<style>
+h2 {
+	text-align: center;
+}
+
+fieldset {
+	width: 450px;
+	margin: 0px auto;
+}
+
+section li {
+	list-style-type: none;
+}
+
+label {
+	width: 130px;
+	float: left;
+}
+
+section p {
+	text-align: center;
+}
+</style>
+</head>
+
+<body onload = "show()">
+<input type = "button" value = "회원 탈퇴" onclick = "goOut()">
+<input type = "button" value = "비밀번호 변경" onclick = "changePwd()">
 <section>
 		<article>
 			<h2>회원정보수정</h2>
 			<form name="update" action="memberUpdate_ok.jsp" method = "post">
+			<input type = "hidden" name = "id">
 				<fieldset>
 					<legend>회원  정보</legend>
 					<ul>

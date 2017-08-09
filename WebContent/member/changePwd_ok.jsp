@@ -7,7 +7,15 @@
 %>
 
 <%
-String id = request.getParameter("id");
+String id = (String) session.getAttribute("sid");
+String type = (String) session.getAttribute("stype");
+
+if(id == null||id.equals("")) {
+	id = request.getParameter("id");
+}
+if(type == null||type.equals("")) {
+	type = "테스트";
+}
 	String a = request.getParameter("password");
 	String b = request.getParameter("password2");
 	
@@ -72,7 +80,7 @@ String id = request.getParameter("id");
 	}
 	
 	if(chk) {
-		int result = mdao.getChangePwd(a, id);
+		int result = mdao.getChangePwd(a, id, type);
 
 		String msg = result > 0 ? "비밀번호 변경 성공" : "비밀번호 변경 실패";
 		
@@ -81,6 +89,7 @@ String id = request.getParameter("id");
 
 		<script>window.alert('<%=msg%>');
 			window.self.close();
+			location.href = '/semi/index.jsp';
 		</script>
 		<%
 	}
