@@ -266,13 +266,15 @@ public class MemberDAO {
 		try {
 			conn = semi.db.SemiDb.getConn();
 			
+			System.out.print(userName + "1" + userEmail + "2" + type);
+			
 			String sql = null;
 			if(type.equals("고객")) {
 				sql = "select id, name from customer where email = ?";
 			} else {
-				sql = "select id, name from ceo0 where email = ?";
+				sql = "select id, name from ceo where email = ?";
 			}
-			
+			System.out.println(sql);
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, userEmail);
 			rs = ps.executeQuery();

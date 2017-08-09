@@ -18,12 +18,25 @@ fieldset p {
 }
 </style>
 <script>
+<%
+String title = "고객";
+%>
 	function findId() {
 		window.open('findId.jsp', 'findId', 'width = 600, height = 200');
 		
 	}
 	function findPwd() {
 		window.open('findPwd.jsp', 'findPwd', 'width = 600, height = 200');
+	}
+	function a() {
+		
+		if(document.login.what.value=="고객") {
+			document.login.whatsrc.src = "/semi/img/222.jpg"
+		}
+		else if(document.login.what.value=="사장") {
+			document.login.whatsrc.src = "/semi/img/111.jpg"
+		}
+		
 	}
 </script>
 </head>
@@ -37,15 +50,14 @@ if(cks!=null) {
 		}
 	}
 }
-
 %>
 <body>
 	<form name="login" action="login_ok.jsp" method="post">
 		<!-- 주소창에 비밀번호 안보이게 하려겅 -->
 		<fieldset>
-			<legend>LOGIN</legend>
+			<img name = "whatsrc" src = "/semi/img/222.jpg" height = "35px" width = "140px">
 			<ul>
-				<li><input type = "radio" name = "what" value = "고객" checked="checked">고객<input type = "radio" name = "what" value = "사장">사장</li>
+				<li><input type = "radio" name = "what" value = "고객" checked="checked" onchange = "a()">고객<input type = "radio" name = "what" value = "사장" onchange = "a()">사장</li>
 				<li><label>ID</label> <input type="text" name="userid" placeholder="아이디" value = "<%=saveid%>">
 				</li>
 				<li><label>Password</label> <input type="password" name="userpwd" placeholder="비밀번호">
