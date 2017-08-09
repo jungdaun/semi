@@ -9,9 +9,11 @@
 
 request.setCharacterEncoding("utf-8");
 
-String sid=(String) session.getAttribute("sid");
+//String sid=(String) session.getAttribute("sid");
 //System.out.println (user_id);
-int tempPrice = Integer.parseInt(request.getParameter("tempPrice"));
+int tempPrice = Integer.parseInt(request.getParameter("tp"));
+String sid ="id1";
+
 
 System.out.println (tempPrice);
 
@@ -21,8 +23,12 @@ System.out.println (tempPrice);
 <!DOCTYPE html>
 <html>
 <head>
-
-
+<script type="text/javascript">
+ function autoWrite() {
+	var couponIdx = document.couponSelect.couponOption.value;
+	document.couponSelect.cIdx.value=couponIdx; 
+}
+</script>
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -54,6 +60,8 @@ System.out.println (tempPrice);
 								<th>음식 종류</th>
 								<th>할인액(률)</th>
 								<th>사용기한</th>
+							<td rowspan="2"><a href="selectCoupon_ok.jsp?tp=<%=tempPrice%>&cIdx=<%=dtos.get(i).getCoupon_idx()%>">사용하기</a></td>
+								
 							
 						</tr>	
 						<tr>
@@ -80,11 +88,10 @@ System.out.println (tempPrice);
 							
 					
 							<td><%=dtos.get(i).getCoupon_end() %></td>
-							
+								
 							
 						</tr>
 
-				
 					
 					
 	
@@ -95,22 +102,6 @@ System.out.println (tempPrice);
 			}
 		}
 		%>
-	<h3>사용하실 쿠폰을 선택하세요 </h3>
 
-	<form name="selectCoupon" >
-	쿠폰 번호:
-	<select name="couponOption">
-	
-		<%
-		for ( int i =0; i< dtos.size(); i ++){
-			%>
-			<option value="<%=dtos.get(i).getCoupon_idx()%>"><%=dtos.get(i).getCoupon_idx() %></option>
-			<%
-		}
-		%>
-	</select>
-	<a href="selectCoupon_ok.jsp?temp=<%=tempPrice%>&couponIdx=<%=%>">확인</a>
-	</form>
-	
 </body>
 </html>

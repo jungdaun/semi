@@ -17,15 +17,18 @@ public class CouponDAO {
 	
 	
 	
-	public int getDiscountPrice(int temp, int coupon_idx){
+	public int getCouponValue( int coupon_idx, int temp){
 		try {
 			
 
 			
 			conn = semi.db.SemiDb.getConn();
-			String sql =" select coupon_type , coupon_value from coupon where coupon_idx = ?";
+			String sql =" select coupon_type, coupon_value from coupon where coupon_idx = ("
+					+ "select coupon_idx from user_coupon where user_coupon_idx= ?)";
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, coupon_idx);
+			rs=ps.executeQuery();
+			
 			rs.next();
 			
 			int type = rs.getInt("coupon_type");
@@ -34,7 +37,7 @@ public class CouponDAO {
 				value = temp - value; 
 			}
 			else if (type ==2){
-				value = temp+temp *value; 
+				value = temp-temp *value/100; 
 			}
 			return value ; 
 			

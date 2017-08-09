@@ -8,7 +8,7 @@
 <jsp:useBean id="cdao" class="semi.coupon.CouponDAO"></jsp:useBean>
 
 <%
-int store_idx = 14;
+int store_idx = 1;
 int c_idx = 2;
 
 ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
@@ -91,14 +91,14 @@ ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
 		<th>쿠폰</th>
 		<td><input type="text" name="coupon" readonly="readonly" >
 
-	<a href="selectCoupon.jsp?tempPrice=<%=tempPrice%>">쿠폰 선택</a>
+	<a href="" onclick="window.open ('selectCoupon.jsp?tp=<%=tempPrice%>', 'd', 'height=450, width=450')">쿠폰 선택</a>
 		</td>
 		
 	</tr>
 	<tr>
 		<td><input type="text" name="discount" readonly="readonly">원 할인 </td>
 		<th colspan="1">최종결제금액</th>
-		<td><input type="text" name="totalPrice" readonly="readonly" value="<%=tempPrice %>">원</td>
+		<td><input type="text" name="totalPrice" readonly="readonly" >원</td>
 	</tr>
 </form>
 </table>
