@@ -89,6 +89,9 @@ function show(){
 	document.update.email2.value = email[1];
 	
 }
+function changePwd() {
+	location.href = 'changePwd.jsp';
+}
 </script>
 <style>
 h2 {
