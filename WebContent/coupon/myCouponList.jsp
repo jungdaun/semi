@@ -9,8 +9,9 @@
 
 request.setCharacterEncoding("utf-8");
 
-String sid=(String) session.getAttribute("sid");
+//String sid=(String) session.getAttribute("sid");
 //System.out.println (user_id);
+String sid = "id1";
 
 
 %>

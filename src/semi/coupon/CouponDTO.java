@@ -5,6 +5,7 @@ import java.sql.Date;
 public class CouponDTO {
 
 	
+	
 	private int	coupon_idx ;
 	private String coupon_name ;
 	
