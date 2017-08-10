@@ -11,7 +11,11 @@ request.setCharacterEncoding("utf-8");
 
 //String sid=(String) session.getAttribute("sid");
 //System.out.println (user_id);
-String sid = "id1";
+int tempPrice = Integer.parseInt(request.getParameter("tp"));
+String sid ="id1";
+
+
+System.out.println (tempPrice);
 
 
 %>
@@ -19,6 +23,13 @@ String sid = "id1";
 <!DOCTYPE html>
 <html>
 <head>
+<script type="text/javascript">
+ function autoWrite() {
+	var couponIdx = document.couponSelect.couponOption.value;
+	document.couponSelect.cIdx.value=couponIdx; 
+}
+</script>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -44,43 +55,43 @@ String sid = "id1";
 				%>
 				<table border="1" cellspacing ="0" style="border: 1px solid black; border-collapse: collapse; margin-bottom: 3px">
 					
-						<tr>
-							<th>쿠폰번호</th>
-							<td><%=dtos.get(i).getCoupon_idx() %></td>
+						<tr>	<th>쿠폰번호</th>
+								<th>쿠폰이름 </th> 
+								<th>음식 종류</th>
+								<th>할인액(률)</th>
+								<th>사용기한</th>
+							<td rowspan="2"><a href="selectCoupon_ok.jsp?tp=<%=tempPrice%>&cIdx=<%=dtos.get(i).getCoupon_idx()%>">사용하기</a></td>
+								
 							
 						</tr>	
 						<tr>
-							<th>이름 </th> 
+							<td><%=dtos.get(i).getCoupon_idx() %></td>
 							<td><%=dtos.get(i).getCoupon_name() %></td> 
 							
-						</tr>	
-						<tr>
-							
-							<th>음식 종류</th>
 							<td><%=dtos.get(i).getCoupon_food_type() %></td>
 							
-						</tr>	
-						<tr>
+							<%
+							if (dtos.get(i).getCoupon_type()==1){
+								%>
+								<td><%=dtos.get(i).getCoupon_value() %>원</td>
+								<%
+								
+							}
+							else {
+								
+								%>
+								<td><%=dtos.get(i).getCoupon_value() %>%할인</td>
+								<%
+							}
+							%>
+
 							
-							<th>쿠폰 종류</th>
-							<td><%=dtos.get(i).getCoupon_type() %></td>
-							
-							
-						</tr>	
-						<tr>
-							<th>값</th>
-							<td><%=dtos.get(i).getCoupon_value() %></td>
-							
-							
-						</tr>	
-						<tr>
-							<th>유효기간</th>
+					
 							<td><%=dtos.get(i).getCoupon_end() %></td>
-							
+								
 							
 						</tr>
 
-				
 					
 					
 	
@@ -91,7 +102,6 @@ String sid = "id1";
 			}
 		}
 		%>
-
 
 </body>
 </html>

@@ -17,6 +17,47 @@ public class CouponDAO {
 	
 	
 	
+	public int getCouponValue( int coupon_idx, int temp){
+		try {
+			
+
+			
+			conn = semi.db.SemiDb.getConn();
+			String sql =" select coupon_type, coupon_value from coupon where coupon_idx = ("
+					+ "select coupon_idx from user_coupon where user_coupon_idx= ?)";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, coupon_idx);
+			rs=ps.executeQuery();
+			
+			rs.next();
+			
+			int type = rs.getInt("coupon_type");
+			int value = rs.getInt("coupon_value"); 
+			if (type ==1){
+				value = temp - value; 
+			}
+			else if (type ==2){
+				value = temp-temp *value/100; 
+			}
+			return value ; 
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace( );
+			return 0; 
+		}
+		finally {
+			try {
+
+				if (rs!=null)rs.close();
+				if (ps!=null)ps.close();
+				if (conn!=null)conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
 	
 	public ArrayList<CouponDTO> myCouponList (String sid){
 		
@@ -25,16 +66,22 @@ public class CouponDAO {
 			System.out.println(sid);
 			
 			conn = semi.db.SemiDb.getConn();
-			String sql ="select * from coupon where coupon_idx in( "
-					+ "select coupon_idx from user_coupon where mem_idx = ( "
-					+ "select my_idx from customer where id = ?)) ";
+			String sql ="select * from ( "
+					+ "select mem_idx, coupon_start, user_coupon.coupon_idx, user_coupon_idx, "
+					+ "coupon_name, coupon_food_type, coupon_value, coupon_end, coupon_type "
+					+ "from user_coupon, customer, coupon "
+					+ "where my_idx = mem_idx and user_coupon.coupon_idx = coupon.coupon_idx ) "
+					+ "where mem_idx = (select my_idx from customer where id = ? ) ";
+			
+					
+					
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, sid);
 			rs=ps.executeQuery();
 			
 			ArrayList<CouponDTO> dtos = new ArrayList<CouponDTO>();
 			while (rs.next()){
-				int coupon_idx = rs.getInt("coupon_idx");
+				int coupon_idx = rs.getInt("user_coupon_idx");
 				String coupon_name = rs.getString("coupon_name");
 				String coupon_food_type= rs.getString("coupon_food_type");
 				int coupon_value = rs.getInt("coupon_value");
@@ -79,7 +126,7 @@ public class CouponDAO {
 			conn = semi.db.SemiDb.getConn();
 					
 			
-			String sql = "insert into user_coupon values ( "
+			String sql = "insert into user_coupon values ( user_coupon_idx_sq.nextval, "
 					+ "(select my_idx from customer "
 					+ "where id ='"+user_id+"'), ?) ";
 			ps=conn.prepareStatement(sql);
