@@ -214,16 +214,18 @@ public class MemberDAO {
 
 		try {
 			conn = semi.db.SemiDb.getConn();
-			String sql = "select name, my_idx, address from customer where id = ?";
+			String sql = "select name, my_idx, tel, address from customer where id = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, userid);
 			rs = ps.executeQuery();
-			String[] arr = new String[2];
+			String[] arr = new String[3];
 			
 			while(rs.next()){
 				arr[0] = rs.getString("name");
 				arr[1] = rs.getString("my_idx");
 				arr[2] = rs.getString("address");
+				arr[3]=rs.getString("tel");
+				
 			}
 			
 			return arr;
