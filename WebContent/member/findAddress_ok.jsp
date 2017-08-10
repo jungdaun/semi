@@ -11,7 +11,7 @@
 
 	if (!add1.equals("0") && !add2.equals("0") && !add3.equals("0")) {
 
-		String totaladd = add1 + "/"+ add2 + "/" + add3;
+		String totaladd = add1 + " "+ add2 + " " + add3;
 %>
 
 <script>
