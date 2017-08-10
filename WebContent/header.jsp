@@ -2,6 +2,6 @@
    pageEncoding="UTF-8"%>
 <header>
       <div id="headerinner">
-      	<img src="img/badal.jpg">&nbsp;Login | Logout
+         <img src="img/badal.jpg">&nbsp;Login | Logout 
       </div>
 </header>
