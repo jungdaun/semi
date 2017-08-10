@@ -17,6 +17,39 @@ public class CouponDAO {
 	
 	
 	
+	public String getCouponName (int cIdx ){
+		try {
+
+			conn = semi.db.SemiDb.getConn();
+			String sql = "select coupon_name from coupon where coupon_idx =("
+					+ "select coupon_idx from user_coupon where user_coupon_idx = ?)";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, cIdx);
+			rs=ps.executeQuery();
+			rs.next();
+			
+			String res= rs.getString(1);
+			return res;
+			
+			
+			
+		} catch (Exception e) {
+			e. printStackTrace( );
+			return null; 
+			// TODO: handle exception
+		}finally {
+			try {
+				if (rs!=null)rs.close();
+				if (ps!=null)ps.close();
+				if (conn!=null)conn.close();
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			
+			}
+		}
+	}
+	
 	public int getCouponValue( int coupon_idx, int temp){
 		try {
 			
