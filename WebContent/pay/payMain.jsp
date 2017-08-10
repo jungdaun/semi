@@ -9,7 +9,7 @@
 
 <%
 int store_idx = 1;
-int c_idx = 2;
+int c_idx = 1;
 
 ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
 
@@ -43,7 +43,7 @@ ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
 <table>
 	<tr>
 		<th>가게 이름</th>
-		<td colspan="2">김피탕가게</td>
+		<td colspan="2"><%=ctdao.getStoreName(store_idx) %></td>
 	</tr>
 
 	<tr>
@@ -116,9 +116,8 @@ ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
 	</tr>
 	<tr>
 		<th>주소</th>
-		<td>강서구어쩌고</td>
-		<th>주문 시간</th>
-		<td>2017-08-09 10:50:45</td>
+		<td colspan="3">강서구어쩌고</td>
+		
 	</tr>
 
 	<tr>

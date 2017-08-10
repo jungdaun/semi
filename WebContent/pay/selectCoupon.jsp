@@ -12,7 +12,7 @@ request.setCharacterEncoding("utf-8");
 //String sid=(String) session.getAttribute("sid");
 //System.out.println (user_id);
 int tempPrice = Integer.parseInt(request.getParameter("tp"));
-String sid ="id1";
+String sid ="고객1";
 
 
 System.out.println (tempPrice);
@@ -26,7 +26,7 @@ System.out.println (tempPrice);
 <script type="text/javascript">
  function autoWrite() {
 	var couponIdx = document.couponSelect.couponOption.value;
-	document.couponSelect.cIdx.value=couponIdx; 
+	document.couponSelect.coupon.value=couponIdx; 
 }
 </script>
 

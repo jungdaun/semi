@@ -45,10 +45,41 @@ public class CartDAO {
 			catch(Exception e2){}
 		}
 	}
+	
+	public String getStoreName (int storeIdx){
+	
+			try{
+				conn = semi.db.SemiDb.getConn();
+				String sql="select store_name from store where store_idx =? ";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, storeIdx);
+				
+				rs = ps.executeQuery();
+				rs.next();
+				String res = rs.getString(1);
+				return res; 
+				
+			}
+			catch(Exception e){
+				e.printStackTrace();
+				return null;
+			}
+			finally{
+				try{
+					if(rs!=null) rs.close();
+					if(ps!=null) ps.close();
+					if(conn!=null) conn.close();
+				}
+				catch(Exception e2){}
+			}
+			
+		}
+		
+	
 	public ArrayList<CartDTO> showData(int store_idx, int c_idx){
 		try{
 			conn = semi.db.SemiDb.getConn();
-			String sql="select * from cart where store_idx=? and customer_idx=?";
+			String sql="select food_name, food_price,food_count,total_price from cart where store_idx=? and customer_idx=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, store_idx);
 			ps.setInt(2, c_idx);
