@@ -7,6 +7,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import jdk.management.resource.ResourceRequestDeniedException;
+
 public class CouponDAO {
 	
 	
@@ -92,6 +94,38 @@ public class CouponDAO {
 		}
 	}
 	
+	
+	public int deletePastCoupon (){
+		try {
+			
+			String sql = "delete from coupon where coupon_idx= ("
+					+ "select coupon_idx from coupon where months_between "
+					+ " (to_date(coupon.coupon_end, 'yyyy-mm-dd'), sysdate)<0)";
+		
+			ps=conn.prepareStatement(sql);
+			int res = ps.executeUpdate();
+			System.out.println(res);
+			
+			return res;
+			
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace( );
+			return 0 ; 
+			// TODO: handle exception
+		}finally {
+			try {
+				
+				if (ps!=null)ps.close();
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	
+	
 	public ArrayList<CouponDTO> myCouponList (String sid){
 		
 		
@@ -99,6 +133,11 @@ public class CouponDAO {
 			System.out.println(sid);
 			
 			conn = semi.db.SemiDb.getConn();
+			
+			int res = deletePastCoupon();
+			
+			
+			
 			String sql ="select * from ( "
 					+ "select mem_idx, coupon_start, user_coupon.coupon_idx, user_coupon_idx, "
 					+ "coupon_name, coupon_food_type, coupon_value, coupon_end, coupon_type "
@@ -192,7 +231,11 @@ public class CouponDAO {
 		
 		try {
 			
+			
 			conn = semi.db.SemiDb.getConn();
+			
+
+			int res = deletePastCoupon();
 			String sql ="select * from coupon order by coupon_idx";
 			ps = conn.prepareStatement(sql);
 			rs=ps.executeQuery();

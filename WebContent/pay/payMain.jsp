@@ -45,7 +45,7 @@ ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
 <table>
 	<tr>
 		<th>가게 이름</th>
-		<td colspan="2"><%=ctdao.getStoreName(store_idx) %></td>
+		<td colspan="2"><input type="text" name="sName" value="<%=ctdao.getStoreName(store_idx) %>"> </td>
 	</tr>
 
 	<tr>
