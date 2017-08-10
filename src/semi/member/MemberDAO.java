@@ -218,7 +218,7 @@ public class MemberDAO {
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, userid);
 			rs = ps.executeQuery();
-			String[] arr = new String[3];
+			String[] arr = new String[4];
 			
 			while(rs.next()){
 				arr[0] = rs.getString("name");

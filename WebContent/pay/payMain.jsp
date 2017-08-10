@@ -7,13 +7,22 @@
 <%@ page import="java.util.*" %>
 
 
+
 <jsp:useBean id="cdao" class="semi.coupon.CouponDAO"></jsp:useBean>
+
+
+<jsp:useBean id="mdao" class="semi.member.MemberDAO"></jsp:useBean>
+
 
 <%
 int store_idx = 1;
 int c_idx = 1;
 
 ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
+
+String sid = "고객1";
+
+
 
 %>
 
@@ -97,7 +106,7 @@ ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
 
 	<tr>
 		<th>쿠폰</th>
-		<td><input type="text" name="coupon" readonly="readonly" >
+		<td><input type="text" name="coupon" readonly="readonly" ><!--   -->
 
 	<a href="" onclick="window.open ('selectCoupon.jsp?tp=<%=tempPrice%>', 'selectCoupon', 'height=450, width=450')">쿠폰 선택</a>
 		</td>
@@ -117,14 +126,18 @@ ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
 <h2>배달 정보</h2>
 <table>	
 	<tr>
+	<%
+	String userInfo [] = mdao.getUserInfo(sid);
+	
+	%>
 		<th>이름</th>
-		<td><input type="text" name="cName" value="고객1" > </td>
+		<td><input type="text" name="cName" value="<%=userInfo[0] %>" > </td>
 		<th>전화번호</th>
-		<td><input type="text" name="tel" value="01012345678">(ex. 01012345678) </td>
+		<td><input type="text" name="tel" value="<%=userInfo[3]%>">(ex. 01012345678) </td>
 	</tr>
 	<tr>
 		<th>주소</th>
-		<td colspan="3"><input type="text" name="addr" value="서울"> </td>
+		<td colspan="3"><input type="text" name="addr" value="<%=userInfo[2]%>"> </td>
 		
 	</tr>
 

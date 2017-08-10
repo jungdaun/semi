@@ -40,7 +40,5 @@ else {
 window.alert ('<%=msg%>');
 window.location.href ='orderList.jsp?s_idx=<%=s_idx%>';
 
-<!--''
 
-//-->
 </script>
