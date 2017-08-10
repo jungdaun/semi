@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
+
 <jsp:useBean id="ctdao" class="semi.cart.CartDAO"></jsp:useBean>
 <%@ page import="semi.cart.CartDTO" %>
 <%@ page import="java.util.*" %>
+
 
 <jsp:useBean id="cdao" class="semi.coupon.CouponDAO"></jsp:useBean>
 
@@ -35,7 +37,7 @@ ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
 </script>
 </head>
 <body>
-
+<form name="pay" method="get">
 
 <h3>buy & pay page</h3>
 
@@ -85,13 +87,13 @@ ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
 
 <h2>할인 수단</h2>
 <table>
-<form name="discount">
+
 
 	<tr>
 		<th>쿠폰</th>
 		<td><input type="text" name="coupon" readonly="readonly" >
 
-	<a href="" onclick="window.open ('selectCoupon.jsp?tp=<%=tempPrice%>', 'd', 'height=450, width=450')">쿠폰 선택</a>
+	<a href="" onclick="window.open ('selectCoupon.jsp?tp=<%=tempPrice%>', 'selectCoupon', 'height=450, width=450')">쿠폰 선택</a>
 		</td>
 		
 	</tr>
@@ -100,7 +102,7 @@ ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
 		<th colspan="1">최종결제금액</th>
 		<td><input type="text" name="totalPrice" readonly="readonly" >원</td>
 	</tr>
-</form>
+
 </table>
 
 
@@ -110,25 +112,25 @@ ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
 <table>	
 	<tr>
 		<th>이름</th>
-		<td>김개똥</td>
+		<td><input type="text" name="cName" value="고객1" > </td>
 		<th>전화번호</th>
-		<td>010-1111-1111</td>
+		<td><input type="text" name="tel" value="01012345678">(ex. 01012345678) </td>
 	</tr>
 	<tr>
 		<th>주소</th>
-		<td colspan="3">강서구어쩌고</td>
+		<td colspan="3"><input type="text" name="addr" value="서울"> </td>
 		
 	</tr>
 
 	<tr>
 		<th colspan="1">전달사항</th>
-		<td colspan="3"><textarea rows="3" cols="100">
+		<td colspan="3"><textarea rows="3" cols="100" name="memo">
 		
 		</textarea> </td>
 	</tr>
 	
 </table>
-
-
+<input type="button" value="주문하기" onclick="location.href='pay_ok.jsp'">
+</form>
 </body>
 </html>

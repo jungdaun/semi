@@ -18,13 +18,14 @@ int dc =  cdao.getCouponValue(cIdx,tp);
 String cName = cdao.getCouponName(cIdx);
 
 
+
 System.out.println (dc);
 %>
 
 <script>
- opener.document.discount.totalPrice.value ='<%=dc%>';
- opener.document.discount.coupon.value ='<%=cName%>';
- opener.document.discount.discount.value ='<%=(tp-dc)%>';
+ opener.document.pay.totalPrice.value ='<%=dc%>';
+ opener.document.pay.coupon.value ='<%=cName%>';
+ opener.document.pay.discount.value ='<%=(tp-dc)%>';
  
  
  
