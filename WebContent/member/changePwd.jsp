@@ -11,16 +11,23 @@ function a() {
 	
 }
 </script>
+<style>
+li {
+	list-style: none;
+}
+</style>
 </head>
 <body onload = "a()">
 	<form name="changePwd" action="changePwd_ok.jsp" method = "post">
 		<fieldset>
 			<legend>새 비밀번호 입력</legend>
 			<ul>
-				<li><label>비밀번호</label> <input type="password" name="password"
+				<li><label>기존 비밀번호</label> <input type="password" name="mypassword"
+					required="required"> <font size=1px;>영문 숫자 조합</font></li>
+				<li><label>새 비밀번호</label> <input type="password" name="password"
 					required="required"> <font size=1px;>영문 숫자 조합</font></li>
 
-				<li><label>비밀번호확인</label> <input type="password" name="password2"
+				<li><label>새 비밀번호확인</label> <input type="password" name="password2"
 					required="required"> <font size=1px;>8~12자</font></li>
 					
 					

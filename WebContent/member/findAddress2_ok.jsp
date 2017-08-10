@@ -17,7 +17,7 @@
 <script>
 	opener.document.update.address.value = '<%=totaladd%>';
 	opener.document.update.address2.value = '<%=address2%>';
-	window.self.close();
+	window.self.close(); 
 </script>
 
 <%

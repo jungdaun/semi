@@ -92,6 +92,16 @@
 		
 		<%
 
+	}else if (request.getParameter("ans") == null || request.getParameter("ans").equals("")) {
+		chk = false;
+		%>
+		<script>
+			window.alert("2차비밀번호 답변을 입력해주세요.");
+			history.back();
+		</script>
+		
+		<%
+
 	}
 	
 	if(chk) {

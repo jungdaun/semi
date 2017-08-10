@@ -10,16 +10,29 @@
 String id = (String) session.getAttribute("sid");
 String type = (String) session.getAttribute("stype");
 
+
 if(id == null||id.equals("")) {
 	id = request.getParameter("id");
 }
 if(type == null||type.equals("")) {
 	type = "테스트";
 }
+	String mypassword = request.getParameter("mypassword");
 	String a = request.getParameter("password");
 	String b = request.getParameter("password2");
 	
 	boolean chk = true;
+	
+	if(mypassword == null||mypassword.equals("")) {
+		%>
+		<script>
+			window.alert('비밀번호를 입력해주세요.');
+			history.back();
+		</script>
+
+		<%
+		
+	}
 
 	if (a.equals(b)) {
 		
@@ -80,17 +93,31 @@ if(type == null||type.equals("")) {
 	}
 	
 	if(chk) {
-		int result = mdao.getChangePwd(a, id, type);
+		
+		boolean chkpwd = mdao.chkPwd(mypassword, id, type);
+		
+		if(chkpwd) {
+			int result = mdao.getChangePwd(a, id, type);
 
-		String msg = result > 0 ? "비밀번호 변경 성공" : "비밀번호 변경 실패";
+			String msg = result > 0 ? "비밀번호 변경 성공" : "비밀번호 변경 실패";
+			
+			
+			%>
+
+			<script>window.alert('<%=msg%>');
+				window.self.close();
+				location.href = '/semi/index.jsp';
+			</script>
+			<%
+		} else {
+			%>
+
+			<script>window.alert('기존 비밀번호를 틀리셨습니다.');
+			location.href = '/semi/member/changePwd.jsp';
+			</script>
+			<%
+		}
 		
 		
-		%>
-
-		<script>window.alert('<%=msg%>');
-			window.self.close();
-			location.href = '/semi/index.jsp';
-		</script>
-		<%
 	}
 %>

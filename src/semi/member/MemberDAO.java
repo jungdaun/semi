@@ -398,9 +398,10 @@ public class MemberDAO {
 				if (rs.next()) {
 					String name = rs.getString("name");
 					String email = rs.getString("email");
-					
+					String ask = rs.getString("ask");
+					String ans = rs.getString("ans");
 
-					dto = new MemberDTO(name, email);
+					dto = new MemberDTO(name, email, ask, ans);
 
 				}
 			}
@@ -474,5 +475,39 @@ public class MemberDAO {
 
 			}
 		} // 자원반환시 위의 형식 필수
+	}
+	
+	public boolean chkPwd(String mypassword, String id, String type) {
+		try {
+			conn = semi.db.SemiDb.getConn();
+			
+			
+			String sql = null;
+			if(type.equals("고객")) {
+				sql = "select password from customer where id = ?";
+			} else if(type.equals("사장")){
+				sql = "select password from ceo where id = ?";
+			}
+			System.out.println(sql);
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			rs.next();
+			if(rs.getString("password").equals(mypassword)) {
+				return true;
+			}
+			return false;
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return false;
+		} finally {
+			try {
+				close2();
+			} catch (Exception e2) {
+
+			}
+		}
 	}
 }

@@ -18,7 +18,7 @@
 			document.findAddress.dong.options[1] = new Option("묵동", "묵동");
 			document.findAddress.dong.options[2] = new Option("중화동", "중화동");
 		} else {
-			document.findAddress.dong.length = 1;
+			document.findAddress.dong.length = 1; 
 		}
 	}
 	

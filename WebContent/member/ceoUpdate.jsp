@@ -68,6 +68,17 @@ function show(){
 	document.update.email1.value = email[0];
 	document.update.email2.value = email[1];
 	
+	var ask = '<%=dto.getAsk()%>';
+	z = document.update.ask.length;
+	for(i = 0; i < z; i++) {
+		if(document.update.ask[i].value==ask) {
+			document.update.ask.options[i].selected = true;
+		}
+	}
+	
+	var ans = '<%=dto.getAns()%>';
+	document.update.ans.value = ans;
+	
 }
 function changePwd() {
 	location.href = 'changePwd.jsp';
@@ -125,6 +136,15 @@ section p {
 						<option value = "daum.net">다음</option>
 						</select>
 						<input type="hidden" name="email"></li>
+						
+						<li><label>2차비밀번호질문</label>
+						<select name = "ask">
+							<option value = "나의 첫 사랑은?">나의 첫 사랑은?</option>
+							<option value = "나의 출신 초등학교는?">나의 출신 초등학교는?</option>
+							<option value = "내 보물 1호는?">내 보물 1호는?</option>
+						</select></li>
+						
+						<li><label>2차비밀번호답변</label> <input type="text" name="ans" required="required"></li>
 						
 					</ul>
 

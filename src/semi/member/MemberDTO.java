@@ -22,15 +22,17 @@ public class MemberDTO {
 	
 	
 	
-	public MemberDTO(String name, String email) {
+	public MemberDTO(String name, String email, String ask, String ans) {
 		super();
 		this.name = name;
 		this.email = email;
+		this.ask = ask;
+		this.ans = ans; 
 	}
 
 
 
-	public MemberDTO(String name, String id, String password, String email, String ans, String ask,int my_idx) {
+	public MemberDTO(String name, String id, String password, String email, String ask, String ans,int my_idx) {
 		super();
 		this.name = name;
 		this.id = id;
@@ -45,7 +47,7 @@ public class MemberDTO {
 
 
 
-	public MemberDTO(String name, String tel, String email, String ans, String ask, String address, String address2) {
+	public MemberDTO(String name, String tel, String email, String ask, String ans, String address, String address2) {
 		super();
 		this.name = name;
 		this.tel = tel;
@@ -58,7 +60,7 @@ public class MemberDTO {
 
 
 
-	public MemberDTO(String name, String id, String password, String tel, String email, String ans, String ask,
+	public MemberDTO(String name, String id, String password, String tel, String email, String ask, String ans,
 			String address, String address2, int my_idx) {
 		super();
 		this.name = name;
