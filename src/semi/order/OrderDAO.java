@@ -3,7 +3,6 @@ package semi.order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.util.ArrayList;
 
 public class OrderDAO {
 	
@@ -14,6 +13,49 @@ public class OrderDAO {
 	
 	
 	
+	public int addOrder (OrderDTO dto){
+		
+		try {		
+			conn= semi.db.SemiDb.getConn();
+			
+				
+			
+			String sql= "insert into order_tb values (?,?,?,?,(select coupon_type from coupon where coupon_idx = 1), "
+					+ "(select coupon_value from coupon where coupon_idx = 1),?,to_char(sysdate),0,? )";
+			
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, dto.getOrder_idx());
+			ps.setInt(2, dto.getStore_idx());
+			ps.setInt(3, dto.getMem_idx());
+			ps.setInt(4, dto.getPrice());
+			ps.setString(5,dto.getMemo());
+			ps.setInt(6, dto.getFinal_price());
+			
+			int count= ps.executeUpdate();
+			
+			return count; 
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace( );
+			return -1;
+			
+		}
+		
+		finally {
+			
+			try {
+				if (ps!=null)ps.close();
+				if (conn!=null)conn.close();
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+			
+		}
+		
+	}
 	
 //	public int orderDelivery (int o_idx ){
 //		try {

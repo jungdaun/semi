@@ -7,6 +7,7 @@
 
 
 <% 
+/*
 request.setCharacterEncoding("utf-8");
 
 String o_idx_s = request.getParameter("o_idx");
@@ -31,14 +32,15 @@ else {
 
 
 
+*/
+
+
 
 %>
 
 
 <script type="text/javascript">
 
-window.alert ('<%=msg%>');
-window.location.href ='orderList.jsp?s_idx=<%=s_idx%>';
 
 
 </script>

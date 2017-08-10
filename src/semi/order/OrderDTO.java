@@ -20,6 +20,24 @@ public class OrderDTO {
 	private int coupon_type;
 	private String finish ;
 	private int final_price ;
+	
+	
+	public OrderDTO(int order_idx, int store_idx, int mem_idx, int price, String memo, int final_price) {
+		super();
+		this.order_idx = order_idx;
+		this.store_idx = store_idx;
+		this.mem_idx = mem_idx;
+		this.price = price;
+		this.memo = memo;
+		this.final_price = final_price;
+	}
+
+
+	public OrderDTO() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	
 	public int getOrder_idx() {
 		return order_idx;
 	}
