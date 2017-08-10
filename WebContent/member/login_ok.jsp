@@ -20,6 +20,7 @@ if(type.equals("고객")) {
 		session.setAttribute("sid", userid);
 		session.setAttribute("sname", arr[0]);
 		session.setAttribute("c_idx", arr[1]);
+		session.setAttribute("saddress", arr[2]);
 		session.setAttribute("stype", type);
 	
 		if(saveid!=null) {
