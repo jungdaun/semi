@@ -46,7 +46,7 @@ String sid = "고객1";
 </script>
 </head>
 <body>
-<form name="pay" method="get">
+<form name="pay" action="pay_ok.jsp">
 <input type="hidden" name="order_idx" value="1">
 <input type="hidden" name="store_idx" value="<%=store_idx%>">
 <input type="hidden" name="mem_idx" value="<%=c_idx%>">
@@ -106,7 +106,7 @@ String sid = "고객1";
 
 	<tr>
 		<th>쿠폰</th>
-		<td><input type="text" name="coupon" readonly="readonly" ><!--   -->
+		<td><input type="text" name="couponName" readonly="readonly" ><!--   -->
 
 	<a href="" onclick="window.open ('selectCoupon.jsp?tp=<%=tempPrice%>', 'selectCoupon', 'height=450, width=450')">쿠폰 선택</a>
 		</td>
@@ -149,7 +149,7 @@ String sid = "고객1";
 	</tr>
 	
 </table>
-<input type="button" value="주문하기" onclick="location.href='pay_ok.jsp'">
+<input type="submit" value="주문하기">
 </form>
 </body>
 </html>
