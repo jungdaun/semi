@@ -38,6 +38,10 @@ ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
 </head>
 <body>
 <form name="pay" method="get">
+<input type="hidden" name="order_idx" value="1">
+<input type="hidden" name="store_idx" value="<%=store_idx%>">
+<input type="hidden" name="mem_idx" value="<%=c_idx%>">
+
 
 <h3>buy & pay page</h3>
 
@@ -63,7 +67,7 @@ ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
 		<tr>
 		<td><input type="text" name="menu" value="<%=cartDtos.get(i).getFood_name() %>" readonly="readonly"></td>
 		<td><input type="text" name="count" value="<%=cartDtos.get(i).getFood_count()%>" readonly="readonly"> </td>
-		<td><input type="text" name="price" value="<%=cartDtos.get(i).getTotal_price() %>" readonly="readonly">  </td>
+		<td><input type="text" name="menuPrice" value="<%=cartDtos.get(i).getTotal_price() %>" readonly="readonly">  </td>
 		
 		
 	</tr>	
@@ -78,9 +82,11 @@ ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
 	
 	
 
+
 	<tr>
+	
 		<td colspan="2">총 구매금액: </td>
-		<td><%=tempPrice %></td>
+		<td><input type="text" value="<%=tempPrice %>" name="price"> </td>
 	</tr>
 
 </table>
@@ -100,7 +106,7 @@ ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
 	<tr>
 		<td><input type="text" name="discount" readonly="readonly">원 할인 </td>
 		<th colspan="1">최종결제금액</th>
-		<td><input type="text" name="totalPrice" readonly="readonly" >원</td>
+		<td><input type="text" name="final_price" readonly="readonly" >원</td>
 	</tr>
 
 </table>
