@@ -34,7 +34,7 @@ body {
 
 #maintitle1 {
    width: 450px;
-   height: 200px;
+   height: 200px; 
    border: 1px dotted aqua;
    display: inline-block;
    float: left;
