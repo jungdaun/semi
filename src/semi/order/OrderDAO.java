@@ -14,7 +14,13 @@ public class OrderDAO {
 	private ResultSet rs;
 	
 	
-	
+	public ArrayList<OrderDTO> myOrderList (int mem_idx ){
+		try {
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 	
 	public OrderDTO orderCheck(int oIdx) {
 		try {
