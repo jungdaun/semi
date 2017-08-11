@@ -8,7 +8,7 @@
 <link rel="stylesheet" type="text/css" href="css/mainLayout.css">
 <style>
 </style>
-</head>
+</head>    
 
 <body>
 	<div id="wrap">
