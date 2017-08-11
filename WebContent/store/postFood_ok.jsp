@@ -10,7 +10,8 @@
 
 <%
 String store_type=request.getParameter("store_type");
-Integer c_idx = (Integer) session.getAttribute("c_idx");
+//Integer c_idx = (Integer) session.getAttribute("c_idx");
+Integer c_idx = (Integer)2;
 
 String count_s = request.getParameter("food_count"); //선택된 value값을 가져온다.
 String price_s = request.getParameter("food_price");
@@ -27,6 +28,6 @@ int num = cdao.insertData(store_idx, c_idx, food_name, food_price, food_count, t
 String msg = (num==-1)? "장바구니에 추가되지 않았습니다.": "장바구니에 목록이 추가되었습니다.";
 %>
 <script>
-	window.alert('<%=msg%>');
-	location.href='postFood.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>';
+   window.alert('<%=msg%>');
+   location.href='postFood.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>';
 </script>
