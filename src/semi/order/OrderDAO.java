@@ -16,9 +16,19 @@ public class OrderDAO {
 	
 	public ArrayList<OrderDTO> myOrderList (int mem_idx ){
 		try {
+
+			conn = semi.db.SemiDb.getConn();
+
+			String sql = "select * from order_tb where order_idx = ?";
 			
 		} catch (Exception e) {
 			// TODO: handle exception
+		}finally {
+			try {
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
 		}
 	}
 	

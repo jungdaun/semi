@@ -8,7 +8,9 @@
 </head>
 <body>
 	<%
-	String 
+
+	int mem_idx = 1; 
+	
 	%>
 
 </body>
