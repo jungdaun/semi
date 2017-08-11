@@ -3,6 +3,8 @@ package semi.order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
+
 
 public class OrderDAO {
 	
@@ -13,23 +15,130 @@ public class OrderDAO {
 	
 	
 	
-	public int addOrder (OrderDTO dto){
+	
+	public OrderDTO orderCheck(int oIdx) {
+		try {
+			conn = semi.db.SemiDb.getConn();
+
+			String sql = "select * from order_tb where order_idx = ?";
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, oIdx);
+			
+			rs=ps.executeQuery();
+			
+			
+			 
+			rs.next();
+		
+				
+				int order_idx = rs.getInt("order_idx");
+				int store_idx= rs.getInt("store_idx");
+				int mem_idx= rs.getInt("mem_idx");
+				int price = rs.getInt("price");
+				int user_coupon = rs.getInt("user_coupon");
+				String memo = rs.getString("memo");
+				String order_date = rs.getString("order_date");
+				int finish = rs.getInt("finish");
+				int final_price = rs.getInt("final_price");
+				int pay_type = rs.getInt("pay_type");
+				 String c_name = rs.getString("c_name");
+				 String c_addr= rs.getString("c_addr");
+				 String c_tel= rs.getString("c_tel");
+				
+				 
+				
+				OrderDTO dto =new OrderDTO(order_idx, store_idx, mem_idx, price, memo, order_date, user_coupon, finish, final_price, pay_type, c_name, c_tel, c_addr);
+	
+	
+			return dto; 
+			
+			
+
+				 
+		
+				
+			
+		} catch (Exception e) {
+			e.printStackTrace( );
+			return null ; 
+			// TODO: handle exception
+		}finally {
+			try {	if(rs!=null )rs.close();
+			if (ps!=null)ps.close();
+			if (conn!=null)conn.close();
+		
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+		
+	}
+	
+	
+	public int useCoupon ( int user_coupon_idx ){
+		
+		try {
+			conn = semi.db.SemiDb.getConn();
+					
+			
+			String sql = "delete from user_coupon where user_coupon_idx = ?";
+			
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, user_coupon_idx);
+			
+			int res = ps.executeUpdate();
+			
+			return res; 
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace( );
+			return -1; 
+			// TODO: handle exception
+		}
+		finally {
+			try {
+				if (ps!=null)ps.close();
+				
+			} catch (Exception e2) {
+				
+				
+				// TODO: handle exception
+			}
+		}
+	}
+	
+	
+	
+	
+	public int addOrder (OrderDTO dto ){
 		
 		try {		
 			conn= semi.db.SemiDb.getConn();
 			
+			
+			int temp =useCoupon(dto.getUser_coupon());
+			
 				
 			
-			String sql= "insert into order_tb values (?,?,?,?,(select coupon_type from coupon where coupon_idx = 1), "
-					+ "(select coupon_value from coupon where coupon_idx = 1),?,to_char(sysdate),0,? )";
+			String sql= "insert into order_tb values (?,?,?,?,"
+					+ "?,?,to_char(sysdate),0,?, ?,?,?,? )";
 			
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, dto.getOrder_idx());
 			ps.setInt(2, dto.getStore_idx());
 			ps.setInt(3, dto.getMem_idx());
 			ps.setInt(4, dto.getPrice());
-			ps.setString(5,dto.getMemo());
-			ps.setInt(6, dto.getFinal_price());
+			
+			ps.setInt(5,dto.getUser_coupon());
+			ps.setString(6, dto.getMemo());
+			
+			ps.setInt(7, dto.getFinal_price());
+			ps.setInt(8,dto.getPay_type());
+			ps.setString(9, dto.getC_name());
+			ps.setString(10, dto.getC_tel());
+			ps.setString(11, dto.getC_addr());
 			
 			int count= ps.executeUpdate();
 			

@@ -106,7 +106,7 @@ String sid = "고객1";
 
 	<tr>
 		<th>쿠폰</th>
-		<td><input type="text" name="couponName" readonly="readonly" ><!--   -->
+		<td><input type="text" name="user_coupon" readonly="readonly" ><!--   -->
 
 	<a href="" onclick="window.open ('selectCoupon.jsp?tp=<%=tempPrice%>', 'selectCoupon', 'height=450, width=450')">쿠폰 선택</a>
 		</td>
@@ -121,7 +121,16 @@ String sid = "고객1";
 </table>
 
 
-
+<h2>결재방법</h2>
+<table>
+	<tr>
+		
+		<td><input type="radio" name="pay_type" value="1" checked="checked">바로결제</td>
+		<td><input type="radio" name="pay_type" value="2">현장결제</td>
+		<!-- 바로결제1 현장결제는2 -->
+		
+	</tr>
+</table>
 
 <h2>배달 정보</h2>
 <table>	
@@ -131,13 +140,13 @@ String sid = "고객1";
 	
 	%>
 		<th>이름</th>
-		<td><input type="text" name="cName" value="<%=userInfo[0] %>" > </td>
+		<td><input type="text" name="c_name" value="<%=userInfo[0] %>" > </td>
 		<th>전화번호</th>
-		<td><input type="text" name="tel" value="<%=userInfo[3]%>">(ex. 01012345678) </td>
+		<td><input type="text" name="c_tel" value="<%=userInfo[3]%>">(ex. 01012345678) </td>
 	</tr>
 	<tr>
 		<th>주소</th>
-		<td colspan="3"><input type="text" name="addr" value="<%=userInfo[2]%>"> </td>
+		<td colspan="3"><input type="text" name="c_addr" value="<%=userInfo[2]%>"> </td>
 		
 	</tr>
 

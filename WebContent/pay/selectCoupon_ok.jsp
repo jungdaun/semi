@@ -24,7 +24,7 @@ System.out.println (dc);
 
 <script>
  opener.document.pay.final_price.value ='<%=dc%>';
- opener.document.pay.couponName.value ='<%=cName%>';
+ opener.document.pay.user_coupon.value ='<%=cIdx%>';
  opener.document.pay.discount.value ='<%=(tp-dc)%>';
  
  
