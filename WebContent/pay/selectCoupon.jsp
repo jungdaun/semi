@@ -60,6 +60,8 @@ System.out.println (tempPrice);
 								<th>음식 종류</th>
 								<th>할인액(률)</th>
 								<th>사용기한</th>
+								
+								<!-- cIdx: user_coupon_idx -->   
 							<td rowspan="2"><a href="selectCoupon_ok.jsp?tp=<%=tempPrice%>&cIdx=<%=dtos.get(i).getCoupon_idx()%>">사용하기</a></td>
 								
 							

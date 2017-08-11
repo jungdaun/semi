@@ -14,6 +14,8 @@
 
 <%
 int result=odao.addOrder(odto);
+int oIdx = Integer.parseInt(request.getParameter("order_idx"));
+
 
 //입력데이터 넘기기  
 String msg=result>0?"주문완료":"실패";
@@ -22,7 +24,7 @@ String msg=result>0?"주문완료":"실패";
 
 <script>
 window.alert('<%=msg%>');
-location.href='payMain.jsp';
+location.href='payCheck.jsp?oIdx=<%=oIdx%>';
 
 
 
