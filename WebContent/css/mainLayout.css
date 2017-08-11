@@ -1,16 +1,9 @@
 @CHARSET "utf-8";
 
 body {
-   height: 100%;
-   min-height: 100%;
-   width: 100%;
-   min-width: 100%;
    text-align: center;
-   margin: 0px auto;
-   background-repeat: no-repeat;
-   background-image: url("../img/homepage.jpg");
-   background-size: 100%;
-} 
+   margin: 0px
+}
 
 #wrap {
    width: 1280px;
@@ -21,8 +14,11 @@ body {
 #bodywrap {
    border: 1px solid black;
    width: 850px;
-   height: 680px;
+   height: 1000px;
    margin: 0px auto;
+   background-repeat: no-repeat;
+   background-image: url("../img/homepage.jpg");
+   background-size: 100%;
 }
 
 #maintitle {
@@ -34,7 +30,7 @@ body {
 
 #maintitle1 {
    width: 450px;
-   height: 200px; 
+   height: 200px;
    border: 1px dotted aqua;
    display: inline-block;
    float: left;
@@ -47,17 +43,18 @@ body {
    display: inline-block;
    float: right;
 }
-#search{
-width:350px;
-height:90px;
-border: 1px solid blue;
-margin-bottom: 15px;
-}
-#coupon_board{
-width:350px;
-height:90px;
-border: 1px solid blue;
 
+#search {
+   width: 350px;
+   height: 90px;
+   border: 1px solid blue;
+   margin-bottom: 15px;
+}
+
+#coupon_board {
+   width: 350px;
+   height: 90px;
+   border: 1px solid blue;
 }
 
 #mainbody {
@@ -89,6 +86,7 @@ border: 1px solid blue;
    display: inline-block;
    float: right;
 }
+
 #mainbottom {
    width: 850px;
    height: 195px;
@@ -111,6 +109,7 @@ border: 1px solid blue;
    display: inline-block;
    float: right;
 }
+
 #headerinner img {
    width: 150px;
    height: 50px;
@@ -122,12 +121,12 @@ border: 1px solid blue;
    text-align: left;
    font-family: "Typo_Papyrus B";
    font-size: 20px;
+   background-color: red;
 }
 
 #bodywrap {
    width: 100em;
    height: 100em;
-   
    display: inline-block;
 }
 
