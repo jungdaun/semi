@@ -114,7 +114,7 @@
 
 
 
-
+<a href="/semi/index.jsp">메인으로</a>
 
 </body>
 </html>
