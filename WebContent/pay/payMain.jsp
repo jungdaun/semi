@@ -15,10 +15,10 @@
 
 
 <%
-int store_idx = 1;
+int store_idx = 2;
 int c_idx = 1;
 
-int order_idx = 1; 
+int order_idx = 3; 
 
 
 ArrayList <CartDTO> cartDtos = ctdao.myCartList(order_idx);
