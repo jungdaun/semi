@@ -16,18 +16,21 @@ public class CouponDAO {
 	private ResultSet rs;
 	
 	
+	static final int ALREADY_HAVE= -2; 
+	
 	
 
 	
 	
-	public boolean doesHave (int coupon_idx ){
+	public boolean doesHave (int coupon_idx , int mem_idx ){
 		try {
 
 			conn = semi.db.SemiDb.getConn();
-			String sql = "select user_coupon_idx from user_coupon where coupon_idx = ?";
+			String sql = "select user_coupon_idx from user_coupon where coupon_idx = ? and mem_idx = ?";
 			
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, coupon_idx);
+			ps.setInt(2, mem_idx);
 			rs=ps.executeQuery();
 			 return rs.next();
 			 
@@ -41,8 +44,6 @@ public class CouponDAO {
 			try {
 				if (rs!=null)rs.close();
 				if (ps!=null)ps.close();
-				if (conn!=null)conn.close();
-				
 			} catch (Exception e2) {
 				// TODO: handle exception
 			
@@ -228,17 +229,19 @@ public class CouponDAO {
 		
 		try {
 			conn = semi.db.SemiDb.getConn();
-					
+		
+		
+				String sql = "insert into user_coupon values ( user_coupon_idx_sq.nextval, "
+						+ "(select my_idx from customer "
+						+ "where id ='"+user_id+"'), ?) ";
+				ps=conn.prepareStatement(sql);
+				ps.setInt(1, coupon_idx);
+				
+				int res = ps.executeUpdate();
+				
+				return res; 
 			
-			String sql = "insert into user_coupon values ( user_coupon_idx_sq.nextval, "
-					+ "(select my_idx from customer "
-					+ "where id ='"+user_id+"'), ?) ";
-			ps=conn.prepareStatement(sql);
-			ps.setInt(1, coupon_idx);
-			
-			int res = ps.executeUpdate();
-			
-			return res; 
+
 			
 			
 		} catch (Exception e) {
