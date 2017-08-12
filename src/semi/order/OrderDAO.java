@@ -141,7 +141,7 @@ public class OrderDAO {
 			conn = semi.db.SemiDb.getConn();
 					
 			
-			String sql = "delete from user_coupon where user_coupon_idx = ?";
+			String sql = "update user_coupon set is_used = 1 where user_coupon_idx =?";
 			
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, user_coupon_idx);

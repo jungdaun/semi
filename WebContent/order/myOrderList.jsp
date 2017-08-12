@@ -102,7 +102,17 @@
 			%>
 			<tr>
 				<th>배달상황</th>
-				<td ><%=dtos.get(i).getFinish() %> </td>
+				<td >
+				<%
+				if (dtos.get(i).getFinish()==0){
+					%>배달중<%
+				}
+				else {
+					%>배달완료<%
+				}
+				%>
+				
+				</td>
 				<th>총 가격</th>
 				<td ><%=dtos.get(i).getFinal_price() %> </td>
 			
