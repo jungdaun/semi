@@ -20,6 +20,37 @@ public class CouponDAO {
 
 	
 	
+	public boolean doesHave (int coupon_idx ){
+		try {
+
+			conn = semi.db.SemiDb.getConn();
+			String sql = "select user_coupon_idx from user_coupon where coupon_idx = ?";
+			
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, coupon_idx);
+			rs=ps.executeQuery();
+			 return rs.next();
+			 
+			
+			
+		} catch (Exception e) {
+			e. printStackTrace( );
+			return false; 
+			// TODO: handle exception
+		}finally {
+			try {
+				if (rs!=null)rs.close();
+				if (ps!=null)ps.close();
+				if (conn!=null)conn.close();
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			
+			}
+		}
+	}
+	
+	
 	public String getCouponName (int cIdx ){
 		try {
 
