@@ -3,7 +3,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-    
+ <jsp:useBean id="mdao" class="semi.member.MemberDAO"></jsp:useBean>
  <jsp:useBean id="odao" class="semi.order.OrderDAO"></jsp:useBean>
  <jsp:useBean id="ctdao" class="semi.cart.CartDAO"></jsp:useBean>
 <!DOCTYPE html >
@@ -19,8 +19,12 @@
 	
 	<%
 
-	int mem_idx = 1; 
-
+	String sid =(String) session.getAttribute("sid");
+	System.out.println (sid);
+	
+	int mem_idx = mdao.getMemIdx(sid);
+	System.out.println (mem_idx);
+	
 	ArrayList<OrderDTO> dtos =odao.myOrderList(mem_idx);
 	%>
 	
