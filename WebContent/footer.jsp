@@ -3,6 +3,6 @@
 <footer>
 	 <div id="footerinner" style="display: inline-block; width:100%;">
 		<hr>	
-	<p><img src="img/badal.jpg">Copyright &copy; 먹자. All Rights Reserved.</p>
+	<p><img src="/semi/img/badal.jpg">Copyright &copy; 먹자. All Rights Reserved.</p>
 	</div>
 </footer> 

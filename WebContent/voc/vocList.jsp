@@ -51,14 +51,63 @@ if ( cp %pageSize==0){
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="stylesheet" type="text/css" href="/semi/css/mainLayout.css">
 <meta charset=UTF-8">
 <title>Insert title here</title>
+
+<style>
+	h2{
+		text-align: center;
+		color: white; 
+		
+	}
+	table{
+		width: 450px;
+		border-top: 4px double white;
+		border-bottom: 4px double white;
+		margin: 0px auto;
+		border-spacing: 0px;
+		background-color: white ; 
+	}
+	table th{
+		background: #BF0920;
+		color: white; 
+		text-align: center;
+	}
+	table td{
+		text-align: center
+		
+		;
+	}
+	
+	tfoot {
+		border-top: 4px double #BF0920;
+		
+	
+	}
+	
+</style>
+
+
 
 </head>
 <body>
 
-      <h2>voc</h2>
+
+
+      
+      
+     <%@include file="/header.jsp"%>
+     
+     
+     
+     	<div id="bodywrap">
+<!-- --------------------------------------------------------- -->
+
+
+	<section>
+			<article>
+			<h2>Q&A</h2>
       <table>
          <thead>
             <tr>
@@ -130,7 +179,7 @@ if ( cp %pageSize==0){
                %>
                <tr>
                   <td><%=arr.get(i).getVod_idx() %> </td>
-                  <td >
+                  <td style="text-align: left;">
                   <%
                   for ( int j =0; j< arr.get(i).getLev(); j ++){
                      out.println ("&nbsp;");
@@ -181,6 +230,27 @@ if ( cp %pageSize==0){
 
       </table>
       
+			
+			</article>
+		
+		</section>
 
+
+
+
+
+<!-- --------------------------------------------------------- -->
+
+
+
+
+		</div>
+	   
+
+
+
+<%@include file="/footer.jsp"%>
+      
+      
 </body>
 </html>

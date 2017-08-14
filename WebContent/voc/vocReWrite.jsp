@@ -1,15 +1,79 @@
+
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     
 <jsp:useBean id="vdao" class="semi.voc.VocDAO"></jsp:useBean>
+
+
+
+
+
+
+
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
+<link rel="stylesheet" type="text/css" href="/semi/css/mainLayout.css">
+<style>
+	h2{
+		text-align: center;
+		color: white; 
+		
+	}
+	table{
+		width: 450px;
+
+		  
+
+		
+		margin: 0px auto;
+		border-spacing: 0px;
+		background-color: white ; 
+		
+	}
+	table th{
+	
+		  			border-top: 1px solid #BF0920;
+		border-bottom: 1px solid #BF0920;
+		color: black; 
+		text-align: center;
+	}
+	table td{
+	
+	
+		text-align: left
+		;
+					border-top: 1px solid #BF0920;
+		border-bottom: 1px solid #BF0920;
+		
+		color: black; 
+	
+		;
+	}
+
+	
+</style>
+
 </head>
+
+
+
+
+
 <body>
-      <h2 align="center">vocReWrite.jsp</h2>
+
+
+
+
+<%@include file="/header.jsp"%>
+		<div id="bodywrap">
+
+<!-- -------------------------------------------------------------- -->
+    <h2 align="center">vocReWrite.jsp</h2>
       <%
       String title = request.getParameter("title");
       String ref=request.getParameter("ref");
@@ -31,7 +95,7 @@
          <table>
          <tr>
             <th>작성자</th>
-            <td colspan="3"><input type="text" name="writer"></td>
+            <td colspan="3"><input type="text" name="writer" required="required"></td>
             
             
              </tr>
@@ -57,5 +121,13 @@
          
          </table>
       </form>
+<!-- -------------------------------------------------------------- -->
+		</div>
+<%@include file="/footer.jsp"%>
+
+
+
+
+  
 </body>
 </html>

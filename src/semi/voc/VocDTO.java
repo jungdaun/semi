@@ -15,8 +15,7 @@ public class VocDTO {
 	
 	
 	
-	
-	
+
 	public int getVod_idx() {
 		return vod_idx;
 	}
@@ -105,6 +104,19 @@ public class VocDTO {
 		this.ref = ref;
 		this.lev = lev;
 		this.turn = turn;
+	}
+	
+	public VocDTO(int vod_idx) {
+		super();
+		this.vod_idx = vod_idx;
+		this.writer = null;
+		this.pwd = null;
+		this.title =null;
+		this.content = null;
+		this.writedate =  null;
+		this.ref = 0;
+		this.lev =  0;
+		this.turn =  0;
 	}
 	
 	

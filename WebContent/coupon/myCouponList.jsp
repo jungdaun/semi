@@ -46,7 +46,11 @@ ArrayList<CouponDTO> dtos = cdao.myCouponList(sid);
 	if(dtos.size()==0|| dtos==null){
 		%><tr>
 			<td colspan="6">쿠폰이 없습니다.</td>
-			<td colspan="6">쿠폰 받으러 가기 => <a href="semi/coupon/couponList.jsp">click!</a></td>
+			
+		</tr>
+		<tr>
+		
+		<td colspan="6">쿠폰 받으러 가기 => <a href="/semi/coupon/couponList.jsp">click!</a></td>
 		</tr>
 		<%
 	}
