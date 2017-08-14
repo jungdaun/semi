@@ -52,15 +52,9 @@ ArrayList<CartDTO> arr = cdao.showData(store_idx, c_idx);
                %>
                
                <tr>
-               <script>
-               function change(){
-            	   //var cnt = document.frm.number.value;
-            	   var cnt = document.getElementById("a").value;
-            	   out.println("cnt = "+cnt);
-            	   }
-               </script>
 
-               	<td><input type="checkbox" value="<%=i%>" name="chk"></td>
+               	<form name="frm">
+               	<td><input type="checkbox" value="<%=i%>" name="chk"></td></form>
                 <td><%=arr.get(i).getFood_name()%></td>
                 <td><%=arr.get(i).getFood_price()%>원</td>
                 <td>
@@ -80,7 +74,8 @@ ArrayList<CartDTO> arr = cdao.showData(store_idx, c_idx);
                <% 
             }%>
             <tr>
-            	<td colspan="4" align="center"><input type="button" value="쇼핑계속하기" ></td>
+            	<td><input type="button" value="삭제" onclick="del()"></td>
+            	<td colspan="3" align="center"><input type="button" value="쇼핑계속하기" ></td>
             	<td align="center"><input type="button" value="결제하기" ></td>
             </tr>
          <% }%>

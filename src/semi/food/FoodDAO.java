@@ -16,7 +16,6 @@ public class FoodDAO {
 		// TODO Auto-generated constructor stub
 	}
 	
-	//������ �������� �޴� ã��
 		public ArrayList<FoodDTO> showStore(int store_idx){
 			try{
 				conn = semi.db.SemiDb.getConn();
@@ -28,7 +27,6 @@ public class FoodDAO {
 						new ArrayList<FoodDTO>();
 				
 				while(rs.next()){
-					
 					String food_name = rs.getString("food_name");
 					String food_type = rs.getString("food_type");
 					int food_price = rs.getInt("food_price");

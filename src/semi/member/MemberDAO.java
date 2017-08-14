@@ -225,7 +225,6 @@ public class MemberDAO {
 				arr[1] = rs.getString("my_idx");
 				arr[2] = rs.getString("address");
 				arr[3]=rs.getString("tel");
-				
 			}
 			
 			return arr;

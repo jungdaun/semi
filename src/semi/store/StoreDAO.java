@@ -16,8 +16,6 @@ public class StoreDAO {
    private ResultSet rs;   
    public StoreDAO() {}
 
-
-   //���� ������ ������ �˻�
    public ArrayList<StoreDTO> findStore(String type){
       
       try{
