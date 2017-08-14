@@ -1,3 +1,5 @@
+<%@page import="java.net.URLDecoder"%>
+<%@page import="com.sun.xml.internal.fastinfoset.Decoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -19,6 +21,24 @@ fieldset p {
 </style>
 <script>
 <%
+Cookie cks[] = request.getCookies();
+String saveid = "";
+if(cks.length>1) {
+	
+	if(URLDecoder.decode(cks[1].getName()).equals("savetype")) {
+		if(cks[0].getName().equals("saveid")) {
+			saveid = cks[0].getValue();
+		}
+	} else if(URLDecoder.decode(cks[1].getName()).equals("savectype")) {
+		if(cks[0].getName().equals("savecid")) {
+			saveid = cks[0].getValue();
+		}
+	}
+	
+	
+	
+}
+
 String title = "고객";
 %>
 	function findId() {
@@ -32,25 +52,41 @@ String title = "고객";
 		
 		if(document.login.what.value=="고객") {
 			document.login.whatsrc.src = "/semi/img/222.jpg"
+				<%
+				if(cks.length>1) {
+					
+					if(URLDecoder.decode(cks[1].getName()).equals("savetype")) {
+						if(cks[0].getName().equals("saveid")) {
+							saveid = cks[0].getValue();
+						}
+					}
+					
+					
+					
+				}
+				%>
 		}
 		else if(document.login.what.value=="사장") {
 			document.login.whatsrc.src = "/semi/img/111.jpg"
+			<%
+			if(cks.length>1) {
+				
+				if(URLDecoder.decode(cks[1].getName()).equals("savectype")) {
+					if(cks[0].getName().equals("savecid")) {
+						saveid = cks[0].getValue();
+					}
+				}
+				
+				
+				
+			}
+			%>
 		}
 		
 	}
 </script>
 </head>
-<%
-Cookie cks[] = request.getCookies();
-String saveid = "";
-if(cks!=null) {
-	for(int i = 0; i < cks.length; i++) {
-		if(cks[i].getName().equals("saveid")) {
-			saveid = cks[i].getValue();
-		}
-	}
-}
-%>
+
 <body>
 	<form name="login" action="login_ok.jsp" method="post">
 		<!-- 주소창에 비밀번호 안보이게 하려겅 -->
@@ -58,9 +94,9 @@ if(cks!=null) {
 			<img name = "whatsrc" src = "/semi/img/222.jpg" height = "35px" width = "140px">
 			<ul>
 				<li><input type = "radio" name = "what" value = "고객" checked="checked" onchange = "a()">고객<input type = "radio" name = "what" value = "사장" onchange = "a()">사장</li>
-				<li><label>ID</label> <input type="text" name="userid" placeholder="아이디" value = "<%=saveid%>">
+				<li><input type="text" name="userid" placeholder="아이디" value = "<%=saveid%>">
 				</li>
-				<li><label>Password</label> <input type="password" name="userpwd" placeholder="비밀번호">
+				<li><input type="password" name="userpwd" placeholder="비밀번호">
 				</li>
 			</ul>
 			<input type="checkbox" name="saveid" value="on"
