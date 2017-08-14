@@ -11,18 +11,13 @@ body {
 	background-size: 100%;
 }
 
-
-
 #bodywrap {
-	border: 1px solid black;
 	margin: 0px auto;
 	display: inline-block;
 	margin-top: 150px;
-	
 }
 
 #maintitle {
-	border: 1px solid pink;
 	width: 850px;
 	height: 200px;
 	margin: 20px 0px;
@@ -31,7 +26,6 @@ body {
 #maintitle1 {
 	width: 450px;
 	height: 200px;
-	border: 1px dotted aqua;
 	display: inline-block;
 	float: left;
 }
@@ -39,7 +33,6 @@ body {
 #maintitle2 {
 	width: 350px;
 	height: 200px;
-	border: 1px dotted aqua;
 	display: inline-block;
 	float: right;
 }
@@ -47,27 +40,23 @@ body {
 #search {
 	width: 350px;
 	height: 90px;
-	border: 1px solid blue;
 	margin-bottom: 15px;
 }
 
 #coupon_board {
 	width: 350px;
 	height: 90px;
-	border: 1px solid blue;
 }
 
 #mainbody {
 	width: 850px;
 	height: 200px;
-	border: 1px solid blue;
 	margin: 20px 0px;
 }
 
 #mainbody1 {
 	width: 240px;
 	height: 200px;
-	border: 1px double black;
 	display: inline-block;
 	float: left;
 }
@@ -75,14 +64,12 @@ body {
 #mainbody2 {
 	width: 240px;
 	height: 200px;
-	border: 1px double black;
 	display: inline-block;
 }
 
 #mainbody3 {
 	width: 240px;
 	height: 200px;
-	border: 1px double black;
 	display: inline-block;
 	float: right;
 }
@@ -90,14 +77,12 @@ body {
 #mainbottom {
 	width: 850px;
 	height: 195px;
-	border: 1px dotted fuchsia;
 	margin: 20px 0px;
 }
 
 #mainbottom1 {
 	width: 390px;
 	height: 195px;
-	border: 1px double blue;
 	display: inline-block;
 	float: left;
 }
@@ -105,7 +90,6 @@ body {
 #mainbottom2 {
 	width: 390px;
 	height: 195px;
-	border: 1px double pink;
 	display: inline-block;
 	float: right;
 }
@@ -121,14 +105,14 @@ body {
 	font-size: 20px;
 	background-color: red;
 }
-#headerinner{
+
+#headerinner {
 	display: inline-block;
 	width: 400px;
-	height:50px;
+	height: 50px;
 	text-align: left;
 	margin-left: -430px;
 }
-
 
 #footerinner img {
 	width: 50px;
@@ -138,4 +122,5 @@ body {
 #footerinner p {
 	text-align: center;
 	font-family: "Typo_Papyrus B";
+	color: white;
 }

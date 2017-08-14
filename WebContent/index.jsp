@@ -17,7 +17,7 @@
 				<div id="maintitle1"><img src="img/notice.jpg" style="width:450px; height:200px;"></div>
 				<div id="maintitle2">
 					<div id="search"></div>
-					<div id="coupon_board"><img src="img/coupon.jpg" style="width:350px; height:90px;"></div>
+					<div id="coupon_board"><img src="img/coupon1.jpg" style="width:350px; height:90px;"></div>
 				</div>
 			</div>
 			<div id="mainbody">
