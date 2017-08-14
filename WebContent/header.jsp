@@ -3,7 +3,7 @@
 <header>
 	<div id="headerwrap">
 		<div id="headerinner">
-			<img src="/semi/img/badal.jpg">&nbsp;Login | 회원가입  | <a href="/semi/voc/vocList.jsp">고객센터</a>
+			<a href="/semi/index.jsp"><img src="/semi/img/badal.jpg"></a>&nbsp;Login | 회원가입  | <a href="/semi/voc/vocList.jsp">고객센터</a>
 		</div>
 	</div>
 </header>
