@@ -4,6 +4,7 @@
 <%@ page import="java.util.*" %>
 <%@ page import="semi.food.*" %>
 <%@ page import="semi.cart.*" %>
+<%@ page import="semi.store.*" %>
 <jsp:useBean id="fdao" class="semi.food.FoodDAO"></jsp:useBean>
 <jsp:useBean id="fdto" class="semi.food.FoodDTO"></jsp:useBean>
 <jsp:setProperty property="*" name="fdto"/>
@@ -11,6 +12,10 @@
 <jsp:useBean id="cdao" class="semi.cart.CartDAO"></jsp:useBean>
 <jsp:useBean id="cdto" class="semi.cart.CartDTO"></jsp:useBean>
 <jsp:setProperty property="*" name="cdto"/>
+
+<jsp:useBean id="sdao" class="semi.store.StoreDAO"></jsp:useBean>
+<jsp:useBean id="sdto" class="semi.store.StoreDTO"></jsp:useBean>
+<jsp:setProperty property="*" name="sdto"/>
 
 <!DOCTYPE html>
 <html>
@@ -33,19 +38,23 @@
 <%
 String store_idx_s=request.getParameter("store_idx");
 int store_idx = Integer.parseInt(store_idx_s);
-ArrayList<FoodDTO> arr = fdao.showStore(store_idx);
 String store_type= request.getParameter("store_type");
 String c_sub_s = request.getParameter("c_sub_s");
+
+ArrayList<FoodDTO> arr = fdao.showStore(store_idx);
+//ArrayList<StoreDTO> srr = sdao.showReview(store_idx);
+
 %>
-    <legend><h2 style="background-color:  #2F4038; color: #FEEEA7;">
+	<legend><h2 style="background-color:  #2F4038; color: #FEEEA7;">
    Home >> <%=store_type %> >> <%=c_sub_s %></h2></legend>
    <table>
    	<tr style="background-color: white">
-   		<td rowspan="3" align="center" style="color:white; width:248px;">
-   		<img src="../img/store/cart.png" style="width:50px; height:50px"/></td>
+   		<td rowspan="3" align="center" style="color:white; width:272px;">
    		
-   		<td rowspan="3" align="center" style="color:white; width:248px;">
-   		<img src="../img/store/review_one.png" style="width:50px; height:50px"/></td>
+   		<img src="../img/store/cart.png" style="width:60px; height:50px"/></td>
+   		
+   		<td rowspan="3" align="center" style="color:white; width:272px;">
+   		<img src="../img/store/review_one.png" style="width:60px; height:50px"/></td>
    	</tr>
    	</table>
    	<table>
@@ -114,7 +123,7 @@ ArrayList<CartDTO> brr = cdao.showData(store_idx, c_idx);
       <% }
       else{
          %>
-         <jsp:include page="cart.jsp?store_idx=<%=store_idx %>"/>
+         <jsp:include page="cart.jsp?store_idx=<%=store_idx %>&store_type=<%=store_type %>"/>
          <% 
       }
       %>

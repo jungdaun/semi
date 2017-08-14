@@ -18,7 +18,7 @@ public class CartDAO {
    }
    
    
-      public ArrayList<CartDTO> myCartList  (int order_idx){
+      public ArrayList<CartDTO> myCartList(int order_idx){
             try{
                conn = semi.db.SemiDb.getConn();
                String sql="select food_name, food_price, food_count, total_price from cart where order_idx=?";
@@ -146,22 +146,23 @@ public class CartDAO {
       
    }
    
-   public void changeData(int store_idx, Integer c_idx, int count, int price){
+   public int changeData(int store_idx, Integer c_idx, int count, int price, String name){
 	      try{
-	    	  System.out.println("1111111111");
 	         conn = semi.db.SemiDb.getConn();
-	         String sql="update cart set food_count=?, total_price=? where store_idx=? and customer_idx=?";
-	         System.out.println("222222222222");
+	         String sql="update cart set food_count=?, total_price=? where store_idx=? and customer_idx=? and food_name=?";
 	         ps = conn.prepareStatement(sql);
 	         ps.setInt(1, count);
 	         ps.setInt(2, (count*price));
 	         ps.setInt(3, store_idx);
 	         ps.setInt(4, (c_idx !=null? c_idx.intValue() : 0));
-	    int count2 = ps.executeUpdate();
-	    System.out.println("count2 = "+count2);
+	         ps.setString(5, name);
+	         int cnt = ps.executeUpdate();
+	         
+	         return cnt;
 	      }
 	      catch(Exception e){
 	         e.printStackTrace();
+	         return -1;
 	      }
 	      finally{
 	         try{
