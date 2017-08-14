@@ -11,8 +11,7 @@
 </head>    
 
 <body>
-	<div id="wrap">
-		<%@include file="header.jsp"%>
+<%@include file="header.jsp"%>
 		<div id="bodywrap">
 			<div id="maintitle">
 				<div id="maintitle1"><img src="img/notice.jpg" style="width:450px; height:200px;"></div>
@@ -31,8 +30,8 @@
 				<div id="mainbottom2"><img src="img/bbang.jpg" style="width:390px; height:195px;"></div>
 			</div>
 		</div>
-		<%@include file="footer.jsp"%>
-	</div>
-
+<%@include file="footer.jsp"%>
 </body>
 </html>
+
+<!--  -->
