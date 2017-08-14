@@ -90,7 +90,6 @@ else{
 <%
 //Integer c_idx = (Integer) session.getAttribute("c_idx");
 Integer c_idx = (Integer)2;
-System.out.println("c_idx = "+c_idx);
 ArrayList<CartDTO> brr = cdao.showData(store_idx, c_idx);
 %>
    <fieldset>장바구니</fieldset>

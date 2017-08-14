@@ -28,8 +28,9 @@ width:50px; height:110px;
 </head>
 <body>
 
-<div id="wrap">
+
 <%@include file="/header.jsp"%>
+<div id="bodywrap">
 <section>
 <%
 //String saddr = (String)session.getAttribute("saddr");
@@ -52,8 +53,8 @@ while(list.hasNext()){
 
 
 %>
-   <legend><h1><br><br><br>
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home >> <%=store_type %> >> <%=c_sub_s %></h1><br></legend>
+   <legend><h4 style="background-color: #BF0920">
+   Home >> <%=store_type %> >> <%=c_sub_s %></h4></legend>
    <table>
 <% 
 if(arr.equals("") || arr.size()==0){%>
@@ -68,21 +69,21 @@ if(arr.equals("") || arr.size()==0){%>
 else{
    int count=0; int h=0;
    while(count<arr.size()) {
-   %> <tr><%
+   %> <tr style=""><%
       for(int i=0; i<3; i++){
          if(count<arr.size()){%>
       
         
             
-            <td id="a" style="background-color: gray;">
+            <td id="a">
             <a href="postFood.jsp?store_idx=<%=arr.get(count).getStore_idx()%>&store_type=<%=store_type%>" style="text-decoration:none;">         
-               <img src="../img/store/<%=arr.get(count).getStore_name()%>.png" style="width:90px; height:120px;"/>
-               <h3 align="center" style="height:10px;"><%=arr.get(count).getStore_name() %></h3>
+               <img src="../img/store/<%=arr.get(count).getStore_name()%>.png" style="width:90px; height:110px;"/>
+               <h3 align="center" style="height:10px; color:white;"><%=arr.get(count).getStore_name() %></h3>
             </a>
             </td>
             
-            <td style="background-color: maroon;">
-            <div style="background-color: aqua;">
+            <td>
+            <div style="background-color: #BF0920; color:white">
                 <h5>시간 : <%=arr.get(count).getOpen_time()%>~<%=arr.get(count).getClose_time()%><br> 
                별점 : <%
                int num = arr.get(count).getScore_num();
@@ -108,8 +109,8 @@ else{
 }%>
    </table>
 </section><br><br><br>
-
-<%@include file="/footer.jsp"%>
 </div>
+<%@include file="/footer.jsp"%>
+
 </body>
 </html>
