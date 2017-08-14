@@ -40,8 +40,8 @@ function change(){
 </head>
 <body>
 
-   <table border="1" width="450" cellspacing="0">
-      <thead>
+   <table border="1" width="450" cellspacing="0" align="center"><br>
+      <thead style="background-color:  #2F4038; color: #FEEEA7; font-size: 15px;">
          <tr>
          	<th>선택</th>
             <th>음식명</th>
@@ -75,7 +75,7 @@ function change(){
                 		<input type="submit" value="수정" name="submit">
                 	</form>
                 </td>
-                <td><%=arr.get(i).getTotal_price()%></td>
+                <td><%=arr.get(i).getTotal_price()%></td>원
                
                </tr>
               
@@ -83,7 +83,7 @@ function change(){
             }%>
             <tr>
             	<td colspan="4" align="center"><input type="button" value="쇼핑계속하기" ></td>
-            	<td align="center"><input type="button" value="상품결제하기" ></td>
+            	<td align="center"><input type="button" value="결제하기" ></td>
             </tr>
          <% }%>
       </tbody>

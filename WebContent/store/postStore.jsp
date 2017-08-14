@@ -15,16 +15,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/mainLayout.css">
-<style>
-#a{
-width:50px; height:110px;
 
-}
-//#b{
-//width:100px; height:110px;
-//background-color: olive;
-//}
-</style>
 </head>
 <body>
 
@@ -53,8 +44,8 @@ while(list.hasNext()){
 
 
 %>
-   <legend><h4 style="background-color: #BF0920">
-   Home >> <%=store_type %> >> <%=c_sub_s %></h4></legend>
+   <legend><h2 style="background-color:  #2F4038; color: #FEEEA7;">
+   Home >> <%=store_type %> >> <%=c_sub_s %></h2></legend>
    <table>
 <% 
 if(arr.equals("") || arr.size()==0){%>
@@ -69,29 +60,30 @@ if(arr.equals("") || arr.size()==0){%>
 else{
    int count=0; int h=0;
    while(count<arr.size()) {
-   %> <tr style=""><%
-      for(int i=0; i<3; i++){
+   %> <tr><%
+      for(int i=0; i<5; i++){
          if(count<arr.size()){%>
       
         
             
-            <td id="a">
-            <a href="postFood.jsp?store_idx=<%=arr.get(count).getStore_idx()%>&store_type=<%=store_type%>" style="text-decoration:none;">         
-               <img src="../img/store/<%=arr.get(count).getStore_name()%>.png" style="width:90px; height:110px;"/>
-               <h3 align="center" style="height:10px; color:white;"><%=arr.get(count).getStore_name() %></h3>
-            </a>
-            </td>
-            
-            <td>
-            <div style="background-color: #BF0920; color:white">
-                <h5>시간 : <%=arr.get(count).getOpen_time()%>~<%=arr.get(count).getClose_time()%><br> 
+            <td style="padding:15px;">
+            <div style="background-color: black;">
+            <a href="postFood.jsp?store_idx=<%=arr.get(count).getStore_idx()%>&store_type=<%=store_type%>&c_sub_s=<%=c_sub_s %>" style="text-decoration:none;">         
+               <img src="../img/store/<%=arr.get(count).getStore_name()%>.png" style="width:110px; height:128px"/>
+             <!--  <h4 align="center" style="height:2px; color:black;"><%=arr.get(count).getStore_name() %></h4>-->
+             </div>
+       
+    
+            <div style="background-color: #2F4038; color:#FEEEA7; font-size: 16px;">
+               시간 : <%=arr.get(count).getOpen_time()%>~<%=arr.get(count).getClose_time()%><br> 
                별점 : <%
                int num = arr.get(count).getScore_num();
                for(int j=1; j<=num; j++){%>&hearts;<%} %><br>
                리뷰수 : <%=arr.get(count).getReview_num() %><br>
                판매수 : <%=arr.get(count).getSale_num() %><br>
-              주소 :<br><h6><%=arr.get(count).getStore_addr() %></h6></h5>
+              주소 :<%=arr.get(count).getStore_addr() %>
            </div>
+           </a>
            </td>
            
            

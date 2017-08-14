@@ -21,22 +21,34 @@
 
 </head>
 <body>
-<div id="wrap">
+
 <%@include file="/header.jsp"%>
 
+<div id="bodywrap">
 
 
-<section align="center">
+
+<!-- section align="center"-->
 <article>
 <%
 String store_idx_s=request.getParameter("store_idx");
 int store_idx = Integer.parseInt(store_idx_s);
 ArrayList<FoodDTO> arr = fdao.showStore(store_idx);
 String store_type= request.getParameter("store_type");
+String c_sub_s = request.getParameter("c_sub_s");
 %>
-   <legend><h1><br><br><br>
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Home >> <%=store_type %></h1><br></legend>
+    <legend><h2 style="background-color:  #2F4038; color: #FEEEA7;">
+   Home >> <%=store_type %> >> <%=c_sub_s %></h2></legend>
    <table>
+   	<tr style="background-color: white">
+   		<td rowspan="3" align="center" style="color:white; width:248px;">
+   		<img src="../img/store/cart.png" style="width:50px; height:50px"/></td>
+   		
+   		<td rowspan="3" align="center" style="color:white; width:248px;">
+   		<img src="../img/store/review_one.png" style="width:50px; height:50px"/></td>
+   	</tr>
+   	</table>
+   	<table>
 <% 
 if(arr.equals("") || arr.size()==0){%>
       <tr>
@@ -53,11 +65,11 @@ else{
       <tr><%
       for(int i=0; i<2; i++){
          if(count<arr.size()){%>
-         <td><img src="../img/store/<%=arr.get(count).getFood_name()%>.png" style="width:200px; height:200px; border-top:1px solid black; border-bottom:1px solid black;border-left: 1px solid black;"/></td>
-         <td><%=arr.get(count).getFood_name() %>
+         <td><img src="../img/store/<%=arr.get(count).getFood_name()%>.png" style="width:120px; height:120px; border-top:1px solid black; border-bottom:1px solid black;border-left: 1px solid black;"/></td>
+         <td style="background-color: #2F4038; color:white;"><%=arr.get(count).getFood_name() %>
          <br><%=arr.get(count).getFood_price() %>원 </td>
          
-         <td>
+         <td >
             <form name="postFood_ok" action="postFood_ok.jsp">
                <select name="food_count"><%
                for(int j=1; j<10; j++){%>
@@ -69,7 +81,7 @@ else{
                <input type="hidden" name="store_idx" value="<%=store_idx%>">
                <input type="hidden" name="food_price" value="<%=arr.get(count).getFood_price()%>">
                <input type="hidden" name="food_name" value="<%=arr.get(count).getFood_name()%>">
-               <input type="submit" value="장바구니">
+               <input type="submit" value="Pick">
             </form>
          </td>
          
@@ -92,7 +104,7 @@ else{
 Integer c_idx = (Integer)2;
 ArrayList<CartDTO> brr = cdao.showData(store_idx, c_idx);
 %>
-   <fieldset>장바구니</fieldset>
+   <fieldset style="background-color: #BF0920; color: white;">장바구니</fieldset>
    <table>
       <%
       if(brr.size()==0 || brr==null){%>
@@ -109,11 +121,11 @@ ArrayList<CartDTO> brr = cdao.showData(store_idx, c_idx);
       </table>
 </article>
 
-</section>
+<!-- /section-->
 
 
-
-<%@include file="/footer.jsp"%>
 </div>
+<%@include file="/footer.jsp"%>
+
 </body>
 </html>
