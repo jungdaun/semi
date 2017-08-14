@@ -247,28 +247,43 @@ public class VocDAO {
 	   
 	   
 	   
-	   public VocDTO vocContent(int idx){
+	   public VocDTO vocContent(int idx, String userPwd ){
 		      try{
 		         conn = semi.db.SemiDb.getConn();
 		         
-		         String sql="select * from voc_tb where voc_idx=?";
-		         ps=conn.prepareStatement(sql);
-		         ps.setInt(1, idx);
-		         rs=ps.executeQuery();
-		         VocDTO dto=null;
-		         if(rs.next()){
-		            String writer=rs.getString("writer");
-		            String pwd=rs.getString("pwd");
-		            String subject=rs.getString("title");
-		            String content=rs.getString("content");
-		            java.sql.Date writedate=rs.getDate("writedate");
-		          
-		            int ref=rs.getInt("ref");
-		            int lev=rs.getInt("lev");
-		            int sunbun=rs.getInt("turn");
-		            dto = new VocDTO(idx,writer,pwd,subject,content,writedate,ref,lev,sunbun);
+		         
+		         if ( !pwdCheck(idx, userPwd)){
+		        	 VocDTO pwdError = new VocDTO(-1);
+		        	 
+		        	 
+		        	 return pwdError;
+		        	  
+		        	 
 		         }
-		         return dto;
+		         else {
+			         
+			         String sql="select * from voc_tb where voc_idx=?";
+			         ps=conn.prepareStatement(sql);
+			         ps.setInt(1, idx);
+			         rs=ps.executeQuery();
+			         VocDTO dto=null;
+			         if(rs.next()){
+			            String writer=rs.getString("writer");
+			            String pwd=rs.getString("pwd");
+			            String subject=rs.getString("title");
+			            String content=rs.getString("content");
+			            java.sql.Date writedate=rs.getDate("writedate");
+			          
+			            int ref=rs.getInt("ref");
+			            int lev=rs.getInt("lev");
+			            int sunbun=rs.getInt("turn");
+			            dto = new VocDTO(idx,writer,pwd,subject,content,writedate,ref,lev,sunbun);
+			         }
+			         return dto;
+		         }
+		         
+		         
+
 		      }catch(Exception e){
 		         e.printStackTrace();
 		         return null;
@@ -280,6 +295,47 @@ public class VocDAO {
 		         }catch(Exception e1){}
 		      }
 		   }
+	   
+	   public VocDTO vocContent(int idx ){
+		   try{
+			   conn = semi.db.SemiDb.getConn();
+			   
+			   
+	
+				   
+				   String sql="select * from voc_tb where voc_idx=?";
+				   ps=conn.prepareStatement(sql);
+				   ps.setInt(1, idx);
+				   rs=ps.executeQuery();
+				   VocDTO dto=null;
+				   if(rs.next()){
+					   String writer=rs.getString("writer");
+					   String pwd=rs.getString("pwd");
+					   String subject=rs.getString("title");
+					   String content=rs.getString("content");
+					   java.sql.Date writedate=rs.getDate("writedate");
+					   
+					   int ref=rs.getInt("ref");
+					   int lev=rs.getInt("lev");
+					   int sunbun=rs.getInt("turn");
+					   dto = new VocDTO(idx,writer,pwd,subject,content,writedate,ref,lev,sunbun);
+				   }
+				   return dto;
+			   
+			   
+			   
+			   
+		   }catch(Exception e){
+			   e.printStackTrace();
+			   return null;
+		   }finally{
+			   try{
+				   if(rs!=null)rs.close();
+				   if(ps!=null)ps.close();
+				   if(conn!=null)conn.close();
+			   }catch(Exception e1){}
+		   }
+	   }
 	   
 	   
 	   

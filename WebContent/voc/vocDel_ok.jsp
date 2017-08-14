@@ -24,7 +24,7 @@ int res = vdao.vocDel(idx, userPwd);
 String msg ="";
 
  if (res>0){
-	msg = "success";
+	msg = "글이 삭제되었습니다.";
 	
 }
 else msg = "error!";

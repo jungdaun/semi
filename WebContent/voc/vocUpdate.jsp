@@ -8,7 +8,53 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+
+
 <meta charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="/semi/css/mainLayout.css">
+
+<style>
+	h2{
+		text-align: center;
+		color: white; 
+		
+	}
+	table{
+		width: 450px;
+
+		  
+
+		
+		margin: 0px auto;
+		border-spacing: 0px;
+		background-color: white ; 
+		
+	}
+	table th{
+	
+		  			border-top: 1px solid #BF0920;
+		border-bottom: 1px solid #BF0920;
+		color: black; 
+		text-align: center;
+	}
+	table td{
+	
+	
+		text-align: left
+		;
+					border-top: 1px solid #BF0920;
+		border-bottom: 1px solid #BF0920;
+		
+		color: black; 
+	
+		;
+	}
+
+	
+</style>
+
+
 <title>Insert title here</title>
 
 
@@ -71,32 +117,43 @@ return ;
 <body>
 
 
-		<h2 >voc update</h2>
-		<table   border="1">
+
+
+<%@include file="/header.jsp"%>
+		<div id="bodywrap">
+
+<!-- -------------------------------------------------------------- -->
+	
+	<h2>voc update</h2>
+		
 			<form action="vocUpdate_ok.jsp" name="vocUpdate">
-			
+			<input type="hidden" readonly="readonly" name="voc_idx"  style="border: 0px;" value="<%=dto.getVod_idx() %>">
+			<table>
+				
+				
+							<tr>
+					<th>제목</th>
+					<td colspan="3">
+					<input type="text" value="<%=dto.getTitle() %>" name="title">
+					
+					</td>
+					</tr>
 				
 				<tr>
 					
-					<th>idx</th>
-					<td><input type="text" readonly="readonly" name="voc_idx" value="<%=dto.getVod_idx() %>">
-					</td>
 					
-						<th>writeDate</th>
-					<td><%=dto.getWritedate()  %></td>
+					
+					
+					<th>작성일</th>
+					<td colspan="3"><%=dto.getWritedate()  %></td>
 					
 				</tr>
 		
 				
+	
 				<tr>
-					<th>title</th>
-					<td colspan="3">
-					<input type="text" value="<%=dto.getTitle() %>" name="title">
-					</td>
-				</tr>
-				<tr>
-					<th>writer</th>
-					<td><input type="text" name="writer" value="<%=dto.getWriter() %>">
+					<th>작성자</th>
+					<td colspan="3"><input type="text" name="writer" readonly="readonly" style="border: 0px;" value="<%=dto.getWriter() %>">
 					
 					</td>
 				</tr>
@@ -118,21 +175,40 @@ return ;
 					</th>
 					<td><input type="password" name="pwd"  > </td>
 				</tr>
-				<tr>
-					<td colspan="4" align="center">
+				
+				
+				
+			
+				<tr >
+					<td colspan="4" style="text-align: center;">
 						<input type="submit" value="ok">
 		
 					
 					
 					</td>
 				</tr>
+			
 				
-				
+					</table>
+		
 		</form>
 			
 
 
-		</table>
+	
+	
+	
+	
+<!-- -------------------------------------------------------------- -->
+		</div>
+<%@include file="/footer.jsp"%>
+
+
+
+
+
+
+
 		
 	</body>
 </html>

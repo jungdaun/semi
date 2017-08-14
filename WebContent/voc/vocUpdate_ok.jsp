@@ -30,7 +30,7 @@ System.out.println (userPwd);
 <%
 int res = vdao.vocUpdate(vdto, pwd, idx);
 
-String msg = res>0?"success":"fail";
+String msg = res>0?"글이 수정되었습니다.":"fail";
 
 
 %>
