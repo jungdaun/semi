@@ -20,25 +20,33 @@ fieldset p {
 }
 </style>
 <script>
+
 <%
 Cookie cks[] = request.getCookies();
 String saveid = "";
-if(cks.length>1) {
-	
-	if(URLDecoder.decode(cks[1].getName()).equals("savetype")) {
-		if(cks[0].getName().equals("saveid")) {
-			saveid = cks[0].getValue();
+
+%>
+
+
+function set() {
+	<%
+	if(cks.length>1) {
+		for(int i = 0; i < cks.length; i++){
+			if(cks[i].getName().equals("savetype")) {
+				for(int j = 0; j < cks.length; j++){
+					if(cks[j].getName().equals("saveid")) {
+						%>
+						document.login.userid.value = '<%=cks[j].getValue()%>';
+						document.login.saveid.checked = true;
+						<%
+					}
+				}
+			}
 		}
-	} else if(URLDecoder.decode(cks[1].getName()).equals("savectype")) {
-		if(cks[0].getName().equals("savecid")) {
-			saveid = cks[0].getValue();
-		}
-	}
-	
-	
-	
+	}%>
 }
 
+<%
 String title = "고객";
 %>
 	function findId() {
@@ -51,34 +59,51 @@ String title = "고객";
 	function a() {
 		
 		if(document.login.what.value=="고객") {
+			document.login.userid.value = '';
+			document.login.saveid.checked = false;
 			document.login.whatsrc.src = "/semi/img/222.jpg"
 				<%
 				if(cks.length>1) {
 					
-					if(URLDecoder.decode(cks[1].getName()).equals("savetype")) {
-						if(cks[0].getName().equals("saveid")) {
-							saveid = cks[0].getValue();
+					for(int i = 0; i < cks.length; i++){
+						
+						if(cks[i].getName().equals("savetype")) {
+							
+							
+							for(int j = 0; j < cks.length; j++){
+								if(cks[j].getName().equals("saveid")) {
+									%>
+									document.login.userid.value = '<%=cks[j].getValue()%>';
+									document.login.saveid.checked = true;
+									<%
+								}
+							}
 						}
 					}
-					
-					
-					
 				}
 				%>
 		}
 		else if(document.login.what.value=="사장") {
 			document.login.whatsrc.src = "/semi/img/111.jpg"
+			document.login.userid.value = '';
+			document.login.saveid.checked = false;
 			<%
 			if(cks.length>1) {
 				
-				if(URLDecoder.decode(cks[1].getName()).equals("savectype")) {
-					if(cks[0].getName().equals("savecid")) {
-						saveid = cks[0].getValue();
+				for(int i = 0; i < cks.length; i++){
+					
+					if(cks[i].getName().equals("savectype")) {
+						
+						
+						for(int j = 0; j < cks.length; j++){
+							if(cks[j].getName().equals("savecid")) {
+								%>document.login.userid.value = '<%=cks[j].getValue()%>';
+								document.login.saveid.checked = true;
+								<%
+							}
+						}
 					}
 				}
-				
-				
-				
 			}
 			%>
 		}
@@ -87,7 +112,7 @@ String title = "고객";
 </script>
 </head>
 
-<body>
+<body onload = "set()">
 	<form name="login" action="login_ok.jsp" method="post">
 		<!-- 주소창에 비밀번호 안보이게 하려겅 -->
 		<fieldset>
@@ -99,8 +124,7 @@ String title = "고객";
 				<li><input type="password" name="userpwd" placeholder="비밀번호">
 				</li>
 			</ul>
-			<input type="checkbox" name="saveid" value="on"
-			<%=saveid.equals("")?"":"checked"%>> ID 기억하기
+			<input type="checkbox" name="saveid" value="on"> ID 기억하기
 			<p><input type = "submit" value = "Login"></p>
 			
 			<input type = "button" value = "아이디 찾기" onclick = "findId()"> <input type = "button" value = "비밀번호 찾기" onclick = "findPwd()">
