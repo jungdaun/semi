@@ -19,7 +19,13 @@ int mem_idx = mdao.getMemIdx(user_id);
 boolean doesHave = cdao.doesHave(coupon_idx, mem_idx);
 
 String msg = "";
-if (!doesHave){
+if(user_id ==null || user_id .equals("")){
+	msg = "로그인하세요";
+	
+}
+
+
+else if (!doesHave){
 	int res =cdao.receiveCoupon(user_id,coupon_idx );
 	if (res>0){
 		msg ="쿠폰 받기 성공";
