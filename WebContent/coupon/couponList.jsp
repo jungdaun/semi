@@ -20,15 +20,63 @@ String user_id = "고객1";
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/semi/css/mainLayout.css">
+<meta charset=UTF-8">
 <title>Insert title here</title>
+
+
+<style>
+	h2{
+		text-align: center;
+		color: white; 
+		
+	}
+	table{
+		width: 450px;
+		border-top: 4px double white;
+		border-bottom: 4px double white;
+		margin: 0px auto;
+		border-spacing: 0px;
+		background-color: white ; 
+	}
+	table  th{
+		background: #BF0920;
+		color: white; 
+		text-align: center;
+
+	}
+	table td{
+		text-align: center
+		
+		;
+	}
+	
+	tfoot {
+		border-top: 4px double #BF0920;
+		
+	
+	}
+	
+</style>
+
 </head>
 <body>
 
 <%ArrayList<CouponDTO> dtos= cdao.couponList();  %>
 
 
-	<table border="1">
+
+
+<%@include file="/header.jsp"%>
+		<div id="bodywrap">
+
+<!-- -------------------------------------------------------------- -->
+<h2>++쿠폰존++</h2>
+
+<h3 align="right" style="color: white;"><a href="/semi/coupon/myCouponList.jsp">나의쿠폰보기</a>
+		</h3>
+	<table>
+	
 		<tr>
 		
 		<th>쿠폰이름 </th>
@@ -48,6 +96,7 @@ String user_id = "고객1";
 				<td>등록된 쿠폰이 없습니다. </td>
 			
 			</tr>
+		
 			<%
 		}
 		
@@ -81,7 +130,7 @@ String user_id = "고객1";
 								%>
 								
 							<td><%=dtos.get(i).getCoupon_end() %></td>
-							<th  ><a href="couponReceive.jsp?coupon_idx=<%=dtos.get(i).getCoupon_idx()%>">쿠폰받기</a></th>
+							<td  ><a href="couponReceive.jsp?coupon_idx=<%=dtos.get(i).getCoupon_idx()%>">쿠폰받기</a></td>
 					
 						</tr>	
 					<%
@@ -94,6 +143,13 @@ String user_id = "고객1";
 		
 		
 	</table>
+	
+	
+
+<!-- -------------------------------------------------------------- -->
+		</div>
+<%@include file="/footer.jsp"%>
+
 
 		
 </body>

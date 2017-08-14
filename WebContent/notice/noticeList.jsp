@@ -58,15 +58,54 @@ if ( cp %pageSize==0){
 <!DOCTYPE html>
 <html>
 <head>
-
+<link rel="stylesheet" type="text/css" href="/semi/css/mainLayout.css">
 <meta charset=UTF-8">
 <title>Insert title here</title>
 
 
-
+<style>
+	h2{
+		text-align: center;
+		color: white; 
+		
+	}
+	table{
+		width: 450px;
+		border-top: 4px double white;
+		border-bottom: 4px double white;
+		margin: 0px auto;
+		border-spacing: 0px;
+		background-color: white ; 
+	}
+	table thead th{
+		background: #BF0920;
+		color: white; 
+		text-align: center;
+	}
+	table td{
+		text-align: center
+		
+		;
+	}
+	
+	tfoot {
+		border-top: 4px double #BF0920;
+		
+	
+	}
+	
 </style>
+
 </head>
 <body>
+
+
+
+<%@include file="/header.jsp"%>
+		<div id="bodywrap">
+
+<!-- -------------------------------------------------------------- -->
+
 
 		<h2>공지사항</h2>
 		<table>
@@ -182,7 +221,7 @@ if ( cp %pageSize==0){
 					<tr>
 						<td><%=arr.get(i).getNotice_idx() %> </td>
 			
-						<td>
+						<td style=" text-align: left;">
 						
 						<a href="noticeContent.jsp?notice_idx=<%=arr.get(i).getNotice_idx()%>"><%=arr.get(i).getNotice_title() %></a> </td>
 						<td><%=arr.get(i).getNotice_writer() %> </td>
@@ -207,6 +246,15 @@ if ( cp %pageSize==0){
 			
 
 		</table>
+<!-- -------------------------------------------------------------- -->
+		</div>
+<%@include file="/footer.jsp"%>
+
+
+
+
+
+
 		
 </body>
 </html>

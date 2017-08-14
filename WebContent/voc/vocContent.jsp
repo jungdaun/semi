@@ -3,7 +3,7 @@
     <%@ page import="semi.voc.*" %>
     <jsp:useBean id="vdao" class="semi.voc.VocDAO" scope="session"/> 
     <%
-    String idx_s=request.getParameter("idx");
+    String idx_s= request.getParameter("idx");
     if(idx_s==null||idx_s.equals("")){
     	idx_s="0";
     }

@@ -81,17 +81,57 @@ if ( cp %pageSize==0){
 <html>
 <head>
 
-<meta charset=UTF-8">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/semi/css/mainLayout.css">
 <title>Insert title here</title>
 
 
-
+<style>
+	h2{
+		text-align: center;
+		color: white; 
+		
+	}
+	table{
+		width: 450px;
+		border-top: 4px double white;
+		border-bottom: 4px double white;
+		margin: 0px auto;
+		border-spacing: 0px;
+		background-color: white ; 
+	}
+	table thead th{
+		background: #BF0920;
+		color: white; 
+		text-align: center;
+	}
+	table td{
+		text-align: center
+		
+		;
+	}
+	
+	tfoot {
+		border-top: 4px double #BF0920;
+		
+	
+	}
+	
 </style>
 </head>
 <body>
 
-		<h2>공지사항 검색 결과</h2>
-		<h3><%=msg %></h3>
+
+
+
+
+<%@include file="/header.jsp"%>
+		<div id="bodywrap">
+
+<!-- -------------------------------------------------------------- -->
+
+		<h2>검색 결과</h2>
+		<h3 ><font color="white"><%=msg %></font> </h3>
 		<table>
 			<thead>
 				<tr>
@@ -238,6 +278,14 @@ if ( cp %pageSize==0){
 			
 
 		</table>
+<!-- -------------------------------------------------------------- -->
+		</div>
+<%@include file="/footer.jsp"%>
+
+
+
+
+
 		
 </body>
 </html>

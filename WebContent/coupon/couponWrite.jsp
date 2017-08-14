@@ -1,14 +1,107 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    
+    
+    
+
+
+<%
+String admin = "admin";
+
+String adminId = (String)session.getAttribute("sid");
+if (adminId==null || adminId.equals("")){
+	%>
+	
+	
+	
+    	
+    	<script>
+    	
+    	window.alert('관리자만 접근할 수 있습니다.');
+        location.href='/semi/coupon/couponList.jsp';
+    	</script>
+    	
+    	<%
+    	return; 
+
+}
+else if ( (!adminId.equals(admin))){
+	%>
+	
+	
+	    	<script>
+    	
+    	window.alert('관리자만 접근할 수 있습니다.');
+        location.href='/semi/coupon/couponList.jsp';
+    	</script>
+    	
+    	<%
+    	return; 
+	
+	
+
+}
+
+
+
+%>
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="/semi/css/mainLayout.css">
 <meta charset=UTF-8">
 <title>Insert title here</title>
+<style>
+	h2{
+		text-align: center;
+		color: white; 
+		
+	}
+	table{
+		width: 450px;
+
+		  
+
+		
+		margin: 0px auto;
+		border-spacing: 0px;
+		background-color: white ; 
+		
+	}
+	table th{
+	
+		  			border-top: 1px solid #BF0920;
+		border-bottom: 1px solid #BF0920;
+		color: black; 
+		text-align: center;
+	}
+	table td{
+	
+	
+		text-align: left
+		;
+					border-top: 1px solid #BF0920;
+		border-bottom: 1px solid #BF0920;
+		
+		color: black; 
+	
+		;
+	}
+
+	
+</style>
 </head>
 <body>
 
-쿠폰 등록 페이지 
+
+
+<%@include file="/header.jsp"%>
+		<div id="bodywrap">
+
+<!-- -------------------------------------------------------------- -->
+	
+<h2>쿠폰 등록 페이지</h2> 
 
 <form action="couponWrite_ok.jsp" name="couponWrite">
 	<table>
@@ -54,12 +147,18 @@
 			<td><input type="date" name="coupon_end" > </td>
 		</tr>
 		<tr>
-			<td ><input type="submit" value="확인"> </td>
+			<td colspan="2" style="text-align: center;"><input type="submit" value="확인"> </td>
 		</tr>
 	</table>
 
 
 </form>
+<!-- -------------------------------------------------------------- -->
+		</div>
+<%@include file="/footer.jsp"%>
+
+
+
 
 
 </body>
