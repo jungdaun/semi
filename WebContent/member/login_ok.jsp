@@ -1,3 +1,4 @@
+<%@page import="java.net.URLEncoder"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 
@@ -22,16 +23,48 @@ if(type.equals("고객")) {
 		session.setAttribute("c_idx", arr[1]);
 		session.setAttribute("saddr", arr[2]);
 		session.setAttribute("stype", type);
-	
-		if(saveid!=null) {
-			Cookie ck = new Cookie("saveid", userid);
-			ck.setMaxAge(60*60*24*30);
-			response.addCookie(ck);
-		} else {
-			Cookie ck = new Cookie("saveid", userid);
-			ck.setMaxAge(0);
-			response.addCookie(ck);
+		
+		if(type.equals("고객")) {
+			if(saveid!=null) {
+				Cookie ck = new Cookie("saveid", userid);
+				ck.setMaxAge(60*60*24*30);
+				Cookie ck2 = new Cookie("savetype", URLEncoder.encode(type));
+				ck2.setMaxAge(60*60*24*30);
+				response.addCookie(ck);
+				response.addCookie(ck2);
+			} else {
+				Cookie ck = new Cookie("saveid", userid);
+				ck.setMaxAge(0);
+				Cookie ck2 = new Cookie("savetype", URLEncoder.encode(type));
+				ck2.setMaxAge(60*60*24*30);
+				response.addCookie(ck);
+				response.addCookie(ck2);
+				
+				/* Cookie ck[] = new Cookie[2];
+				ck[0] = new Cookie("saveid", userid);
+				ck[1] = new Cookie("savetype", type);
+				response.addCookie(ck[]); */
+				
+			}
+		}else if(type.equals("사장")) {
+			if(saveid!=null) {
+				Cookie ck = new Cookie("savecid", userid);
+				ck.setMaxAge(60*60*24*30);
+				Cookie ck2 = new Cookie("savectype", URLEncoder.encode(type));
+				ck2.setMaxAge(60*60*24*30);
+				response.addCookie(ck);
+				response.addCookie(ck2);
+			} else {
+				Cookie ck = new Cookie("savecid", userid);
+				ck.setMaxAge(0);
+				Cookie ck2 = new Cookie("savectype", URLEncoder.encode(type));
+				ck2.setMaxAge(60*60*24*30);
+				response.addCookie(ck);
+				response.addCookie(ck2);
+			}
 		}
+	
+		
 		
 		%>
 		<script>

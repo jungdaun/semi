@@ -14,7 +14,66 @@ public class OrderDAO {
 	private ResultSet rs;
 	
 	
+	public ArrayList<OrderDTO> myOrderList (int mem_idx ){
+		try {
+
+			conn = semi.db.SemiDb.getConn();
+
+			String sql = "select * from order_tb where mem_idx = ? order by order_idx";
+			
+		
+
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, mem_idx);
+			
+			rs=ps.executeQuery();
+			
+			
+			 ArrayList<OrderDTO> dtos = new ArrayList<OrderDTO>();
+			  
+			while (rs.next()){
+				
+			
+		
+				
+				int order_idx = rs.getInt("order_idx");
+				int store_idx= rs.getInt("store_idx");
+				
+				int price = rs.getInt("price");
+				int user_coupon = rs.getInt("user_coupon");
+				String memo = rs.getString("memo");
+				String order_date = rs.getString("order_date");
+				int finish = rs.getInt("finish");
+				int final_price = rs.getInt("final_price");
+				int pay_type = rs.getInt("pay_type");
+				 String c_name = rs.getString("c_name");
+				 String c_addr= rs.getString("c_addr");
+				 String c_tel= rs.getString("c_tel");
+				
+				 
+				
+				OrderDTO dto =new OrderDTO(order_idx, store_idx, mem_idx, price, memo, order_date, user_coupon, finish, final_price, pay_type, c_name, c_tel, c_addr);
+				dtos.add(dto);
+				
+			}
 	
+			return dtos; 
+			
+		} catch (Exception e) {
+			e.printStackTrace( );
+			return null; 
+			// TODO: handle exception
+		}finally {
+			try {
+				if(rs!=null )rs.close();
+				if (ps!=null)ps.close();
+				if (conn!=null)conn.close();
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
 	
 	public OrderDTO orderCheck(int oIdx) {
 		try {
@@ -82,7 +141,7 @@ public class OrderDAO {
 			conn = semi.db.SemiDb.getConn();
 					
 			
-			String sql = "delete from user_coupon where user_coupon_idx = ?";
+			String sql = "update user_coupon set is_used = 1 where user_coupon_idx =?";
 			
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, user_coupon_idx);

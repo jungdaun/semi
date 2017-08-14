@@ -60,10 +60,22 @@ System.out.println (tempPrice);
 								<th>음식 종류</th>
 								<th>할인액(률)</th>
 								<th>사용기한</th>
+								<%
+								if (dtos.get(i).getIs_used()!=1 ){
+									%>
+									<td rowspan="2"><a href="selectCoupon_ok.jsp?tp=<%=tempPrice%>&cIdx=<%=dtos.get(i).getCoupon_idx()%>">사용하기</a></td>
+								
+									<%
+								}
+								else {
+									%>
+									<td rowspan="2">사용불가</td>
+									<%
+								}
+								%>
 								
 								<!-- cIdx: user_coupon_idx -->   
-							<td rowspan="2"><a href="selectCoupon_ok.jsp?tp=<%=tempPrice%>&cIdx=<%=dtos.get(i).getCoupon_idx()%>">사용하기</a></td>
-								
+							
 							
 						</tr>	
 						<tr>

@@ -14,9 +14,31 @@ public class CouponDTO {
 	private Date coupon_start ;
 	private String coupon_end ;
 	private int	coupon_type ;
+	private int	is_used ;
 	
 	
 	
+
+	public CouponDTO(int coupon_idx, String coupon_name, String coupon_food_type, int coupon_value, Date coupon_start,
+			String coupon_end, int coupon_type, int is_used) {
+		super();
+		this.coupon_idx = coupon_idx;
+		this.coupon_name = coupon_name;
+		this.coupon_food_type = coupon_food_type;
+		this.coupon_value = coupon_value;
+		this.coupon_start = coupon_start;
+		this.coupon_end = coupon_end;
+		this.coupon_type = coupon_type;
+		this.is_used = is_used;
+	}
+
+	public int getIs_used() {
+		return is_used;
+	}
+
+	public void setIs_used(int is_used) {
+		this.is_used = is_used;
+	}
 
 	public String getCoupon_end() {
 		return coupon_end;

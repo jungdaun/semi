@@ -510,4 +510,36 @@ public class MemberDAO {
 			}
 		}
 	}
+	
+	
+	
+	public int getMemIdx(String userid) {
+
+		try {
+			conn = semi.db.SemiDb.getConn();
+			String sql = "select my_idx from customer where id = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, userid);
+			rs = ps.executeQuery();
+			int res = -1; 
+			
+			while(rs.next()){
+				
+				res = rs.getInt("my_idx");
+				
+			}
+			
+			return res; 
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		} finally {
+			try {
+				close2();
+			} catch (Exception e2) {
+
+			}
+		}
+	}
+	
 }

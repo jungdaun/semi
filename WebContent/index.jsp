@@ -21,7 +21,9 @@
 				</div>
 			</div>
 			<div id="mainbody">
-				<div id="mainbody1"><img src="img/chicken.jpg" style="width:240px; height:200px;"></div>
+				
+				<div id="mainbody1"><a href="store/postStore.jsp?store_type=chicken"><img src="img/chicken.jpg" style="width:240px; height:200px;"></a></div>
+				
 				<div id="mainbody2"><img src="img/pizza.jpg" style="width:240px; height:200px;"></div>
 				<div id="mainbody3"><img src="img/jokbal.jpg" style="width:240px; height:200px;"></div>
 			</div>

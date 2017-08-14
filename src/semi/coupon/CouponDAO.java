@@ -16,8 +16,40 @@ public class CouponDAO {
 	private ResultSet rs;
 	
 	
+	static final int ALREADY_HAVE= -2; 
+	
 	
 
+	
+	
+	public boolean doesHave (int coupon_idx , int mem_idx ){
+		try {
+
+			conn = semi.db.SemiDb.getConn();
+			String sql = "select user_coupon_idx from user_coupon where coupon_idx = ? and mem_idx = ?";
+			
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, coupon_idx);
+			ps.setInt(2, mem_idx);
+			rs=ps.executeQuery();
+			 return rs.next();
+			 
+			
+			
+		} catch (Exception e) {
+			e. printStackTrace( );
+			return false; 
+			// TODO: handle exception
+		}finally {
+			try {
+				if (rs!=null)rs.close();
+				if (ps!=null)ps.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			
+			}
+		}
+	}
 	
 	
 	public String getCouponName (int cIdx ){
@@ -140,7 +172,7 @@ public class CouponDAO {
 			
 			
 			String sql ="select * from ( "
-					+ "select mem_idx, coupon_start, user_coupon.coupon_idx, user_coupon_idx, "
+					+ "select is_used, mem_idx, coupon_start, user_coupon.coupon_idx, user_coupon_idx, "
 					+ "coupon_name, coupon_food_type, coupon_value, coupon_end, coupon_type "
 					+ "from user_coupon, customer, coupon "
 					+ "where my_idx = mem_idx and user_coupon.coupon_idx = coupon.coupon_idx ) "
@@ -161,8 +193,10 @@ public class CouponDAO {
 				Date coupon_start = rs.getDate("coupon_start");
 				String coupon_end = rs.getString("coupon_end");
 				int coupon_type = rs.getInt("coupon_type");
+				int is_used = rs.getInt("is_used");
 				
-				CouponDTO dto = new CouponDTO(coupon_idx, coupon_name, coupon_food_type, coupon_value, coupon_start, coupon_end, coupon_type);
+				
+				CouponDTO dto = new CouponDTO(coupon_idx, coupon_name, coupon_food_type, coupon_value, coupon_start, coupon_end, coupon_type, is_used);
 				dtos.add(dto);
 				
 				
@@ -197,17 +231,19 @@ public class CouponDAO {
 		
 		try {
 			conn = semi.db.SemiDb.getConn();
-					
+		
+		
+				String sql = "insert into user_coupon values ( user_coupon_idx_sq.nextval, "
+						+ "(select my_idx from customer "
+						+ "where id ='"+user_id+"'), ?, 0) ";
+				ps=conn.prepareStatement(sql);
+				ps.setInt(1, coupon_idx);
+				
+				int res = ps.executeUpdate();
+				
+				return res; 
 			
-			String sql = "insert into user_coupon values ( user_coupon_idx_sq.nextval, "
-					+ "(select my_idx from customer "
-					+ "where id ='"+user_id+"'), ?) ";
-			ps=conn.prepareStatement(sql);
-			ps.setInt(1, coupon_idx);
-			
-			int res = ps.executeUpdate();
-			
-			return res; 
+
 			
 			
 		} catch (Exception e) {

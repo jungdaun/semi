@@ -15,10 +15,14 @@
 
 
 <%
-int store_idx = 1;
+int store_idx = 2;
 int c_idx = 1;
 
-ArrayList <CartDTO> cartDtos = ctdao.showData(store_idx, c_idx);
+int order_idx = 3; 
+
+
+ArrayList <CartDTO> cartDtos = ctdao.myCartList(order_idx);
+
 
 String sid = "고객1";
 
@@ -47,7 +51,7 @@ String sid = "고객1";
 </head>
 <body>
 <form name="pay" action="pay_ok.jsp">
-<input type="hidden" name="order_idx" value="1">
+<input type="hidden" name="order_idx" value="<%=order_idx%>">
 <input type="hidden" name="store_idx" value="<%=store_idx%>">
 <input type="hidden" name="mem_idx" value="<%=c_idx%>">
 
@@ -115,7 +119,7 @@ String sid = "고객1";
 	<tr>
 		<td><input type="text" name="discount" readonly="readonly">원 할인 </td>
 		<th colspan="1">최종결제금액</th>
-		<td><input type="text" name="final_price" readonly="readonly" >원</td>
+		<td><input type="text" name="final_price" readonly="readonly" value="<%=tempPrice %>" >원</td>
 	</tr>
 
 </table>

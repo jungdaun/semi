@@ -10,7 +10,8 @@
 
  
 <%
-Integer c_idx = (Integer) session.getAttribute("c_idx");
+//Integer c_idx = (Integer) session.getAttribute("c_idx");
+Integer c_idx = (Integer)2;
 String store_idx_s = request.getParameter("store_idx");
 int store_idx = Integer.parseInt(store_idx_s);
 
@@ -25,39 +26,39 @@ ArrayList<CartDTO> arr = cdao.showData(store_idx, c_idx);
 </head>
 <body>
 
-	<table border="1" width="450" cellspacing="0">
-		<thead>
-			<tr>
-				<th>음식명</th>
-				<th>음식 가격</th>
-				<th>개수</th>
-				<th>총 가격</th>
-			</tr>
-		</thead>
-		<tbody>
-			<%
-			if(arr==null||arr.size()==0){
-				%>
-				<tr>
-				 <td colspan="4" align="center">검색된 사원이 없습니다.</td>
-				</tr>
-				<% 
-			}
-			else{
-				for(int i=0; i<arr.size(); i++){
-					%>
-					<tr>
-					 <td><%=arr.get(i).getFood_name()%></td>
-					 <td><%=arr.get(i).getFood_price()%></td>
-					 <td><%=arr.get(i).getFood_count()%></td>
-					 <td><%=arr.get(i).getTotal_price()%></td>
-					 
-					</tr>
-					<% 
-				}
-			}%>
-		</tbody>
-	</table>
-	
+   <table border="1" width="450" cellspacing="0">
+      <thead>
+         <tr>
+            <th>음식명</th>
+            <th>음식 가격</th>
+            <th>개수</th>
+            <th>총 가격</th>
+         </tr>
+      </thead>
+      <tbody>
+         <%
+         if(arr==null||arr.size()==0){
+            %>
+            <tr>
+             <td colspan="4" align="center">검색된 사원이 없습니다.</td>
+            </tr>
+            <% 
+         }
+         else{
+            for(int i=0; i<arr.size(); i++){
+               %>
+               <tr>
+                <td><%=arr.get(i).getFood_name()%></td>
+                <td><%=arr.get(i).getFood_price()%></td>
+                <td><%=arr.get(i).getFood_count()%></td>
+                <td><%=arr.get(i).getTotal_price()%></td>
+                
+               </tr>
+               <% 
+            }
+         }%>
+      </tbody>
+   </table>
+   
 </body>
 </html>
