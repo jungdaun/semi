@@ -7,7 +7,7 @@
 
 
 request.setCharacterEncoding("utf-8");
-String sid = (String )session.getAttribute("sid");
+//String sid = (String )session.getAttribute("sid");
 
 %>
 <html>

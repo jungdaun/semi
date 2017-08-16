@@ -3,6 +3,15 @@
 <%request.setCharacterEncoding("utf-8");%>
 
 <%@ page import="semi.notice.NoticeDTO" %>
+
+<%
+
+//String sid = (String )session.getAttribute("sid");
+String admin = "admin";
+
+%>
+
+
 <jsp:useBean id="ndao" class="semi.notice.NoticeDAO" scope="session"></jsp:useBean>
 
 <!DOCTYPE html>
@@ -61,7 +70,6 @@
 <%
 
 
-String admin = "admin";
 
 
 //String userIdx_s = request.getParameter("idx");
@@ -159,7 +167,13 @@ return ;
 					<a href="noticeList.jsp">목록보기</a>
 				
 					<%
-					if (((String)session.getAttribute("sid")).equals(admin) && session.getAttribute("sid")!=null){
+					
+					
+					if (sid ==null || sid.equals("")){
+						
+					}
+					else if (sid.equals(admin)) {
+						
 						%>
 						|	<a href="noticeWrite.jsp">글쓰기</a>
 					
@@ -168,6 +182,11 @@ return ;
 						
 						<%
 					}
+					
+					
+					
+					
+				
 					
 					%>
 					
