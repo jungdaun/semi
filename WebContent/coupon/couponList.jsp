@@ -26,6 +26,10 @@ String user_id = "고객1";
 
 
 <style>
+
+
+a:visited {text-decoration: none; color: gray; }
+
 	h2{
 		text-align: center;
 		color: white; 

@@ -16,6 +16,82 @@ public class VocDAO {
 	   
 	   
 	   
+	   public int getTotalCnt(String mySid ){
+		      try{
+		         conn = semi.db.SemiDb.getConn();
+		         
+		         String sql="select count(*) from voc_tb where writer = ?";
+		        
+		         ps=conn.prepareStatement(sql);
+		        ps.setString(1, mySid);
+		         
+		         rs=ps.executeQuery();
+		         rs.next();
+		         int count=rs.getInt(1);
+		         count=(count==0)?1:count;//count값이 0일때 1 아니면 count
+		         return count;
+		      }catch(Exception e){
+		         e.printStackTrace();
+		         return 1;
+		      }finally{
+		         try{
+		            if(rs!=null)rs.close();
+		            if(ps!=null)ps.close();
+		            if(conn!=null)conn.close();
+		         }catch(Exception e1){
+		         }
+		         
+		      }
+		   }
+		   
+		   
+
+	   public ArrayList<VocDTO> findMyVoc ( String sid, int currentPage,  int listSize ){
+		   //ref  같은거로 따 오면 됌 
+		   
+		   try{
+		         conn = semi.db.SemiDb.getConn();
+		         
+		         //String sql="select * from jsp_bbs order by idx desc";
+		         String sql = "select * from "
+		                 + "(select rownum rNum, a.* from " 
+		                 + "(select * from voc_tb order by ref desc ,turn asc) a) b "
+		                 + "where rNum >=("+currentPage+"-1) * "+listSize+" +1 and rNum<="+currentPage+"*"+listSize;
+		           
+		               
+		         ps=conn.prepareStatement(sql);
+		         rs=ps.executeQuery();
+		         ArrayList<VocDTO> arr=new ArrayList<VocDTO>();
+		         
+		         int turn =0; 
+		         
+		         while(rs.next()){
+		            int idx=rs.getInt("voc_idx");
+		            String writer=rs.getString("writer");
+		            String pwd=rs.getString("pwd");
+		            String subject=rs.getString("title");
+		            String content=rs.getString("content");
+		            java.sql.Date writedate=rs.getDate("writedate");
+		            int ref=rs.getInt("ref");
+		            int lev=rs.getInt("lev");
+		            
+		            VocDTO dto = new VocDTO(idx,writer,pwd,subject,content,writedate,ref,lev,turn);
+		            arr.add(dto);
+		            turn ++; 
+		         }
+		         return arr;
+		      }catch(Exception e){
+		         e.printStackTrace();
+		         return null;
+		      }finally{
+		         try{
+		            if(ps!=null)ps.close();
+		               if(conn!=null)conn.close();
+		            
+		         }catch(Exception e1){}
+		      }
+	   }
+	   
 	   
 	   public int vocUpdate (VocDTO dto, String userPwd, int idx){
 		      try {
@@ -54,8 +130,7 @@ public class VocDAO {
 		         }
 		      }
 		   }
-		   
-		   
+		
 
 	   
 	   
