@@ -17,9 +17,10 @@ function joinceo() {
 </head>
 <body>
 <%@include file="/header.jsp"%>
+<br><br><br><br><br><br>
 		<div id="bodywrap">
-			<input type = "button" onclick = "join()" value = "고객회원가입">
-			<input type = "button" onclick = "joinceo()" value = "사장회원가입">
+			<img src = "/semi/img/joina.jpg" onclick = "join()" width = 250px; height = 250px;>
+			<img src = "/semi/img/joinb.jpg" onclick = "joinceo()" width = 250px; height = 250px;>
 		</div>
 <%@include file="/footer.jsp"%>
 </body>
