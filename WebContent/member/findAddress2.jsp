@@ -7,20 +7,26 @@
 <title>Insert title here</title>
 
 <script>
-	function showdong() {
-		if (document.findAddress.gu.value == '노원구') {
-			document.findAddress.dong.length = 1;
-			document.findAddress.dong.options[1] = new Option("중계동", "중계동");
-			document.findAddress.dong.options[2] = new Option("하계동", "하계동");
+function showdong() {
+	if (document.findAddress.gu.value == '노원구') {
+		document.findAddress.dong.length = 1;
+		document.findAddress.dong.options[1] = new Option("중계동", "중계동");
+		document.findAddress.dong.options[2] = new Option("하계동", "하계동");
+		document.findAddress.dong.options[3] = new Option("상계동", "상계동");
+		document.findAddress.dong.options[4] = new Option("공릉동", "공릉동");
 
-		} else if (document.findAddress.gu.value == '중랑구') {
-			document.findAddress.dong.length = 1;
-			document.findAddress.dong.options[1] = new Option("묵동", "묵동");
-			document.findAddress.dong.options[2] = new Option("중화동", "중화동");
-		} else {
-			document.findAddress.dong.length = 1; 
-		}
+	} else if (document.findAddress.gu.value == '중랑구') {
+		document.findAddress.dong.length = 1;
+		document.findAddress.dong.options[1] = new Option("묵동", "묵동");
+		document.findAddress.dong.options[2] = new Option("중화동", "중화동");
+		document.findAddress.dong.options[3] = new Option("상봉동", "상봉동");
+		document.findAddress.dong.options[4] = new Option("신내동", "신내동");
+		document.findAddress.dong.options[5] = new Option("망우동", "망우동");
+		document.findAddress.dong.options[6] = new Option("면목동", "면목동");
+	} else {
+		document.findAddress.dong.length = 1; 
 	}
+}
 	
 	function showgu() {
 		if (document.findAddress.si.value == '서울시') {
