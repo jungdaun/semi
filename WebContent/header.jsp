@@ -33,11 +33,11 @@
 
 <header>
    <div id="headerwrap">
-      <div id="headerinner">
-         <a href="/semi/index.jsp"><img src="/semi/img/badal.jpg"></a>&nbsp;<%
+      <div id="headerinner1">
+         <a href="/semi/index.jsp"><img src="/semi/img/badal.jpg"></a>&nbsp;</div><%
       if (sname == null || sname.equals("")) {
    %>
-   
+   <div id="headerinner2">
       <a href="javascript:openLogin()">로그인</a> | <a
          href="/semi/member/joinselect.jsp">회원가입</a> |
    
