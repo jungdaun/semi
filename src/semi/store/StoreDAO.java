@@ -16,8 +16,6 @@ public class StoreDAO {
    private ResultSet rs;   
    public StoreDAO() {}
 
-
-   //���� ������ ������ �˻�
    public ArrayList<StoreDTO> findStore(String type){
       
       try{
@@ -58,4 +56,35 @@ public class StoreDAO {
    }
    
 
+//   public ArrayList<StoreDTO> showReview(int idx){
+//	   try{
+//		   
+//		   conn = semi.db.SemiDb.getConn();
+//		   String sql="";
+//		   ps = conn.prepareStatement(sql);
+//		   rs = ps.executeQuery();
+//		   ArrayList<StoreDTO> arr = ArrayList<StoreDTO>();
+//		   
+//		   
+//		   while(rs.next()){
+//			   
+//			   
+//			   StoreDTO dto = new StoreDTO();
+//			   arr.add(dto);
+//		   }
+//		   return arr;
+//	   }
+//	   catch(Exception e){
+//		   e.printStackTrace();
+//		   return null;
+//	   }
+//	   finally{
+//		   try{
+//			   if(rs!=null)rs.close();
+//			   if(ps!=null) ps.close();
+//			   if(conn!=null) conn.close();
+//		   }
+//		   catch(Exception e2){}
+//	   }
+//   }
 }

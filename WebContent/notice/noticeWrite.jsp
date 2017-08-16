@@ -6,48 +6,99 @@
 <html>
 <head>
 
-<style type="text/css">
+<style>
+	h2{
+		text-align: center;
+		color: white; 
+		
+	}
+	table{
+		width: 450px;
 
+		  
 
+		
+		margin: 0px auto;
+		border-spacing: 0px;
+		background-color: white ; 
+		
+	}
+	table th{
+	
+		  			border-top: 1px solid #BF0920;
+		border-bottom: 1px solid #BF0920;
+		color: black; 
+		text-align: center;
+	}
+	table td{
+	
+	
+		text-align: left
+		;
+					border-top: 1px solid #BF0920;
+		border-bottom: 1px solid #BF0920;
+		
+		color: black; 
+	
+		;
+	}
 
+	
 </style>
-
 <meta charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="/semi/css/mainLayout.css">
+
 <title>Insert title here</title>
 </head>
 <body>
+
+<%@include file="/header.jsp"%>
+		<div id="bodywrap">
+
+<!-- -------------------------------------------------------------- -->
+
+
 		<h2>공지사항 글쓰기</h2>
 		<form action="noticeWrite_ok.jsp" name="noticeWrite">
-			<table border="1">
+			<table>
 			
+				<tr >
+					<th>제목</th>
+					<td colspan="3"><input type="text" name="notice_title" required="required" size="40" > </td> 
+				</tr>
+				
 				<tr>
-					<td>writer</td> 
+					<th>글쓴이</th> 
 					<td><input type="text" name="notice_writer" required="required"> </td> 
 					
 			
 				</tr>
 				
 				
+			
 				<tr >
-					<td>title</td> 
-					<td colspan="3"><input type="text" name="notice_title" required="required" size="40" > </td> 
-				</tr>
-				
-				<tr >
-					<td>content</td> 
-					<td colspan="3"><textarea rows="10" cols="45" name="notice_content" maxlength="4000"></textarea></td>
+					<td colspan="4"><textarea rows="10" cols="45" name="notice_content" maxlength="4000"></textarea></td>
 					
 				</tr>
-				<tr>
-					<td colspan="4" align="center"><input type="submit" value="submit"> 
-					<input type="reset" value="reset"> </td>
+				<tfoot>
+					<tr>
+					<td colspan="4" style="text-align: center;"><input type="submit" value="글쓰기"> 
+					<input type="reset" value="초기화"> </td>
 				</tr>
+				</tfoot>
+			
 			
 				
 			</table>
 			
 		
 		</form>
+
+<!-- -------------------------------------------------------------- -->
+		</div>
+<%@include file="/footer.jsp"%>
+
+
 
 
 </body>

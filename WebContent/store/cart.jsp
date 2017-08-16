@@ -13,6 +13,7 @@
 //Integer c_idx = (Integer) session.getAttribute("c_idx");
 Integer c_idx = (Integer)2;
 String store_idx_s = request.getParameter("store_idx");
+String store_type=request.getParameter("store_typpe");
 int store_idx = Integer.parseInt(store_idx_s);
 
 ArrayList<CartDTO> arr = cdao.showData(store_idx, c_idx);
@@ -23,25 +24,12 @@ ArrayList<CartDTO> arr = cdao.showData(store_idx, c_idx);
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script language='javascript'>
-function change(){
-	
-	var count = document.frm.count.value;
-	var price = document.frm.price.value;
-	System.out.println("count = "+count+", price = "+price);
-	
-}
-	
-	//cdao.changeData(store_idx, c_idx, count, price);
-	//System.out.println("444444");
-	//arr = cdao.showData(store_idx, c_idx);
 
-</script>
 </head>
 <body>
 
-   <table border="1" width="450" cellspacing="0">
-      <thead>
+   <table border="1" width="450" cellspacing="0" align="center"><br>
+      <thead style="background-color:  #2F4038; color: #FEEEA7; font-size: 15px;">
          <tr>
          	<th>선택</th>
             <th>음식명</th>
@@ -64,26 +52,31 @@ function change(){
                %>
                
                <tr>
-               
-               	<td><input type="checkbox" value="<%=i%>" name="chk"></td>
+
+               	<form name="frm">
+               	<td><input type="checkbox" value="<%=i%>" name="chk"></td></form>
                 <td><%=arr.get(i).getFood_name()%></td>
-                <td><%=arr.get(i).getFood_price()%></td>
+                <td><%=arr.get(i).getFood_price()%>원</td>
                 <td>
-                	<form id="frm" name="frm" method="POST" onSubmit="change()">
-                		<input type="hidden" name="price" value="<%=arr.get(i).getFood_price() %>">
+                	<form name="change" action="change_ok.jsp">
+                		<input type="hidden" name="store_type" value="<%=store_type%>">
+                		<input type="hidden" name="food_name" value="<%=arr.get(i).getFood_name()%>">
+                		<input type="hidden" name="price" value="<%=arr.get(i).getFood_price()%>">
+                		<input type="hidden" name="store_idx" value="<%=store_idx%>">
                 		<input type="text" name="count" value="<%=arr.get(i).getFood_count()%>" size="1">
-                		<input type="submit" value="수정" name="submit">
+                		<input type="submit" value="수정">
                 	</form>
                 </td>
-                <td><%=arr.get(i).getTotal_price()%></td>
+                <td><%=arr.get(i).getTotal_price()%>원</td>
                
                </tr>
               
                <% 
             }%>
             <tr>
-            	<td colspan="4" align="center"><input type="button" value="쇼핑계속하기" ></td>
-            	<td align="center"><input type="button" value="상품결제하기" ></td>
+            	<td><input type="button" value="삭제" onclick="del()"></td>
+            	<td colspan="3" align="center"><input type="button" value="쇼핑계속하기" ></td>
+            	<td align="center"><input type="button" value="결제하기" ></td>
             </tr>
          <% }%>
       </tbody>

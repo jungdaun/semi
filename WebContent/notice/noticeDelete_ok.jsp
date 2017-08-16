@@ -18,7 +18,7 @@ int res = ndao.noticeDel(idx);
 String msg ="";
 
  if (res>0){
-	msg = "success";
+	msg = "공지사항을 삭제했습니다.";
 	
 }
 else msg = "error!";

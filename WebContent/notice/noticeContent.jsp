@@ -8,13 +8,62 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/semi/css/mainLayout.css">
 <title>Insert title here</title>
 
+<style>
+	h2{
+		text-align: center;
+		color: white; 
+		
+	}
+	table{
+		width: 450px;
 
+		  
+
+		
+		margin: 0px auto;
+		border-spacing: 0px;
+		background-color: white ; 
+		
+	}
+	table th{
+	
+		  			border-top: 1px solid #BF0920;
+		border-bottom: 1px solid #BF0920;
+		color: black; 
+		text-align: center;
+	}
+	table td{
+	
+	
+		text-align: left
+		;
+					border-top: 1px solid #BF0920;
+		border-bottom: 1px solid #BF0920;
+		
+		color: black; 
+	
+		;
+	}
+	
+	tfoot tr{
+	text-align: center
+	;
+	
+	}
+	
+</style>
 </head>
 
 <%
+
+
+String admin = "admin";
+
+
 //String userIdx_s = request.getParameter("idx");
 //System.out.println (userIdx);
 
@@ -71,39 +120,56 @@ return ;
 <body>
 
 
-		<h2 >공지사항-본문보기</h2>
-		<table border="1"  >
-			
+
+
+<%@include file="/header.jsp"%>
+		<div id="bodywrap">
+
+<!-- -------------------------------------------------------------- -->
+	<h2 >공지사항</h2>
+		<table>
+
+				
 				<tr>
-					<th>idx</th>
-					<td><%=dto.getNotice_idx() %></td>
+					<th>제목</th>
+					<td colspan="3"><%=dto.getNotice_title() %></td>
+				</tr>
+				
+							
+				<tr>
+		
 					
-						<th>writeDate</th>
-					<td><%=dto.getNotice_date()  %></td>
+						<th>작성일</th>
+					<td colspan="3"><%=dto.getNotice_date()  %></td>
 				</tr>
 		
 				
 				<tr>
-					<th>title</th>
-					<td colspan="3"><%=dto.getNotice_title() %></td>
-				</tr>
-				<tr>
-					<th>writer</th>
-					<td><%=dto.getNotice_writer() %></td>
+					<th>작성자</th>
+					<td colspan="3"><%=dto.getNotice_writer() %></td>
 				</tr>
 				<tr height="200">
-					<td colspan="4">
+					<td colspan="4" style="text-align: left;">
 				<%=dto.getNotice_content().replaceAll("\n", "<br>") %>
 					
 					</td>
 				</tr>
 				<tr>
-					<td colspan="4" align="center">
-					<a href="noticeList.jsp">목록보기</a>|
-					<a href="noticeWrite.jsp">글쓰기</a>|
+					<td colspan="4" style="text-align: center;">
+					<a href="noticeList.jsp">목록보기</a>
+				
+					<%
+					if (((String)session.getAttribute("sid")).equals(admin) && session.getAttribute("sid")!=null){
+						%>
+						|	<a href="noticeWrite.jsp">글쓰기</a>
 					
-					<a href="noticeUpdate.jsp?notice_idx=<%=dto.getNotice_idx()%>">글수정</a>|
+					|<a href="noticeUpdate.jsp?notice_idx=<%=dto.getNotice_idx()%>">글수정</a>|
 					<a href="noticeDelete_ok.jsp?notice_idx=<%=dto.getNotice_idx()%>">글삭제</a>
+						
+						<%
+					}
+					
+					%>
 					
 		
 					
@@ -117,6 +183,15 @@ return ;
 
 
 		</table>
+<!-- -------------------------------------------------------------- -->
+		</div>
+<%@include file="/footer.jsp"%>
+
+
+
+
+
+	
 		
 	</body>
 </html>

@@ -14,10 +14,10 @@
 <%@include file="header.jsp"%>
 		<div id="bodywrap">
 			<div id="maintitle">
-				<div id="maintitle1"><img src="img/notice.jpg" style="width:450px; height:200px;"></div>
+				<div id="maintitle1"><a href="/semi/notice/noticeList.jsp"><img src="img/notice.jpg" style="width:450px; height:200px;"></a></div>
 				<div id="maintitle2">
 					<div id="search"></div>
-					<div id="coupon_board"><img src="img/coupon1.jpg" style="width:350px; height:90px;"></div>
+					<div id="coupon_board"><a href="/semi/coupon/couponList.jsp"><img src="img/coupon1.jpg" style="width:350px; height:90px;"></a></div>
 				</div>
 			</div>
 			<div id="mainbody">

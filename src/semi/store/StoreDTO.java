@@ -2,8 +2,7 @@ package semi.store;
 import java.util.*;
 
 public class StoreDTO {
-	
-	//가게 대표 사진은 꼭 가게의 이름으로 저장!
+
 	private int store_idx;
 	private String store_type;
 	private String store_name;
@@ -12,9 +11,9 @@ public class StoreDTO {
 	private Date open_time;
 	private Date close_time;
 	private int lowest_price;
-	private int review_num; //리뷰 수
-	private int sale_num; //판매량
-	private int score_num; //별점
+	private int review_num; 
+	private int sale_num;
+	private int score_num; 
 	
 	public StoreDTO() {}
 	
@@ -27,8 +26,6 @@ public class StoreDTO {
 		this.sale_num = sale_num;
 		this.score_num = score_num;
 	}
-
-
 
 	public int getStore_idx() {
 		return store_idx;

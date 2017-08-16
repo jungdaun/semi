@@ -1,6 +1,7 @@
 @CHARSET "utf-8";
 
 body {
+<<<<<<< HEAD
    height: 100%;
    min-height: 100%;
    width: 100%;
@@ -10,6 +11,17 @@ body {
    background-image: url("../img/background1.jpg");
    background-size: 100%;
    font-family: "Typo_Papyrus B";
+=======
+	height: 100%;
+	min-height: 100%;
+	width: 100%;
+	text-align: center;
+	margin: 0px auto;
+	background-repeat: no-repeat;
+	background-image: url("../img/background1.jpg");
+	background-size: 100%;
+	font-family: "Typo_Papyrus B";
+>>>>>>> branch 'master' of https://github.com/jungdaun/semi.git
 }
 
 #bodywrap {
