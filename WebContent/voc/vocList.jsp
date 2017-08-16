@@ -128,7 +128,7 @@ if ( cp %pageSize==0){
          <tfoot>
          
             <tr>
-               <td colspan="2" align="center">
+               <td colspan="3" align="center">
                
                <%
 
@@ -157,7 +157,19 @@ if ( cp %pageSize==0){
             %>
                
                </td>
-               <td> <a href="vocWrite.jsp">글쓰기</a></td>
+               <td> <a href="vocWrite.jsp">글쓰기</a>
+               
+
+               
+            </tr>
+            <tr>
+            	<td colspan="4">
+            	<form action="findMyVoc.jsp">
+            	작성자: <input type="text" name="mySid"  ><input type="submit" value="검색">
+            	
+            	<a href="findMyVoc.jsp?mySid=<%=sid%>">내글보기</a>
+            	</form>
+            	</td>
             </tr>
          
          </tfoot>            
