@@ -81,7 +81,7 @@ section p {
 
 </head>
 <body>
-
+<%@include file="/header.jsp"%>
 	<section>
 		<article>
 			<h2>고객회원가입</h2>
