@@ -12,16 +12,17 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/semi/css/mainLayout.css">
 <%
-String stype = (String) session.getAttribute("stype");
-if(stype == null || stype.equals("")) {
-	stype = "테스트";
+String stype1 = (String) session.getAttribute("stype");
+if(stype1 == null || stype1.equals("")) {
+	stype1 = "테스트";
 }
 
-String sid = (String) session.getAttribute("sid");
+String sid1 = (String) session.getAttribute("sid");
 
 
-MemberDTO dto = mdao.memberUpdate(mdto, stype, sid);
+MemberDTO dto = mdao.memberUpdate(mdto, stype1, sid1);
 
 
 %>
@@ -60,7 +61,7 @@ function goOut() {
 
 function show(){
 	
-	document.update.id.value = '<%=sid%>';
+	document.update.id.value = '<%=sid1%>';
 	
 	
 	var email = '<%=dto.getEmail()%>'.split('@');
@@ -110,8 +111,9 @@ section p {
 </head>
 
 <body onload = "show()">
-<input type = "button" value = "회원 탈퇴" onclick = "goOut()">
-<input type = "button" value = "비밀번호 변경" onclick = "changePwd()">
+<%@include file="/header.jsp"%>
+<div id="bodywrap">
+
 <section>
 		<article>
 			<h2>회원정보수정</h2>
@@ -149,11 +151,15 @@ section p {
 					</ul>
 
 					<p>
+						<input type = "button" value = "회원 탈퇴" onclick = "goOut()">
+						<input type = "button" value = "비밀번호 변경" onclick = "changePwd()">
 						<input type="button" onclick="javascript:aa()" value="수정하기">
 					</p>
 				</fieldset>
 			</form>
 		</article>
 	</section>
+	</div>
+	<%@include file="/footer.jsp"%>
 </body>
 </html>
