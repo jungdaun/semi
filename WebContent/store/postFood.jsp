@@ -45,7 +45,8 @@ ArrayList<FoodDTO> arr = fdao.showStore(store_idx);
                <img src="../img/store/cart.png" style="width:60px; height:50px"/></td>
                
                <td rowspan="3" align="center" style="color:white; width:272px;">
-               <img src="../img/store/review_one.png" style="width:60px; height:50px"/></td>
+               <a href="postReview.jsp">
+               <img src="../img/store/review_one.png" style="width:60px; height:50px"/></a></td>
             </tr>
          </table>
          <table>
