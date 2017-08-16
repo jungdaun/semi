@@ -13,7 +13,7 @@
 	
 	boolean chk = true;
 
-String a = request.getParameter("password");
+String a = request.getParameter("password"); 
 
 System.out.print(a.length());
 
