@@ -20,8 +20,8 @@ public class VocDAO {
 		      try{
 		         conn = semi.db.SemiDb.getConn();
 		         
-		         String sql="select count(*) from voc_tb where writer = ?";
-		        
+		         String sql="select count(*) from voc_tb where ref in "
+		         		+ "(select ref from  voc_tb where writer = ? ) ";
 		         ps=conn.prepareStatement(sql);
 		        ps.setString(1, mySid);
 		         
@@ -55,11 +55,13 @@ public class VocDAO {
 		         //String sql="select * from jsp_bbs order by idx desc";
 		         String sql = "select * from "
 		                 + "(select rownum rNum, a.* from " 
-		                 + "(select * from voc_tb order by ref desc ,turn asc) a) b "
+		                 + "(select * from voc_tb voc_tb where ref in (select ref from voc_tb where writer = ? ) "
+		                 + "order by ref desc ,turn asc) a) b "
 		                 + "where rNum >=("+currentPage+"-1) * "+listSize+" +1 and rNum<="+currentPage+"*"+listSize;
 		           
 		               
 		         ps=conn.prepareStatement(sql);
+		         ps.setString(1, sid);
 		         rs=ps.executeQuery();
 		         ArrayList<VocDTO> arr=new ArrayList<VocDTO>();
 		         

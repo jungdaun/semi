@@ -147,30 +147,51 @@ public class CartDAO {
    }
    
    public int changeData(int store_idx, Integer c_idx, int count, int price, String name){
-	      try{
-	         conn = semi.db.SemiDb.getConn();
-	         String sql="update cart set food_count=?, total_price=? where store_idx=? and customer_idx=? and food_name=?";
-	         ps = conn.prepareStatement(sql);
-	         ps.setInt(1, count);
-	         ps.setInt(2, (count*price));
-	         ps.setInt(3, store_idx);
-	         ps.setInt(4, (c_idx !=null? c_idx.intValue() : 0));
-	         ps.setString(5, name);
-	         int cnt = ps.executeUpdate();
-	         
-	         return cnt;
-	      }
-	      catch(Exception e){
-	         e.printStackTrace();
-	         return -1;
-	      }
-	      finally{
-	         try{
-	            if(ps!=null) ps.close();
-	            if(conn!=null) conn.close();
-	         }
-	         catch(Exception e2){}
-	      }
-	      
-	   }
+         try{
+            conn = semi.db.SemiDb.getConn();
+            String sql="update cart set food_count=?, total_price=? where store_idx=? and customer_idx=? and food_name=?";
+            ps = conn.prepareStatement(sql);
+            ps.setInt(1, count);
+            ps.setInt(2, (count*price));
+            ps.setInt(3, store_idx);
+            ps.setInt(4, (c_idx !=null? c_idx.intValue() : 0));
+            ps.setString(5, name);
+            int cnt = ps.executeUpdate();
+            
+            return cnt;
+         }
+         catch(Exception e){
+            e.printStackTrace();
+            return -1;
+         }
+         finally{
+            try{
+               if(ps!=null) ps.close();
+               if(conn!=null) conn.close();
+            }
+            catch(Exception e2){}
+         }
+         
+      }
+   
+   public void deleteData(String str){
+      try{
+         conn = semi.db.SemiDb.getConn();
+         String sql = "delete from cart where food_name=?";
+         ps = conn.prepareStatement(sql);
+         ps.setString(1, str);
+         int count = ps.executeUpdate();
+      }
+      catch(Exception e){
+         e.printStackTrace();
+      }
+      finally{
+         try{
+            if(ps!=null) ps.close();
+            if(conn!=null) conn.close();
+         }
+         catch(Exception e2){}
+      }
+      
+   }
 }

@@ -23,6 +23,6 @@ int cnt = cdao.changeData(store_idx, c_idx, count, price, name);
 String msg = (cnt>0) ? "장바구니가 수정되었습니다.":"오류가 발생했습니다.";
 %>
 <script>
-	window.alert('<%=msg%>');
-	location.href='postFood.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>';
+   window.alert('<%=msg%>');
+   location.href='postFood.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>';
 </script>

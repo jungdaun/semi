@@ -1,6 +1,58 @@
 
+<%@page import="semi.voc.VocDTO"%>
+<%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+ <jsp:useBean id="vdao" class="semi.voc.VocDAO"></jsp:useBean>
+    
+    <%
+request.setCharacterEncoding("utf-8");
+
+
+    
+
+
+    String mySid = request.getParameter("mySid");
+
+    
+//필수정보4가지
+int totalCnt= vdao.getTotalCnt(mySid); 
+//총 게시물 수
+//sql : select count (*) from jsp_bbs
+
+int listSize = 5; 
+// 보여줄 게시물 수 
+
+int pageSize = 5; 
+//보여줄 페이지 수 
+
+
+String cp_s = request.getParameter("cp");
+if (cp_s==null|| cp_s.equals("")){
+   
+   cp_s="1";
+}
+int cp = Integer.parseInt(cp_s);
+
+//1. total pg 
+int totalPg = totalCnt/listSize+1;
+if (totalCnt % listSize==0){
+   totalPg= totalPg-1; 
+   
+}
+
+int userGp =cp/pageSize; 
+if ( cp %pageSize==0){
+   userGp= userGp-1;
+}
+
+
+
+
+%>
+    
+    
 <!DOCTYPE html >
 <html>
 <head>
@@ -52,7 +104,156 @@
 
 <!-- -------------------------------------------------------------- -->
 
-<h2><%=request.getParameter("mySid") %>님이 작성하신 질문입니다. </h2>
+<h2><%= mySid%>님이 작성하신 질문입니다. </h2>
+<%
+
+
+ArrayList <VocDTO> arr = vdao.findMyVoc(mySid, cp, listSize);
+
+
+%>
+<section>
+			<article>
+			<h2>Q&A</h2>
+      <table>
+         <thead>
+            <tr>
+               <th>번호</th>
+               <th>제목</th>
+               <th>글쓴이</th>
+               <th>작성일</th>
+           <!--     <th>turn</th>
+				-->
+               
+               
+            </tr>
+            
+         </thead>
+            
+            
+            
+         <tfoot>
+         
+            <tr>
+               <td colspan="3" align="center">
+               
+               <%
+
+
+            if (userGp !=0 ){
+            
+            %><a href="vocList.jsp?cp=<%=(userGp-1)*pageSize+pageSize%>">&lt;&lt;</a>
+            
+            
+            <% 
+            
+            
+            }
+            
+            
+            for ( int i =userGp*pageSize+1; i<=userGp*pageSize+pageSize ; i ++){
+               
+               %>&nbsp;&nbsp;&nbsp;<a href="vocList.jsp?cp=<%=i %>"><font <%=cp==i?"color='red'":"" %>> <%=i %> </font> </a>&nbsp;&nbsp;&nbsp;<%
+               if (i ==totalPg) break; 
+            }
+            
+            
+            if ( userGp!= (totalPg/pageSize -(totalPg%pageSize==0? 1:0)) ){
+               %><a href="vocList.jsp?cp=<%=(userGp+1)*pageSize+1%>">&gt;&gt;</a><%
+            }
+            %>
+               
+               </td>
+               <td> <a href="vocWrite.jsp">글쓰기</a>
+               
+
+               
+            </tr>
+            <tr>
+            	<td colspan="4">
+            	<form action="findMyVoc.jsp">
+            	작성자: <input type="text" name="mySid"  ><input type="submit" value="검색">
+            	
+            	<a href="findMyVoc.jsp?mySid=<%=sid%>">내글보기</a>
+            	</form>
+            	</td>
+            </tr>
+         
+         </tfoot>            
+         <tbody>
+         
+         <% 
+         
+         if (arr== null|| arr.size()==0){
+            %>
+            <tr>
+               <td colspan="4" align="center"> 등록된 글이 없습니다.</td>
+            </tr>
+            <%
+         }
+         else {
+            for ( int i =0; i<arr.size(); i ++){
+               %>
+               <tr>
+                  <td><%=arr.get(i).getVod_idx() %> </td>
+                  <td style="text-align: left;">
+                  <%
+                  for ( int j =0; j< arr.get(i).getLev(); j ++){
+                     out.println ("&nbsp;");
+                  }
+                  
+                  %>
+                  
+                  <%
+             //     String sid =(String ) session.getAttribute("sid");
+                  if (!(sid ==null || sid .equals(""))){
+                	
+                	  if (sid .equals("admin")){
+ 						out.println ("<a href='vocContent.jsp?idx="+arr.get(i).getVod_idx()+"'>"+arr.get(i).getTitle()+"</a> </td>");
+ 						
+                		  
+                	  }
+
+                	  else out.println ("<a href='pwdCheck.jsp?idx="+arr.get(i).getVod_idx()+"'>"+arr.get(i).getTitle()+"</a> </td>");
+                	  
+                	  
+                	  
+                  }
+                  else out.println ("<a href='pwdCheck.jsp?idx="+arr.get(i).getVod_idx()+"'>"+arr.get(i).getTitle()+"</a> </td>");
+                  
+                  %>   
+               
+               
+                <td><%=arr.get(i).getWriter() %> </td>
+                  <td><%=arr.get(i).getWritedate() %> </td>
+        <!--        <td><%=arr.get(i).getTurn() %></td> -->
+               </tr>
+            
+               <%
+            }
+            
+         }
+         
+         %>
+         
+         
+         
+         
+         
+
+         </tbody>
+         
+         
+
+      </table>
+      
+			
+			</article>
+		
+		</section>
+
+
+
 
 <!-- -------------------------------------------------------------- -->
 		</div>

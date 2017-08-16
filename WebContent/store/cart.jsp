@@ -24,14 +24,26 @@ ArrayList<CartDTO> arr = cdao.showData(store_idx, c_idx);
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
+<script>
+function del(obj){
+   var tag="";
+   var chk = document.getElementsByName(obj);
+   for(var j=0; j<chk.length; j++){
+      if(chk[j].checked==true){
+         tag = tag +' '+ chk[j].value;
+      }
+   }
+   
+   location.href="delete_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>&str="+tag;   
+}
+</script>
 </head>
 <body>
 
    <table border="1" width="450" cellspacing="0" align="center"><br>
       <thead style="background-color:  #2F4038; color: #FEEEA7; font-size: 15px;">
          <tr>
-         	<th>선택</th>
+            <th>선택</th>
             <th>음식명</th>
             <th>음식 가격</th>
             <th>개수</th>
@@ -53,19 +65,20 @@ ArrayList<CartDTO> arr = cdao.showData(store_idx, c_idx);
                
                <tr>
 
-               	<form name="frm">
-               	<td><input type="checkbox" value="<%=i%>" name="chk"></td></form>
+                  <td>
+                  <form name="frm"><input type="checkbox" value="<%=arr.get(i).getFood_name()%>" name="chk[]">
+                  </form></td>
                 <td><%=arr.get(i).getFood_name()%></td>
                 <td><%=arr.get(i).getFood_price()%>원</td>
                 <td>
-                	<form name="change" action="change_ok.jsp">
-                		<input type="hidden" name="store_type" value="<%=store_type%>">
-                		<input type="hidden" name="food_name" value="<%=arr.get(i).getFood_name()%>">
-                		<input type="hidden" name="price" value="<%=arr.get(i).getFood_price()%>">
-                		<input type="hidden" name="store_idx" value="<%=store_idx%>">
-                		<input type="text" name="count" value="<%=arr.get(i).getFood_count()%>" size="1">
-                		<input type="submit" value="수정">
-                	</form>
+                   <form name="change" action="change_ok.jsp">
+                      <input type="hidden" name="store_type" value="<%=store_type%>">
+                      <input type="hidden" name="food_name" value="<%=arr.get(i).getFood_name()%>">
+                      <input type="hidden" name="price" value="<%=arr.get(i).getFood_price()%>">
+                      <input type="hidden" name="store_idx" value="<%=store_idx%>">
+                      <input type="text" name="count" value="<%=arr.get(i).getFood_count()%>" size="1">
+                      <input type="submit" value="수정">
+                   </form>
                 </td>
                 <td><%=arr.get(i).getTotal_price()%>원</td>
                
@@ -73,10 +86,11 @@ ArrayList<CartDTO> arr = cdao.showData(store_idx, c_idx);
               
                <% 
             }%>
+
             <tr>
-            	<td><input type="button" value="삭제" onclick="del()"></td>
-            	<td colspan="3" align="center"><input type="button" value="쇼핑계속하기" ></td>
-            	<td align="center"><input type="button" value="결제하기" ></td>
+               <td><input type="button" value="삭제" onclick="del('chk[]')"></td>
+               <td colspan="3" align="center"><input type="button" value="맨 위로" ></td>
+               <td align="center"><input type="button" value="결제하기" ></td>
             </tr>
          <% }%>
       </tbody>
