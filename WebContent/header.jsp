@@ -6,7 +6,7 @@
    String sid = (String) session.getAttribute("sid");
    String stype = (String) session.getAttribute("stype");
 
-   if (stype == null || stype.equals("")) {
+   if (stype == null || stype.equals("")) { 
       stype = "테스트";
    }
 %>
