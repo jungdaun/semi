@@ -29,6 +29,8 @@ String c_sub_s = c_sub[2];
 ArrayList<StoreDTO> arr = sdao.findStore(store_type);
 Iterator<StoreDTO> list = arr.iterator();
 
+session.setAttribute("value", "a");
+
 /**같은 동네 가게들만 보이게 하는 부분*/
 while(list.hasNext()){
    String s_addr = list.next().getStore_addr();

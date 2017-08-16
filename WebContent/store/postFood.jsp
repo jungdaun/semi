@@ -28,9 +28,44 @@ String store_idx_s=request.getParameter("store_idx");
 int store_idx = Integer.parseInt(store_idx_s);
 String store_type= request.getParameter("store_type");
 String c_sub_s = request.getParameter("c_sub_s");
-
 ArrayList<FoodDTO> arr = fdao.showStore(store_idx);
+//int c=1;
+String str = "a";
+//session.setAttribute("value", "a");
 %>
+<script>
+//function chan(){
+	<%
+	//c=2;
+//	session.removeAttribute("value");
+//	session.setAttribute("value", "b");
+//	System.out.println("현재는? "+session.getAttribute("value"));
+	%>
+	//document.getElementById("re").reload();
+	//history.go(0);
+//	location.href="#re";
+//}
+//function chan2(){
+	<%
+	//c=1;
+//	session.removeAttribute("value");
+//	session.setAttribute("value", "a");
+//	System.out.println("현재는? "+session.getAttribute("value"));
+	%>
+	//document.getElementById("re").reload();
+	//history.go(0);
+//	location.href="#re";
+//}
+
+    function chan(str){
+   	 var str_s = str;
+   	 System.out.println("str = "+str_s);
+   	 location.href="#re";
+   	 
+    }
+
+</script>
+
 </head>
 <body>
 
@@ -41,60 +76,30 @@ ArrayList<FoodDTO> arr = fdao.showStore(store_idx);
          Home >> <%=store_type %> >> <%=c_sub_s %></h2></legend>
          <table>
             <tr style="background-color: white">
-               <td rowspan="3" align="center" style="color:white; width:272px;">
-               <img src="../img/store/cart.png" style="width:60px; height:50px"/></td>
+               <td rowspan="3" align="center" style="color:white; width:272px;"><a href="#" onclick="chan(b)">
+               <img src="../img/store/cart.png" style="width:60px; height:50px" /></a></td>
                
-               <td rowspan="3" align="center" style="color:white; width:272px;">
-               <a href="postReview.jsp">
-               <img src="../img/store/review_one.png" style="width:60px; height:50px"/></a></td>
+               <td rowspan="3" align="center" style="color:white; width:272px;"><a href="#" onclick="chan(<%='a'%>)">
+               <img src="../img/store/review_one.png" style="width:60px; height:50px" /></a></td>
             </tr>
          </table>
-         <table>
-   <% 
-   if(arr.equals("") || arr.size()==0){%>
-         <tr style="color:white; font-size: 30px;">
-            <td colspan="3" align="center">
-            <br>등록된 음식이 없습니다ㅜ_ㅜ<br>음식을 등록해 주세요~
-           </td>
-         </tr>   
-   <% }
-   else{
-         int count=0;
-         while(count<arr.size()) {
-    %>
-         <tr>
-         <%
-         for(int i=0; i<2; i++){
-            if(count<arr.size()){%>
-            <td><img src="../img/store/<%=arr.get(count).getFood_name()%>.png" style="width:120px; height:120px;"/></td>
-            <td style="background-color: #2F4038; color:white;"><%=arr.get(count).getFood_name() %>
-            <br><%=arr.get(count).getFood_price() %>원 </td>
+         <a id="re">
          
-            <td>
-            <form name="postFood_ok" action="postFood_ok.jsp">
-               <select name="food_count"><%
-               for(int j=1; j<10; j++){%>
-                  <option value="<%=j%>"><%=j %></option>
-               <% } %>
-               </select>
-               
-               <input type="hidden" name="store_type" value="<%=store_type%>">
-               <input type="hidden" name="store_idx" value="<%=store_idx%>">
-               <input type="hidden" name="food_price" value="<%=arr.get(count).getFood_price()%>">
-               <input type="hidden" name="food_name" value="<%=arr.get(count).getFood_name()%>">
-               <input type="submit" value="Pick">
-            </form>
-            </td>
-         
-         <%count++;}
-         else
-            break;
-      }
-        %></tr>
-      <% }
-   
-   }%>
-      </table><br><br><br><br><br>
+          <%
+         // String str = (String)session.getAttribute("value");
+          
+          System.out.println("재입장?");
+          if(str.equals("a")) {
+          System.out.println("a");
+          %>
+         	<%@include file="postMenu.jsp" %>
+         	<%}
+          else if(str.equals("b")){
+          System.out.println("b");%>
+        	 <%@include file="postReview.jsp" %> 
+         <%}%>
+  
+     </a><br><br><br><br><br>
     </article>
 
     <article>
@@ -120,6 +125,8 @@ ArrayList<FoodDTO> arr = fdao.showStore(store_idx);
    </article>
 
 </div>
+
+
 <%@include file="/footer.jsp"%>
 </body>
 </html>
