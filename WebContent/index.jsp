@@ -6,8 +6,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/mainLayout.css">
-<style>
-</style>
+
 </head>    
 
 <body>
@@ -16,8 +15,8 @@
 			<div id="maintitle">
 				<div id="maintitle1"><a href="/semi/notice/noticeList.jsp"><img src="img/notice.jpg" style="width:450px; height:200px;"></a></div>
 				<div id="maintitle2">
-					<div id="search"></div>
-					<div id="coupon_board"><a href="/semi/coupon/couponList.jsp"><img src="img/coupon1.jpg" style="width:350px; height:90px;"></a></div>
+					<div id="find"><br><br><br><input type="text" style=" margin-left:-50px; padding-top: -59px;"><img src="img/1.jpg" style="margin-left: 10px;margin-bottom: 20px;"></div>
+					<div id="coupon_board"><a href="/semi/coupon/couponList.jsp"><img src="img/coupon.jpg" style="width:350px; height:90px;"></a></div>
 				</div>
 			</div>
 			<div id="mainbody">
