@@ -142,7 +142,7 @@ else {
 
 <%
                //////////// the people who has admin id can write notice 
-				String sid = (String)session.getAttribute("sid");
+	//			String sid = (String)session.getAttribute("sid");
 				
                
                if (sid !=null ){

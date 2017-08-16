@@ -67,17 +67,49 @@ h1{text-align: center; color: white;}
 fieldset h4{text-align: center; color: white;}
 
 
+/*
+fieldset table {
+    border-collapse: separate;
+    border-spacing: 0;
+    text-align: left;
+    line-height: 1.5;
+    border-top: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+  margin : 20px 10px;
+}
+fieldset table th {
+    width: 150px;
+    padding: 10px;
+    font-weight: bold;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    border-top: 1px solid #fff;
+    border-left: 1px solid #fff;
+    background: #eee;
+}
+fieldset table td {
+    width: 350px;
+    padding: 10px;
+    vertical-align: top;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+*/
 fieldset table
 {
-
+border-bottom: 2px solid white;
 background-color: rgba( 255, 255, 255, 0.2 )
 }
 
 	
 
 table th {
+	
 	color: white;
-	border-bottom: 2px double white;
+	background-color:  rgba( 255, 255, 255, 0.2 );
+	
+	/* border-bottom: 2px double white; */
 }
 input { 
 color:white;
@@ -87,6 +119,7 @@ color:white;
  text-align: center;
 	
 }
+
 
 </style>
 
@@ -127,7 +160,7 @@ color:white;
 </li>	
 	
 <li>
-<table>
+<table >
 
 	<tr>
 		<th>메뉴</th>
@@ -175,53 +208,6 @@ color:white;
 
 
 
-<fieldset>
-	<legend>
-	
-<h2>할인 수단</h2>
-	</legend>
-
-
-<table>
-
-
-	<tr>
-		<th>쿠폰</th>
-		<td><input type="text" name="user_coupon" readonly="readonly" ><!--   -->
-
-	<a href="" onclick="window.open ('selectCoupon.jsp?tp=<%=tempPrice%>', 'selectCoupon', 'height=450, width=450')">쿠폰 선택</a>
-		</td>
-		
-	</tr>
-	<tr>
-		<td><input type="text" name="discount" readonly="readonly">원 할인 </td>
-		<th colspan="1">최종결제금액</th>
-		<td><input type="text" name="final_price" readonly="readonly" value="<%=tempPrice %>" >원</td>
-	</tr>
-
-</table>
-
-</fieldset>
-
-<fieldset>
-	<legend>
-	
-<h2>결제방법</h2>
-	</legend>
-
-<table>
-	<tr>
-		
-		<td><input type="radio" name="pay_type" value="1" checked="checked">바로결제</td>
-		<td><input type="radio" name="pay_type" value="2">현장결제</td>
-		<!-- 바로결제1 현장결제는2 -->
-		
-	</tr>
-</table>
-
-
-</fieldset>
-
 
 
 <fieldset>
@@ -257,6 +243,63 @@ color:white;
 	
 </table>
 </fieldset>
+
+
+
+<fieldset>
+	<legend>
+	
+<h2>할인 선택</h2>
+	</legend>
+
+
+<table>
+
+
+	<tr>
+		<th>쿠폰</th>
+		<td><input type="text" name="user_coupon" readonly="readonly" ><!--   -->
+
+	<a href="" onclick="window.open ('selectCoupon.jsp?tp=<%=tempPrice%>', 'selectCoupon', 'height=450, width=450')">쿠폰 선택</a>
+		</td>
+		
+	</tr>
+	<tr>
+		<td><input type="text" name="discount" readonly="readonly">원 할인 </td>
+		<th colspan="1">최종결제금액</th>
+		<td><input type="text" name="final_price" readonly="readonly" value="<%=tempPrice %>" >원</td>
+	</tr>
+
+</table>
+
+</fieldset>
+
+
+<fieldset>
+	<legend>
+	
+<h2>최종결제정보</h2>
+	</legend>
+	
+	<ul style="list-style: none;">
+	<li>
+	
+	<input type="radio" name="pay_type" value="1" checked="checked">바로결제
+	</li>
+	
+	<li>
+	
+		<input type="radio" name="pay_type" value="2">현장결제
+	
+	</li>
+	</ul>
+
+
+		<!-- 바로결제1 현장결제는2 -->
+
+
+</fieldset>
+
 
 
 

@@ -188,7 +188,7 @@ if ( cp %pageSize==0){
                   %>
                   
                   <%
-                  String sid =(String ) session.getAttribute("sid");
+             //     String sid =(String ) session.getAttribute("sid");
                   if (!(sid ==null || sid .equals(""))){
                 	
                 	  if (sid .equals("admin")){

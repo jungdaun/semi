@@ -10,29 +10,108 @@
 
 <jsp:useBean id="cdao" class="semi.coupon.CouponDAO" ></jsp:useBean>
 
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="/semi/css/mainLayout.css">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+	h2{
+		text-align: center;
+		color: white; 
+		
+	}
+	table{
+		width: 700px;
+		border-top: 4px double white;
+		border-bottom: 4px double white;
+		margin: 0px auto;
+		border-spacing: 0px;
+		background-color: white ; 
+	}
+	table thead th{
+		background: #BF0920;
+		color: white; 
+		text-align: center;
+	}
+	table td{
+		text-align: center
+		
+		;
+	}
+	
+	tfoot {
+		border-top: 4px double #BF0920;
+		
+	
+	}
+	
+</style>
+</head>
+<body>
+
+
+
+
+
+
+<%@include file="/header.jsp"%>
+		<div id="bodywrap">
+
+
+
+
 <%
 
 request.setCharacterEncoding("utf-8");
 
-//String user_id=(String) session.getAttribute("sid");
-String sid = "고객1";
+//String sid=(String) session.getAttribute("sid");
+//String sid = "고객1";
 
 //System.out.println (user_id);
+if (sid ==null || sid.equals("")){
+	
+	%>
+	<script>
+	window.alert ('로그인 하세요');
+	window.location.href ='couponList.jsp';
+	
+	
+	</script>
+	
+	<%
+	return ;
+	
+}
+
+%>
+
+
+<%
+
+
+
 
 ArrayList<CouponDTO> dtos = cdao.myCouponList(sid);
 
 %>
 
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
+
+
+<!-- -------------------------------------------------------------- -->
+
+
+
+
+
 	<h2>나의 쿠폰</h2>
 	
 	<table>
+	<thead>
 		<tr>
 			<th>쿠폰번호</th>
 			<th>쿠폰이름 </th> 
@@ -41,6 +120,7 @@ ArrayList<CouponDTO> dtos = cdao.myCouponList(sid);
 			<th>사용기한</th>
 			<th>사용 여부</th>
 		</tr>
+		</thead>
 
 	<%
 	if(dtos.size()==0|| dtos==null){
@@ -98,6 +178,13 @@ ArrayList<CouponDTO> dtos = cdao.myCouponList(sid);
 	}
 	%>
 	</table>
+<!-- -------------------------------------------------------------- -->
+		</div>
+<%@include file="/footer.jsp"%>
+
+
+
+
 		
 </body>
 </html>
