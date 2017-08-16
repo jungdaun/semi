@@ -44,6 +44,7 @@
    <%
       } else {
    %>
+   <div id="headerinner2">
    <a href="javascript:usermod()"><%=sname%></a>
       |<a href="/semi/member/logout.jsp">로그아웃</a> |
    
