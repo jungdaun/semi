@@ -44,7 +44,7 @@
    <%
       } else {
    %>
-   <%=sname%>님 로그인중... | <a href="javascript:usermod()">회원정보수정</a>
+   <a href="javascript:usermod()"><%=sname%></a>
       |<a href="/semi/member/logout.jsp">로그아웃</a> |
    
    <%

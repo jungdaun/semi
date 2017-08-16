@@ -75,6 +75,7 @@ section p {
 </head>
 <body>
 <%@include file="/header.jsp"%>
+<div id="bodywrap">
 	<section>
 		<article>
 			<h2>사장회원가입</h2>
@@ -130,6 +131,7 @@ section p {
 			</form>
 		</article>
 	</section>
+	</div>
 	<%@include file="/footer.jsp"%>
 </body>
 </html>
