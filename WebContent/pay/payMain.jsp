@@ -24,7 +24,7 @@ int order_idx = 3;
 ArrayList <CartDTO> cartDtos = ctdao.myCartList(order_idx);
 
 
-String sid = "고객1";
+//String sid = "고객1";
 
 
 
@@ -98,19 +98,42 @@ fieldset table td {
 */
 fieldset table
 {
-border-bottom: 2px solid white;
+width: 600px ; 
+ border-collapse:collapse;
 background-color: rgba( 255, 255, 255, 0.2 )
 }
 
+
+fieldset table th {
 	
 
-table th {
+	/*
+	border-bottom: 2px dotted white;
+border-left: 2px solid white;
+border-right: 2px solid white;
+border-top: 2px solid white;
+
+*/
 	
 	color: white;
 	background-color:  rgba( 255, 255, 255, 0.2 );
 	
 	/* border-bottom: 2px double white; */
 }
+
+
+fieldset table td{
+
+	/*
+border-bottom: 2px solid white;
+border-left: 2px solid white;
+border-right: 2px solid white;
+border-top: 2px solid white;
+
+*/
+	
+}
+
 input { 
 color:white;
  
@@ -121,6 +144,29 @@ color:white;
 }
 
 
+.del table{
+width: 550px; 
+
+}
+
+.del th {
+	border-bottom: 1px dotted white;
+
+}
+.del td {
+	border-bottom: 1px dotted white;
+	text-align: left;
+
+}
+
+.del input {
+	color:black;
+ 
+ background-color:white; 
+ border: 0px; 
+ text-align: left ;
+	
+}
 </style>
 
 
@@ -152,16 +198,11 @@ color:white;
 	</legend>
 	
 	
+	<p><h4>[<input type="text"    name="sName" size="10" value="<%=ctdao.getStoreName(store_idx) %>">]에서 주문하신 내역은 다음과 같습니다.</h4></p>
 	
-	<ul style="list-style: none;">
-	<li>
-
-<h4>[<input type="text"    name="sName" size="10" value="<%=ctdao.getStoreName(store_idx) %>">]에서 주문하신 내역은 다음과 같습니다. </h4>
-</li>	
 	
-<li>
-<table >
-
+	
+	<table class="order">
 	<tr>
 		<th>메뉴</th>
 		<th>수량</th>
@@ -193,15 +234,8 @@ color:white;
 	
 
 
-	<tr>
-	
-		<td colspan="3" style="text-align: center;">총 구매금액은 <input type="text" value="<%=tempPrice %>" name="price">원 입니다. </td>
-	</tr>
-
 </table>
-</li>
-
-	</ul>
+<p><h4>총 금액은 <input type="text" value="<%=tempPrice %>" name="price">원 입니다.</h4></p>
 
 </fieldset>
 
@@ -217,7 +251,7 @@ color:white;
 
 
 
-<table>	
+<table class="del">	
 	<tr>
 	<%
 	String userInfo [] = mdao.getUserInfo(sid);
@@ -225,9 +259,15 @@ color:white;
 	%>
 		<th>이름</th>
 		<td><input type="text" name="c_name" value="<%=userInfo[0] %>" > </td>
+	
+	</tr>
+	
+	<tr>
+	
 		<th>전화번호</th>
 		<td><input type="text" name="c_tel" value="<%=userInfo[3]%>">(ex. 01012345678) </td>
 	</tr>
+	
 	<tr>
 		<th>주소</th>
 		<td colspan="3"><input type="text" name="c_addr" value="<%=userInfo[2]%>"> </td>
@@ -236,9 +276,10 @@ color:white;
 
 	<tr>
 		<th colspan="1">전달사항</th>
-		<td colspan="3"><textarea rows="3" cols="20" name="memo">
+		<td colspan="3">
+		<input type="text" name="memo">
 		
-		</textarea> </td>
+	</td>
 	</tr>
 	
 </table>
@@ -253,7 +294,7 @@ color:white;
 	</legend>
 
 
-<table>
+<table class="coupon">
 
 
 	<tr>
@@ -264,13 +305,14 @@ color:white;
 		</td>
 		
 	</tr>
-	<tr>
-		<td><input type="text" name="discount" readonly="readonly">원 할인 </td>
-		<th colspan="1">최종결제금액</th>
-		<td><input type="text" name="final_price" readonly="readonly" value="<%=tempPrice %>" >원</td>
-	</tr>
 
 </table>
+
+<p>
+<h4><input type="text" name="discount" readonly="readonly">원 할인받으셨습니다.</h4>
+</p>
+
+
 
 </fieldset>
 
@@ -281,21 +323,19 @@ color:white;
 <h2>최종결제정보</h2>
 	</legend>
 	
-	<ul style="list-style: none;">
-	<li>
-	
-	<input type="radio" name="pay_type" value="1" checked="checked">바로결제
-	</li>
-	
-	<li>
-	
-		<input type="radio" name="pay_type" value="2">현장결제
-	
-	</li>
-	</ul>
 
+<p>
+	<h4><input type="radio" name="pay_type" value="1" checked="checked">바로결제
 
-		<!-- 바로결제1 현장결제는2 -->
+	
+		<input type="radio" name="pay_type" value="2">현장결제</h4>
+	
+</p>
+
+<p>
+<h4>최종 결제금액은 <input type="text" name="final_price" readonly="readonly" value="<%=tempPrice %>" >원 입니다.</h4>
+</p>
+
 
 
 </fieldset>
@@ -304,7 +344,7 @@ color:white;
 
 
 
-<input type="submit" value="주문하기">
+<h3><input type="submit" value="주문하기"></h3>
 </form>
 <!-- -------------------------------------------------------------- -->
 		</div>
