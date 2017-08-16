@@ -15,7 +15,7 @@ body {
 #bodywrap {
 	margin: 0px auto;
 	display: inline-block;
-	margin-top: 150px;
+	margin-top: 170px;
 }
 
 #maintitle {
@@ -38,11 +38,13 @@ body {
 	float: right;
 }
 
-#search {
+#find {
 	width: 350px;
 	height: 90px;
 	margin-bottom: 15px;
+	background-image: url("../img/find.jpg");
 }
+
 
 #coupon_board {
 	width: 350px;
