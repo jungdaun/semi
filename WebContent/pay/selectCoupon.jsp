@@ -18,10 +18,14 @@ request.setCharacterEncoding("utf-8");
 //String sid=(String) session.getAttribute("sid");
 //System.out.println (user_id);
 int tempPrice = Integer.parseInt(request.getParameter("tp"));
-String sid ="고객1";
+
+String sname = (String) session.getAttribute("sname");
 
 
-System.out.println (tempPrice);
+String sid =(String)session.getAttribute("sid");
+
+
+//System.out.println (tempPrice);
 
 
 %>
@@ -29,18 +33,20 @@ System.out.println (tempPrice);
 <!DOCTYPE html>
 <html>
 <head>
+<!-- 
 <script type="text/javascript">
  function autoWrite() {
 	var couponIdx = document.couponSelect.couponOption.value;
 	document.couponSelect.coupon.value=couponIdx; 
 }
 </script>
-
+ -->
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
+<h2>[<%=sname%>]님이 가지고 계신 쿠폰 목록입니다. </h2>
 		<%
 		
 		ArrayList<CouponDTO> dtos= cdao.myCouponList(sid);
@@ -48,7 +54,7 @@ System.out.println (tempPrice);
 		
 		if ( dtos.size()==0|| dtos==null){
 			%>
-			no data 
+			보유하신 쿠폰이 없습니다.  
 			<%
 		}
 		
