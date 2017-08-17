@@ -120,7 +120,7 @@ public class CartDAO {
    public ArrayList<CartDTO> showData(int store_idx, Integer c_idx){
       try{
          conn = semi.db.SemiDb.getConn();
-         String sql="select food_name, food_price,food_count,total_price from cart where store_idx=? and customer_idx=?";
+         String sql="select food_name, food_price,food_count,total_price from cart where store_idx=? and customer_idx=? and finish = 0";
          ps = conn.prepareStatement(sql);
          ps.setInt(1, store_idx);
          ps.setInt(2, (c_idx !=null? c_idx.intValue() : 0));

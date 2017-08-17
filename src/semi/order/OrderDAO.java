@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.Calendar;
+
+import com.sun.javafx.css.CalculatedValue;
 
 import semi.cart.CartDTO;
 import semi.voc.VocDTO;
@@ -18,10 +21,48 @@ public class OrderDAO {
 	
 	
 	
+	public int makeOrderIdx (){
+	
+		   try {
+			    conn = semi.db.SemiDb.getConn();
+		 
+			    String sql = "select max(order_idx) from order_tb "; 
+			    
+
+			    ps=conn.prepareStatement(sql);
+			    rs= ps.executeQuery(); 
+			 //   ps.setInt(1, oIdx);
+	    
+			    
+			 if (   rs.next()) {
+			return  rs.getInt(1);
+			 	 
+			 }
+			    
+			 else {
+				 return 1; 
+			 }
+		} catch (Exception e) {
+			e.printStackTrace( );
+			return -1; 
+			// TODO: handle exception
+		}finally {
+			try {
+				
+				if(rs!=null)rs.close();
+	            if(ps!=null) ps.close();
+	            if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	   
+		
+	}
 	
 
 	   public int addOrderIdx (int sIdx , int oIdx, int cIdx){
-		   System.out.println("addOrderIdx");
+		//   System.out.println("addOrderIdx");
 			   try {
 				    conn = semi.db.SemiDb.getConn();
 			 

@@ -7,11 +7,17 @@
 <jsp:useBean id="cdto" class="semi.cart.CartDTO"></jsp:useBean>
 <jsp:setProperty property="*" name="cdto"/>
 <jsp:useBean id="cdao" class="semi.cart.CartDAO"></jsp:useBean>
+<jsp:useBean id="mdao" class="semi.member.MemberDAO"></jsp:useBean>
+<jsp:useBean id="odao" class="semi.order.OrderDAO"></jsp:useBean>
 
  
 <%
 //Integer c_idx = (Integer) session.getAttribute("c_idx");
-Integer c_idx = (Integer)2;
+//Integer c_idx = (Integer)2;
+int c_idx =mdao.getMemIdx((String)session.getAttribute("sid")); 
+
+
+
 String store_idx_s = request.getParameter("store_idx");
 String store_type=request.getParameter("store_typpe");
 int store_idx = Integer.parseInt(store_idx_s);
@@ -19,7 +25,11 @@ int store_idx = Integer.parseInt(store_idx_s);
 ArrayList<CartDTO> arr = cdao.showData(store_idx, c_idx);
 
 
-int oIdx = 1; 
+
+
+int oIdx =odao.makeOrderIdx()+1;
+
+
 /*
 for ( int i =0; i < arr.size() ; i ++){
 	

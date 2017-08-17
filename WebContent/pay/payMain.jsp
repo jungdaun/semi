@@ -19,12 +19,18 @@
 
 
 
+String sIdxs = request.getParameter("sIdx");
 
 
-int store_idx = Integer.parseInt(request.getParameter("sIdx"));
+int store_idx = Integer.parseInt(sIdxs);
 
-int c_idx =Integer.parseInt(request.getParameter("cIdx"));
-int order_idx =Integer.parseInt(request.getParameter("oIdx"));
+String cIdxs = request.getParameter("cIdx");
+
+int c_idx =Integer.parseInt(cIdxs);
+
+String oIdxs =request.getParameter("oIdx");
+
+int order_idx =Integer.parseInt(oIdxs);
 
 
 int res =odao.addOrderIdx(store_idx, order_idx, c_idx);
@@ -33,6 +39,9 @@ int res =odao.addOrderIdx(store_idx, order_idx, c_idx);
 
 
 
+System.out.println (store_idx);
+System.out.println (c_idx);
+System.out.println (order_idx);
 
 ArrayList <CartDTO> cartDtos = ctdao.myCartList(order_idx);
 
