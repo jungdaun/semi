@@ -159,7 +159,7 @@ text-align: center;
                      <option value="0">직접입력</option>
                      <option value="naver.com">naver.com</option>
                      <option value="daum.net">daum.net</option>
-               </select><input type="hidden" name="email"></td>
+               </select><input type="hidden" name="email"></td> 
             </tr>
 
             <tr>
