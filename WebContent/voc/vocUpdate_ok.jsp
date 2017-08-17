@@ -12,7 +12,7 @@
 String idx_s = request.getParameter("voc_idx");
 int idx = Integer.parseInt(idx_s);
 
-String pwd = request.getParameter("pwd");
+//String pwd = request.getParameter("pwd");
 
 
 
@@ -28,7 +28,7 @@ System.out.println (userPwd);
 
 
 <%
-int res = vdao.vocUpdate(vdto, pwd, idx);
+int res = vdao.vocUpdate(vdto, idx);
 
 String msg = res>0?"글이 수정되었습니다.":"fail";
 
@@ -38,7 +38,7 @@ String msg = res>0?"글이 수정되었습니다.":"fail";
 
 <script>
 	window.alert ('<%=msg%>');
-	location.href='vocList.jsp';
+	location.href='findMyVoc.jsp';
 	
 </script>
     

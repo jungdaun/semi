@@ -1,3 +1,4 @@
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 
@@ -15,6 +16,9 @@
 <%
 int result=odao.addOrder(odto);
 int oIdx = Integer.parseInt(request.getParameter("order_idx"));
+
+int cartRes =odao.deleteCart(oIdx);
+
 
 
 //입력데이터 넘기기  

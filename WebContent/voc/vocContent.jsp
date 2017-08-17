@@ -72,7 +72,7 @@
     	idx_s="0";
     }
     int idx=Integer.parseInt(idx_s);
-
+/*
    String userPwd="";
     
     
@@ -84,9 +84,9 @@
         userPwd = request.getParameter("pwd");
     }
     
-    
+    */
 
-    	VocDTO	dto=vdao.vocContent(idx, userPwd);
+    	VocDTO	dto=vdao.vocContent(idx);
 
     
     if(dto==null){
@@ -98,20 +98,7 @@
     <%
     return;
     }
-    else if (dto.getVod_idx()==-1){
-       
-    	%>
-    	
-    	<script>
-    	
-    	window.alert('비밀번호가 틀립니다');
-        location.href='vocList.jsp';
-    	</script>
-    	
-    	<%
-    	return; 
-
-    }
+  
     %>
 
 <!-- -------------------------------------------------------------- -->
@@ -155,7 +142,7 @@ else {
 <tfoot>
 
 <tr>
-<td colspan="4" style="text-align: center;"><a href="vocList.jsp">목록으로</a>||
+<td colspan="4" style="text-align: center;"><a href="findMyVoc.jsp">목록으로</a>||
 
 <%
 

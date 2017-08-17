@@ -80,7 +80,7 @@
       String lev=request.getParameter("lev");
       String turn=request.getParameter("turn");
       int idx = Integer.parseInt(request.getParameter("idx"));
-      String pwd = vdao.getUserPwd(idx);
+     // String pwd = vdao.getUserPwd(idx);
 
       
       %>
@@ -89,8 +89,7 @@
          <input type="hidden" name="ref" value="<%=ref %>">
          <input type="hidden" name="lev" value="<%=lev %>">
          <input type="hidden" name="turn" value="<%=turn %>">
-         <input type="hidden" name="pwd" value="<%=pwd%>">
-         
+        
          
          <table>
          <tr>
