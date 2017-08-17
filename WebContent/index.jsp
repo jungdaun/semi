@@ -16,8 +16,6 @@
 function check() {
 	var tt = '사장';
 	var tt2 = '<%=stype%>';
-	window.alert(tt);
-	window.alert(tt2);
 	if(tt == tt2) {
 		location.href = '/semi/index_ceo.jsp';
 	}

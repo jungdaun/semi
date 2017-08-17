@@ -55,6 +55,59 @@ public class StoreDAO {
       }
    }
    
+   /**사장님에게 가게가 있는지 존재 여부 판단하는 메소드*/
+   public boolean check_store(String idx) {
+	   try{
+	         conn = semi.db.SemiDb.getConn();
+	         String sql = "select * from store where store_idx=?";
+	         ps = conn.prepareStatement(sql);
+	         ps.setString(1, idx);
+	         rs = ps.executeQuery();
+	         
+	         return rs.next();
+	      }
+	      catch(Exception e){
+	         e.printStackTrace();
+	         return false;
+	      }
+	      finally{
+	         try{
+	            if(rs!=null) rs.close();
+	            if(ps!=null) ps.close();
+	            if(conn!=null) conn.close();   
+	         }
+	         catch(Exception e2){}
+	      }
+   }
+   
+   public String get_myIdx(String id) {
+	   try{
+	         conn = semi.db.SemiDb.getConn();
+	         String sql = "select * from ceo where id=?";
+	         ps = conn.prepareStatement(sql);
+	         ps.setString(1, id);
+	         rs = ps.executeQuery();
+	         rs.next();
+	         
+	         if(rs.next()) {
+	        	 return rs.getString("my_idx");
+	         }
+	         return null;
+	      }
+	      catch(Exception e){
+	         e.printStackTrace();
+	         return null;
+	      }
+	      finally{
+	         try{
+	            if(rs!=null) rs.close();
+	            if(ps!=null) ps.close();
+	            if(conn!=null) conn.close();   
+	         }
+	         catch(Exception e2){}
+	      }
+   }
+   
 
 //   public ArrayList<StoreDTO> showReview(int idx){
 //	   try{

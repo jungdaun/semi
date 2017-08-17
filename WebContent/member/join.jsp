@@ -79,7 +79,7 @@ text-align: center;
 	}
 	
 	function selectEmail() {
-		
+		window.alert('a');
 		if(document.join.email3.value!="0") {
 			document.join.email2.value = document.join.email3.value;
 			document.join.email2.readOnly = true;
@@ -155,7 +155,7 @@ text-align: center;
                <th>E-Mail</th>
                <td><input type="text" size="9" name="email1" required="required"> @ <input
                   type="text" size="9" name="email2" required="required"></td>
-               <td><select name="email3">
+               <td><select name="email3"  onchange = "selectEmail()">
                      <option value="0">직접입력</option>
                      <option value="naver.com">naver.com</option>
                      <option value="daum.net">daum.net</option>
