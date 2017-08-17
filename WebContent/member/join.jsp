@@ -102,7 +102,7 @@ text-align: center;
 <div><img src ="img/badal.jpg"></div>
 <h1>배·민 회원가입</h1>
 <form action="join_ok.jsp" name="join" method="post">
-         <table id="maintable">
+         <table id="maintable" style="background-color: #2F4038; color:white; font-size: 17px;">
             <tr>
                <th>ID</th>
                <td><input type="text" name="id" 

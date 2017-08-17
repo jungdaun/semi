@@ -54,6 +54,15 @@
                <th>이름</th>
                <td><input type="text" name="name" required="required" size="27"></td>
             </tr>
+            
+            <tr>
+            	<th>음식 종류</th>
+            	<td><select name="what">
+                     <option value="chicken">chicken</option>
+                     <option value="011">011</option>
+                     <option value="017">017</option>
+               </select></td>
+            </tr>
 
             <tr>
                <th>전화번호</th>
