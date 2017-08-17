@@ -1,3 +1,4 @@
+<%@page import="java.util.Calendar"%>
 <%@page import="semi.cart.CartDTO"%>
 <%@page import="semi.order.OrderDTO"%>
 <%@page import="java.util.ArrayList"%>
@@ -14,7 +15,27 @@
 </head>
 <body>
 	
-	
+	<%
+/*
+Calendar now = Calendar.getInstance();
+int y= (now.get(Calendar.YEAR)-2000) ;
+int m= (now.get(Calendar.MONTH)+1); 
+int d= (now.get(Calendar.DATE));
+
+int h =( now.get(Calendar.HOUR_OF_DAY));
+int min = now.get(Calendar.MINUTE);
+int s = now.get(Calendar.SECOND);
+
+int orderIdx = y+ m+ d+h+min+s ; 
+System.out.println (orderIdx);
+
+*/
+
+
+
+
+%>
+ 
 	
 	
 	<%

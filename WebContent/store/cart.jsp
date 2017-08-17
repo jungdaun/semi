@@ -17,7 +17,22 @@ String store_type=request.getParameter("store_typpe");
 int store_idx = Integer.parseInt(store_idx_s);
 
 ArrayList<CartDTO> arr = cdao.showData(store_idx, c_idx);
+
+
+int oIdx = 1; 
+/*
+for ( int i =0; i < arr.size() ; i ++){
+	
+	int res = cdao.addOrderIdx(arr.get(i), oIdx);
+	
+	
+}
+*/
+
 %>
+
+
+
 
 <!DOCTYPE html>
 <html>
@@ -90,7 +105,7 @@ function del(obj){
             <tr>
                <td><input type="button" value="삭제" onclick="del('chk[]')"></td>
                <td colspan="3" align="center"><input type="button" value="맨 위로" ></td>
-               <td align="center"><input type="button" value="결제하기" ></td>
+               <td align="center"><input type="button" value="결제하기" onclick="location.href = '/semi/pay/payMain.jsp?oIdx=<%=oIdx %>&sIdx=<%=store_idx %>&cIdx=<%=c_idx %>' " ></td>
             </tr>
          <% }%>
       </tbody>

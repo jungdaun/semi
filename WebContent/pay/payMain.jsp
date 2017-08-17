@@ -12,13 +12,26 @@
 
 
 <jsp:useBean id="mdao" class="semi.member.MemberDAO"></jsp:useBean>
+<jsp:useBean id="odao" class="semi.order.OrderDAO"></jsp:useBean>
 
 
 <%
-int store_idx = 2;
-int c_idx = 1;
 
-int order_idx = 3; 
+
+
+
+
+int store_idx = Integer.parseInt(request.getParameter("sIdx"));
+
+int c_idx =Integer.parseInt(request.getParameter("cIdx"));
+int order_idx =Integer.parseInt(request.getParameter("oIdx"));
+
+
+int res =odao.addOrderIdx(store_idx, order_idx, c_idx);
+
+
+
+
 
 
 ArrayList <CartDTO> cartDtos = ctdao.myCartList(order_idx);

@@ -8,6 +8,11 @@ public class CartDTO {
 	private int food_price;
 	private int food_count;
 	private int total_price;
+	private int finish;
+	private int order_idx ;
+	
+	
+	
 	
 	public CartDTO() { }
 
@@ -17,6 +22,39 @@ public class CartDTO {
 		this.food_price = food_price;
 		this.food_count = food_count;
 		this.total_price = total_price;
+	}
+
+	
+	
+	
+	
+	public CartDTO(int store_idx, int customer_idx, String food_name, int food_price, int food_count, int total_price,
+			int finish, int order_idx) {
+		super();
+		this.store_idx = store_idx;
+		this.customer_idx = customer_idx;
+		this.food_name = food_name;
+		this.food_price = food_price;
+		this.food_count = food_count;
+		this.total_price = total_price;
+		this.finish = finish;
+		this.order_idx = order_idx;
+	}
+
+	public int getFinish() {
+		return finish;
+	}
+
+	public void setFinish(int finish) {
+		this.finish = finish;
+	}
+
+	public int getOrder_idx() {
+		return order_idx;
+	}
+
+	public void setOrder_idx(int order_idx) {
+		this.order_idx = order_idx;
 	}
 
 	public int getStore_idx() {

@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import semi.cart.CartDTO;
 import semi.voc.VocDTO;
 
 
@@ -15,6 +16,39 @@ public class OrderDAO {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
+	
+	
+	
+
+	   public int addOrderIdx (int sIdx , int oIdx, int cIdx){
+		   System.out.println("addOrderIdx");
+			   try {
+				    conn = semi.db.SemiDb.getConn();
+			 
+				    String sql = "update cart set order_idx ="+oIdx+" where customer_idx ="+cIdx+" and store_idx ="+sIdx+" and finish = 0";
+				    ps=conn.prepareStatement(sql);
+				 //   ps.setInt(1, oIdx);
+		    
+				    int res = ps.executeUpdate();
+				    return res; 
+				
+			} catch (Exception e) {
+				e.printStackTrace( );
+				return -1; 
+				// TODO: handle exception
+			}finally {
+				try {
+					
+
+		            if(ps!=null) ps.close();
+		            if(conn!=null) conn.close();
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+		   
+	   }
+	   
 	
 	
 	 public int deleteCart (int oIdx){

@@ -17,19 +17,46 @@
 int result=odao.addOrder(odto);
 int oIdx = Integer.parseInt(request.getParameter("order_idx"));
 
-int cartRes =odao.deleteCart(oIdx);
+
 
 
 
 //입력데이터 넘기기  
 String msg=result>0?"주문완료":"실패";
-%>
 
+if (result>0){
+	int cartRes =odao.deleteCart(oIdx);
+	
+	%>
+	
+	<script type="text/javascript">
 
-<script>
-window.alert('<%=msg%>');
-location.href='payCheck.jsp?oIdx=<%=oIdx%>';
+	window.alert ('주문완료');
 
+	location.href='payCheck.jsp?oIdx=<%=oIdx%>';
+<!--
 
-
+//-->
 </script>
+	<%
+	
+}
+else {
+	%>
+	
+	<script type="text/javascript">
+
+	window.alert ('실패');
+
+	location.href='payMain.jsp';
+<!--
+
+//-->
+</script>
+	
+	<%
+	
+}
+
+
+%>

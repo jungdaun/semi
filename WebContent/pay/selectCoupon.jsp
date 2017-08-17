@@ -43,10 +43,27 @@ String sid =(String)session.getAttribute("sid");
  -->
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style type="text/css">
+body {
+	background-image:  url("/semi/img/pay/bg.jpg");
+
+	
+/*	 background-color: pink; */
+	
+	background-repeat:no-repeat; 
+
+	background-attachment: fixed;
+
+
+}
+
+</style>
+
+
 </head>
 <body>
 
-<h2>[<%=sname%>]님이 가지고 계신 쿠폰 목록입니다. </h2>
+<h2>[<%=sname%>]의 쿠폰 </h2>
 		<%
 		
 		ArrayList<CouponDTO> dtos= cdao.myCouponList(sid);
@@ -128,6 +145,8 @@ String sid =(String)session.getAttribute("sid");
 			}
 		}
 		%>
+		
+		<h4><a href="selectCoupon_ok.jsp?tp=<%=tempPrice%>&cIdx=0">[취소]</a></h4>
 
 </body>
 </html>

@@ -14,6 +14,26 @@ System.out.println (tp);
 int cIdx = Integer.parseInt(request.getParameter("cIdx"));
 System.out.println (cIdx);
 
+
+if (cIdx == 0 ){
+	%>
+	
+	<script>
+ opener.document.pay.final_price.value ='<%=tp%>';
+ opener.document.pay.user_coupon.value ='';
+ opener.document.pay.discount.value ='';
+ 
+ 
+ 
+ window.self.close(); 
+</script>
+	
+	<%
+	return ; 
+}
+
+
+
 int dc =  cdao.getCouponValue(cIdx,tp);
 String cName = cdao.getCouponName(cIdx);
 
