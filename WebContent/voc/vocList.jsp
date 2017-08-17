@@ -102,6 +102,29 @@ if ( cp %pageSize==0){
      
      
      	<div id="bodywrap">
+     	
+     	
+     	
+     	<%
+     	if (sid==null|| sid.equals("") ){
+     		
+     		%>
+     		<script type="text/javascript">
+     		window.alert ('로그인 하세요');
+     		window.href = '/semi/index.jsp';
+     		
+     		
+     		
+     		</script>
+     		
+     		<%
+     		return ; 
+     	}
+     	
+     	%>
+     	
+     	
+     	
 <!-- --------------------------------------------------------- -->
 
 

@@ -81,18 +81,10 @@ request.setCharacterEncoding("utf-8");
 		<tr>
 			<th>글쓴이</th>
 			<td colspan="3">
-			<%
-			if (sid == null || sid.equals("")){
-				
-				
-				out.println ("<input type='text' name='writer' required='required' > ");
-				
-			}
-			else {
-				out.println ("<input type='text' name='writer' value = '"+sid+"' readonly='readonly'> ");
-			}
 			
-			%>
+			
+			<input type="text" name="writer" value="<%=sname%>" readonly="readonly" required="required">
+			
 			</td>
 			
 			
@@ -100,10 +92,16 @@ request.setCharacterEncoding("utf-8");
 		<tr>
 			<td colspan="4"><textarea rows="10" cols="45" name="content" required="required"></textarea> </td>
 		</tr>
+	
+	<!-- 
+	
 		<tr>
 			<th>비밀번호</th>
 			<td colspan="4"><input type="password" name="pwd" required="required" > </td>
 		</tr>
+		
+		 -->
+		
 		<tr>
 			<td colspan="4" style="text-align: center;"><input type="submit" value="submit"> </td>
 		</tr>

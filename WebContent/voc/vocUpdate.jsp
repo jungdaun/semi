@@ -98,7 +98,7 @@ if (dto == null){
 <script type="text/javascript">
 
 window.alert ('잘못된 게시글 또는 삭제된 게시물입니다.');
-location.href='vocList.jsp';
+location.href='findMyVoc.jsp';
 
 
 </script>
@@ -167,6 +167,8 @@ return ;
 					
 					
 				</tr>
+			<!--  
+			
 				<tr>
 				
 					<th>
@@ -177,7 +179,7 @@ return ;
 				</tr>
 				
 				
-				
+				-->
 			
 				<tr >
 					<td colspan="4" style="text-align: center;">

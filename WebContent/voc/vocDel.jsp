@@ -1,88 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-
-<meta charset=UTF-8">
-<link rel="stylesheet" type="text/css" href="/semi/css/mainLayout.css">
-<style>
-	h2{
-		text-align: center;
-		color: white; 
-		
-	}
-	table{
-		width: 450px;
-
-		  
-
-		
-		margin: 0px auto;
-		border-spacing: 0px;
-		background-color: white ; 
-		
-	}
-	table th{
-	
-		  			border-top: 1px solid #BF0920;
-		border-bottom: 1px solid #BF0920;
-		color: black; 
-		text-align: center;
-	}
-	table td{
-	
-	
-		text-align: left
-		;
-					border-top: 1px solid #BF0920;
-		border-bottom: 1px solid #BF0920;
-		
-		color: black; 
-	
-		;
-	}
-
-	
-</style>
-<title>Insert title here</title>
-</head>
-<body>
+    pageEncoding="UTF-8"%>
 
 
-	
-	
-	<%@include file="/header.jsp"%>
-		<div id="bodywrap">
+    
+<jsp:useBean id="vdto" class="semi.voc.VocDTO" scope="page"/> 
+<!-- 1회성 data 마트 카트같은거: scope=page -->
 
-<!-- -------------------------------------------------------------- -->
-	<h2>비밀번호를 입력하세요</h2>
-
+<jsp:setProperty property="*" name="vdto"/>
+<jsp:useBean id="vdao" class="semi.voc.VocDAO" scope="session"/> 
 
 
-	<%
-	
-
+<%
 request.setCharacterEncoding("utf-8");
-	
-	String voc_idx = request.getParameter("voc_idx");
-	%>
-	<form action="vocDel_ok.jsp" name="vocDel">
-	<font color="white">비밀번호:</font>
-		<input type="hidden" name="voc_idx" value="<%=voc_idx%>" >
-		<input type="password" name="pwd">
-		<input type="submit" value="확인">
-	</form>
-	
-	
 
-<!-- -------------------------------------------------------------- -->
-		</div>
-<%@include file="/footer.jsp"%>
+
+String idx_s= request.getParameter("voc_idx");
+int idx= Integer.parseInt(idx_s);
+//String userPwd = request.getParameter("pwd");
+
+
+int res = vdao.vocDel(idx);
+
+String msg ="";
+
+ if (res>0){
+	msg = "글이 삭제되었습니다.";
 	
-	
-	
-	
-	
-</body>
-</html>
+}
+else msg = "error!";
+
+
+
+
+
+%>
+
+
+<script>
+window.alert ('<%=msg%>');
+location.href='findMyVoc.jsp';
+
+
+</script>

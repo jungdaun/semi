@@ -70,14 +70,14 @@ public class VocDAO {
 		         while(rs.next()){
 		            int idx=rs.getInt("voc_idx");
 		            String writer=rs.getString("writer");
-		            String pwd=rs.getString("pwd");
+		 //           String pwd=rs.getString("pwd");
 		            String subject=rs.getString("title");
 		            String content=rs.getString("content");
 		            java.sql.Date writedate=rs.getDate("writedate");
 		            int ref=rs.getInt("ref");
 		            int lev=rs.getInt("lev");
 		            
-		            VocDTO dto = new VocDTO(idx,writer,pwd,subject,content,writedate,ref,lev,turn);
+		            VocDTO dto = new VocDTO(idx,writer,subject,content,writedate,ref,lev,turn);
 		            arr.add(dto);
 		            turn ++; 
 		         }
@@ -95,14 +95,14 @@ public class VocDAO {
 	   }
 	   
 	   
-	   public int vocUpdate (VocDTO dto, String userPwd, int idx){
+	   public int vocUpdate (VocDTO dto,int idx){
 		      try {
 		         
 		         conn =semi.db.SemiDb.getConn();
 		         
 		   
 		         
-		         if (pwdCheck(idx, userPwd)){
+		  
 		            String sql = "update voc_tb set title=? , content=? where voc_idx =?";
 		            ps=conn.prepareStatement(sql);
 		            ps.setString(1, dto.getTitle());
@@ -112,11 +112,7 @@ public class VocDAO {
 		            
 		            int count = ps.executeUpdate();
 		            return count; 
-		         }
-		         else {
-		            return PWD_ERROR; 
-		            
-		         }
+	
 		         
 		      } catch (Exception e) {
 		         e.printStackTrace( );
@@ -135,39 +131,39 @@ public class VocDAO {
 		
 
 	   
-	   
-	   public boolean isNull(int idx){
-		      try {
-		         String sql = "select lev from voc_tb where voc_idx like "+idx;
-		         ps=conn.prepareStatement(sql);
-		         rs= ps.executeQuery();
-		         rs.next();
-		         
-		         int lev = rs.getInt(1);
+//	   
+//	   public boolean isNull(int idx){
+//		      try {
+//		         String sql = "select lev from voc_tb where voc_idx like "+idx;
+//		         ps=conn.prepareStatement(sql);
+//		         rs= ps.executeQuery();
+//		         rs.next();
+//		         
+//		         int lev = rs.getInt(1);
+//		   
+//		         if (lev ==0){
+//		            return true;
+//		         }
+//		         else return false; 
+//		         
+//		         
+//		      } catch (Exception e) {
+//		         e.printStackTrace( );
+//		         return false;  
+//		         // TODO: handle exception
+//		      }finally {
+//		         try {
+//		            if(rs!=null)rs.close();
+//		            if(ps!=null)ps.close();
+//		            
+//		         } catch (Exception e2) {
+//		            // TODO: handle exception
+//		         }
+//		      }
+//		   }
 		   
-		         if (lev ==0){
-		            return true;
-		         }
-		         else return false; 
-		         
-		         
-		      } catch (Exception e) {
-		         e.printStackTrace( );
-		         return false;  
-		         // TODO: handle exception
-		      }finally {
-		         try {
-		            if(rs!=null)rs.close();
-		            if(ps!=null)ps.close();
-		            
-		         } catch (Exception e2) {
-		            // TODO: handle exception
-		         }
-		      }
-		   }
 		   
-		   
-		   public int vocDel(int idx, String userPwd) {
+		   public int vocDel(int idx) {
 		      
 		      
 		      try {
@@ -176,21 +172,21 @@ public class VocDAO {
 
 
 		            
-		            if (pwdCheck(idx, userPwd)){
+		           // if (pwdCheck(idx, userPwd)){
 		               String sql= "delete from voc_tb where voc_idx=?";
 		               ps=conn.prepareStatement(sql);
 		               ps.setInt(1, idx);
 
 		               int count= ps.executeUpdate();
 		               return count; 
-		            }
-		            
-		            else {
-		               return PWD_ERROR;
-		               
-		               
-		               
-		            }
+//		            }
+//		            
+//		            else {
+//		               return PWD_ERROR;
+//		               
+//		               
+//		               
+//		            }
 		         
 		         
 		         
@@ -224,91 +220,92 @@ public class VocDAO {
 		   
 		   
 		   
-		   public String getUserPwd(int idx){
-			   try {
-				   
-				   conn = semi.db.SemiDb.getConn();
-				   String sql = "select pwd from voc_tb where voc_idx = ?";
-			       
-				   ps=conn.prepareStatement(sql);
-			        
-				   ps.setInt(1, idx);
-			       
-				   rs=ps.executeQuery();
-			       
-				   rs.next();
-			       
-				   String pwd= rs.getString("pwd");
-			       
-				  return pwd; 
-			         
-				
-			} catch (Exception e) {
-				e.printStackTrace( );
-				return null;
-				// TODO: handle exception
-			}finally {
-				try { 
-					if (rs!=null) rs.close();
-	        
-					if(ps!=null)ps.close();
-					if (conn!=null)conn.close();
-					
-				} catch (Exception e2) {
-					// TODO: handle exception
-					
-				}
-			}
-		   }
+//		   public String getUserPwd(int idx){
+//			   try {
+//				   
+//				   conn = semi.db.SemiDb.getConn();
+//				   String sql = "select pwd from voc_tb where voc_idx = ?";
+//			       
+//				   ps=conn.prepareStatement(sql);
+//			        
+//				   ps.setInt(1, idx);
+//			       
+//				   rs=ps.executeQuery();
+//			       
+//				   rs.next();
+//			       
+//				   String pwd= rs.getString("pwd");
+//			       
+//				  return pwd; 
+//			         
+//				
+//			} catch (Exception e) {
+//				e.printStackTrace( );
+//				return null;
+//				// TODO: handle exception
+//			}finally {
+//				try { 
+//					if (rs!=null) rs.close();
+//	        
+//					if(ps!=null)ps.close();
+//					if (conn!=null)conn.close();
+//					
+//				} catch (Exception e2) {
+//					// TODO: handle exception
+//					
+//				}
+//			}
+//		   }
+		   
+//		   
+//	   public boolean pwdCheck (int idx, String userPwd){
+//		      try{
+//		         String sql = "select pwd from voc_tb where voc_idx=?";
+//		         ps=conn.prepareStatement(sql);
+//		         ps.setInt(1, idx);
+//		         rs=ps.executeQuery();
+//		         rs.next();
+//		         String pwd= rs.getString("pwd");
+//		         if (pwd.equals(userPwd)) return true;
+//		         else return false; 
+//		      }
+//		      catch (Exception e) {
+//		         // TODO: handle exception\
+//		         e.printStackTrace( );
+//		         return false; 
+//		      }   
+//		   
+//		      finally {
+//		         try {
+//		            if (rs!=null) rs.close();
+//		            if(ps!=null)ps.close();
+//		         } catch (Exception e2) {
+//		            // TODO: handle exception
+//		         }
+//		      }
+//
+//		}
+//	   
+//	   
 		   
 		   
-	   public boolean pwdCheck (int idx, String userPwd){
-		      try{
-		         String sql = "select pwd from voc_tb where voc_idx=?";
-		         ps=conn.prepareStatement(sql);
-		         ps.setInt(1, idx);
-		         rs=ps.executeQuery();
-		         rs.next();
-		         String pwd= rs.getString("pwd");
-		         if (pwd.equals(userPwd)) return true;
-		         else return false; 
-		      }
-		      catch (Exception e) {
-		         // TODO: handle exception\
-		         e.printStackTrace( );
-		         return false; 
-		      }   
 		   
-		      finally {
-		         try {
-		            if (rs!=null) rs.close();
-		            if(ps!=null)ps.close();
-		         } catch (Exception e2) {
-		            // TODO: handle exception
-		         }
-		      }
-
-		}
-	   
-	   
-	   
-	   
-	   /**답변 글쓰기 관련 메서드*/
 	   public int vocReWrite(VocDTO dto){
 	      try{
 	         conn=semi.db.SemiDb.getConn();
 	         
 	         sunbunUpdate(dto.getRef(),dto.getTurn()+1);
 	         
-	         String sql="insert into voc_tb values(voc_idx_sq.nextval,?,?,?,?,sysdate,?,?,?)";
+	         String sql="insert into voc_tb values(voc_idx_sq.nextval,?,?,?,sysdate,?,?,?)";
 	         ps=conn.prepareStatement(sql);
 	         ps.setString(1, dto.getWriter());
-	         ps.setString(2, dto.getPwd());
-	         ps.setString(3, dto.getTitle());
-	         ps.setString(4, dto.getContent());
-	         ps.setInt(5, dto.getRef());
-	         ps.setInt(6, dto.getLev()+1);
-	         ps.setInt(7, dto.getTurn()+1);
+	 
+	         
+	         ps.setString(2, dto.getTitle());
+	         ps.setString(3, dto.getContent());
+	         ps.setInt(4, dto.getRef());
+	         ps.setInt(5, dto.getLev()+1);
+	         ps.setInt(6, dto.getTurn()+1);
 	         int count=ps.executeUpdate();
 	         return count;
 	      }catch(Exception e){
@@ -324,55 +321,46 @@ public class VocDAO {
 	   
 	   
 	   
-	   public VocDTO vocContent(int idx, String userPwd ){
-		      try{
-		         conn = semi.db.SemiDb.getConn();
-		         
-		         
-		         if ( !pwdCheck(idx, userPwd)){
-		        	 VocDTO pwdError = new VocDTO(-1);
-		        	 
-		        	 
-		        	 return pwdError;
-		        	  
-		        	 
-		         }
-		         else {
-			         
-			         String sql="select * from voc_tb where voc_idx=?";
-			         ps=conn.prepareStatement(sql);
-			         ps.setInt(1, idx);
-			         rs=ps.executeQuery();
-			         VocDTO dto=null;
-			         if(rs.next()){
-			            String writer=rs.getString("writer");
-			            String pwd=rs.getString("pwd");
-			            String subject=rs.getString("title");
-			            String content=rs.getString("content");
-			            java.sql.Date writedate=rs.getDate("writedate");
-			          
-			            int ref=rs.getInt("ref");
-			            int lev=rs.getInt("lev");
-			            int sunbun=rs.getInt("turn");
-			            dto = new VocDTO(idx,writer,pwd,subject,content,writedate,ref,lev,sunbun);
-			         }
-			         return dto;
-		         }
-		         
-		         
-
-		      }catch(Exception e){
-		         e.printStackTrace();
-		         return null;
-		      }finally{
-		         try{
-		            if(rs!=null)rs.close();
-		            if(ps!=null)ps.close();
-		            if(conn!=null)conn.close();
-		         }catch(Exception e1){}
-		      }
-		   }
-	   
+//	   public VocDTO vocContent(int idx ){
+//		      try{
+//		         conn = semi.db.SemiDb.getConn();
+//		         
+//		         
+//
+//			         String sql="select * from voc_tb where voc_idx=?";
+//			         ps=conn.prepareStatement(sql);
+//			         ps.setInt(1, idx);
+//			         rs=ps.executeQuery();
+//			         VocDTO dto=null;
+//			         if(rs.next()){
+//			            String writer=rs.getString("writer");
+//			            String pwd=rs.getString("pwd");
+//			            String subject=rs.getString("title");
+//			            String content=rs.getString("content");
+//			            java.sql.Date writedate=rs.getDate("writedate");
+//			          
+//			            int ref=rs.getInt("ref");
+//			            int lev=rs.getInt("lev");
+//			            int sunbun=rs.getInt("turn");
+//			            dto = new VocDTO(idx,writer,subject,content,writedate,ref,lev,sunbun);
+//			         }
+//			         return dto;
+//		         
+//		         
+//		         
+//
+//		      }catch(Exception e){
+//		         e.printStackTrace();
+//		         return null;
+//		      }finally{
+//		         try{
+//		            if(rs!=null)rs.close();
+//		            if(ps!=null)ps.close();
+//		            if(conn!=null)conn.close();
+//		         }catch(Exception e1){}
+//		      }
+//		   }
+//	   
 	   public VocDTO vocContent(int idx ){
 		   try{
 			   conn = semi.db.SemiDb.getConn();
@@ -387,7 +375,7 @@ public class VocDAO {
 				   VocDTO dto=null;
 				   if(rs.next()){
 					   String writer=rs.getString("writer");
-					   String pwd=rs.getString("pwd");
+				//	   String pwd=rs.getString("pwd");
 					   String subject=rs.getString("title");
 					   String content=rs.getString("content");
 					   java.sql.Date writedate=rs.getDate("writedate");
@@ -395,7 +383,7 @@ public class VocDAO {
 					   int ref=rs.getInt("ref");
 					   int lev=rs.getInt("lev");
 					   int sunbun=rs.getInt("turn");
-					   dto = new VocDTO(idx,writer,pwd,subject,content,writedate,ref,lev,sunbun);
+					   dto = new VocDTO(idx,writer,subject,content,writedate,ref,lev,sunbun);
 				   }
 				   return dto;
 			   
@@ -463,14 +451,14 @@ public class VocDAO {
 	         while(rs.next()){
 	            int idx=rs.getInt("voc_idx");
 	            String writer=rs.getString("writer");
-	            String pwd=rs.getString("pwd");
+	        //    String pwd=rs.getString("pwd");
 	            String subject=rs.getString("title");
 	            String content=rs.getString("content");
 	            java.sql.Date writedate=rs.getDate("writedate");
 	            int ref=rs.getInt("ref");
 	            int lev=rs.getInt("lev");
 	            
-	            VocDTO dto = new VocDTO(idx,writer,pwd,subject,content,writedate,ref,lev,turn);
+	            VocDTO dto = new VocDTO(idx,writer,subject,content,writedate,ref,lev,turn);
 	            arr.add(dto);
 	            turn ++; 
 	         }
@@ -554,13 +542,14 @@ public class VocDAO {
 		         conn = semi.db.SemiDb.getConn();
 		         
 		         int ref=getRefMax();
-		         String sql = "insert into voc_tb values(voc_idx_sq.nextval,?,?,?,?,sysdate,?,0,0)";
+		         String sql = "insert into voc_tb values(voc_idx_sq.nextval,?,?,?,sysdate,?,0,0)";
 		         ps = conn.prepareStatement(sql);
 		         ps.setString(1, dto.getWriter());
-		         ps.setString(2, dto.getPwd());
-		         ps.setString(3, dto.getTitle());
-		         ps.setString(4, dto.getContent());
-		         ps.setInt(5, ref+1);
+		  
+
+		         ps.setString(2, dto.getTitle());
+		         ps.setString(3, dto.getContent());
+		         ps.setInt(4, ref+1);
 //		         System.out.println("3");
 		         int count = ps.executeUpdate();
 //		         System.out.println("count = "+count);

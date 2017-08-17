@@ -50,7 +50,7 @@
    
    <%
       }
-   %>  <a href="/semi/voc/vocList.jsp">고객센터</a>
+   %>  <a href="/semi/voc/findMyVoc.jsp">고객센터</a>
       </div>
    </div>
 </header>
