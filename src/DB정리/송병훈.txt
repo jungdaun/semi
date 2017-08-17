@@ -19,6 +19,7 @@ ask varchar2(100),
 ans varchar2(40),
 email varchar2(40),
 id varchar2(10)
+store_idx number(4) 
 )
 
 create sequence customer_idx
@@ -28,8 +29,8 @@ create sequence ceo_idx
 minvalue 0 start with 1;
 
 
-insert into customer values(customer_idx.nextval, '¼Ûº´ÈÆ', '11111111a', '³» º¸¹° 1È£´Â?', 'ÀÌ¹Î±â', 'nokcha90', '¼­¿ï½Ã/Áß¶û±¸/¹¬µ¿', '299-1', 'nokcha90@naver.com', '010-3896-2833')
+insert into customer values(customer_idx.nextval, 'ï¿½Ûºï¿½ï¿½ï¿½', '11111111a', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 1È£ï¿½ï¿½?', 'ï¿½Ì¹Î±ï¿½', 'nokcha90', 'ï¿½ï¿½ï¿½ï¿½ï¿½/ï¿½ß¶ï¿½ï¿½ï¿½/ï¿½ï¿½ï¿½ï¿½', '299-1', 'nokcha90@naver.com', '010-3896-2833')
 
-insert into ceo values(ceo_idx.nextval, '°ü¸®ÀÚ', '11111111a', '³» º¸¹° 1È£´Â?', 'ÀÌ¹Î±â', 'nokcha90@naver.com', 'admin')
+insert into ceo values(ceo_idx.nextval, 'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½', '11111111a', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 1È£ï¿½ï¿½?', 'ï¿½Ì¹Î±ï¿½', 'nokcha90@naver.com', 'admin')
 
-insert into ceo values(ceo_idx.nextval, 'Ä¡Å²', '11111111a', '³» º¸¹° 1È£´Â?', '¼Û¹Î±â', 'nokcha90@naver.com', 'ceo')
+insert into ceo values(ceo_idx.nextval, 'Ä¡Å²', '11111111a', 'ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 1È£ï¿½ï¿½?', 'ï¿½Û¹Î±ï¿½', 'nokcha90@naver.com', 'ceo')

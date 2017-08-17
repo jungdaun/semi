@@ -6,14 +6,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="css/mainLayout.css">
-<style>
-#find button{
-}
-</style>
+
 </head>    
 
-<body>
+<body onload = "check()">
 <%@include file="header.jsp"%>
+
+<script>
+function check() {
+	var tt = '사장';
+	var tt2 = '<%=stype%>';
+	window.alert(tt);
+	window.alert(tt2);
+	if(tt == tt2) {
+		location.href = '/semi/index_ceo.jsp';
+	}
+}
+</script>
 		<div id="bodywrap">
 			<div id="maintitle">
 				<div id="maintitle1"><a href="/semi/notice/noticeList.jsp"><img src="img/notice.jpg" style="width:450px; height:200px;"></a></div>
@@ -36,5 +45,3 @@
 <%@include file="footer.jsp"%>
 </body>
 </html>
-
-<!--  -->
