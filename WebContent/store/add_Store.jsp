@@ -14,27 +14,15 @@
 	
 	function aa() {
 
-		var a = document.join.password.value;
-		var b = document.join.pwd2.value;
+		var open1 = document.join.ampm.value;
+		var open2 = document.join.hour.value;
+		var open3 = document.join.minute.value;
 		
+		var open = open1+open2+open3;
 		
-		var tel1 = document.join.tel1.value;
-		var tel2 = document.join.tel2.value;
-		var tel3 = document.join.tel3.value;
+		window.alert(open);
+		/* join.submit(); */
 		
-		var email1= document.join.email1.value;
-		var email2 = document.join.email2.value;
-
-
-		if (a == b) {
-			
-			document.join.tel.value = tel1+tel2+tel3;
-			document.join.email.value = email1 + "@" + email2;
-			
-			join.submit();
-		} else {
-			window.alert('비밀번호와 비밀번호확인 값이 다릅니다.');
-		}
 
 	}
 
@@ -52,15 +40,17 @@
 
             <tr>
                <th>이름</th>
-               <td><input type="text" name="name" required="required" size="27"></td>
+               <td><input type="text" name="store_name" required="required" size="27"></td>
             </tr>
             
             <tr>
             	<th>음식 종류</th>
-            	<td><select name="what">
-                     <option value="chicken">chicken</option>
-                     <option value="011">011</option>
-                     <option value="017">017</option>
+            	<td><select name="store_type">
+                     <option value="chicken">치킨</option>
+                     <option value="pizza">피자</option>
+                     <option value="meat">족발/보쌈</option>
+                     <option value="etc">야식</option>
+                     <option value="bread">빵</option>
                </select></td>
             </tr>
 
@@ -72,8 +62,66 @@
                      <option value="017">017</option>
                </select> - <input type="text" name="tel2" size="4" maxlength="4" required="required"> -
                   <input type="text" name="tel3" size="4" maxlength="4" required="required">
-                  <input type="hidden" name="tel">
+                  <input type="hidden" name="store_phone">
                   </td>
+            </tr>
+            
+            <tr>
+            	<th>가게 오픈 시간</th>
+            	<td>
+            	<select name="ampm">
+                     <option value="am">오전</option>
+                     <option value="pm">오후</option>
+               </select>
+               <select name="hour">
+                     <option value="01">1</option>
+                     <option value="02">2</option>
+                     <option value="03">3</option>
+                     <option value="04">4</option>
+                     <option value="05">5</option>
+                     <option value="06">6</option>
+                     <option value="07">7</option>
+                     <option value="08">8</option>
+                     <option value="09">9</option>
+                     <option value="10">10</option>
+                     <option value="11">11</option>
+                     <option value="12">12</option>
+               </select>
+               <select name="minute">
+                     <option value="00">00</option>
+                     <option value="30">30</option>
+               </select>
+               <input type = "hidden" name = "open_time">
+            	</td>
+            </tr>
+            
+             <tr>
+            	<th>가게 닫는 시간</th>
+            	<td>
+            	<select name="ampm2">
+                     <option value="am">오전</option>
+                     <option value="pm">오후</option>
+               </select>
+               <select name="hour2">
+                     <option value="01">1</option>
+                     <option value="02">2</option>
+                     <option value="03">3</option>
+                     <option value="04">4</option>
+                     <option value="05">5</option>
+                     <option value="06">6</option>
+                     <option value="07">7</option>
+                     <option value="08">8</option>
+                     <option value="09">9</option>
+                     <option value="10">10</option>
+                     <option value="11">11</option>
+                     <option value="12">12</option>
+               </select>
+               <select name="minute2">
+                     <option value="00">00</option>
+                     <option value="30">30</option>
+               </select>
+               <input type = "hidden" name = "close_time">
+            	</td>
             </tr>
 
             <tr>
