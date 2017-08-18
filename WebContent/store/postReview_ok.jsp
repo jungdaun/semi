@@ -1,5 +1,13 @@
+<%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%request.setCharacterEncoding("utf-8");%>
+<%@ page import="semi.review.*" %>
+<jsp:useBean id="rdto" class="semi.review.ReviewDTO"/>
+<jsp:useBean id="rdao" class="semi.review.ReviewDAO"/>
+<jsp:setProperty property="*" name="rdto"/>
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,19 +27,32 @@ thead td{
 </style>
 </head>
 <%
+//String c_name = (String) session.getAttribute("sname");
 //Integer c_idx = (Integer) session.getAttribute("c_idx");
+String store_idx_s=request.getParameter("store_idx");
+int store_idx = Integer.parseInt(store_idx_s);
+String store_type= request.getParameter("store_type");
+
+String c_name="kh";
 Integer c_idx = (Integer)2;
+
+String picture = store_idx_s + c_name;
+Calendar cal = Calendar.getInstance();
+int date = cal.get(Calendar.YEAR) + cal.get(Calendar.MONTH) + cal.get(Calendar.DATE);
 %>
 <body>
-   <table>
+	<form name="post_review" action="postReview_ok_ok.jsp">
+	
+    <table>
+  
       <thead>
       <tr>
-         <th>ID</th> <td><%= c_idx%></td>
+         <th>Name</th> <td><%= c_name%></td>
          <th>Password</th> <td><input type="password" value="4자리 숫자 입력" name="pwd"></td>
       </tr>
       <tr>
          <th>별점주기</th>
-         <td><select name="start">
+         <td><select name="score">
          <% for(int i=1; i<6; i++){%>
             <option value="<%=i%>"><%=i %></option>
          <%}
@@ -57,7 +78,11 @@ Integer c_idx = (Integer)2;
             <td colspan="2" align="center"><input type="submit" value="등록"></td>
          </tr>
       </tfoot>
+      
    </table>
+   <input type="hidden" name="picture" value="<%=picture%>">
+   <input type="hidden" name="date" value="<%=date%>">  
+   </form>
 
 </body>
 </html>

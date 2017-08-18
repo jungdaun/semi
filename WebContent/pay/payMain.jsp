@@ -43,7 +43,7 @@ System.out.println (store_idx);
 System.out.println (c_idx);
 System.out.println (order_idx);
 
-ArrayList <CartDTO> cartDtos = ctdao.myCartList(order_idx);
+ArrayList <CartDTO> cartDtos = ctdao.myCartList(order_idx, store_idx);
 
 
 //String sid = "고객1";
@@ -224,7 +224,7 @@ width: 550px;
 	
 	
 	
-	<table class="order">
+	<table>
 	<tr>
 		<th>메뉴</th>
 		<th>수량</th>
@@ -323,7 +323,7 @@ width: 550px;
 		<th>쿠폰</th>
 		<td><input type="text" name="user_coupon" readonly="readonly" ><!--   -->
 
-	<a href="" onclick="window.open ('selectCoupon.jsp?tp=<%=tempPrice%>', 'selectCoupon', 'height=450, width=450')">쿠폰 선택</a>
+	<a href="" onclick="window.open ('selectCoupon.jsp?tp=<%=tempPrice%>', 'selectCoupon', 'height=450, width=500')">쿠폰 선택</a>
 		</td>
 		
 	</tr>

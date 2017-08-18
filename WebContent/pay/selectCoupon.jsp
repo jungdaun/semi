@@ -44,6 +44,10 @@ String sid =(String)session.getAttribute("sid");
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
+
+
+a:visited {text-decoration: none; color: gray; }
+
 body {
 	background-image:  url("/semi/img/pay/bg.jpg");
 
@@ -57,13 +61,46 @@ body {
 
 }
 
+h2{
+text-align: center;
+color: #E86274;
+
+}
+
+ table
+{
+
+ border-collapse:collapse;
+background-color: rgba( 255, 255, 255, 0.2 )
+
+}
+
+
+ table th {
+
+	
+	color: white;
+	background-color:  rgba( 255, 255, 255, 0.2 );
+	
+	border-left: 1px solid white;
+	
+	/* border-bottom: 2px double white; */
+}
+
+table td {
+		border-left: 1px solid white;
+		color: white;
+	
+}
+
+
 </style>
 
 
 </head>
 <body>
 
-<h2>[<%=sname%>]의 쿠폰 </h2>
+<h2 >[<%=sname%>]님의 쿠폰 </h2>
 		<%
 		
 		ArrayList<CouponDTO> dtos= cdao.myCouponList(sid);
@@ -82,7 +119,7 @@ body {
 				
 				
 				%>
-				<table border="1" cellspacing ="0" style="border: 1px solid black; border-collapse: collapse; margin-bottom: 3px">
+				<table >
 					
 						<tr>	<th>쿠폰번호</th>
 								<th>쿠폰이름 </th> 
@@ -92,7 +129,8 @@ body {
 								<%
 								if (dtos.get(i).getIs_used()!=1 ){
 									%>
-									<td rowspan="2"><a href="selectCoupon_ok.jsp?tp=<%=tempPrice%>&cIdx=<%=dtos.get(i).getCoupon_idx()%>">사용하기</a></td>
+									<td rowspan="2"><a href="selectCoupon_ok.jsp?tp=<%=tempPrice%>&cIdx=<%=dtos.get(i).getCoupon_idx()%>">
+									<font color=pink><b>사용하기</b></font></a></td>
 								
 									<%
 								}
@@ -140,13 +178,16 @@ body {
 	
 					
 				</table>
+				<br>
 			
 		<%
 			}
 		}
 		%>
 		
-		<h4><a href="selectCoupon_ok.jsp?tp=<%=tempPrice%>&cIdx=0">[취소]</a></h4>
+		<h4 style="text-align: right;"><a href="selectCoupon_ok.jsp?tp=<%=tempPrice%>&cIdx=0">
+		
+		<font color="white">[취소]</font></a></h4>
 
 </body>
 </html>

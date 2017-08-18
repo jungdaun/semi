@@ -1,6 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("utf-8");%>
+<%@ page import="semi.review.*" %>
+<jsp:useBean id="rdto" class="semi.review.ReviewDTO"/>
+<jsp:useBean id="rdao" class="semi.review.ReviewDAO"/>
+<jsp:setProperty property="*" name="rdto"/>
 
 <!DOCTYPE html>
 <html>
@@ -8,12 +12,93 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/mainLayout.css">
-<%
+<style>
+.rev {
+	font-family: 'Quattrocento', Arial, sans-serif;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 230px;
+  max-width: 315px;
+  width: 100%;
+  color: #141414;
+  text-align: left;
+  line-height: 1.4em;
+  font-size: 16px;
+}
+.rev *{
+	-webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
 
+}
+
+.rev img{
+	max-width: 100%;
+  vertical-align: top;
+
+}
+
+.rev figcaption{
+	position: absolute;
+  top: calc(77%);
+  width: 100%;
+  background-color: #ffffff;
+  padding: 15px 25px 65px;
+}
+
+.rev figcaption:before{
+	 position: absolute;
+  content: '';
+  z-index: 2;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-image: -webkit-linear-gradient(top, transparent 0%, #ffffff 100%);
+  background-image: linear-gradient(to bottom, transparent 0%, #ffffff 100%);
+}
+
+.rev h3 ,.rev p{
+margin: 0 0 10px;
+}
+.rev h3{
+	font-weight: 300;
+  font-size: 1.4em;
+  line-height: 1.2em;
+  font-family: 'Oswald', Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+.rev p{
+	font-size: 0.9em;
+  letter-spacing: 1px;
+  opacity: 0.9;
+
+}
+
+.rev a{
+	position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+
+}
+
+
+</style>
+<%
+//String c_name = (String) session.getAttribute("sname");
 String store_idx_s=request.getParameter("store_idx");
 int store_idx = Integer.parseInt(store_idx_s);
 String store_type= request.getParameter("store_type");
 String c_sub_s = request.getParameter("c_sub_s");
+
+String c_name = "kh";
 %>
 <style>
 thead th{
@@ -28,7 +113,7 @@ thead td{
 <script>
 function post(){
    
-   window.open("postReview_ok.jsp", "글 쓰기", "width=410px, height=400px;");
+   window.open("postReview_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>", "글 쓰기", "width=410px, height=400px;");
    
    
    //넘겨줄 값 같이 넘겨주기
@@ -64,25 +149,39 @@ function post(){
 
    <h4><input type="button" name="post" value="글쓰기" onclick="post()" style="float: right;"></h4>
 
-   <table border="1" width="450" cellspacing="0" align="center">
+   <!-- table border="1" width="450" cellspacing="0" align="center">
       <thead>
       <tr>
          <th>ID</th><td></td>
          <th>평점</th><td></td>
       </tr>
       <tr>
-         <th>Date</th><td></td>
-         <th>Date</th><td></td>
+         <th>Date</th><td colspan="3"></td>  
       </tr>
       </thead>
       
       <tbody>
-         <td colspan="3" style="color:black; background-color: white; word-break:break-all">
+      <tr>
+         <td colspan="3" style="color:black; background-color: white; word-break:break-all;">
          &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
          </td>
-         <td>사진 있을 경우 사진</td>
+         <td>사진 있을 경우 사진</td></tr>
       </tbody>
-   </table>
+      
+   </table-->
+   
+   <figure class="rev">
+   <%
+   String r_picture = 
+   %>
+   	<img src="../img/review/<%=store_idx%>_<%=c_name %>.png" />
+   	<figcaption>
+   		<h3>10자 정도</h3>
+   		<p>나머지 후기들!!!!!</p>
+   	</figcaption>
+   	<a href="#"></a>
+   </figure>
+   
    </article>
    
    </div>

@@ -21,21 +21,159 @@ public class OrderDAO {
 	
 	
 	
-	public int makeOrderIdx (){
+	public int getOrderIdx (int sIdx, int mIdx ){
+
+		   try {
+			    conn = semi.db.SemiDb.getConn();
+		 
+			    String sql = "select max (order_idx) from cart where store_idx = ? and customer_idx = ? and finish = 0 "; 
+			    
+
+			    ps=conn.prepareStatement(sql);
+			    
+			    ps.setInt(1, sIdx);
+			    ps.setInt(2,mIdx);
+			    rs= ps.executeQuery(); 
+			 //   ps.setInt(1, oIdx);
+	    
+
+			
+			    
+			    rs.next();
+			    return rs.getInt(1)
+;
+			    
+			    
+		} catch (Exception e) {
+			e.printStackTrace( );
+			return -1; 
+			// TODO: handle exception
+		}finally {
+			try {
+				
+				if(rs!=null)rs.close();
+	            if(ps!=null) ps.close();
+	            if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	   
+	}
+	
+	public boolean hasOIdx (int sIdx,int mIdx  ){
+		
+
+		   try {
+			    conn = semi.db.SemiDb.getConn();
+		 
+			    String sql = "select max (order_idx) from cart where store_idx = ? and customer_idx = ? and finish = 0 "; 
+			    
+
+			    ps=conn.prepareStatement(sql);
+			    
+			    ps.setInt(1, sIdx);
+			    ps.setInt(2,mIdx);
+			    rs= ps.executeQuery(); 
+			 //   ps.setInt(1, oIdx);
+	    
+
+			
+			    
+			    rs.next();
+			    
+			    if (rs.getInt(1) > 0 ){
+			    	System.out.println(rs.getInt(1));
+			    	return true; 
+			    }
+			    
+			    else {
+			    	return false; 
+			    }
+			    
+			    
+		} catch (Exception e) {
+			e.printStackTrace( );
+			return false; 
+			// TODO: handle exception
+		}finally {
+			try {
+				
+				if(rs!=null)rs.close();
+	            if(ps!=null) ps.close();
+	            if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	   
+		
+	}
+	
+
+	
+	public String getStoreName ( ){
 	
 		   try {
 			    conn = semi.db.SemiDb.getConn();
 		 
-			    String sql = "select max(order_idx) from order_tb "; 
+			    String sql = "select store_name from store where store_idx = ? "; 
 			    
 
 			    ps=conn.prepareStatement(sql);
+			    
+		//	    ps.setInt(1, sIdx);
 			    rs= ps.executeQuery(); 
 			 //   ps.setInt(1, oIdx);
 	    
 			    
 			 if (   rs.next()) {
-			return  rs.getInt(1);
+			return  rs.getString(1);
+			
+			 	 
+			 }
+			    
+			 else {
+				 return null; 
+			 }
+		} catch (Exception e) {
+			e.printStackTrace( );
+			return null; 
+			// TODO: handle exception
+		}finally {
+			try {
+				
+				if(rs!=null)rs.close();
+	            if(ps!=null) ps.close();
+	            if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	   
+		
+	}
+	public int makeOrderIdx ( ){
+		
+		   try {
+			    conn = semi.db.SemiDb.getConn();
+		 
+			    String sql = "select max(order_idx) from cart ";
+			    
+			    	 
+			    
+
+			    ps=conn.prepareStatement(sql);
+		
+//			    ps.setInt(1, sIdx);
+//			    ps.setInt(2, mIdx);
+			    
+			    rs= ps.executeQuery(); 
+			 //   ps.setInt(1, oIdx);
+	    
+			    
+			 if (   rs.next()) {
+			return rs.getInt(1);
 			 	 
 			 }
 			    

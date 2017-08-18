@@ -17,6 +17,8 @@
 <jsp:useBean id="sdto" class="semi.store.StoreDTO"></jsp:useBean>
 <jsp:setProperty property="*" name="sdto"/>
 
+<jsp:useBean id="mdao" class="semi.member.MemberDAO"></jsp:useBean>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -128,8 +130,11 @@ ArrayList<FoodDTO> arr = fdao.showStore(store_idx);
     <article>
    <%
    //Integer c_idx = (Integer) session.getAttribute("c_idx");
-   Integer c_idx = (Integer)2;
-   ArrayList<CartDTO> brr = cdao.showData(store_idx, c_idx);   
+  // Integer c_idx = (Integer)2;
+  int c_idx =  mdao.getMemIdx(sid);
+  
+  
+  ArrayList<CartDTO> brr = cdao.showData(store_idx, c_idx);   
    %>
          <fieldset style="background-color: #BF0920; color: white; font-size: 30px; line-height: 40%;">장바구니</fieldset>
          <table>
