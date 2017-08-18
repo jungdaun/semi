@@ -67,10 +67,10 @@ notice_date date
 )
 
 
-insert into notice values(notice_idx_sq.nextval, '관리자', '제목1', '내용내용', sysdate ) 
-insert into notice values(notice_idx_sq.nextval, '관리자', '제목2', '내용내용', sysdate )
-insert into notice values(notice_idx_sq.nextval, '관리자', '제목3', '내용내용', sysdate )
-insert into notice values(notice_idx_sq.nextval, '관리자', '제목4', '내용내용', sysdate )
+insert into notice values(notice_notice_idx.nextval, '관리자', '제목1', '내용내용', sysdate ) 
+insert into notice values(notice_notice_idx.nextval, '관리자', '제목2', '내용내용', sysdate )
+insert into notice values(notice_notice_idx.nextval, '관리자', '제목3', '내용내용', sysdate )
+insert into notice values(notice_notice_idx.nextval, '관리자', '제목4', '내용내용', sysdate )
 */
 
 

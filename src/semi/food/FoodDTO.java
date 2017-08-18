@@ -68,7 +68,7 @@ public class FoodDTO {
 	food_name varchar2(10),
 	food_type varchar2(10),
 	food_price number(5),
-	food_info varchar2(20),
+	food_info varchar2(20)
 )
 
 

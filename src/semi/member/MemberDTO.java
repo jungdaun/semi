@@ -221,13 +221,13 @@ ask varchar2(100),
 ans varchar2(40),
 email varchar2(40),
 id varchar2(10)
-store_idx number(4) 
+store_idx number(4) //오류!!!!!이름 살짝 바껴야 할듯
 )
 
-create sequence customer_idx
+create sequence customer_my_idx
 minvalue 0 start with 1;
 
-create sequence ceo_idx
+create sequence ceo_my_idx
 minvalue 0 start with 1;
 
 
