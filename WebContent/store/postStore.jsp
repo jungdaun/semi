@@ -63,7 +63,7 @@ else{
             <td style="padding:13px;">
             <div style="background-color: black;">
             <a href="postFood.jsp?store_idx=<%=arr.get(count).getStore_idx()%>&store_type=<%=store_type%>&c_sub_s=<%=c_sub_s %>" style="text-decoration:none;">         
-               <img src="../img/store/<%=arr.get(count).getStore_name()%>.png" style="width:110px; height:128px"/>
+               <img src="<%=arr.get(count).getStore_image()%>" style="width:110px; height:128px"/>
             </div>
     
             <div style="background-color: #2F4038; color:white; font-size: 17px;">

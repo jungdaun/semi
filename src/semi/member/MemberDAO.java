@@ -240,16 +240,20 @@ public class MemberDAO {
 		}
 	}
 	
-	public String getCeoInfo(String userid) {
+	public String[] getCeoInfo(String userid) {
 
 		try {
 			conn = semi.db.SemiDb.getConn();
-			String sql = "select name from ceo where id = ?";
+			String sql = "select name, my_idx from ceo where id = ?";
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, userid);
 			rs = ps.executeQuery();
+			String[] arr = new String[2];
 			rs.next();
-			return rs.getString(1);
+			arr[0] = rs.getString("name");
+			arr[1] = rs.getString("my_idx");
+			
+			return arr;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

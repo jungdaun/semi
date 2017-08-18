@@ -76,9 +76,10 @@
 		int result = mdao.loginceoCheck(userid, userpwd);
 
 		if (result == mdao.LOGIN_OK) {
-			String username = mdao.getCeoInfo(userid);
+			String[] arr = mdao.getCeoInfo(userid);
 			session.setAttribute("sid", userid);
-			session.setAttribute("sname", username);
+			session.setAttribute("sname", arr[0]);
+			session.setAttribute("cstore", arr[1]);
 			session.setAttribute("stype", type);
 
 			if (saveid != null) {
@@ -98,7 +99,7 @@
 			}
 %>
 <script>
-		window.alert('<%=username%>님 환영합니다.');
+		window.alert('<%=arr[0]%>님 환영합니다.');
 	opener.location.reload();
 	window.self.close();
 </script>

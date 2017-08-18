@@ -9,7 +9,7 @@
 <style>
 h1 {
    text-align: center;
-   color: black;
+   color: white;
 }
 #maintable{
 margin: 0px auto;
@@ -65,7 +65,6 @@ text-align: center;
 	}
 	
 	function selectEmail() {
-		window.alert('a');
 		if(document.join.email3.value!="0") {
 			document.join.email2.value = document.join.email3.value;
 			document.join.email2.readOnly = true;

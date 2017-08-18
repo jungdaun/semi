@@ -7,17 +7,19 @@ public class StoreDTO {
 	private String store_type;
 	private String store_name;
 	private String store_addr;
+	private String store_addr2;
 	private String store_phone;
-	private Date open_time;
-	private Date close_time;
+	private String open_time;
+	private String close_time;
 	private int lowest_price;
 	private int review_num; 
 	private int sale_num;
 	private int score_num; 
+	private String store_image;
 	
 	public StoreDTO() {}
 	
-	public StoreDTO(int store_idx, String store_name, String store_addr, int review_num, int sale_num, int score_num) {
+	public StoreDTO(int store_idx, String store_name, String store_addr, int review_num, int sale_num, int score_num, String open_time, String close_time, String store_image) {
 		super();
 		this.store_idx = store_idx;
 		this.store_name = store_name;
@@ -25,6 +27,32 @@ public class StoreDTO {
 		this.review_num = review_num;
 		this.sale_num = sale_num;
 		this.score_num = score_num;
+		this.open_time = open_time;
+		this.close_time = close_time;
+		this.store_image = store_image;
+	}
+	
+	
+	
+	
+
+	public StoreDTO(int store_idx, String store_type, String store_name, String store_addr, String store_addr2,
+			String store_phone, String open_time, String close_time, int lowest_price, int review_num, int sale_num,
+			int score_num, String store_image) {
+		super();
+		this.store_idx = store_idx;
+		this.store_type = store_type;
+		this.store_name = store_name;
+		this.store_addr = store_addr;
+		this.store_addr2 = store_addr2;
+		this.store_phone = store_phone;
+		this.open_time = open_time;
+		this.close_time = close_time;
+		this.lowest_price = lowest_price;
+		this.review_num = review_num;
+		this.sale_num = sale_num;
+		this.score_num = score_num;
+		this.store_image = store_image;
 	}
 
 	public int getStore_idx() {
@@ -67,20 +95,38 @@ public class StoreDTO {
 		this.store_phone = store_phone;
 	}
 
-	public Date getOpen_time() {
+
+
+	public String getStore_addr2() {
+		return store_addr2;
+	}
+
+	public void setStore_addr2(String store_addr2) {
+		this.store_addr2 = store_addr2;
+	}
+
+	public String getOpen_time() {
 		return open_time;
 	}
 
-	public void setOpen_time(Date open_time) {
+	public void setOpen_time(String open_time) {
 		this.open_time = open_time;
 	}
 
-	public Date getClose_time() {
+	public String getClose_time() {
 		return close_time;
 	}
 
-	public void setClose_time(Date close_time) {
+	public void setClose_time(String close_time) {
 		this.close_time = close_time;
+	}
+
+	public String getStore_image() {
+		return store_image;
+	}
+
+	public void setStore_image(String store_image) {
+		this.store_image = store_image;
 	}
 
 	public int getLowest_price() {
