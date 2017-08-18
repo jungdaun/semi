@@ -16,40 +16,18 @@
 
 
 <%
-
-
-
 String sIdxs = request.getParameter("sIdx");
-
-
 int store_idx = Integer.parseInt(sIdxs);
-
 String cIdxs = request.getParameter("cIdx");
-
 int c_idx =Integer.parseInt(cIdxs);
-
 String oIdxs =request.getParameter("oIdx");
-
 int order_idx =Integer.parseInt(oIdxs);
-
-
 int res =odao.addOrderIdx(store_idx, order_idx, c_idx);
-
-
-
-
-
 System.out.println (store_idx);
 System.out.println (c_idx);
 System.out.println (order_idx);
-
 ArrayList <CartDTO> cartDtos = ctdao.myCartList(order_idx, store_idx);
-
-
 //String sid = "고객1";
-
-
-
 %>
 
 <!DOCTYPE html>
@@ -72,7 +50,6 @@ ArrayList <CartDTO> cartDtos = ctdao.myCartList(order_idx, store_idx);
 		
 		
 	}
-
 </script>
 
 
@@ -81,14 +58,10 @@ ArrayList <CartDTO> cartDtos = ctdao.myCartList(order_idx, store_idx);
  h2{
 text-align: left
 ;
-
 color: #E86274; 
 }
-
 h1{text-align: center; color: white;}
 fieldset h4{text-align: center; color: white;}
-
-
 /*
 fieldset table {
     border-collapse: separate;
@@ -124,17 +97,13 @@ width: 600px ;
  border-collapse:collapse;
 background-color: rgba( 255, 255, 255, 0.2 )
 }
-
-
 fieldset table th {
 	
-
 	/*
 	border-bottom: 2px dotted white;
 border-left: 2px solid white;
 border-right: 2px solid white;
 border-top: 2px solid white;
-
 */
 	
 	color: white;
@@ -142,20 +111,15 @@ border-top: 2px solid white;
 	
 	/* border-bottom: 2px double white; */
 }
-
-
 fieldset table td{
-
 	/*
 border-bottom: 2px solid white;
 border-left: 2px solid white;
 border-right: 2px solid white;
 border-top: 2px solid white;
-
 */
 	
 }
-
 input { 
 color:white;
  
@@ -164,23 +128,16 @@ color:white;
  text-align: center;
 	
 }
-
-
 .del table{
 width: 550px; 
-
 }
-
 .del th {
 	border-bottom: 1px dotted white;
-
 }
 .del td {
 	border-bottom: 1px dotted white;
 	text-align: left;
-
 }
-
 .del input {
 	color:black;
  

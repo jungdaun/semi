@@ -36,7 +36,7 @@ if (odao.hasOIdx(store_idx, c_idx)){
 	
 }
 
-System.out.println(oIdx);
+//System.out.println(oIdx);
 
 
 
@@ -118,6 +118,11 @@ function del(obj){
             <tr>
                <td><input type="button" value="삭제" onclick="del('chk[]')"></td>
                <td colspan="3" align="center"><input type="button" value="맨 위로" ></td>
+               
+               <%
+               System.out.println ("cart.jsp "+oIdx +" "+store_idx+" "+c_idx);
+               
+               %>
                <td align="center"><input type="button" value="결제하기" onclick="location.href = '/semi/pay/payMain.jsp?oIdx=<%=oIdx %>&sIdx=<%=store_idx %>&cIdx=<%=c_idx %>' " ></td>
             </tr>
          <% }%>

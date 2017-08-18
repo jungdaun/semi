@@ -112,7 +112,7 @@ public class OrderDAO {
 	
 
 	
-	public String getStoreName ( ){
+	public String getStoreName ( int sIdx ){
 	
 		   try {
 			    conn = semi.db.SemiDb.getConn();
@@ -122,7 +122,7 @@ public class OrderDAO {
 
 			    ps=conn.prepareStatement(sql);
 			    
-		//	    ps.setInt(1, sIdx);
+			    ps.setInt(1, sIdx);
 			    rs= ps.executeQuery(); 
 			 //   ps.setInt(1, oIdx);
 	    

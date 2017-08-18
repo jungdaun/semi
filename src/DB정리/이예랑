@@ -1,0 +1,142 @@
+create table notice (
+notice_idx number primary key, 
+notice_writer varchar2(10), 
+notice_title varchar2(100), 
+notice_content varchar2(4000), 
+notice_date date
+
+)
+
+
+insert into notice values(
+notice_idx_sq.nextval, 
+'관리자', 
+'제목1', 
+'내용내용', 
+sysdate
+
+
+) 
+insert into notice values(
+notice_idx_sq.nextval, 
+'관리자', 
+'제목2', 
+'내용내용', 
+sysdate
+
+
+)
+insert into notice values(
+notice_idx_sq.nextval, 
+'관리자', 
+'제목3', 
+'내용내용', 
+sysdate
+
+
+)
+insert into notice values(
+notice_idx_sq.nextval, 
+'관리자', 
+'제목4', 
+'내용내용', 
+sysdate
+
+
+)
+-----------------------------------
+create table voc_tb (
+voc_idx number primary key , 
+writer varchar2(10),
+title varchar2(100),
+content varchar2(4000),
+writedate date,
+ref number, 
+lev number , 
+turn number
+)
+
+
+create sequence voc_idx_sq
+start with 1
+
+
+
+
+------------------------------------------------
+create table user_coupon (
+user_coupon_idx number primary key, 
+mem_idx number, 
+coupon_idx number, 
+isused number (1)
+
+)
+
+create sequence user_coupon_idx_sq
+start with 1
+
+-------------------------------------
+create table coupon (
+coupon_idx number primary key, 
+coupon_name varchar2(20), 
+coupon_food_type  varchar2(20), 
+coupon_value number, 
+
+coupon_start date, 
+coupon_end varchar2(10), 
+coupon_type number(1)
+
+)
+
+create sequence coupon_sq
+start with 1 
+
+
+insert into coupon values (
+coupon_sq.nextval, 
+'cp1', 
+'chicken', 
+5000, 
+to_date ('20170818', 'yyyymmdd'), 
+'2017-09-01', 
+1
+
+)
+
+insert into coupon values (
+coupon_sq.nextval, 
+'cp2', 
+'chicken', 
+50, 
+to_date ('20170818', 'yyyymmdd'), 
+'2017-09-01', 
+2
+
+)
+
+------------------------------------------
+
+
+
+create table order_tb (
+order_idx number primary key , 
+store_idx number, 
+mem_idx number, 
+price number , 
+
+
+user_coupon number, 
+memo varchar2 (40), 
+
+
+order_date date, 
+finish number, 
+
+final_price number, 
+pay_type number ,  
+c_name varchar2(10),
+c_tel varchar2 (15),
+c_addr varchar2(50)
+
+
+)
