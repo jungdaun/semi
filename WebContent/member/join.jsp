@@ -11,20 +11,6 @@ h1 {
    text-align: center;
    color: black;
 }
-
-body {
-   height: 100%;
-   min-height: 100%;
-   background: #ececee;
-   text-align: center;
-}
-#table1{
-background-color: white;
-display: inline-block;
-height: 100em;
-width: 50em;
-border-spacing: 10px;
-}
 #maintable{
 margin: 0px auto;
 }
@@ -98,11 +84,10 @@ text-align: center;
 <body>
 <%@include file="/header.jsp"%>
 <div id="bodywrap">
-<div id="table1">
 <div><img src ="img/badal.jpg"></div>
 <h1>배·민 회원가입</h1>
 <form action="join_ok.jsp" name="join" method="post">
-         <table id="maintable" style="background-color: #2F4038; color:white; font-size: 17px;">
+         <table id="maintable">
             <tr>
                <th>ID</th>
                <td><input type="text" name="id" 
@@ -183,7 +168,6 @@ text-align: center;
          </table>
       </form>
 </div>
-	</div>
 	<%@include file="/footer.jsp"%>
 </body>
 </html>
