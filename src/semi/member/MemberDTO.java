@@ -232,9 +232,7 @@ minvalue 0 start with 1;
 
 
 insert into customer values(customer_idx.nextval, '�ۺ���', '11111111a', '�� ���� 1ȣ��?', '�̹α�', 'nokcha90', '�����/�߶���/����', '299-1', 'nokcha90@naver.com', '010-3896-2833')
-
 insert into ceo values(ceo_idx.nextval, '������', '11111111a', '�� ���� 1ȣ��?', '�̹α�', 'nokcha90@naver.com', 'admin')
-
 insert into ceo values(ceo_idx.nextval, 'ġŲ', '11111111a', '�� ���� 1ȣ��?', '�۹α�', 'nokcha90@naver.com', 'ceo')
  */
 	
