@@ -16,6 +16,7 @@ public class StoreDAO {
    private ResultSet rs;   
    public StoreDAO() {}
 
+   /*여러 가게의 정보 select*/
    public ArrayList<StoreDTO> findStore(String type){
       
       try{
@@ -31,15 +32,19 @@ public class StoreDAO {
             int store_idx = rs.getInt("store_idx");
             String store_name = rs.getString("store_name");
             String store_addr = rs.getString("store_addr");
+            String store_addr2 = rs.getString("store_addr2");
+            String store_phone = rs.getString("store_phone");
+            String open_time = rs.getString("open_time");
+            String close_time = rs.getString("close_time");
+            int lowest_price = rs.getInt("lowest_price");
             int review_num = rs.getInt("review_num");
             int sale_num = rs.getInt("sale_num");
             int score_num = rs.getInt("score_num");
-           // String open_time = rs.getString("open_time");
-           // String close_time = rs.getString("close_time");
-           // String store_image = rs.getString("store_image");
+            String store_image = rs.getString("store_image");
             
-            StoreDTO dto = new StoreDTO(store_idx, store_name, store_addr, 
-                  review_num, sale_num, score_num);
+            
+            StoreDTO dto = new StoreDTO(store_idx, type, store_name, store_addr, store_addr2, 
+            		store_phone, open_time, close_time, lowest_price, review_num, sale_num, score_num, store_image);
             arr.add(dto);
          }
          return arr;

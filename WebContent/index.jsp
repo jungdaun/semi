@@ -32,12 +32,12 @@ function check() {
 			<div id="mainbody">
 				<div id="mainbody1"><a href="store/postStore.jsp?store_type=chicken"><img src="img/chicken.jpg" style="width:240px; height:200px;"></a></div>
 				
-				<div id="mainbody2"><img src="img/pizza.jpg" style="width:240px; height:200px;"></div>
-				<div id="mainbody3"><img src="img/jokbal.jpg" style="width:240px; height:200px;"></div>
+				<div id="mainbody2"><a href="store/postStore.jsp?store_type=pizza"><img src="img/pizza.jpg" style="width:240px; height:200px;"></a></div>
+				<div id="mainbody3"><a href="store/postStore.jsp?store_type=jokbal"><img src="img/jokbal.jpg" style="width:240px; height:200px;"></a></div>
 			</div>
 			<div id="mainbottom">
-				<div id="mainbottom1"><img src="img/dakbal.jpg" style="width:390px; height:195px;"></div>
-				<div id="mainbottom2"><img src="img/bbang.jpg" style="width:390px; height:195px;"></div>
+				<div id="mainbottom1"><a href="store/postStore.jsp?store_type=dakbal"><img src="img/dakbal.jpg" style="width:390px; height:195px;"></a></div>
+				<div id="mainbottom2"><a href="store/postStore.jsp?store_type=bbang"><img src="img/bbang.jpg" style="width:390px; height:195px;"></a></div>
 			</div>
 		</div>
 <%@include file="footer.jsp"%>
