@@ -15,6 +15,9 @@ function addstore() {
 function image() {
 	window.open('/semi/store/image.jsp', 'image', 'width=550, height=150');
 }
+function menumanager() {
+	
+}
 
 </script>
 </head>    
@@ -30,7 +33,9 @@ function image() {
 				wf.userFolderExixts();
 				wf.setCrpath(wf.getUserid());
 				%><h3>사진업로드</h3>
-				<input type = "button" value = "사진등록하기" onclick = "image()"><%
+				<input type = "button" value = "사진등록하기" onclick = "image()">
+				<input type = "button" value = "메뉴수정하기" onclick = "menumanager()">
+				<%
 			} else {
 				%><h3>등록된 가게가 없습니다.</h3>
 				<input type = "button" value = "등록하기" onclick = "addstore()"><%
