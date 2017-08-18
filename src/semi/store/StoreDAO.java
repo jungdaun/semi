@@ -87,7 +87,6 @@ public class StoreDAO {
 	         ps = conn.prepareStatement(sql);
 	         ps.setString(1, id);
 	         rs = ps.executeQuery();
-	         rs.next();
 	         
 	         if(rs.next()) {
 	        	 return rs.getString("my_idx");

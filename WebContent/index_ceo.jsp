@@ -20,7 +20,7 @@ function addstore() {
 			<%
 			String my_idx = sdao.get_myIdx(sid);
 			if(sdao.check_store(my_idx)) {
-				
+				System.out.print("가게가 있어");
 			} else {
 				%><h3>등록된 가게가 없습니다.</h3>
 				<input type = "button" value = "등록하기" onclick = "addstore()"><%

@@ -20,7 +20,21 @@
 		
 		var open = open1+open2+open3;
 		
-		window.alert(open);
+		document.join.open_time.value = open;
+		
+		var close1 = document.join.ampm2.value;
+		var close2 = document.join.hour2.value;
+		var close3 = document.join.minute2.value;
+		
+		var close = close1+close2+close3;
+		
+		var tel1 = document.join.tel1.value;
+		var tel2 = document.join.tel2.value;
+		var tel3 = document.join.tel3.value;
+		
+		document.join.store_phone.value = tel1+tel2+tel3;
+		
+		document.join.close_time.value = close;
 		/* join.submit(); */
 		
 
@@ -34,7 +48,7 @@
 <%@include file="/header.jsp"%>
 		<div id="bodywrap">
 			<h3>가게 기본 정보 입력하기</h3>
-			<form name = "join">
+			<form name = "join" action = "add_Store_ok.jsp">
 			<table id="maintable">
            
 
