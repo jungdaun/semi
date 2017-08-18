@@ -1,6 +1,3 @@
-
-
-
 package semi.notice;
 
 import java.sql.Date;
@@ -58,12 +55,22 @@ public NoticeDTO(int notice_idx, String notice_writer, String notice_title, Stri
 	this.notice_title = notice_title;
 	this.notice_content = notice_content;
 	this.notice_date = notice_date;
-}
-
-
-
-	
+}	
 	
 }
+/* create table notice (
+notice_idx number primary key, 
+notice_writer varchar2(10), 
+notice_title varchar2(100), 
+notice_content varchar2(4000), 
+notice_date date
+)
+
+
+insert into notice values(notice_idx_sq.nextval, '관리자', '제목1', '내용내용', sysdate ) 
+insert into notice values(notice_idx_sq.nextval, '관리자', '제목2', '내용내용', sysdate )
+insert into notice values(notice_idx_sq.nextval, '관리자', '제목3', '내용내용', sysdate )
+insert into notice values(notice_idx_sq.nextval, '관리자', '제목4', '내용내용', sysdate )
+*/
 
 

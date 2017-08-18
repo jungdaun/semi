@@ -112,15 +112,36 @@ public class CouponDTO {
 		this.coupon_end = coupon_end;
 		this.coupon_type = coupon_type;
 	
-	}
-
-
-	
-	
-	
-
-	
-	
-	
-	
+	}	
 }
+/*
+create table user_coupon (
+user_coupon_idx number primary key, 
+mem_idx number, 
+coupon_idx number, 
+isused number (1)
+
+)
+
+create sequence user_coupon_idx_sq
+start with 1
+
+------------------------------------------
+
+
+create table coupon (
+coupon_idx number primary key, 
+coupon_name varchar2(20), 
+coupon_food_type  varchar2(20), 
+coupon_value number, 
+coupon_start date, 
+coupon_end varchar2(10), 
+coupon_type number(1)
+)
+
+create sequence coupon_sq
+start with 1 
+
+insert into coupon values (coupon_sq.nextval, 'cp1', 'chicken', 5000, to_date ('20170818', 'yyyymmdd'), '2017-09-01', 1)
+insert into coupon values (coupon_sq.nextval, 'cp2', 'chicken', 50, to_date ('20170818', 'yyyymmdd'), '2017-09-01', 2 )
+*/

@@ -199,5 +199,42 @@ public class MemberDTO {
 	
 	
 }
-	
+
+/* create table customer(
+my_idx number(4) primary key,
+name  varchar2(10),
+password varchar2(12),
+ask varchar2(100),
+ans varchar2(40),
+id varchar2(10),    
+address varchar2(40),
+address2 varchar2(80),
+email varchar2(40),
+tel varchar2(15)
+)
+
+create table ceo(
+my_idx number(4) primary key,
+name varchar2(10),
+password varchar2(12),
+ask varchar2(100),
+ans varchar2(40),
+email varchar2(40),
+id varchar2(10)
+store_idx number(4) 
+)
+
+create sequence customer_idx
+minvalue 0 start with 1;
+
+create sequence ceo_idx
+minvalue 0 start with 1;
+
+
+insert into customer values(customer_idx.nextval, '�ۺ���', '11111111a', '�� ���� 1ȣ��?', '�̹α�', 'nokcha90', '�����/�߶���/����', '299-1', 'nokcha90@naver.com', '010-3896-2833')
+
+insert into ceo values(ceo_idx.nextval, '������', '11111111a', '�� ���� 1ȣ��?', '�̹α�', 'nokcha90@naver.com', 'admin')
+
+insert into ceo values(ceo_idx.nextval, 'ġŲ', '11111111a', '�� ���� 1ȣ��?', '�۹α�', 'nokcha90@naver.com', 'ceo')
+ */
 	

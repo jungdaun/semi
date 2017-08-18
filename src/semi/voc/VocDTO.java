@@ -76,11 +76,22 @@ public class VocDTO {
 		this.ref = ref;
 		this.lev = lev;
 		this.turn = turn;
-	}
-	
-	
-	
-	
-	
+	}	
 	
 }
+
+/* create table voc_tb (
+voc_idx number primary key , 
+writer varchar2(10),
+title varchar2(100),
+content varchar2(4000),
+writedate date,
+ref number, 
+lev number , 
+turn number
+)
+
+
+create sequence voc_idx_sq
+start with 1 
+*/

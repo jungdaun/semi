@@ -1,11 +1,6 @@
 package semi.order;
 
-
-
 public class OrderDTO {
-
-	
-	
 	//view of menu check for ceo  
 
 
@@ -29,10 +24,6 @@ public class OrderDTO {
 	public OrderDTO() {
 		// TODO Auto-generated constructor stub
 	}
-	
-	
-	
-
 
 	public int getOrder_idx() {
 		return order_idx;
@@ -266,3 +257,21 @@ public class OrderDTO {
 	
 	
 }
+/* create table order_tb (
+order_idx number primary key , 
+store_idx number, 
+mem_idx number, 
+price number , 
+user_coupon number, 
+memo varchar2 (40), 
+order_date date, 
+finish number, 
+final_price number, 
+pay_type number ,  
+c_name varchar2(10),
+c_tel varchar2 (15),
+c_addr varchar2(50)
+)
+*/
+
+
