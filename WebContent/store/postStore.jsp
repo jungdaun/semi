@@ -29,7 +29,7 @@ String c_sub_s = c_sub[2];
 ArrayList<StoreDTO> arr = sdao.findStore(store_type);
 Iterator<StoreDTO> list = arr.iterator();
 
-session.setAttribute("value", "a");
+//session.setAttribute("value", "a");
 
 /**같은 동네 가게들만 보이게 하는 부분*/
 while(list.hasNext()){
@@ -63,7 +63,9 @@ else{
             <td style="padding:13px;">
             <div style="background-color: black;">
             <a href="postFood.jsp?store_idx=<%=arr.get(count).getStore_idx()%>&store_type=<%=store_type%>&c_sub_s=<%=c_sub_s %>" style="text-decoration:none;">         
-               <img src="<%=arr.get(count).getStore_image()%>" style="width:110px; height:128px"/>
+              
+              <img src="../img/store/<%=arr.get(count).getStore_name()%>.png" style="width:110px; height:128px"/>
+               <!-- img src="<%=arr.get(count).getStore_image()%>" style="width:110px; height:128px"/-->
             </div>
     
             <div style="background-color: #2F4038; color:white; font-size: 17px;">

@@ -34,12 +34,12 @@ public class StoreDAO {
             int review_num = rs.getInt("review_num");
             int sale_num = rs.getInt("sale_num");
             int score_num = rs.getInt("score_num");
-            String open_time = rs.getString("open_time");
-            String close_time = rs.getString("close_time");
-            String store_image = rs.getString("store_image");
+           // String open_time = rs.getString("open_time");
+           // String close_time = rs.getString("close_time");
+           // String store_image = rs.getString("store_image");
             
             StoreDTO dto = new StoreDTO(store_idx, store_name, store_addr, 
-                  review_num, sale_num, score_num, open_time, close_time, store_image);
+                  review_num, sale_num, score_num);
             arr.add(dto);
          }
          return arr;

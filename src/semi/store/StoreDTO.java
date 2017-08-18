@@ -19,7 +19,7 @@ public class StoreDTO {
    
    public StoreDTO() {}
    
-   public StoreDTO(int store_idx, String store_name, String store_addr, int review_num, int sale_num, int score_num, String open_time, String close_time, String store_image) {
+   public StoreDTO(int store_idx, String store_name, String store_addr, int review_num, int sale_num, int score_num) {
       super();
       this.store_idx = store_idx;
       this.store_name = store_name;
@@ -27,33 +27,29 @@ public class StoreDTO {
       this.review_num = review_num;
       this.sale_num = sale_num;
       this.score_num = score_num;
-      this.open_time = open_time;
-      this.close_time = close_time;
-      this.store_image = store_image;
-   }
-   
-   
-   
-   
+     // this.open_time = open_time;
+      //this.close_time = close_time;
+      //this.store_image = store_image;
+   } 
 
-   public StoreDTO(int store_idx, String store_type, String store_name, String store_addr, String store_addr2,
-         String store_phone, String open_time, String close_time, int lowest_price, int review_num, int sale_num,
-         int score_num, String store_image) {
-      super();
-      this.store_idx = store_idx;
-      this.store_type = store_type;
-      this.store_name = store_name;
-      this.store_addr = store_addr;
-      this.store_addr2 = store_addr2;
-      this.store_phone = store_phone;
-      this.open_time = open_time;
-      this.close_time = close_time;
-      this.lowest_price = lowest_price;
-      this.review_num = review_num;
-      this.sale_num = sale_num;
-      this.score_num = score_num;
-      this.store_image = store_image;
-   }
+//   public StoreDTO(int store_idx, String store_type, String store_name, String store_addr, String store_addr2,
+//         String store_phone, String open_time, String close_time, int lowest_price, int review_num, int sale_num,
+//         int score_num, String store_image) {
+//      super();
+//      this.store_idx = store_idx;
+//      this.store_type = store_type;
+//      this.store_name = store_name;
+//      this.store_addr = store_addr;
+//      this.store_addr2 = store_addr2;
+//      this.store_phone = store_phone;
+//      this.open_time = open_time;
+//      this.close_time = close_time;
+//      this.lowest_price = lowest_price;
+//      this.review_num = review_num;
+//      this.sale_num = sale_num;
+//      this.score_num = score_num;
+//      this.store_image = store_image;
+//   }
 
    public int getStore_idx() {
       return store_idx;
