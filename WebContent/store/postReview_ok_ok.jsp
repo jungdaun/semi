@@ -20,14 +20,14 @@ String c_name="kh";
 String r_pwd = request.getParameter("pwd");
 String score_num_s = request.getParameter("score");//별점
 int score_num = Integer.parseInt(score_num_s);
-String date_s = request.getParameter("date");//날짜
-int date = Integer.parseInt(date_s);
+String up_date_s = request.getParameter("date");//날짜
+int up_date = Integer.parseInt(up_date_s);
 
 String r_picture = request.getParameter("picture");//사진이름
 String review = request.getParameter("contents"); //부분 가져오기
 
 //review table 만들기
-int result = rdao.postReview(c_idx, c_name, store_idx, date, score_num, review, r_picture, r_pwd);
+int result = rdao.postReview(c_idx, c_name, store_idx, up_date, score_num, review, r_picture, r_pwd);
 String msg = (result>0)?"리뷰가 등록되었습니다.":"리뷰가 등록되지 않았습니다.";
 %>
 <script>

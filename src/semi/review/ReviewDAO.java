@@ -12,7 +12,7 @@ public class ReviewDAO {
 		// TODO Auto-generated constructor stub
 	}   
 	
-	public int postReview(Integer c_idx, String c_name, int store_idx, int date, int score_num, String review, String r_picture, String r_pwd){
+	public int postReview(Integer c_idx, String c_name, int store_idx, int up_date, int score_num, String review, String r_picture, String r_pwd){
 		try{
 			conn = semi.db.SemiDb.getConn();
 			String sql="insert into review values(?, ?, ?, ?, ?, ?, ?, ?)";
@@ -20,7 +20,7 @@ public class ReviewDAO {
 			ps.setInt(1, (c_idx !=null? c_idx.intValue() : 0));
 			ps.setString(2, c_name);
 			ps.setInt(3, store_idx);
-			ps.setInt(4, date);
+			ps.setInt(4, up_date);
 			ps.setInt(5, score_num);
 			ps.setString(6, review);
 			ps.setString(7, r_picture);

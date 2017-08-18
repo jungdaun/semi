@@ -12,12 +12,93 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/mainLayout.css">
-<%
+<style>
+.rev {
+	font-family: 'Quattrocento', Arial, sans-serif;
+  position: relative;
+  float: left;
+  overflow: hidden;
+  margin: 10px 1%;
+  min-width: 230px;
+  max-width: 315px;
+  width: 100%;
+  color: #141414;
+  text-align: left;
+  line-height: 1.4em;
+  font-size: 16px;
+}
+.rev *{
+	-webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
 
+}
+
+.rev img{
+	max-width: 100%;
+  vertical-align: top;
+
+}
+
+.rev figcaption{
+	position: absolute;
+  top: calc(77%);
+  width: 100%;
+  background-color: #ffffff;
+  padding: 15px 25px 65px;
+}
+
+.rev figcaption:before{
+	 position: absolute;
+  content: '';
+  z-index: 2;
+  bottom: 100%;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  background-image: -webkit-linear-gradient(top, transparent 0%, #ffffff 100%);
+  background-image: linear-gradient(to bottom, transparent 0%, #ffffff 100%);
+}
+
+.rev h3 ,.rev p{
+margin: 0 0 10px;
+}
+.rev h3{
+	font-weight: 300;
+  font-size: 1.4em;
+  line-height: 1.2em;
+  font-family: 'Oswald', Arial, sans-serif;
+  text-transform: uppercase;
+}
+
+.rev p{
+	font-size: 0.9em;
+  letter-spacing: 1px;
+  opacity: 0.9;
+
+}
+
+.rev a{
+	position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+
+}
+
+
+</style>
+<%
+//String c_name = (String) session.getAttribute("sname");
 String store_idx_s=request.getParameter("store_idx");
 int store_idx = Integer.parseInt(store_idx_s);
 String store_type= request.getParameter("store_type");
 String c_sub_s = request.getParameter("c_sub_s");
+
+String c_name = "kh";
 %>
 <style>
 thead th{
@@ -93,7 +174,12 @@ function post(){
    <%
    String r_picture = 
    %>
-   	<img>
+   	<img src="../img/review/<%=store_idx%>_<%=c_name %>.png" />
+   	<figcaption>
+   		<h3>10자 정도</h3>
+   		<p>나머지 후기들!!!!!</p>
+   	</figcaption>
+   	<a href="#"></a>
    </figure>
    
    </article>
