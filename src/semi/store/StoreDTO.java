@@ -11,9 +11,9 @@ public class StoreDTO {
 	private Date open_time;
 	private Date close_time;
 	private int lowest_price;
-	private int review_num; 
-	private int sale_num;
-	private int score_num; 
+	private int review_num; //존재하는 리뷰의 수
+	private int sale_num; //이때까지 판 갯수
+	private int score_num; //이때까지 받은 평점의 평균
 	
 	public StoreDTO() {}
 	

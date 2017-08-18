@@ -80,7 +80,7 @@ function del(obj){
          if(arr==null||arr.size()==0){
             %>
             <tr>
-             <td colspan="5" align="center">검색된 사원이 없습니다.</td>
+             <td colspan="5" align="center">장바구니가 비어있습니다.</td>
             </tr>
             <% 
          }
