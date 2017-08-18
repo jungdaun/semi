@@ -19,7 +19,49 @@ public class OrderDAO {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
+
 	
+	public String getStoreName ( int sIdx){
+	
+		   try {
+			    conn = semi.db.SemiDb.getConn();
+		 
+			    String sql = "select store_name from store where store_idx = ? "; 
+			    
+
+			    ps=conn.prepareStatement(sql);
+			    
+			    ps.setInt(1, sIdx);
+			    rs= ps.executeQuery(); 
+			 //   ps.setInt(1, oIdx);
+	    
+			    
+			 if (   rs.next()) {
+			return  rs.getString(1);
+			
+			 	 
+			 }
+			    
+			 else {
+				 return null; 
+			 }
+		} catch (Exception e) {
+			e.printStackTrace( );
+			return null; 
+			// TODO: handle exception
+		}finally {
+			try {
+				
+				if(rs!=null)rs.close();
+	            if(ps!=null) ps.close();
+	            if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	   
+		
+	}
 	
 	public int makeOrderIdx (){
 	
