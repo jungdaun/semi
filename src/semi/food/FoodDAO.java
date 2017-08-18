@@ -12,9 +12,7 @@ public class FoodDAO {
 	private Connection conn;
 	private PreparedStatement ps;
 	private ResultSet rs;
-	public FoodDAO() {
-		// TODO Auto-generated constructor stub
-	}
+	public FoodDAO() { }
 	
 		public ArrayList<FoodDTO> showStore(int store_idx){
 			try{
@@ -36,7 +34,6 @@ public class FoodDAO {
 					arr.add(dto);
 				}
 				return arr;
-				
 			}
 			catch(Exception e){
 				e.printStackTrace();

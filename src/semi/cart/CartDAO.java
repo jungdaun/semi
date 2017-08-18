@@ -21,6 +21,34 @@ public class CartDAO {
       // TODO Auto-generated constructor stub
    }
    
+   public String getStoreName (int storeIdx){
+	   
+       try{
+          conn = semi.db.SemiDb.getConn();
+          String sql="select store_name from store where store_idx =? ";
+          ps = conn.prepareStatement(sql);
+          ps.setInt(1, storeIdx);
+          
+          rs = ps.executeQuery();
+          rs.next();
+          String res = rs.getString(1);
+          return res; 
+          
+       }
+       catch(Exception e){
+          e.printStackTrace();
+          return null;
+       }
+       finally{
+          try{
+             if(rs!=null) rs.close();
+             if(ps!=null) ps.close();
+             if(conn!=null) conn.close();
+          }
+          catch(Exception e2){}
+       }
+       
+    }
    
    public ArrayList<CartDTO> myCartList(int order_idx, int sIdx){
        try{
@@ -93,21 +121,18 @@ public class CartDAO {
             
          }
    
-   public int insertData(int s_idx, Integer c_idx, String name, int price, int count, int t_price  ){   
-      
+   /**장바구니 넣기 기능*/
+   public int insertData(int s_idx, Integer c_idx, String name, int price, int count, int t_price){         
       try{
          conn = semi.db.SemiDb.getConn();
-         String sql = "insert into cart values(?, ?, ?, ?, ?, ?, 0,0)";
+         String sql = "insert into cart values(?, ?, ?, ?, ?, ?, 0, 0)";
          ps = conn.prepareStatement(sql);
          ps.setInt(1, s_idx);
          ps.setInt(2, (c_idx !=null? c_idx.intValue() : 0));
          ps.setString(3, name);
          ps.setInt(4, price);
          ps.setInt(5, count);
-         ps.setInt(6, t_price);
-//         ps.setInt(7, orderIdx);
-//         ps.setInt(8,finish);
-         
+         ps.setInt(6, t_price);  
          int cnt = ps.executeUpdate();
          return cnt;
       }
@@ -123,45 +148,15 @@ public class CartDAO {
          catch(Exception e2){}
       }
    }
-   
-   public String getStoreName (int storeIdx){
-   
-         try{
-            conn = semi.db.SemiDb.getConn();
-            String sql="select store_name from store where store_idx =? ";
-            ps = conn.prepareStatement(sql);
-            ps.setInt(1, storeIdx);
-            
-            rs = ps.executeQuery();
-            rs.next();
-            String res = rs.getString(1);
-            return res; 
-            
-         }
-         catch(Exception e){
-            e.printStackTrace();
-            return null;
-         }
-         finally{
-            try{
-               if(rs!=null) rs.close();
-               if(ps!=null) ps.close();
-               if(conn!=null) conn.close();
-            }
-            catch(Exception e2){}
-         }
-         
-      }
       
-   
+   /**장바구니 보기 기능*/
    public ArrayList<CartDTO> showData(int store_idx, Integer c_idx){
       try{
          conn = semi.db.SemiDb.getConn();
-         String sql="select food_name, food_price,food_count,total_price from cart where store_idx=? and customer_idx=? and finish = 0";
+         String sql="select * from cart where store_idx=? and customer_idx=? and finish = 0";
          ps = conn.prepareStatement(sql);
          ps.setInt(1, store_idx);
-         ps.setInt(2, (c_idx !=null? c_idx.intValue() : 0));
-         
+         ps.setInt(2, (c_idx !=null? c_idx.intValue() : 0)); 
          rs = ps.executeQuery();
          ArrayList<CartDTO> arr = new ArrayList<CartDTO>();
          
@@ -186,10 +181,10 @@ public class CartDAO {
             if(conn!=null) conn.close();
          }
          catch(Exception e2){}
-      }
-      
+      }     
    }
    
+  /**수량변경 기능*/
    public int changeData(int store_idx, Integer c_idx, int count, int price, String name){
          try{
             conn = semi.db.SemiDb.getConn();
@@ -218,16 +213,19 @@ public class CartDAO {
          
       }
    
-   public void deleteData(String str){
+   /**장바구니에서 삭제 기능*/
+   public int deleteData(String str){
       try{
          conn = semi.db.SemiDb.getConn();
          String sql = "delete from cart where food_name=?";
          ps = conn.prepareStatement(sql);
          ps.setString(1, str);
          int count = ps.executeUpdate();
+         return count;
       }
       catch(Exception e){
          e.printStackTrace();
+         return -1;
       }
       finally{
          try{
@@ -235,8 +233,7 @@ public class CartDAO {
             if(conn!=null) conn.close();
          }
          catch(Exception e2){}
-      }
-      
+      } 
    }
    
 //   
@@ -273,45 +270,6 @@ public class CartDAO {
 //	   
 //   }
 //   
-//   
-   
-//   
-//   
-//   public ArrayList<CartDTO> showData(int store_idx, Integer c_idx, int finish ){
-//	      try{
-//	         conn = semi.db.SemiDb.getConn();
-//	         String sql="select food_name, food_price,food_count,total_price from cart where store_idx=? and customer_idx=?";
-//	         ps = conn.prepareStatement(sql);
-//	         ps.setInt(1, store_idx);
-//	         ps.setInt(2, (c_idx !=null? c_idx.intValue() : 0));
-//	         
-//	         rs = ps.executeQuery();
-//	         ArrayList<CartDTO> arr = new ArrayList<CartDTO>();
-//	         
-//	         while(rs.next()){
-//	            String food_name = rs.getString("food_name");
-//	            int food_price = rs.getInt("food_price");
-//	            int food_count = rs.getInt("food_count");
-//	            int total_price = rs.getInt("total_price");
-//	            CartDTO dto = new CartDTO(food_name, food_price, food_count, total_price);
-//	            arr.add(dto);            
-//	         }
-//	         return arr;
-//	      }
-//	      catch(Exception e){
-//	         e.printStackTrace();
-//	         return null;
-//	      }
-//	      finally{
-//	         try{
-//	            if(rs!=null) rs.close();
-//	            if(ps!=null) ps.close();
-//	            if(conn!=null) conn.close();
-//	         }
-//	         catch(Exception e2){}
-//	      }
-//	      
-//	   }
-//	   
+//      
    
 }

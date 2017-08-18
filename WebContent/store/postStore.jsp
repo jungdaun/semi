@@ -35,16 +35,17 @@ for(int i=0; i<arr.size(); i++){
 	if(!s_addr.contains(c_sub_s)) arr.remove(i);
 }
 %>
-   <legend style="background-color:#2F4038; color:#FEEEA7; font-size:40px; font-weight: bold;">
+   <legend style="background-color:#2F4038; color:#FEEEA7; font-size:22px; font-weight: bold;">
    Home >> <%=store_type %> >> <%=c_sub_s %></legend>
    <table>
 <% 
 if(arr.equals("") || arr.size()==0){%>
       <tr>
-         <td rowspan="6" align="center">
-         현재 등록된 가게가 없습니다.<br>
+         <td rowspan="6" align="center" style="font-size: 25px; color:white;">
+        <br><img src="../img/store/sad.png" style="width:250px; height:250px"/><br>
+        현재 등록된 가게가 없습니다ㅜ_ㅜ<br>
          사장님이라면 가게를 등록해주세요~<br>
-         손님들이 배고파서 기다리고 있습니다!!!!!
+         손님들이 배고파서 기다리고 있습니다
          </td>
       </tr>   
 <% }
@@ -84,7 +85,7 @@ else{
          }
          else
             break;  
-      } %></tr>
+      }%></tr>
 <% } }%>
    </table>
 </section><br><br><br>

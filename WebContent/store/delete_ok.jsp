@@ -1,8 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("utf-8");%>
-
-<%@page import="semi.cart.*" %>
 <jsp:useBean id="cdto" class="semi.cart.CartDTO"></jsp:useBean>
 <jsp:setProperty property="*" name="cdto"/>
 <jsp:useBean id="cdao" class="semi.cart.CartDAO"></jsp:useBean>
@@ -14,9 +12,9 @@ String str = request.getParameter("str");
 String arr[] = str.split(" ");
 
 for(int i=0; i<arr.length; i++){
-   cdao.deleteData(arr[i]);
+   int c = cdao.deleteData(arr[i]);
+   out.println("c = "+c);
 }
-
 %>
 <script>
    window.alert('선택하신 음식을 삭제하였습니다.');

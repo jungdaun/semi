@@ -16,9 +16,8 @@ public class StoreDAO {
    private ResultSet rs;   
    public StoreDAO() {}
 
-   /*여러 가게의 정보 select*/
-   public ArrayList<StoreDTO> findStore(String type){
-      
+   /**여러 가게의 정보 select*/
+   public ArrayList<StoreDTO> findStore(String type){      
       try{
          conn = semi.db.SemiDb.getConn();
          String sql = "select * from store where store_type=?";
@@ -41,7 +40,6 @@ public class StoreDAO {
             int sale_num = rs.getInt("sale_num");
             int score_num = rs.getInt("score_num");
             String store_image = rs.getString("store_image");
-            
             
             StoreDTO dto = new StoreDTO(store_idx, type, store_name, store_addr, store_addr2, 
             		store_phone, open_time, close_time, lowest_price, review_num, sale_num, score_num, store_image);
