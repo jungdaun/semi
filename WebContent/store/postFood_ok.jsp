@@ -6,13 +6,15 @@
 <jsp:useBean id="cdto" class="semi.cart.CartDTO"></jsp:useBean>
 <jsp:setProperty property="*" name="cdto"/>
 <jsp:useBean id="cdao" class="semi.cart.CartDAO"></jsp:useBean>
+<jsp:useBean id="mdao" class="semi.member.MemberDAO"></jsp:useBean>
     
 
 <%
 String store_type=request.getParameter("store_type");
 //Integer c_idx = (Integer) session.getAttribute("c_idx");
-Integer c_idx = (Integer)2;
+//Integer c_idx = (Integer)2;
 
+Integer c_idx =mdao.getMemIdx((String)session.getAttribute("sid")) ;
 String count_s = request.getParameter("food_count"); //선택된 value값을 가져온다.
 String price_s = request.getParameter("food_price");
 String idx_s = request.getParameter("store_idx");

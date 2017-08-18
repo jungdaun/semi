@@ -26,18 +26,21 @@ ArrayList<CartDTO> arr = cdao.showData(store_idx, c_idx);
 
 
 
-
 int oIdx =odao.makeOrderIdx()+1;
-
-
-/*
-for ( int i =0; i < arr.size() ; i ++){
+if (odao.hasOIdx(store_idx, c_idx)){
+	//true
 	
-	int res = cdao.addOrderIdx(arr.get(i), oIdx);
+	System.out.println ("true");
+	oIdx = odao.getOrderIdx(store_idx, c_idx);
 	
 	
 }
-*/
+
+System.out.println(oIdx);
+
+
+
+
 
 %>
 
