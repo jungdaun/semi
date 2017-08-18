@@ -77,8 +77,16 @@ public class ReviewDTO {
 	public void setR_pwd(String r_pwd) {
 		this.r_pwd = r_pwd;
 	}
-	
-	
-	
-
 }
+
+/* create table review(
+c_idx number(4),
+c_name varchar2(10),
+store_idx number(4),
+up_date number(20),
+score_num number(4),
+review varchar2(200),
+r_picture varchar2(100),
+r_pwd varchar2(20)
+)
+ */

@@ -62,3 +62,29 @@ public class FoodDTO {
 	}
 
 }
+
+/* Create table food (
+	Store_idx number(4),
+	food_name varchar2(10),
+	food_type varchar2(10),
+	food_price number(5),
+	food_info varchar2(20),
+)
+
+
+insert into food values(2, 'fried', 'main', 17000, 'taste good!')
+insert into food values(2, 'cheese', 'side', 17000, 'taste good!')
+insert into food values(2, 'garlic', 'main', 17000, 'taste good!')
+insert into food values(2, 'nugget', 'side', 17000, 'taste good!')
+insert into food values(2, 'padak', 'main', 17000, 'taste good!')
+insert into food values(2, 'rice', 'side', 17000, 'taste good!')
+insert into food values(2, 'ring', 'side', 17000, 'taste good!')
+insert into food values(2, 'salad', 'side', 17000, 'taste good!')
+insert into food values(2, 'wing', 'side', 17000, 'taste good!')
+insert into food values(2, 'yang', 'main', 17000, 'taste good!')
+insert into food values(2, 'hot', 'etc', 17000, 'taste good!')
+insert into food values(2, 'mu', 'etc', 17000, 'taste good!')
+insert into food values(2, 'sweat', 'etc', 17000, 'taste good!')
+
+
+ */

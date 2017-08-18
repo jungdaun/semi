@@ -106,3 +106,15 @@ public class CartDTO {
 	}
 
 }
+
+/* create table cart(
+   Store_idx number(4),
+   customer_idx number(4),
+   food_name varchar2(10),
+   food_price number(5),
+   food_count number(3),
+   total_price number(10),
+   order_idx number,
+   finish number(1)
+  )
+ */

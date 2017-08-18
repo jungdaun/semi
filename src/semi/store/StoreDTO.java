@@ -158,3 +158,38 @@ public class StoreDTO {
    }   
    
 }
+
+/* create table store (
+store_idx number(4) primary key,
+store_type varchar2(20), 
+store_name varchar2(40),
+store_addr varchar2(40), 
+store_addr2 varchar2(100), 
+store_phone varchar2(20),
+open_time varchar2(20),
+close_time varchar2(20),
+lowest_price number(10), 
+review_num number(5), 
+sale_num number(5), 
+score_num number(5),
+store_image varchar2(100)
+)
+
+
+create sequence store_store_idx
+minvalue 0 start with 1;
+
+
+insert into store values(store_store_idx.nextval, 'chicken', 'abc', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
+insert into store values(store_store_idx.nextval, 'chicken', 'bbq', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
+insert into store values(store_store_idx.nextval, 'chicken', 'bhc', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
+insert into store values(store_store_idx.nextval, 'chicken', 'gubne', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
+insert into store values(store_store_idx.nextval, 'chicken', 'hosigi', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
+insert into store values(store_store_idx.nextval, 'chicken', 'kfc', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
+insert into store values(store_store_idx.nextval, 'chicken', 'kyochon', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
+insert into store values(store_store_idx.nextval, 'chicken', 'mexicana', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
+insert into store values(store_store_idx.nextval, 'chicken', 'nene', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
+insert into store values(store_store_idx.nextval, 'chicken', 'pericana', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
+insert into store values(store_store_idx.nextval, 'chicken', 'popeyes', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
+
+*/
