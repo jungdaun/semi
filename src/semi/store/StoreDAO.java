@@ -113,6 +113,60 @@ public class StoreDAO {
          }
    }
    
+   /*예랑 추가*/
+   
+   public boolean isOpen (int sIdx ){
+	   try {
+		   conn = semi.db.SemiDb.getConn();
+		   String sql ="select open_time, close_time from store where store_idx = ? ";
+		   ps=conn.prepareStatement(sql);
+		   ps.setInt(1, sIdx);
+		   rs=ps.executeQuery();
+		   
+		   String open_s= "";
+		   String close_s = "";
+		   
+		   
+		   while (rs.next()){
+			   open_s = rs.getString(1);
+			   close_s= rs.getString(2);
+			   
+		   }
+		   
+		   open_s = open_s.substring(11,13);
+		   close_s = close_s .substring(11, 13);
+		   
+		   int open = Integer.parseInt(open_s);
+		   int close = Integer.parseInt(close_s);
+		   
+		   Calendar now = Calendar.getInstance();
+		   int hour =now.get(Calendar.HOUR_OF_DAY);
+		   
+		   if (close < 6 ) close += 24; 
+		   
+		   if (hour >= open && hour < close){
+			   return true; 
+			   
+		   }
+		   else return false; 
+		   
+		   
+	} catch (Exception e) {
+		e.printStackTrace( );
+		return false;
+		
+		// TODO: handle exception
+	}finally {
+		try {
+			   if(rs!=null) rs.close();
+               if(ps!=null) ps.close();
+               if(conn!=null) conn.close();   
+            
+		} catch (Exception e2) {
+			// TODO: handle exception
+		}
+	}
+   }
 
 //   public ArrayList<StoreDTO> showReview(int idx){
 //      try{

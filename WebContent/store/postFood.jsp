@@ -11,6 +11,8 @@
 <jsp:useBean id="cdto" class="semi.cart.CartDTO"></jsp:useBean>
 <jsp:setProperty property="*" name="cdto"/>
 
+<jsp:useBean id="sdao" class="semi.store.StoreDAO"></jsp:useBean>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,6 +28,9 @@ String c_sub_s = request.getParameter("c_sub_s");
 ArrayList<FoodDTO> arr = fdao.showStore(store_idx);
 //Integer c_idx = (Integer) session.getAttribute("c_idx");
 Integer c_idx = (Integer)2;
+
+/*예랑*/
+boolean isOpen = sdao.isOpen(store_idx);
 %>
 </head>
 <body>
@@ -70,6 +75,10 @@ Integer c_idx = (Integer)2;
          
             <td>
             <form name="postFood_ok" action="postFood_ok.jsp">
+            <!-- 예랑 -->
+            <input type="hidden" name="isOpen" value="<%=isOpen%>">
+            <input type="hidden" name="c_sub_s" value="<%=c_sub_s %>">
+            
                <select name="food_count"><%
                for(int j=1; j<10; j++){%>
                   <option value="<%=j%>"><%=j %></option>
@@ -90,9 +99,15 @@ Integer c_idx = (Integer)2;
  <% } } %>
       </table> <br><br><br><br><br>
     </article>
+    
+    <%
+
+if (isOpen){
+	%>
 
     <article>
  <% 
+ 
    ArrayList<CartDTO> brr = cdao.showData(store_idx, c_idx);%>
          <fieldset style="background-color: #BF0920; color: white; font-size: 25px; line-height: 40%;">장바구니</fieldset>
          <table>
@@ -107,6 +122,8 @@ Integer c_idx = (Integer)2;
          <% } %>
         </table>
     </article>
+    <%}
+    %>
   </div>
 <%@include file="/footer.jsp"%>
 </body>

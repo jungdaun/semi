@@ -19,10 +19,21 @@ int food_price = Integer.parseInt(price_s);
 int store_idx = Integer.parseInt(idx_s);
 int total_price = food_count*food_price;
 
+
+/*예랑 추가*/
+String c_sub_s = request.getParameter("c_sub_s");
+String isOpen = request.getParameter("isOpen");
+/**/
+
 int num = cdao.insertData(store_idx, c_idx, food_name, food_price, food_count, total_price);
 String msg = (num==-1)? "장바구니에 추가되지 않았습니다.": "장바구니에 목록이 추가되었습니다.";
-%>
-<script>
+
+if (isOpen.equals("false")){
+	%>
+	<script>
    window.alert('<%=msg%>');
    location.href='postFood.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>';
-</script>
+	</script>
+<%
+	return ; 
+}
