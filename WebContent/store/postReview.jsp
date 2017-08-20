@@ -14,7 +14,7 @@
 <link rel="stylesheet" type="text/css" href="../css/mainLayout.css">
 <style>
 .rev {
-	font-family: 'Quattrocento', Arial, sans-serif;
+
   position: relative;
   float: left;
   overflow: hidden;
@@ -27,8 +27,8 @@
   line-height: 1.4em;
   font-size: 16px;
 }
-.rev *{
-	-webkit-box-sizing: border-box;
+.rev * {
+ -webkit-box-sizing: border-box;
   box-sizing: border-box;
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
@@ -38,11 +38,10 @@
 .rev img{
 	max-width: 100%;
   vertical-align: top;
-
 }
 
 .rev figcaption{
-	position: absolute;
+ position: absolute;
   top: calc(77%);
   width: 100%;
   background-color: #ffffff;
@@ -50,7 +49,7 @@
 }
 
 .rev figcaption:before{
-	 position: absolute;
+	position: absolute;
   content: '';
   z-index: 2;
   bottom: 100%;
@@ -61,36 +60,41 @@
   background-image: linear-gradient(to bottom, transparent 0%, #ffffff 100%);
 }
 
-.rev h3 ,.rev p{
+.rev h3 ,
+.rev p{
 margin: 0 0 10px;
 }
 .rev h3{
-	font-weight: 300;
+ font-weight: 300;
   font-size: 1.4em;
   line-height: 1.2em;
-  font-family: 'Oswald', Arial, sans-serif;
+ 
   text-transform: uppercase;
 }
 
 .rev p{
-	font-size: 0.9em;
+ font-size: 0.9em;
   letter-spacing: 1px;
   opacity: 0.9;
-
 }
 
 .rev a{
-	position: absolute;
+position: absolute;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
   z-index: 2;
-
+}
+.rev:hover figcaption,
+.rev.hover figcaption {
+  top: 80px;
 }
 
 
 </style>
+
+  
 <%
 //String c_name = (String) session.getAttribute("sname");
 String store_idx_s=request.getParameter("store_idx");
@@ -98,7 +102,7 @@ int store_idx = Integer.parseInt(store_idx_s);
 String store_type= request.getParameter("store_type");
 String c_sub_s = request.getParameter("c_sub_s");
 
-String c_name = "kh";
+String c_name = "na";
 %>
 <style>
 thead th{
@@ -148,40 +152,35 @@ function post(){
          </table>
 
    <h4><input type="button" name="post" value="글쓰기" onclick="post()" style="float: right;"></h4>
-
-   <!-- table border="1" width="450" cellspacing="0" align="center">
-      <thead>
-      <tr>
-         <th>ID</th><td></td>
-         <th>평점</th><td></td>
-      </tr>
-      <tr>
-         <th>Date</th><td colspan="3"></td>  
-      </tr>
-      </thead>
-      
-      <tbody>
-      <tr>
-         <td colspan="3" style="color:black; background-color: white; word-break:break-all;">
-         &&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
-         </td>
-         <td>사진 있을 경우 사진</td></tr>
-      </tbody>
-      
-   </table-->
    
    <figure class="rev">
    <%
-   String r_picture = 
+//   String r_picture = 
    %>
-   	<img src="../img/review/<%=store_idx%>_<%=c_name %>.png" />
+   	<!--img src="../img/review/<%=store_idx%>_<%=c_name %>.png" /-->
+   	<img src="../img/review/2na.png" />
    	<figcaption>
-   		<h3>10자 정도</h3>
+   		<h3><%=c_name%>님의 후기 | 평점 : <%= %></h3>
+   		<p>나머지 후기들!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
+   	</figcaption>
+   	<a href="#"></a>
+   </figure>
+   <!-- 
+   <figure class="rev hover">
+   <%
+//   String r_picture = 
+   %>
+   	<!--img src="../img/review/<%=store_idx%>_<%=c_name %>.png" />
+   	<img src="../img/review/2na.png" />
+   	<figcaption>
+   		<h3>second</h3>
    		<p>나머지 후기들!!!!!</p>
    	</figcaption>
    	<a href="#"></a>
    </figure>
-   
+    -->
+    
+    
    </article>
    
    </div>

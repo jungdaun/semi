@@ -89,4 +89,10 @@ review varchar2(200),
 r_picture varchar2(100),
 r_pwd varchar2(20)
 )
+
+insert into review values(2, 'na', 2, 1230, 4, '맛있네요!', '2na', '1234')
+insert into review values(2, 'na', 2, 1230, 3, '맛있네요!', '2na', '1234')
+insert into review values(2, 'na', 2, 1230, 2, '맛있네요!', '2na', '1234')
+insert into review values(2, 'na', 2, 1230, 1, '맛있네요!', '2na', '1234')
+
  */

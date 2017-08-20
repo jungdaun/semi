@@ -92,7 +92,7 @@ function del(obj){
 
                <tr>
                	<td><input type="button" value="삭제" onclick="del('chk[]')"></td>
-               	<td colspan="3" align="center"><input type="button" value="맨 위로" ></td>
+               	<td colspan="3" align="center"></td>
                 <td align="center"><input type="button" value="결제하기" onclick="location.href = '/semi/pay/payMain.jsp?oIdx=<%=oIdx %>&sIdx=<%=store_idx %>&cIdx=<%=c_idx %>' " ></td>
             </tr>
          <% }%>
