@@ -160,7 +160,7 @@ function post(){
    	<!--img src="../img/review/<%=store_idx%>_<%=c_name %>.png" /-->
    	<img src="../img/review/2na.png" />
    	<figcaption>
-   		<h3><%=c_name%>님의 후기 | 평점 : <%= %></h3>
+   		<h3>제목란</h3>
    		<p>나머지 후기들!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
    	</figcaption>
    	<a href="#"></a>

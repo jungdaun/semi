@@ -230,20 +230,19 @@ create sequence ceo_idx
 minvalue 0 start with 1;
 
 
-insert into customer values(customer_idx.nextval, '송병훈', '11111111a', '내 보물 1호는?', '이민기', 'nokcha90', '서울시 중랑구 묵동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
-insert into customer values(customer_idx.nextval, '송중기', '11111111a', '내 보물 1호는?', '이민기', 'nokcha91', '서울시 중랑구 중화동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
-insert into customer values(customer_idx.nextval, '송하나', '11111111a', '내 보물 1호는?', '이민기', 'nokcha92', '서울시 중랑구 상봉동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
-insert into customer values(customer_idx.nextval, '송혜교', '11111111a', '내 보물 1호는?', '이민기', 'nokcha93', '서울시 중랑구 망우동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
-insert into customer values(customer_idx.nextval, '송지현', '11111111a', '내 보물 1호는?', '이민기', 'nokcha94', '서울시 중랑구 신내동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
-insert into customer values(customer_idx.nextval, '송민기', '11111111a', '내 보물 1호는?', '이민기', 'nokcha95', '서울시 중랑구 묵동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
-insert into customer values(customer_idx.nextval, '송다운', '11111111a', '내 보물 1호는?', '이민기', 'nokcha96', '서울시 중랑구 중화동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
-insert into customer values(customer_idx.nextval, '송예랑', '11111111a', '내 보물 1호는?', '이민기', 'nokcha97', '서울시 노원구 중계동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
-insert into customer values(customer_idx.nextval, '송빈', '11111111a', '내 보물 1호는?', '이민기', 'nokcha98', '서울시 노원구 하계동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
-insert into customer values(customer_idx.nextval, '송동건', '11111111a', '내 보물 1호는?', '이민기', 'nokcha99', '서울시 노원구 공릉동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
-insert into customer values(customer_idx.nextval, '송인성', '11111111a', '내 보물 1호는?', '이민기', 'nokcha00', '서울시 노원구 상계동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
+insert into customer values(1, '송병훈', '11111111a', '내 보물 1호는?', '이민기', 'nokcha90', '서울시 중랑구 묵동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
+insert into customer values(2, '송중기', '11111111a', '내 보물 1호는?', '이민기', 'nokcha91', '서울시 중랑구 중화동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
+insert into customer values(2, '송하나', '11111111a', '내 보물 1호는?', '이민기', 'nokcha92', '서울시 중랑구 상봉동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
+insert into customer values(4, '송혜교', '11111111a', '내 보물 1호는?', '이민기', 'nokcha93', '서울시 중랑구 망우동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
+insert into customer values(5, '송지현', '11111111a', '내 보물 1호는?', '이민기', 'nokcha94', '서울시 중랑구 신내동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
+insert into customer values(6, '송민기', '11111111a', '내 보물 1호는?', '이민기', 'nokcha95', '서울시 중랑구 묵동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
+insert into customer values(7, '송다운', '11111111a', '내 보물 1호는?', '이민기', 'nokcha96', '서울시 중랑구 중화동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
+insert into customer values(8, '송예랑', '11111111a', '내 보물 1호는?', '이민기', 'nokcha97', '서울시 노원구 중계동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
+insert into customer values(9, '송빈', '11111111a', '내 보물 1호는?', '이민기', 'nokcha98', '서울시 노원구 하계동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
+insert into customer values(10, '송동건', '11111111a', '내 보물 1호는?', '이민기', 'nokcha99', '서울시 노원구 공릉동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
+insert into customer values(11, '송인성', '11111111a', '내 보물 1호는?', '이민기', 'nokcha00', '서울시 노원구 상계동', '299-1', 'nokcha90@naver.com', '010-3896-2833')
 
 
 
-insert into ceo values(ceo_idx.nextval, '관리자', '11111111a', '내 보물 1호는?', '이민기', 'nokcha90@naver.com', 'admin')
-
-insert into ceo values(ceo_idx.nextval, '치킨', '11111111a', '내 보물 1호는?', '송민기', 'nokcha90@naver.com', 'ceo')*/
+insert into ceo values(1, '관리자', '11111111a', '내 보물 1호는?', '이민기', 'nokcha90@naver.com', 'admin')
+insert into ceo values(2, '치킨', '11111111a', '내 보물 1호는?', '송민기', 'nokcha90@naver.com', 'ceo')*/

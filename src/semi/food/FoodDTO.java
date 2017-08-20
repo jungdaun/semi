@@ -65,41 +65,25 @@ public class FoodDTO {
 
 /* Create table food (
 	Store_idx number(4),
+	food_num number(3),
 	food_name varchar2(10),
 	food_type varchar2(10),
 	food_price number(5),
-	food_info varchar2(20)
-)
-
-
-insert into food values(2, 'fried', 'main', 17000, 'taste good!')
-insert into food values(2, 'cheese', 'side', 17000, 'taste good!')
-insert into food values(2, 'garlic', 'main', 17000, 'taste good!')
-insert into food values(2, 'nugget', 'side', 17000, 'taste good!')
-insert into food values(2, 'padak', 'main', 17000, 'taste good!')
-insert into food values(2, 'rice', 'side', 17000, 'taste good!')
-insert into food values(2, 'ring', 'side', 17000, 'taste good!')
-insert into food values(2, 'salad', 'side', 17000, 'taste good!')
-insert into food values(2, 'wing', 'side', 17000, 'taste good!')
-insert into food values(2, 'yang', 'main', 17000, 'taste good!')
-insert into food values(2, 'hot', 'etc', 17000, 'taste good!')
-insert into food values(2, 'mu', 'etc', 17000, 'taste good!')
-insert into food values(2, 'sweat', 'etc', 17000, 'taste good!')
-
-
- */
-
-
-
-/*create table food (   수정중에 있는 병훈 버전. 
-store_idx number(4),
-food_num number(3),
-food_name varchar2(10),
-	food_type varchar2(10),
-	food_price number(5),
-	food_info varchar2(20)
+	food_info varchar2(20),
 	food_image varchar2(100)
 )
 
-insert into food values (21, 1, 'fried', 'main', 12000, 'good')
-insert into food values (21, 2, 'half', 'main', 13000, 'good')*/
+insert into food values(21, 1, 'fried', 'main', 17000, 'taste good!')
+insert into food values(21, 2, 'cheese', 'side', 17000, 'taste good!')
+insert into food values(21, 3, 'garlic', 'main', 17000, 'taste good!')
+insert into food values(21, 4, 'nugget', 'side', 17000, 'taste good!')
+insert into food values(21, 5, 'padak', 'main', 17000, 'taste good!')
+insert into food values(21, 6, 'rice', 'side', 17000, 'taste good!')
+insert into food values(21, 7, 'ring', 'side', 17000, 'taste good!')
+insert into food values(21, 8, 'salad', 'side', 17000, 'taste good!')
+insert into food values(21, 9, 'wing', 'side', 17000, 'taste good!')
+insert into food values(21, 10, 'yang', 'main', 17000, 'taste good!')
+insert into food values(21, 11, 'hot', 'etc', 17000, 'taste good!')
+insert into food values(21, 12, 'mu', 'etc', 17000, 'taste good!')
+insert into food values(21, 13, 'sweat', 'etc', 17000, 'taste good!')
+*/

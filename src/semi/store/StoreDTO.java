@@ -160,53 +160,20 @@ score_num number(5),
 store_image varchar2(100)
 )
 
-
 create sequence store_store_idx
 minvalue 0 start with 1;
 
 
-insert into store values(store_store_idx.nextval, 'chicken', 'abc', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
-insert into store values(store_store_idx.nextval, 'chicken', 'bbq', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
-insert into store values(store_store_idx.nextval, 'chicken', 'bhc', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
-insert into store values(store_store_idx.nextval, 'chicken', 'gubne', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
-insert into store values(store_store_idx.nextval, 'chicken', 'hosigi', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
-insert into store values(store_store_idx.nextval, 'chicken', 'kfc', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
-insert into store values(store_store_idx.nextval, 'chicken', 'kyochon', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
-insert into store values(store_store_idx.nextval, 'chicken', 'mexicana', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
-insert into store values(store_store_idx.nextval, 'chicken', 'nene', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
-insert into store values(store_store_idx.nextval, 'chicken', 'pericana', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
-insert into store values(store_store_idx.nextval, 'chicken', 'popeyes', '서울시 관악구 낙성대', 'addr2자리', '555-5555', (TO_DATE('11:00', 'hh24:mi')), (TO_DATE('02:00', 'hh24:mi')), 15000, 0, 0, 3, ' store_image자리')
+insert into store values(21, 'chicken', 'abc', '서울시 중랑구 묵동', '299-1', '555-5555', 'am0900', 'pm1130', 15000, 0, 0, 3, '')
+insert into store values(21, 'chicken', 'bbq', '서울시 중랑구 묵동', '299-1', '555-5555','am1230', 'pm1000', 15000, 0, 0, 3, '')
+insert into store values(21, 'chicken', 'bhc', '서울시 중랑구 묵동','299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
+insert into store values(21, 'chicken', 'gubne', '서울시 중랑구 묵동', '299-1', '555-5555', 'am0900', 'pm1130', 15000, 0, 0, 3, '')
+insert into store values(21, 'chicken', 'hosigi', '서울시 중랑구 묵동', '299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
+insert into store values(21, 'chicken', 'kfc', '서울시 중랑구 묵동', '299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
+insert into store values(21, 'chicken', 'kyochon', '서울시 중랑구 중화동', '299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
+insert into store values(22, 'chicken', 'mexicana', '서울시 중랑구 중화동', '299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
+insert into store values(22, 'chicken', 'nene', '서울시 중랑구 묵동', '299-1', '555-5555', 'am0900', 'pm1130', 15000, 0, 0, 3, '')
+insert into store values(22, 'chicken', 'pericana','서울시 중랑구 묵동', '299-1', '555-5555', 'am0900', 'pm1130', 15000, 0, 0, 3, '')
+insert into store values(22, 'chicken', 'popeyes', '서울시 중랑구 묵동', '299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
 
 */
-/*
-
-create table store ( 뵹훈 버전.
-		   store_idx number(4) primary key,
-		   store_type varchar2(20), 
-		   store_name varchar2(40),
-		   store_addr varchar2(40), 
-		   store_addr2 varchar2(100), 
-		   store_phone varchar2(20),
-		   open_time varchar2(20),
-		   close_time varchar2(20),
-		   lowest_price number(10), 
-		   review_num number(5), 
-		   sale_num number(5), 
-		   score_num number(5),
-		   store_image varchar2(100)
-		)
-
-		create table food (
-		store_idx number(4),
-		food_num number(3),
-		food_name varchar2(10),
-			food_type varchar2(10),
-			food_price number(5),
-			food_info varchar2(20)
-			food_image varchar2(100)
-		)
-
-		insert into food values (21, 1, 'fried', 'main', 12000, 'good')
-		insert into food values (21, 2, 'half', 'main', 13000, 'good')
-		insert into store values(21, 'chicken', 'popeyes', '서울시 중랑구 묵동', '299-1', '010-5555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
-		insert into store values(22, 'chicken', 'bhc', '서울시 중랑구 중화동', '299-1', '010-5555-5556', 'am0900', 'pm1130', 15000, 0, 0, 3, '')*/
