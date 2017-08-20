@@ -176,7 +176,9 @@ function post(){
    				<!--img src="../img/review/<%=store_idx%>_<%=c_name %>.png" /-->
    				<img src="../img/review/2na.png" />
    				<figcaption>
-   					<h3><%=arr.get(i).getC_name()%>님의 평점은 <%=arr.get(i).getScore_num()%>입니다.</h3>
+   					<h3><%=arr.get(i).getC_name()%>님의 평점은 
+   					<%for(int j=0; j<arr.get(i).getScore_num(); j++){%>
+   						★ <%} %> 입니다.</h3>
    					<p> <%=arr.get(i).getReview()%></p>
    				</figcaption>
    				<a href="#"></a>
