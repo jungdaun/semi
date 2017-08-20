@@ -6,7 +6,7 @@ public class ReviewDTO {
 	private int c_idx;
 	private String c_name; //손님 id
 	private int store_idx; //가게 idx
-	private int up_date; //저장 날짜
+	private String up_date; //저장 날짜
 	private int score_num;  //평점 ->store로 보내야함.
 	private String review; //contents
 	private String r_picture; //사진이름 = 가게 idx_손님 이름(string)
@@ -38,12 +38,12 @@ public class ReviewDTO {
 		this.store_idx = store_idx;
 	}
 
-	public int getDate() {
+	public String getUp_date() {
 		return up_date;
 	}
 
-	public void setDate(int date) {
-		this.up_date = date;
+	public void setUp_date(String up_date) {
+		this.up_date = up_date;
 	}
 
 	public int getScore_num() {

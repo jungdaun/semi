@@ -18,8 +18,9 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/mainLayout.css">
 <%
-String store_idx_s=request.getParameter("store_idx");
-int store_idx = Integer.parseInt(store_idx_s);
+//String store_idx_s=request.getParameter("store_idx");
+//int store_idx = Integer.parseInt(store_idx_s);
+int store_idx=21;
 String store_type= request.getParameter("store_type");
 String c_sub_s = request.getParameter("c_sub_s");
 ArrayList<FoodDTO> arr = fdao.showStore(store_idx);

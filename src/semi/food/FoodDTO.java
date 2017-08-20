@@ -3,23 +3,42 @@ package semi.food;
 public class FoodDTO {
 	
 	private int store_idx;
+	private int food_num;
 	private String food_name;
 	private String food_type;
 	private int food_price;
 	private String food_info;
+	private String food_image;
 	
 	public FoodDTO() { }
 
-	public FoodDTO(int store_idx, String food_name, String food_type, int food_price, String food_info) {
+	public FoodDTO(int store_idx, int food_num, String food_name, String food_type, int food_price, String food_info, String food_image) {
 		super();
 		this.store_idx = store_idx;
+		this.food_num = food_num;
 		this.food_name = food_name;
 		this.food_type = food_type;
 		this.food_price = food_price;
 		this.food_info = food_info;
+		this.food_image = food_image;
+	}
+	
+	
+	public int getFood_num() {
+		return food_num;
 	}
 
+	public void setFood_num(int food_num) {
+		this.food_num = food_num;
+	}
 
+	public String getFood_image() {
+		return food_image;
+	}
+
+	public void setFood_image(String food_image) {
+		this.food_image = food_image;
+	}
 
 	public int getStore_idx() {
 		return store_idx;
