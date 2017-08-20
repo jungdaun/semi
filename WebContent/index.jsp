@@ -20,12 +20,19 @@ function check() {
 		location.href = '/semi/index_ceo.jsp';
 	}
 }
+
+function addr_search(){
+	alert('come');
+	location.href='/store/postStore.jsp?';
+}
 </script>
 		<div id="bodywrap">
 			<div id="maintitle">
 				<div id="maintitle1"><a href="/semi/notice/noticeList.jsp"><img src="img/notice.jpg" style="width:450px; height:200px;"></a></div>
 				<div id="maintitle2">
-					<div id="find"><br><br><input type="text" style="height:22px; margin-top:12px;"><input type="button" value = "  " style="background: url(/semi/img/1.jpg); width:35px; height:30px;"></div>
+					<div id="find"><br><br>
+					<input type="text" name="addr" value="(ex)개포동" style="height:22px; margin-top:12px;">
+					<input type="button" name="addr_search" onclick="addr_search(this)" style="background: url(/semi/img/1.jpg); width:35px; height:30px;"></div>
 					<div id="coupon_board"><a href="/semi/coupon/couponList.jsp"><img src="img/coupon.jpg" style="width:350px; height:90px;"></a></div>
 				</div>
 			</div>

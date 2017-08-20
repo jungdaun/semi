@@ -121,7 +121,7 @@ ArrayList<ReviewDTO> arr = rdao.show(store_idx);
 <script>
 function post(){
    
-   window.open("postReview_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>", "글 쓰기", "width=410px, height=400px;");
+   window.open("postReview_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>", "글 쓰기", "width=490px, height=510px;");
    
    
    //넘겨줄 값 같이 넘겨주기

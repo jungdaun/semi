@@ -67,7 +67,7 @@ int date = cal.get(Calendar.YEAR) + cal.get(Calendar.MONTH) + cal.get(Calendar.D
       </tr>
       <tr>
          <td colspan="4">
-         <textarea rows="25%" cols="65%" name="contents"></textarea>
+         <textarea rows="25%" cols="60%" name="contents"></textarea>
          </td>
       </tr>
       </tbody>
