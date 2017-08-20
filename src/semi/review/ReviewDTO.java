@@ -14,6 +14,15 @@ public class ReviewDTO {
 	
 	public ReviewDTO() { }
 
+	public ReviewDTO(String c_name, int score_num, String review, String r_picture) {
+		super();
+		this.c_name = c_name;
+		this.score_num = score_num;
+		this.review = review;
+		this.r_picture = r_picture;
+	}
+
+
 	public int getC_idx() {
 		return c_idx;
 	}

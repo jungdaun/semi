@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("utf-8");%>
 <%@ page import="semi.review.*" %>
+<%@ page import="java.util.ArrayList" %>
 <jsp:useBean id="rdto" class="semi.review.ReviewDTO"/>
 <jsp:useBean id="rdao" class="semi.review.ReviewDAO"/>
 <jsp:setProperty property="*" name="rdto"/>
@@ -12,7 +13,16 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/mainLayout.css">
+
 <style>
+thead th{
+   background-color:  #2F4038; color: #FEEEA7; font-size: 15px;
+   width:25%;
+}
+thead td{
+   background-color:  white; color: #FEEEA7; font-size: 15px;
+   width:25%
+}
 .rev {
 
   position: relative;
@@ -97,23 +107,17 @@ position: absolute;
   
 <%
 //String c_name = (String) session.getAttribute("sname");
-String store_idx_s=request.getParameter("store_idx");
-int store_idx = Integer.parseInt(store_idx_s);
+//String store_idx_s=request.getParameter("store_idx");
+//int store_idx = Integer.parseInt(store_idx_s);
+int store_idx=21;
 String store_type= request.getParameter("store_type");
 String c_sub_s = request.getParameter("c_sub_s");
 
-String c_name = "na";
+String c_name = "송병훈";
+
+ArrayList<ReviewDTO> arr = rdao.show(store_idx);
 %>
-<style>
-thead th{
-   background-color:  #2F4038; color: #FEEEA7; font-size: 15px;
-   width:25%;
-}
-thead td{
-   background-color:  white; color: #FEEEA7; font-size: 15px;
-   width:25%
-}
-</style>
+
 <script>
 function post(){
    
@@ -130,7 +134,7 @@ function post(){
 
 <%@include file="/header.jsp"%>
    <div id="bodywrap">
-   <article>
+   <article >
       <legend><h2 style="background-color: #2F4038; color: #FEEEA7;">
          Home >> <%=store_type %> >> <%=c_sub_s %></h2></legend>
          <table>
@@ -153,38 +157,36 @@ function post(){
 
    <h4><input type="button" name="post" value="글쓰기" onclick="post()" style="float: right;"></h4>
    
-   <figure class="rev">
+   <table>
    <%
-//   String r_picture = 
+   if(arr.size()==0 || arr==null){%>
+	   <tr>
+	   		<td>
+	   			후기가 존재하지 않습니다ㅜ_ㅜ
+	   			후기를 남겨주세요^_^!
+	   		</td>
+	   </tr>
+   <%}
+   else{
+	   for(int i=0; i<arr.size(); i++){  
    %>
-   	<!--img src="../img/review/<%=store_idx%>_<%=c_name %>.png" /-->
-   	<img src="../img/review/2na.png" />
-   	<figcaption>
-   		<h3>제목란</h3>
-   		<p>나머지 후기들!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>
-   	</figcaption>
-   	<a href="#"></a>
-   </figure>
-   <!-- 
-   <figure class="rev hover">
-   <%
-//   String r_picture = 
-   %>
-   	<!--img src="../img/review/<%=store_idx%>_<%=c_name %>.png" />
-   	<img src="../img/review/2na.png" />
-   	<figcaption>
-   		<h3>second</h3>
-   		<p>나머지 후기들!!!!!</p>
-   	</figcaption>
-   	<a href="#"></a>
-   </figure>
-    -->
-    
-    
-   </article>
-   
+   		<tr>
+   			<td>
+   				<figure class="rev">
+   				<!--img src="../img/review/<%=store_idx%>_<%=c_name %>.png" /-->
+   				<img src="../img/review/2na.png" />
+   				<figcaption>
+   					<h3><%=arr.get(i).getC_name()%>님의 평점은 <%=arr.get(i).getScore_num()%>입니다.</h3>
+   					<p> <%=arr.get(i).getReview()%></p>
+   				</figcaption>
+   				<a href="#"></a>
+    			</figure>
+   			</td>
+   		</tr>
+  <% }	}  %>
+   </table>
+   </article>   
    </div>
-
 <%@include file="/footer.jsp"%>
 </body>
 </html>
