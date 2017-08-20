@@ -83,7 +83,7 @@ public class ReviewDTO {
 c_idx number(4),
 c_name varchar2(10),
 store_idx number(4),
-up_date number(20),
+up_date varchar2(20),
 score_num number(4),
 review varchar2(200),
 r_picture varchar2(100),
