@@ -164,16 +164,16 @@ create sequence store_store_idx
 minvalue 0 start with 1;
 
 
-insert into store values(21, 'chicken', 'abc', '서울시 중랑구 묵동', '299-1', '555-5555', 'am0900', 'pm1130', 15000, 0, 0, 3, '')
-insert into store values(21, 'chicken', 'bbq', '서울시 중랑구 묵동', '299-1', '555-5555','am1230', 'pm1000', 15000, 0, 0, 3, '')
-insert into store values(21, 'chicken', 'bhc', '서울시 중랑구 묵동','299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
-insert into store values(21, 'chicken', 'gubne', '서울시 중랑구 묵동', '299-1', '555-5555', 'am0900', 'pm1130', 15000, 0, 0, 3, '')
-insert into store values(21, 'chicken', 'hosigi', '서울시 중랑구 묵동', '299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
-insert into store values(21, 'chicken', 'kfc', '서울시 중랑구 묵동', '299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
-insert into store values(21, 'chicken', 'kyochon', '서울시 중랑구 중화동', '299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
-insert into store values(22, 'chicken', 'mexicana', '서울시 중랑구 중화동', '299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
-insert into store values(22, 'chicken', 'nene', '서울시 중랑구 묵동', '299-1', '555-5555', 'am0900', 'pm1130', 15000, 0, 0, 3, '')
-insert into store values(22, 'chicken', 'pericana','서울시 중랑구 묵동', '299-1', '555-5555', 'am0900', 'pm1130', 15000, 0, 0, 3, '')
-insert into store values(22, 'chicken', 'popeyes', '서울시 중랑구 묵동', '299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
+insert into store values(1, 'chicken', 'abc', '서울시 중랑구 묵동', '299-1', '555-5555', 'am0900', 'pm1130', 15000, 0, 0, 3, '')
+insert into store values(2, 'chicken', 'bbq', '서울시 중랑구 묵동', '299-1', '555-5555','am1230', 'pm1000', 15000, 0, 0, 3, '')
+insert into store values(3, 'chicken', 'bhc', '서울시 중랑구 묵동','299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
+insert into store values(4, 'chicken', 'gubne', '서울시 중랑구 묵동', '299-1', '555-5555', 'am0900', 'pm1130', 15000, 0, 0, 3, '')
+insert into store values(5, 'chicken', 'hosigi', '서울시 중랑구 묵동', '299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
+insert into store values(6, 'chicken', 'kfc', '서울시 중랑구 묵동', '299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
+insert into store values(7, 'chicken', 'kyochon', '서울시 중랑구 중화동', '299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
+insert into store values(8, 'chicken', 'mexicana', '서울시 중랑구 중화동', '299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
+insert into store values(9, 'chicken', 'nene', '서울시 중랑구 묵동', '299-1', '555-5555', 'am0900', 'pm1130', 15000, 0, 0, 3, '')
+insert into store values(10, 'chicken', 'pericana','서울시 중랑구 묵동', '299-1', '555-5555', 'am0900', 'pm1130', 15000, 0, 0, 3, '')
+insert into store values(11, 'chicken', 'popeyes', '서울시 중랑구 묵동', '299-1', '555-5555', 'am1230', 'pm1000', 15000, 0, 0, 3, '')
 
 */
