@@ -117,15 +117,15 @@ String c_name = "송병훈";
 
 ArrayList<ReviewDTO> arr = rdao.show(store_idx);
 %>
-
+<!-- window.open("postReview_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>", "글 쓰기", "width=490px, height=510px;"); -->
 <script>
 function post(){
    
-   window.open("postReview_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>", "글 쓰기", "width=490px, height=510px;");
+   
    
    
    //넘겨줄 값 같이 넘겨주기
-   //location.href="postReview_ok.jsp"
+   location.href="postReview_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>";
 }
 </script>
 
@@ -168,13 +168,12 @@ function post(){
 	   </tr>
    <%}
    else{
-	   for(int i=0; i<arr.size(); i++){  
+	   for(int i=0; i<arr.size(); i++){
    %>
    		<tr>
    			<td>
    				<figure class="rev">
-   				<!--img src="../img/review/<%=store_idx%>_<%=c_name %>.png" /-->
-   				<img src="../img/review/2na.png" />
+   				<img src=<%=arr.get(i).getR_picture()%> />
    				<figcaption>
    					<h3><%=arr.get(i).getC_name()%>님의 평점은 
    					<%for(int j=0; j<arr.get(i).getScore_num(); j++){%>

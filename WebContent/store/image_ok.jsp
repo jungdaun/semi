@@ -17,10 +17,10 @@ String savePath=wf.USERS_HOME + "/" + wf.getCrpath();
 
 try {
 	MultipartRequest mr = new MultipartRequest(request, savePath, wf.getFreeSize(), "utf-8");
-	String cstore_s = (String) session.getAttribute("cstore");
-	String sid = (String) session.getAttribute("sid");
+	String cstore_s = (String) session.getAttribute("cstore"); //ceo idx
+	String sid = (String) session.getAttribute("sid"); //ceo id
 	int cstore = Integer.parseInt(cstore_s);
-	String aa = mr.getParameter("a");
+	String aa = mr.getParameter("a"); //img 불러올때 사용
 	String bb[] = aa.split("\\\\");
 	String path = "http://localhost:9090/semi/store/img/upload/" + sid + "/" + bb[2];
 	wf.setImage(path, cstore);

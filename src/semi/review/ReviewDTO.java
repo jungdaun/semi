@@ -99,9 +99,9 @@ r_picture varchar2(100),
 r_pwd varchar2(20)
 )
 
-insert into review values(1, '송병훈', 21, 'am1230', 4, '맛있네요!', '2na', '1234')
-insert into review values(6, '송민기', 21, 'pm1230', 3, '맛있네요!', '2na', '1234')
-insert into review values(7, '송다운', 21, 'am1230', 2, '맛있네요!', '2na', '1234')
-insert into review values(8, '송예랑', 21, 'pm1230', 1, '맛있네요!', '2na', '1234')
+insert into review values(1, '송병훈', 21, 'am1230', 4, '맛있네요!', 'http://localhost:9090/semi/store/img/review/2na.png', '1234')
+insert into review values(6, '송민기', 21, 'pm1230', 3, '맛있네요!', 'http://localhost:9090/semi/store/img/review/2na.png', '1234')
+insert into review values(7, '송다운', 21, 'am1230', 2, '맛있네요!', 'http://localhost:9090/semi/store/img/review/2na.png', '1234')
+insert into review values(8, '송예랑', 21, 'pm1230', 1, '맛있네요!', 'http://localhost:9090/semi/store/img/review/2na.png', '1234')
 
  */

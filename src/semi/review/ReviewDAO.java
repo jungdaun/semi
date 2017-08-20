@@ -48,6 +48,7 @@ public class ReviewDAO {
 	
 	public int postReview(Integer c_idx, String c_name, int store_idx, String up_date, int score_num, String review, String r_picture, String r_pwd){
 		try{
+			System.out.println("들어옴?");
 			conn = semi.db.SemiDb.getConn();
 			String sql="insert into review values(?, ?, ?, ?, ?, ?, ?, ?)";
 			ps = conn.prepareStatement(sql);
