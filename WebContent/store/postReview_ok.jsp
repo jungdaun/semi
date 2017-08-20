@@ -1,6 +1,8 @@
 <%@page import="java.util.Calendar"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="com.oreilly.servlet.*"%>
+<jsp:useBean id="wf" class="semi.image.ImageDAO" scope="session" />
 <%request.setCharacterEncoding("utf-8");%>
 <%@ page import="semi.review.*" %>
 <jsp:useBean id="rdto" class="semi.review.ReviewDTO"/>
@@ -25,6 +27,14 @@ thead td{
    width:25%
 }
 </style>
+<script>
+	function load(){
+		document.post_review.a.value = document.post_review.upload.value;
+		image.submit();
+		location.href='review_image.jsp';
+		alert('33333');
+	}
+</script>
 </head>
 <%
 //String c_name = (String) session.getAttribute("sname");
@@ -38,7 +48,7 @@ Integer c_idx = (Integer)2;
 
 String picture = store_idx_s + c_name;
 Calendar cal = Calendar.getInstance();
-int date = cal.get(Calendar.YEAR) + cal.get(Calendar.MONTH) + cal.get(Calendar.DATE);
+String date = "pm0930";
 %>
 <body>
 	<form name="post_review" action="postReview_ok_ok.jsp">
@@ -63,7 +73,11 @@ int date = cal.get(Calendar.YEAR) + cal.get(Calendar.MONTH) + cal.get(Calendar.D
       
       <tbody>
       <tr>
-         <th>사진 올리기  </th> <td colspan="3">사진 찾아서 upload</td>
+         <th>사진 올리기  </th>
+         <td colspan="3">
+         File:<input type="file" name="upload">
+         <input type="hidden" name="a">
+         </td>
       </tr>
       <tr>
          <td colspan="4">
