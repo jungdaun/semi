@@ -19,6 +19,33 @@ public class OrderDAO {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
+	
+	public int addSaleNum( int oIdx ){
+		try {
+			String sql = "update store set sale_num = (select sale_num from store where store_idx = "
+					+ "(select store_idx from order_tb where order_idx = "+oIdx+") )+ 1 "
+					+ " where store_idx = (select store_idx from order_tb where order_idx = "+oIdx+")";
+			ps = conn.prepareStatement(sql);
+			int res = ps.executeUpdate();
+			return res; 
+			
+		} catch (Exception e) {
+			// TODO: han
+			
+		e.printStackTrace( );
+		return -1 ; 
+		
+		}finally {
+			try {
+				if (ps!=null )ps.close();
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+		
+	}
+	
 	public int changeState (int state, int oIdx){
 		   try {
 			    conn = semi.db.SemiDb.getConn();
@@ -33,7 +60,15 @@ public class OrderDAO {
 //			    ps.setInt(1, state+1);
 			    ps.setInt(1, oIdx);
 			    
-			    int res = ps.executeUpdate(); 
+			    int res = ps.executeUpdate();
+			    
+
+			    if (state ==2 ){
+			    	int res2= addSaleNum(oIdx);
+			    	
+			    }
+			    
+			    
 			    return res ; 
 		
 			    
@@ -44,7 +79,7 @@ public class OrderDAO {
 		}finally {
 			try {
 				
-				if(rs!=null)rs.close();
+			//	if(rs!=null)rs.close();
 	            if(ps!=null) ps.close();
 	            if(conn!=null) conn.close();
 			} catch (Exception e2) {
