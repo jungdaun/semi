@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 
+import semi.food.FoodDTO;
 import semi.order.OrderDTO;
 import semi.store.StoreDTO;
 
@@ -197,6 +198,37 @@ public class StoreDAO {
 		}
 	}
    }
+   
+   public int storeJoin(StoreDTO dto) {
+		try {
+			conn = semi.db.SemiDb.getConn();
+			String sql = "insert into store values(?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0, '')";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, dto.getStore_idx());
+			ps.setString(2, dto.getStore_type());
+			ps.setString(3, dto.getStore_name());
+			ps.setString(4, dto.getStore_addr());
+			ps.setString(5, dto.getStore_addr2());
+			ps.setString(6, dto.getStore_phone());
+			ps.setString(7, dto.getOpen_time());
+			ps.setString(8, dto.getClose_time());
+			
+			return ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+			}
+		}
+	
+	
+}
 
 //   public ArrayList<StoreDTO> showReview(int idx){
 //      try{
