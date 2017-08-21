@@ -40,8 +40,10 @@ h3{
 </style>
 <script>
 function edit() {
-	window.alert('a');
 	location.href = 'editFood.jsp';
+}
+function add() {
+	location.href = 'addFood.jsp';
 }
 </script>
 </head>
@@ -51,7 +53,7 @@ function edit() {
 <div id="bodywrap">
 <h3>메뉴수정하기</h3>
 메뉴 수정을 하려면 해당 메뉴의 사진을 눌러주세요.
-<input type = "button" value = "메뉴 추가하기">
+<input type = "button" value = "메뉴 추가하기" onclick = "add()">
    <article>
       <legend style="background-color: #2F4038; color: #FEEEA7; font-size:22px; font-weight: bold;">
         
@@ -102,32 +104,7 @@ function edit() {
       </table> <br><br><br><br><br>
     </article>
     
-    <%
-
-if (isOpen){
-	%>
-
-    <article>
- <% 
- 
-   ArrayList<CartDTO> brr = cdao.showData(store_idx, c_idx);%>
-         <fieldset style="background-color: #BF0920; color: white; font-size: 25px; line-height: 40%;">장바구니</fieldset>
-         <table>
-         <% if(brr.size()==0 || brr==null){%>
-            <tr>
-            	<td style="font-size:25px; color:white;">주문 내역이 없습니다.</td>
-            </tr> <% }
-         else{ %>
-         
-            <jsp:include page="cart.jsp?store_idx=<%=store_idx %>&store_type=<%=store_type %>"/>
-            
-         <% } %>
-        </table>
-    </article>
-    <%}
-    %>
-  </div>
-</div>
+    
 <%@include file="/footer.jsp"%>
 </body>
 </html>
