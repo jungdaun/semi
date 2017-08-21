@@ -19,6 +19,43 @@ public class OrderDAO {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
+	public int changeState (int state, int oIdx){
+		   try {
+			    conn = semi.db.SemiDb.getConn();
+		 
+			    String sql= "update order_tb set finish = "+(state+1)+" where order_idx = ? ";
+			    
+			 
+			    
+
+			    ps=conn.prepareStatement(sql);
+		
+//			    ps.setInt(1, state+1);
+			    ps.setInt(1, oIdx);
+			    
+			    int res = ps.executeUpdate(); 
+			    return res ; 
+		
+			    
+		} catch (Exception e) {
+			e.printStackTrace( );
+			return -1; 
+			// TODO: handle exception
+		}finally {
+			try {
+				
+				if(rs!=null)rs.close();
+	            if(ps!=null) ps.close();
+	            if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	   
+		
+
+	}
+	
 	public int getMinPrice(int sIdx ){
 		   try {
 			    conn = semi.db.SemiDb.getConn();
@@ -423,6 +460,67 @@ public class OrderDAO {
 				
 			}
 	
+			return dtos; 
+			
+		} catch (Exception e) {
+			e.printStackTrace( );
+			return null; 
+			// TODO: handle exception
+		}finally {
+			try {
+				if(rs!=null )rs.close();
+				if (ps!=null)ps.close();
+				if (conn!=null)conn.close();
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	
+	public ArrayList<OrderDTO> myStoreOrderList (int store_idx ){
+		try {
+			
+			conn = semi.db.SemiDb.getConn();
+			
+			String sql = "select * from order_tb where store_idx = ? order by order_idx";
+			
+			
+			
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, store_idx);
+			
+			rs=ps.executeQuery();
+			
+			
+			ArrayList<OrderDTO> dtos = new ArrayList<OrderDTO>();
+			
+			while (rs.next()){
+				
+				
+				
+				
+				int order_idx = rs.getInt("order_idx");
+				int mem_idx= rs.getInt("mem_idx");
+				
+				int price = rs.getInt("price");
+				int user_coupon = rs.getInt("user_coupon");
+				String memo = rs.getString("memo");
+				String order_date = rs.getString("order_date");
+				int finish = rs.getInt("finish");
+				int final_price = rs.getInt("final_price");
+				int pay_type = rs.getInt("pay_type");
+				String c_name = rs.getString("c_name");
+				String c_addr= rs.getString("c_addr");
+				String c_tel= rs.getString("c_tel");
+				
+				
+				
+				OrderDTO dto =new OrderDTO(order_idx, store_idx, mem_idx, price, memo, order_date, user_coupon, finish, final_price, pay_type, c_name, c_tel, c_addr);
+				dtos.add(dto);
+				
+			}
+			
 			return dtos; 
 			
 		} catch (Exception e) {
