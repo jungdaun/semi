@@ -15,7 +15,9 @@ String store_type=request.getParameter("store_type");
 //Integer c_idx = (Integer) session.getAttribute("c_idx");
 //Integer c_idx = (Integer)2;
 
-int c_idx = mdao.getMemIdx((String)session.getAttribute("sid"));
+Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
+
+//int c_idx =mdao.getMemIdx((String)session.getAttribute("sid"));
 
 String idx_s = request.getParameter("store_idx");
 int store_idx = Integer.parseInt(idx_s);

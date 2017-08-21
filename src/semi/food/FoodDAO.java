@@ -58,15 +58,13 @@ public class FoodDAO {
 				conn = semi.db.SemiDb.getConn();
 				String sql = "insert into food values(21, 1, 'fried', 'main', 17000, 'taste good!', '')";
 				ps = conn.prepareStatement(sql);
-				ps.setString(1, dto.getName());
+				ps.setInt(1, dto.getStore_idx());
 				ps.setInt(2, dto.getFood_num());
 				ps.setString(3, dto.getFood_name());
-				ps.setString(4, dto.getAns());
-				ps.setString(5, dto.getId());
-				ps.setString(6, dto.getAddress());
-				ps.setString(7, dto.getAddress2());
-				ps.setString(8, dto.getEmail());
-				ps.setString(9, dto.getTel());
+				ps.setString(4, dto.getFood_type());
+				ps.setInt(5, dto.getFood_price());
+				ps.setString(6, dto.getFood_info());
+				ps.setString(7, "");
 				return ps.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();

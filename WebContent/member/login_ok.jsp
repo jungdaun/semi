@@ -21,6 +21,8 @@
 			session.setAttribute("sid", userid);
 			session.setAttribute("sname", arr[0]);
 			session.setAttribute("c_idx", arr[1]);
+			System.out.println ("cIdx = "+arr[1]);
+			
 			session.setAttribute("saddr", arr[2]);
 			session.setAttribute("stype", type);
 

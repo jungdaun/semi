@@ -107,7 +107,7 @@ else if ( (!adminId.equals(admin))){
 	<table>
 		<tr>
 			<th>쿠폰 이름</th>
-			<td><input type="text" name="coupon_name"> </td>
+			<td><input type="text" name="coupon_name" required="required"> </td>
 		</tr>
 		
 		
@@ -118,8 +118,8 @@ else if ( (!adminId.equals(admin))){
 			
 			<select name="coupon_food_type" >
 			
-				<option value="치킨">치킨</option>
-				<option value="피자">피자</option>
+				<option value="chicken">치킨</option>
+				<option value="pizza">피자</option>
 			
 			</select>
 			
@@ -128,7 +128,7 @@ else if ( (!adminId.equals(admin))){
 		
 		<tr>
 			<th>
-			<select name="coupon_type" >
+			<select name="coupon_type" required="required">
 			
 				<option value="1">가격(1)</option>
 				<option value="2">비율(2)</option>
@@ -138,13 +138,13 @@ else if ( (!adminId.equals(admin))){
 			
 			<td>
 			
-			<input type="text" name="coupon_value"> </td>
+			<input type="number" name="coupon_value" required="required"> </td>
 			
 		</tr>
 		
 		<tr>
 			<th>유효 기간</th>
-			<td><input type="date" name="coupon_end" > </td>
+			<td><input type="date" name="coupon_end" required="required" > </td>
 		</tr>
 		<tr>
 			<td colspan="2" style="text-align: center;"><input type="submit" value="확인"> </td>

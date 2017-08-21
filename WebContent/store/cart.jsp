@@ -10,8 +10,21 @@
 <jsp:useBean id="odao" class="semi.order.OrderDAO"></jsp:useBean>
  
 <%
+
+//System.out.println( (Integer) session.getAttribute("c_idx"));
+//Integer c_idx = (Integer)2;
+
+System.out.println (session.getAttribute("c_idx"));
+
+//int c_idx = (int) session.getAttribute("c_idx");
 //Integer c_idx = (Integer) session.getAttribute("c_idx");
-Integer c_idx = (Integer)2;
+
+
+Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
+
+
+
+
 
 String store_idx_s = request.getParameter("store_idx");
 String store_type=request.getParameter("store_typpe");

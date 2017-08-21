@@ -10,7 +10,7 @@
 request.setCharacterEncoding("utf-8");
 
 //String user_id=(String) session.getAttribute("sid");
-String user_id = "고객1";
+//String user_id = "고객1";
 
 //System.out.println (user_id);
 

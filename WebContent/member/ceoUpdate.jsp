@@ -86,24 +86,20 @@ function changePwd() {
 }
 </script>
 <style>
-h2 {
+h1 {
 	text-align: center;
+	color: white;
 }
-
-fieldset {
-	width: 450px;
-	margin: 0px auto;
+th{
+height: 25px;
+font-size: 15px;
+text-align: left;
+border: 1px solid black;
+background-color: #e4e4e4;
 }
-
-section li {
-	list-style-type: none;
+td{
+text-align: left;
 }
-
-label {
-	width: 130px;
-	float: left;
-}
-
 section p {
 	text-align: center;
 }
@@ -113,49 +109,55 @@ section p {
 <body onload = "show()">
 <%@include file="/header.jsp"%>
 <div id="bodywrap">
-
+<h1>사장님정보수정</h1>
 <section>
 		<article>
-			<h2>회원정보수정</h2>
 			<form name="update" action="ceoUpdate_ok.jsp" method = "post">
 			<input type = "hidden" name = "id">
-				<fieldset>
-					<legend>회원  정보</legend>
-					<ul>
-
-						<li><label>이름</label> <input type="text" name="name" value = "<%=dto.getName()%>">
-						</li>
-
+				<table>
+				<tr>
+						<th>이름</th>
+						<td><input type="text" name="name" size="23" value = "<%=dto.getName()%>">
+						</td>
+						</tr>
 						
-						<li><label>이메일</label> <input type="text" name="email1" required="required" size = "10">@</li>
+						<tr>
+						<th>E-Mail</th>
+						<td>
+						<input type="text" name="email1" required="required" size = "8">@
+						<input type = "text" name = "email2" required="required" size="8">
 						
-						<li><label>&nbsp;&nbsp;&nbsp;</label>
-						<input type = "text" name = "email2" required="required">
 						<select name = "email3" onchange = "selectEmail()">
-						
 						<option value = "0">직접입력</option>
 						<option value = "naver.com">네이버</option>
 						<option value = "daum.net">다음</option>
 						</select>
-						<input type="hidden" name="email"></li>
 						
-						<li><label>2차비밀번호질문</label>
-						<select name = "ask">
+						<input type="hidden" name="email">
+						</td>
+						</tr>
+						
+						<tr>
+						<th>2차비밀번호 질문</th>
+						<td>
+						<select name = "ask" style="width:180px;">
 							<option value = "나의 첫 사랑은?">나의 첫 사랑은?</option>
 							<option value = "나의 출신 초등학교는?">나의 출신 초등학교는?</option>
 							<option value = "내 보물 1호는?">내 보물 1호는?</option>
-						</select></li>
+						</select></td>
+						</tr>
 						
-						<li><label>2차비밀번호답변</label> <input type="text" name="ans" required="required"></li>
-						
-					</ul>
-
+						<tr>
+						<th>2차비밀번호 답변</th>
+						<td><input type="text" name="ans" required="required" size="23"></td>
+						</tr>
+					</table>
 					<p>
 						<input type = "button" value = "회원 탈퇴" onclick = "goOut()">
 						<input type = "button" value = "비밀번호 변경" onclick = "changePwd()">
 						<input type="button" onclick="javascript:aa()" value="수정하기">
 					</p>
-				</fieldset>
+				
 			</form>
 		</article>
 	</section>
