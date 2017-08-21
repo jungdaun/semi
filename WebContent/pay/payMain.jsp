@@ -329,7 +329,7 @@ function addOrder() {
 		<th>쿠폰</th>
 		<td><input type="text" name="user_coupon" readonly="readonly" ><!--   -->
 
-	<a href="" onclick="window.open ('selectCoupon.jsp?tp=<%=tempPrice%>', 'selectCoupon', 'height=450, width=500')">쿠폰 선택</a>
+	<a href="" onclick="window.open ('selectCoupon.jsp?tp=<%=tempPrice%>&sType=<%=odao.getStoreType(store_idx)%>', 'selectCoupon', 'height=450, width=500')">쿠폰 선택</a>
 		</td>
 		
 	</tr>

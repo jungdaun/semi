@@ -159,7 +159,73 @@ public class CouponDAO {
 	}
 	
 	
-	public ArrayList<CouponDTO> myCouponList (String sid){
+	public ArrayList<CouponDTO> myCouponList (String sid, String food_type ){
+		
+		
+		try {
+			System.out.println(sid);
+			
+			conn = semi.db.SemiDb.getConn();
+			
+			int res = deletePastCoupon();
+			
+			
+			
+			String sql ="select * from (select * from ( "
+					+ "select is_used, mem_idx, coupon_start, user_coupon.coupon_idx, user_coupon_idx, "
+					+ "coupon_name, coupon_food_type, coupon_value, coupon_end, coupon_type "
+					+ "from user_coupon, customer, coupon "
+					+ "where my_idx = mem_idx and user_coupon.coupon_idx = coupon.coupon_idx ) "
+					+ "where mem_idx = (select my_idx from customer where id = ? ) ) where coupon_food_type = ? ";
+			
+					
+					
+			ps = conn.prepareStatement(sql);
+			ps.setString(1, sid);
+			ps.setString(2, food_type);
+			rs=ps.executeQuery();
+			
+			ArrayList<CouponDTO> dtos = new ArrayList<CouponDTO>();
+			while (rs.next()){
+				int coupon_idx = rs.getInt("user_coupon_idx");
+				String coupon_name = rs.getString("coupon_name");
+				String coupon_food_type= rs.getString("coupon_food_type");
+				int coupon_value = rs.getInt("coupon_value");
+				Date coupon_start = rs.getDate("coupon_start");
+				String coupon_end = rs.getString("coupon_end");
+				int coupon_type = rs.getInt("coupon_type");
+				int is_used = rs.getInt("is_used");
+				
+				
+				CouponDTO dto = new CouponDTO(coupon_idx, coupon_name, coupon_food_type, coupon_value, coupon_start, coupon_end, coupon_type, is_used);
+				dtos.add(dto);
+				
+				
+			}
+			return dtos ; 
+			
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace( );
+			return null;
+			
+			// TODO: handle exception
+		}
+		
+		finally {
+			try {
+			
+
+				if (rs!=null)rs.close();
+				if (ps!=null)ps.close();
+				if (conn!=null)conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+public ArrayList<CouponDTO> myCouponList (String sid){
 		
 		
 		try {
@@ -182,6 +248,7 @@ public class CouponDAO {
 					
 			ps = conn.prepareStatement(sql);
 			ps.setString(1, sid);
+			//ps.setString(2, food_type);
 			rs=ps.executeQuery();
 			
 			ArrayList<CouponDTO> dtos = new ArrayList<CouponDTO>();
@@ -329,7 +396,7 @@ public class CouponDAO {
 	public int couponWrite (CouponDTO dto){
 		try {
 			conn = semi.db.SemiDb.getConn();
-			String sql = "insert into coupon values (coupon_sq.nextval,?,?,?,sysdate , ?,?, 0 )";
+			String sql = "insert into coupon values (coupon_sq.nextval,?,?,?,sysdate , ?,? )";
 			ps=conn.prepareStatement(sql);
 			ps.setString(1, dto.getCoupon_name());
 			ps.setString(2, dto.getCoupon_food_type());
