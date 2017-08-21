@@ -79,7 +79,7 @@ else{
                for(int j=1; j<=num; j++){%>&hearts;<%} %><br>
                리뷰수 : <%=arr.get(count).getReview_num() %><br>
                판매수 : <%=arr.get(count).getSale_num() %>      
-           </div></td>
+           </div></td> 
                 
       <%count++;
          }
