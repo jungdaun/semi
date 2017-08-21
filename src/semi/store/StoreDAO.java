@@ -42,7 +42,7 @@ public class StoreDAO {
             String store_image = rs.getString("store_image");
             
             StoreDTO dto = new StoreDTO(store_idx, type, store_name, store_addr, store_addr2, 
-            		store_phone, open_time, close_time, lowest_price, review_num, sale_num, score_num, store_image);
+                  store_phone, open_time, close_time, lowest_price, review_num, sale_num, score_num, store_image);
             arr.add(dto);
          }
          return arr;
@@ -113,6 +113,8 @@ public class StoreDAO {
          }
    }
    
+
+   
    /*예랑 추가*/
    
    public boolean isOpen (int sIdx ){
@@ -133,17 +135,45 @@ public class StoreDAO {
 			   
 		   }
 		   
-		   open_s = open_s.substring(11,13);
-		   close_s = close_s .substring(11, 13);
+		 //  open_s = open_s.substring(11,13);
+		  // close_s = close_s .substring(11, 13);
 		   
-		   int open = Integer.parseInt(open_s);
-		   int close = Integer.parseInt(close_s);
+		   int open = 0; 
+		   int close = 0; 
+		   
+		   if (open_s.substring(0, 2).equals("am")){
+			   open = Integer.parseInt(open_s.substring(2));
+			   
+		   }
+		   else if (  open_s.substring(0, 2).equals("pm")){
+			   open = Integer.parseInt(open_s.substring(2))+ 1200;
+			 }
+		   
+		   
+		   if (close_s.substring(0, 2).equals("am")){
+			   close = Integer.parseInt(open_s.substring(2))+ 2400;
+			   
+		   }
+		   else if (  close_s.substring(0, 2).equals("pm")){
+			   close = Integer.parseInt(open_s.substring(2))+ 1200;
+		   }
+		   
+		   
+		 
+		   
+		   
+		   
 		   
 		   Calendar now = Calendar.getInstance();
-		   int hour =now.get(Calendar.HOUR_OF_DAY);
+		   int h =now.get(Calendar.HOUR_OF_DAY);
+		   int min = now.get(Calendar.MINUTE);
 		   
-		   if (close < 6 ) close += 24; 
-		   
+		   int hour = h * 100 + min ; 
+		//   System.out.println(sIdx+" hour: "+hour);
+	//	   
+	// 	   if (close < 6 ) close += 24; 
+		//   System.out.println(sIdx+" open"+open);
+		//   System.out.println(sIdx+" close"+close);
 		   if (hour >= open && hour < close){
 			   return true; 
 			   
