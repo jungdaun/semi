@@ -42,50 +42,55 @@ h3{
 <%@include file="/header.jsp"%>
 <div id="bodywrap">
 <h3>메뉴수정하기</h3>
-메뉴 수정을 하려면 해당 메뉴의 사진을 눌러주세요.
-<input type = "button" value = "메뉴 추가하기">
 
    <article>
-      <legend style="background-color: #2F4038; color: #FEEEA7; font-size:22px; font-weight: bold;">
+      <legend style="background-color: #2F4038; color: #FEEEA7; font-size:22px; font-weight: bold;"/>
         
          <table>
-    
-  <% 
-         int count=0;
-         while(count<arr.size()) {
-    %>     <tr> <%
-         for(int i=0; i<2; i++){
-            if(count<arr.size()){%>
-            <td><img src="../img/store/<%=arr.get(count).getFood_name()%>.png" style="width:140px; height:120px;"/></td>
-            <td style="background-color: #2F4038; color:white;"><%=arr.get(count).getFood_name() %>
-            <br><%=arr.get(count).getFood_price() %>원 </td>
-         
-            <td>
-            <form name="postFood_ok" action="postFood_ok.jsp">
-            <input type="hidden" name="c_sub_s" value="<%=c_sub_s %>">
-            
-               <select name="foodNum"><%
-               for(int j=1; j<10; j++){%>
-                  <option value="<%=j%>"><%=j %></option>
-               <% } %>
+         <tr>
+		<th>
+		음식 사진 
+		</th>
+		<td>
+		 <img src="../img/store/dd.png" style="width:110px; height:128px"/>
+		</td>
+		</tr>
+		
+		<tr>
+		<th>
+		음식 이름
+		</th>
+		<td>
+		chicken
+		</td>
+		</tr>
+		
+		<tr>
+		<th>
+		음식 타입
+		</th>
+		<td>
+		  <select name="food_type">
+		  <option value="main">main</option>
+		  <option value="side">side</option>
                </select>
-               
-               <input type="hidden" name="store_type" value="<%=store_type%>">
-               <input type="hidden" name="store_idx" value="<%=store_idx%>">
-               <input type="hidden" name="food_price" value="<%=arr.get(count).getFood_price()%>">
-               <input type="hidden" name="food_name" value="<%=arr.get(count).getFood_name()%>">
-
-            </form>
-            </td>  
-         <% count++;}
-         else
-            break;
-      } %></tr>
- <% }  %>
+		</td>
+		</tr>
+		
+		<tr>
+		<th>
+		음식 가격
+		</th>
+		<td>
+		17000
+		</td>
+		</tr>
+		
+		
       </table> <br><br><br><br><br>
+      </legend>
     </article>
   </div>
-</div>
 <%@include file="/footer.jsp"%>
 </body>
 </html>
