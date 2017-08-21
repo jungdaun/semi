@@ -19,6 +19,42 @@ public class OrderDAO {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
+	public int getMinPrice(int sIdx ){
+		   try {
+			    conn = semi.db.SemiDb.getConn();
+		 
+			    String sql = "select lowest_price from store where store_idx = ? "; 
+			    
+
+			    ps=conn.prepareStatement(sql);
+			    
+			    ps.setInt(1, sIdx);
+			    rs= ps.executeQuery(); 
+			 //   ps.setInt(1, oIdx);
+	    
+
+			
+			    
+			    rs.next();
+			    return rs.getInt(1);
+			    
+			    
+		} catch (Exception e) {
+			e.printStackTrace( );
+			return -1; 
+			// TODO: handle exception
+		}finally {
+			try {
+				
+				if(rs!=null)rs.close();
+	            if(ps!=null) ps.close();
+	            if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+
+	}
 	
 	public String getStoreAddr (int sIdx ){
 

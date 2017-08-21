@@ -29,7 +29,7 @@ System.out.println (order_idx);
 ArrayList <CartDTO> cartDtos = ctdao.myCartList(order_idx, store_idx);
 //String sid = "고객1";
 
-	String userInfo [] = mdao.getUserInfo((String)session.getAttribute("sid"));
+String userInfo [] = mdao.getUserInfo((String)session.getAttribute("sid"));
 	
 
 
@@ -59,35 +59,6 @@ color: #E86274;
 }
 h1{text-align: center; color: white;}
 fieldset h4{text-align: center; color: white;}
-/*
-fieldset table {
-    border-collapse: separate;
-    border-spacing: 0;
-    text-align: left;
-    line-height: 1.5;
-    border-top: 1px solid #ccc;
-    border-left: 1px solid #ccc;
-  margin : 20px 10px;
-}
-fieldset table th {
-    width: 150px;
-    padding: 10px;
-    font-weight: bold;
-    vertical-align: top;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    border-top: 1px solid #fff;
-    border-left: 1px solid #fff;
-    background: #eee;
-}
-fieldset table td {
-    width: 350px;
-    padding: 10px;
-    vertical-align: top;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-}
-*/
 fieldset table
 {
 width: 600px ; 
@@ -225,6 +196,26 @@ function addOrder() {
 		
 		
 	}
+	
+	if (tempPrice <odao.getMinPrice(store_idx)){
+		
+		
+		String[] c_sub = odao.getStoreAddr(store_idx).split(" ");
+		String c_sub_s = c_sub[2];
+
+		%>
+		
+		<script>
+		window.alert ('<%=odao.getMinPrice(store_idx)%>원 이상 주문하셔야 합니다.');
+		
+		window.location.href = '/semi/store/postFood.jsp?store_idx=<%=store_idx%>&store_type=<%=odao.getStoreType(store_idx)%>&c_sub_s=<%=c_sub_s%>';
+		
+		</script>
+		
+		<%
+	return ; 
+	}
+	
 	%>
 	
 	
