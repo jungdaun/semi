@@ -23,7 +23,7 @@ public class OrderDAO {
 		   try {
 			    conn = semi.db.SemiDb.getConn();
 		 
-			    String sql= "update order_tb set finish = "+(state+1)+" where order_idx = ? ";
+			    String sql= "update order_tb set finish = "+(state)+" where order_idx = ? ";
 			    
 			 
 			    

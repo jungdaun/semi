@@ -1,3 +1,14 @@
+<!-- 
+
+시간 남으면 할 것 
+1. coupon적용 여부, 쿠폰 사용 금액 추가 
+2. 주문 시간 subString 으로 자르기 
+3. 주문 시간 오른쪽 정렬 
+
+ -->
+
+
+
 <%@page import="java.util.Calendar"%>
 <%@page import="semi.cart.CartDTO"%>
 <%@page import="semi.order.OrderDTO"%>
@@ -220,19 +231,30 @@ System.out.println (orderIdx);
 					case -1 : state = "취소완료"; break; 
 				
 				}
+				%>
+				<%=state %>
+
+				<%
+				
 				
 				if (dtos.get(i).getFinish()!=2&& dtos.get(i).getFinish()!=-1){
 					%>
-				<a href="changeState.jsp?oIdx=<%=dtos.get(i).getOrder_idx() %>&state=<%=dtos.get(i).getFinish()%>"><%=state %></a>	
 				
-				<a href="deleteOrder.jsp?oIdx=<%=dtos.get(i).getOrder_idx()%>">[취소하기]</a>	
+				<form action="changeState.jsp" name="changeState">
+				<select name="state">
+					
+					<option value="0">주문완료</option>
+					<option value="1">배달중</option>
+					<option value="2">배달완료</option>
+				</select>
+				<input type="hidden" value="<%=dtos.get(i).getOrder_idx()%>" name="oIdx">
+				<input type="submit" value="확인">
+				
+				</form>
+				<a href="deleteStoreOrder.jsp?oIdx=<%=dtos.get(i).getOrder_idx()%>">[주문취소]</a>	
 					<%
 				}
-				else {
-					%>
-					<%=state %>
-					<%
-				}
+		
 				%>
 				
 			
