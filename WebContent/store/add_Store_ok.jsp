@@ -10,7 +10,7 @@
 	
 	boolean chk = true;
 
-if (request.getParameter("name") == null || request.getParameter("name").equals("")) {
+if (request.getParameter("store_name") == null || request.getParameter("store_name").equals("")) {
 		chk = false;
 		%>
 		<script>
@@ -43,7 +43,7 @@ if (request.getParameter("name") == null || request.getParameter("name").equals(
 		<%
 
 	}
-	else if (request.getParameter("address") == null || request.getParameter("address").equals("")) {
+	else if (request.getParameter("store_addr") == null || request.getParameter("store_addr").equals("")) {
 		chk = false;
 		%>
 		<script>
@@ -54,7 +54,7 @@ if (request.getParameter("name") == null || request.getParameter("name").equals(
 		<%
 
 	}
-	else if (request.getParameter("address2") == null || request.getParameter("address2").equals("")) {
+	else if (request.getParameter("store_addr2") == null || request.getParameter("store_addr2").equals("")) {
 		chk = false;
 		%>
 		<script>
@@ -68,9 +68,9 @@ if (request.getParameter("name") == null || request.getParameter("name").equals(
 	
 	
 	if(chk) {
-		int result = sdao.memberJoin(sdto);
+		int result = sdao.storeJoin(sdto);
 
-		String msg = result > 0 ? "회원가입성공" : "회원가입실패";
+		String msg = result > 0 ? "가게등록성공" : "가게등록실패";
 		
 		
 		%>

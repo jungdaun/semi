@@ -16,7 +16,7 @@ function aa() {
 </script>
 </head>
 <body>
-<form name="image" action="image_ok.jsp" method="post" enctype="multipart/form-data">
+<form name="image" action="foodimage_ok.jsp" method="post" enctype="multipart/form-data">
 <fieldset>
 	<legend>파일 선택하기</legend>
 	File:<input type="file" name="upload">

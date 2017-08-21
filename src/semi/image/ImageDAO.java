@@ -115,4 +115,35 @@ public class ImageDAO {
 			}
 		}
 	}
+	
+	
+	public int setImage2(String path, int idx) {
+		try {
+			conn = semi.db.SemiDb.getConn();
+			
+			String sql = "update food set food_image = ? where store_idx = ?";
+
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setString(1, path);
+			ps.setInt(2, idx);
+
+			int count = ps.executeUpdate();
+
+			return count;
+			
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			return 0;
+		} finally {
+			try {
+				if(rs!=null) rs.close();
+	            if(ps!=null) ps.close();
+	            if(conn!=null) conn.close();   
+			} catch (Exception e2) {
+
+			}
+		}
+	}
 }

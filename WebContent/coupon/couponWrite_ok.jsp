@@ -16,7 +16,7 @@ int res = cdao.couponWrite(cdto);
 
 String msg = "";
 if (res>0){
-	msg = "사장님~쿠폰이 등록되었어요 ^.^";
+	msg = "쿠폰이 등록되었습니다.";
 	
 }
 else {

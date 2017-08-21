@@ -24,6 +24,9 @@ String sname = (String) session.getAttribute("sname");
 
 String sid =(String)session.getAttribute("sid");
 
+String sType = request.getParameter("sType");
+
+
 
 //System.out.println (tempPrice);
 
@@ -103,7 +106,7 @@ table td {
 <h2 >[<%=sname%>]님의 쿠폰 </h2>
 		<%
 		
-		ArrayList<CouponDTO> dtos= cdao.myCouponList(sid);
+		ArrayList<CouponDTO> dtos= cdao.myCouponList(sid, sType);
 		
 		
 		if ( dtos.size()==0|| dtos==null){

@@ -35,7 +35,10 @@
 		document.join.store_phone.value = tel1+tel2+tel3;
 		
 		document.join.close_time.value = close;
-		/* join.submit(); */
+		
+		document.join.store_addr.value = document.join.address.value;
+		document.join.store_addr2.value = document.join.address2.value;
+		join.submit();
 		
 
 	}
@@ -46,14 +49,17 @@
 
 <body>
 <%@include file="/header.jsp"%>
+<%
+String cstore = (String) session.getAttribute("cstore");
+%>
 		<div id="bodywrap">
 			<h3>가게 기본 정보 입력하기</h3>
 			<form name = "join" action = "add_Store_ok.jsp">
 			<table id="maintable">
-           
+           	
 
             <tr>
-               <th>이름</th>
+               <th>이름<input type = "hidden" value = <%=cstore%> name = "store_idx"></th>
                <td><input type="text" name="store_name" required="required" size="27"></td>
             </tr>
             
@@ -141,12 +147,16 @@
             <tr>
                <th>주소</th>
                <td><input type="text" name="address" size="27" readonly="readonly" onclick="findAddress()"></td>
-               <td><input type="button" value="주소찾기" onclick="findAddress()"></td>
+               <td><input type="button" value="주소찾기" onclick="findAddress()">
+               <input type = "hidden" name = "store_addr">
+               </td>
             </tr>
 
             <tr>
                <th>상세주소</th>
-               <td><input type="text" name="address2" size="27" readonly="readonly"></td>
+               <td><input type="text" name="address2" size="27" readonly="readonly">
+               <input type = "hidden" name = "store_addr2">
+               </td>
             </tr>
 
             <tr>

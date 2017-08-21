@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 
 import semi.food.FoodDTO;
+import semi.member.MemberDTO;
 
 public class FoodDAO {
 	
@@ -51,5 +52,34 @@ public class FoodDAO {
 				catch(Exception e2){}
 			}
 		}
+		
+	public int foodJoin(FoodDTO dto) {
+			try {
+				conn = semi.db.SemiDb.getConn();
+				String sql = "insert into food values(21, 1, 'fried', 'main', 17000, 'taste good!', '')";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, dto.getStore_idx());
+				ps.setInt(2, dto.getFood_num());
+				ps.setString(3, dto.getFood_name());
+				ps.setString(4, dto.getFood_type());
+				ps.setInt(5, dto.getFood_price());
+				ps.setString(6, dto.getFood_info());
+				ps.setString(7, "");
+				return ps.executeUpdate();
+			} catch (Exception e) {
+				e.printStackTrace();
+				return -1;
+			} finally {
+				try {
+					if (ps != null)
+						ps.close();
+					if (conn != null)
+						conn.close();
+				} catch (Exception e2) {
+				}
+			}
+		
+		
+	}
 
 }
