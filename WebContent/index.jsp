@@ -23,7 +23,17 @@ function check() {
 
 function addr_search(){
 	alert('come');
-	location.href='/store/postStore.jsp?';
+	var str = document.getElementById("addr").value;
+	var arr = str.split(' ');
+	document.frm.store_type.value = arr[0];
+//	alert(arr[0]);
+//	alert(arr[1]);
+//	if(arr[1].indexOf('치킨')){
+		frm.submit();
+		
+		
+//	}
+	
 }
 </script>
 		<div id="bodywrap">
@@ -31,8 +41,11 @@ function addr_search(){
 				<div id="maintitle1"><a href="/semi/notice/noticeList.jsp"><img src="img/notice.jpg" style="width:450px; height:200px;"></a></div>
 				<div id="maintitle2">
 					<div id="find"><br><br>
-					<input type="text" name="addr" value="(ex)개포동" style="height:22px; margin-top:12px;">
-					<input type="button" name="addr_search" onclick="addr_search(this)" style="background: url(/semi/img/1.jpg); width:35px; height:30px;"></div>
+	
+					<input type="text" id="addr" value="(ex)개포동 치킨" style="height:22px; margin-top:12px;">
+					<input type="button" name="addr_search" onclick="addr_search(this)" style="background: url(/semi/img/1.jpg); width:35px; height:30px;">
+					
+					</div>
 					<div id="coupon_board"><a href="/semi/coupon/couponList.jsp"><img src="img/coupon.jpg" style="width:350px; height:90px;"></a></div>
 				</div>
 			</div>
