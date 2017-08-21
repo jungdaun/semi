@@ -86,7 +86,7 @@ else{
          }
          else
             break;  
-      }%></tr>
+      }%></tr> 
 <% } }%>
    </table>
 </section><br><br><br>
