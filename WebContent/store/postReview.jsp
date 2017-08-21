@@ -29,9 +29,8 @@ thead td{
   float: left;
   overflow: hidden;
   margin: 10px 1%;
-  min-width: 230px;
-  max-width: 315px;
-  width: 100%;
+  width:315px;
+ 
   color: #141414;
   text-align: left;
   line-height: 1.4em;
@@ -42,11 +41,12 @@ thead td{
   box-sizing: border-box;
   -webkit-transition: all 0.35s ease;
   transition: all 0.35s ease;
-
 }
 
 .rev img{
-	max-width: 100%;
+	width:315px; height:230px;
+
+
   vertical-align: top;
 }
 
@@ -78,7 +78,6 @@ margin: 0 0 10px;
  font-weight: 300;
   font-size: 1.4em;
   line-height: 1.2em;
- 
   text-transform: uppercase;
 }
 
@@ -98,7 +97,7 @@ position: absolute;
 }
 .rev:hover figcaption,
 .rev.hover figcaption {
-  top: 80px;
+  top: 100px;
 }
 
 

@@ -38,6 +38,12 @@ h3{
 	color:white;
 }
 </style>
+<script>
+function edit() {
+	window.alert('a');
+	location.href = 'editFood.jsp';
+}
+</script>
 </head>
 
 <body>
@@ -45,6 +51,7 @@ h3{
 <div id="bodywrap">
 <h3>메뉴수정하기</h3>
 메뉴 수정을 하려면 해당 메뉴의 사진을 눌러주세요.
+<input type = "button" value = "메뉴 추가하기">
    <article>
       <legend style="background-color: #2F4038; color: #FEEEA7; font-size:22px; font-weight: bold;">
         
@@ -64,7 +71,7 @@ h3{
     %>     <tr> <%
          for(int i=0; i<2; i++){
             if(count<arr.size()){%>
-            <td><a href = "editFood.jsp"><img src="../img/store/<%=arr.get(count).getFood_name()%>.png" style="width:140px; height:120px;"/></a></td>
+            <td><a onclick = "edit()"><img src="../img/store/<%=arr.get(count).getFood_name()%>.png" style="width:140px; height:120px;"/></a></td>
             <td style="background-color: #2F4038; color:white;"><%=arr.get(count).getFood_name() %>
             <br><%=arr.get(count).getFood_price() %>원 </td>
          
