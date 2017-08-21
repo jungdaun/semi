@@ -15,15 +15,17 @@
 <%
 //String c_name = (String) session.getAttribute("sname");
 //Integer c_idx = (Integer) session.getAttribute("c_idx");
+
 Integer c_idx = (Integer)1;
 String c_name="송병훈";
 String msg=null;
-String savePath=wf.USERS_HOME;
+String savePath="C:/Users/JungDaun/git/semi/WebContent/store/img/review";
 int store_idx=0;
 String store_type="";
+int size = 10*1024*1024;
 
 try {
-	MultipartRequest mr = new MultipartRequest(request, savePath, 10*1024*1024, "utf-8");
+	MultipartRequest mr = new MultipartRequest(request, savePath, size, "utf-8");
 	
 	String review = mr.getParameter("contents");
 	String r_pwd = mr.getParameter("pwd");
@@ -42,16 +44,20 @@ try {
 	String path = "http://localhost:9090/semi/store/img/review/"+bb[2];
 
 	int result = rdao.postReview(c_idx, c_name, store_idx, up_date, score_num, review, path, r_pwd);
-	System.out.println("result = "+result);
-	System.out.println("path = "+path);
-	//msg = (result>0)?"리뷰가 등록되었습니다.":"리뷰가 등록되지 않았습니다.";
+//	System.out.println("result = "+result);
+//	System.out.println("path = "+path);
+	msg = (result>0)?"리뷰가 등록되었습니다.":"리뷰가 등록되지 않았습니다.";
 	
 } catch(Exception e) {
-
+	%> 
+	<script>
+		window.alert("예상치 못한 오류가 발생했습니다.");
+		window.self.close();
+	</script>
+	<%
 }
 %>
-
 <script>
-	//window.alert(<%=msg%>);
+	window.alert(<%=msg%>);
 	location.href="postReview.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>";
 </script>

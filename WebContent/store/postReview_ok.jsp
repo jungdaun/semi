@@ -33,6 +33,8 @@ thead td{
 		//들어옴
 		document.post_review.a.value = document.post_review.upload.value;
 		//post_review.submit();
+		a.submit();
+		
 	}
 </script>
 </head>
