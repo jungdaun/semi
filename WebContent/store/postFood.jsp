@@ -12,6 +12,7 @@
 <jsp:setProperty property="*" name="cdto"/>
 
 <jsp:useBean id="sdao" class="semi.store.StoreDAO"></jsp:useBean>
+<jsp:useBean id="mdao" class="semi.member.MemberDAO"></jsp:useBean>
 
 <!DOCTYPE html>
 <html>
@@ -20,21 +21,23 @@
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/mainLayout.css">
 <%
-//String store_idx_s=request.getParameter("store_idx");
-//int store_idx = Integer.parseInt(store_idx_s);
-int store_idx=21;
+String store_idx_s=request.getParameter("store_idx");
+int store_idx = Integer.parseInt(store_idx_s);
+//int store_idx=21;
 String store_type= request.getParameter("store_type");
 String c_sub_s = request.getParameter("c_sub_s");
 ArrayList<FoodDTO> arr = fdao.showStore(store_idx);
 //Integer c_idx = (Integer) session.getAttribute("c_idx");
-Integer c_idx = (Integer)2;
+//Integer c_idx = (Integer)2;
 
 /*예랑*/
 boolean isOpen = sdao.isOpen(store_idx);
+
 %>
 </head>
 <body>
 <%@include file="/header.jsp"%>
+
    <div id="bodywrap">
    <article>
       <legend style="background-color: #2F4038; color: #FEEEA7; font-size:22px; font-weight: bold;">
@@ -100,21 +103,26 @@ boolean isOpen = sdao.isOpen(store_idx);
       </table> <br><br><br><br><br>
     </article>
     
-    <%
+ 
+
+<%
 
 if (isOpen){
 	%>
-
-    <article>
+	
+	   <article>
  <% 
+ int c_idx = mdao.getMemIdx(sid);
  
    ArrayList<CartDTO> brr = cdao.showData(store_idx, c_idx);%>
+   
          <fieldset style="background-color: #BF0920; color: white; font-size: 25px; line-height: 40%;">장바구니</fieldset>
          <table>
          <% if(brr.size()==0 || brr==null){%>
             <tr>
             	<td style="font-size:25px; color:white;">주문 내역이 없습니다.</td>
-            </tr> <% }
+            </tr> <% 
+            }
          else{ %>
          
             <jsp:include page="cart.jsp?store_idx=<%=store_idx %>&store_type=<%=store_type %>"/>
@@ -122,9 +130,29 @@ if (isOpen){
          <% } %>
         </table>
     </article>
-    <%}
-    %>
+	<%
+}
+else {
+	%>
+	<article>
+	영업시간이아닙니다.
+	</article>
+	<%
+}
+
+%>
+
+ 
   </div>
 <%@include file="/footer.jsp"%>
 </body>
 </html>
+
+
+
+
+
+
+
+
+   

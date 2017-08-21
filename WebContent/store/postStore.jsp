@@ -31,8 +31,8 @@ Iterator<StoreDTO> list = arr.iterator();
 
 /**같은 동네 가게들만 보이게 하는 부분*/
 for(int i=0; i<arr.size(); i++){
-	String s_addr = arr.get(i).getStore_addr();
-	if(!s_addr.contains(c_sub_s)) arr.remove(i);
+   String s_addr = arr.get(i).getStore_addr();
+   if(!s_addr.contains(c_sub_s)) arr.remove(i);
 }
 %>
    <legend style="background-color:#2F4038; color:#FEEEA7; font-size:22px; font-weight: bold;">
@@ -51,19 +51,19 @@ if(arr.equals("") || arr.size()==0){%>
 <% }
 else{
    int count=0;
-   while(count<arr.size()) {
-	   String open_time_s = arr.get(count).getOpen_time();
-    	 String close_time_s = arr.get(count).getClose_time();
-    	 String[] open = new String[3];
-    	 String[] close = new String[3];%> 
+   while(count<arr.size()) {%> 
      <tr><%
-      for(int i=0; i<5; i++){
+      for(int i=0; i<4; i++){
+         String open_time_s = arr.get(count).getOpen_time();
+         String close_time_s = arr.get(count).getClose_time();
+         String[] open = new String[3];
+         String[] close = new String[3];
          if(count<arr.size()){ 
-        	 for(int j=0; j<3; j++){
-        		 open[j] = open_time_s.substring((j*2), (j*2)+2);
-        		 close[j] = close_time_s.substring((j*2), (j*2)+2);
-        		 }
-        	 %>
+            for(int j=0; j<3; j++){
+               open[j] = open_time_s.substring((j*2), (j*2)+2);
+               close[j] = close_time_s.substring((j*2), (j*2)+2);
+               }
+            %>
             <td style="padding:13px;">
             <div style="background-color: black;">
             <a href="postFood.jsp?store_idx=<%=arr.get(count).getStore_idx()%>&store_type=<%=store_type%>&c_sub_s=<%=c_sub_s%>" style="text-decoration:none;">           
@@ -82,6 +82,7 @@ else{
            </div></td> 
                 
       <%count++;
+ //     System.out.println("count = "+count);
          }
          else
             break;  
