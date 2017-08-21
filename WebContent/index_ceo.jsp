@@ -16,7 +16,7 @@ function image() {
 	window.open('/semi/store/image.jsp', 'image', 'width=550, height=150');
 }
 function menumanager() {
-	
+	location.href = "/semi/store/editMenu.jsp"
 }
 
 </script>
