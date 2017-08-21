@@ -30,10 +30,14 @@ ArrayList<StoreDTO> arr = sdao.findStore(store_type);
 Iterator<StoreDTO> list = arr.iterator();
 
 /**같은 동네 가게들만 보이게 하는 부분*/
-for(int i=0; i<arr.size(); i++){
-   String s_addr = arr.get(i).getStore_addr();
-   if(!s_addr.contains(c_sub_s)) arr.remove(i);
-}
+while(list.hasNext()){
+    String s_addr = list.next().getStore_addr();
+    
+    if(!s_addr.contains(c_sub_s)){
+      list.remove();
+    }
+ }
+
 %>
    <legend style="background-color:#2F4038; color:#FEEEA7; font-size:22px; font-weight: bold;">
    Home >> <%=store_type %> >> <%=c_sub_s %></legend>
@@ -54,11 +58,13 @@ else{
    while(count<arr.size()) {%> 
      <tr><%
       for(int i=0; i<4; i++){
-         String open_time_s = arr.get(count).getOpen_time();
-         String close_time_s = arr.get(count).getClose_time();
-         String[] open = new String[3];
-         String[] close = new String[3];
-         if(count<arr.size()){ 
+        
+         if(count<arr.size()){
+        	 String open_time_s = arr.get(count).getOpen_time();
+             System.out.println("time = "+open_time_s);
+             String close_time_s = arr.get(count).getClose_time();
+             String[] open = new String[3];
+             String[] close = new String[3];
             for(int j=0; j<3; j++){
                open[j] = open_time_s.substring((j*2), (j*2)+2);
                close[j] = close_time_s.substring((j*2), (j*2)+2);
@@ -68,7 +74,7 @@ else{
             <div style="background-color: black;">
             <a href="postFood.jsp?store_idx=<%=arr.get(count).getStore_idx()%>&store_type=<%=store_type%>&c_sub_s=<%=c_sub_s%>" style="text-decoration:none;">           
               <img src="../img/store/<%=arr.get(count).getStore_name()%>.png" style="width:110px; height:128px"/>
-              <!-- img src="<%=arr.get(count).getStore_image()%>" style="width:110px; height:128px"/-->
+              
             </a>
             </div>
     
@@ -81,11 +87,11 @@ else{
                판매수 : <%=arr.get(count).getSale_num() %>      
            </div></td> 
                 
-      <%count++;
- //     System.out.println("count = "+count);
+      <%
+      count++;
          }
-         else
-            break;  
+         else if(count==arr.size())
+        	 break;  
       }%></tr> 
 <% } }%>
    </table>
