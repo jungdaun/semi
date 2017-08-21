@@ -28,6 +28,11 @@ System.out.println (c_idx);
 System.out.println (order_idx);
 ArrayList <CartDTO> cartDtos = ctdao.myCartList(order_idx, store_idx);
 //String sid = "고객1";
+
+	String userInfo [] = mdao.getUserInfo((String)session.getAttribute("sid"));
+	
+
+
 %>
 
 <!DOCTYPE html>
@@ -43,14 +48,6 @@ ArrayList <CartDTO> cartDtos = ctdao.myCartList(order_idx, store_idx);
 
 <title>Insert title here</title>
 
-<script type="text/javascript">
-	function couponPopup() {
-		
-		window.open('selectCoupon.jsp', 'select coupon', 'width=450, height=450');
-		
-		
-	}
-</script>
 
 
 
@@ -146,19 +143,40 @@ width: 550px;
  text-align: left ;
 	
 }
+
+fieldset {
+	text-align: left;
+	margin-bottom: 20px ; 
+}
+
 </style>
+
+<script type="text/javascript">
+
+
+
+function addOrder() {
+	var add1 = document.pay.add1.value ; 
+	var add2 = document.pay.add2.value ; 
+	
+	document.pay.c_addr.value = add1+" "+add2;
+	pay.submit (); 
+	
+}
+
+</script>
 
 
 </head>
 
-<body>
+<body >
 <%@include file="/header.jsp"%>
 		<div id="bodywrap">
 
 <!-- -------------------------------------------------------------- -->
 
 
-<form name="pay" action="pay_ok.jsp">
+<form name="pay" action="pay_ok.jsp" method="post">
 <input type="hidden" name="order_idx" value="<%=order_idx%>">
 <input type="hidden" name="store_idx" value="<%=store_idx%>">
 <input type="hidden" name="mem_idx" value="<%=c_idx%>">
@@ -177,7 +195,7 @@ width: 550px;
 	</legend>
 	
 	
-	<p><h4>[<input type="text"    name="sName" size="10" value="<%=ctdao.getStoreName(store_idx) %>">]에서 주문하신 내역은 다음과 같습니다.</h4></p>
+	<p><h4>[<input type="text"   name="sName" size="10" value="<%=ctdao.getStoreName(store_idx) %>">]에서 주문하신 내역은 다음과 같습니다.</h4></p>
 	
 	
 	
@@ -232,27 +250,58 @@ width: 550px;
 
 <table class="del">	
 	<tr>
-	<%
-	String userInfo [] = mdao.getUserInfo(sid);
-	
-	%>
+
 		<th>이름</th>
 		<td><input type="text" name="c_name" value="<%=userInfo[0] %>" > </td>
 	
 	</tr>
 	
 	<tr>
+		<th>전화번호</th>
+		<td colspan="3">	
+				
+					<input type="text" name="c_tel" value="<%=userInfo [3]%>">
+						
+			</td>
+</tr>
+			<tr>
+			
+						
+					<th>주소</th>
+					
+					<td colspan="3"><input type="text" value="<%=odao.getStoreAddr(store_idx) %>" name="add1" required="required" readonly="readonly">
+					<input type="text" name="add2" required="required">
+					<input type="hidden" name="c_addr" >
+				
+					</td>
+					
+					
+			
+			
+			</tr>
+			<!-- 			
+	
+	<tr>
+	
 	
 		<th>전화번호</th>
-		<td><input type="text" name="c_tel" value="<%=userInfo[3]%>">(ex. 01012345678) </td>
+		<td>
+		
+		 <input type="text" name="c_tel" value="">(ex. 01012345678)
+		
+		 </td>
 	</tr>
 	
 	<tr>
 		<th>주소</th>
-		<td colspan="3"><input type="text" name="c_addr" value="<%=userInfo[2]%>"> </td>
+		<td colspan="3">
+		
+		<input type="text" name="c_addr" value=""> </td>
 		
 	</tr>
 
+
+-->
 	<tr>
 		<th colspan="1">전달사항</th>
 		<td colspan="3">
@@ -323,7 +372,7 @@ width: 550px;
 
 
 
-<h3><input type="submit" value="주문하기"></h3>
+<h3><input type="button" onclick="addOrder()" value="주문하기"></h3>
 </form>
 <!-- -------------------------------------------------------------- -->
 		</div>

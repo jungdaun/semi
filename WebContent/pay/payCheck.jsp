@@ -144,7 +144,7 @@ width: 550px;
 
 <!-- -------------------------------------------------------------- -->
 
-<h2 style="text-align: center; ">  [<%=sid %>]님의 주문 내역입니다.</h2>
+<h2 style="text-align: center; ">  [<%=sname %>]님의 주문 내역입니다.</h2>
 
 <font color="white">
 <h2>  주문 품목</h2>
