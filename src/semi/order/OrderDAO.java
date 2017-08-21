@@ -20,6 +20,44 @@ public class OrderDAO {
 	private ResultSet rs;
 	
 	
+	public String getStoreAddr (int sIdx ){
+
+		   try {
+			    conn = semi.db.SemiDb.getConn();
+		 
+			    String sql = "select store_addr from store where store_idx = ? "; 
+			    
+
+			    ps=conn.prepareStatement(sql);
+			    
+			    ps.setInt(1, sIdx);
+			    rs= ps.executeQuery(); 
+			 //   ps.setInt(1, oIdx);
+	    
+
+			
+			    
+			    rs.next();
+			    return rs.getString(1)
+;
+			    
+			    
+		} catch (Exception e) {
+			e.printStackTrace( );
+			return null; 
+			// TODO: handle exception
+		}finally {
+			try {
+				
+				if(rs!=null)rs.close();
+	            if(ps!=null) ps.close();
+	            if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	
 	
 	public int getOrderIdx (int sIdx, int mIdx ){
 
@@ -433,7 +471,7 @@ public class OrderDAO {
 				
 			
 			String sql= "insert into order_tb values (?,?,?,?,"
-					+ "?,?,to_char(sysdate),0,?, ?,?,?,? )";
+					+ "?,?,sysdate,0,?, ?,?,?,? )";
 			
 			ps=conn.prepareStatement(sql);
 			ps.setInt(1, dto.getOrder_idx());
@@ -476,12 +514,49 @@ public class OrderDAO {
 		
 	}
 	
+	public int restoreCoupon (int oIdx ){
+		try {		
+			
+			
+			String sql= "update user_coupon set is_used = 0 where user_coupon_idx = ( select user_coupon from order_tb where order_idx = ? )";
+			
+			
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, oIdx);
+			
+			int count= ps.executeUpdate();
+			
+			return count; 
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace( );
+			return -1;
+			
+		}
+		
+		finally {
+			
+			try {
+				if (ps!=null)ps.close();
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+			
+		}
+		
+	
+	}
+	
 	public int deleteOrder (int oIdx ){
 		
 		try {		
 			conn= semi.db.SemiDb.getConn();
 			
 				
+			restoreCoupon(oIdx);
 			
 			String sql= "update order_tb set finish = -1 where order_idx = ? " ;
 			
