@@ -476,6 +476,47 @@ public class OrderDAO {
 		
 	}
 	
+	public int deleteOrder (int oIdx ){
+		
+		try {		
+			conn= semi.db.SemiDb.getConn();
+			
+				
+			
+			String sql= "update order_tb set finish = -1 where order_idx = ? " ;
+			
+			
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, oIdx);
+			
+			int count= ps.executeUpdate();
+			
+			return count; 
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace( );
+			return -1;
+			
+		}
+		
+		finally {
+			
+			try {
+				if (ps!=null)ps.close();
+				if (conn!=null)conn.close();
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+			
+		}
+		
+		
+		
+	}
+	
 //	public int orderDelivery (int o_idx ){
 //		try {
 //			conn= semi.db.SemiDb.getConn();

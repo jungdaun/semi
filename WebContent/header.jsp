@@ -50,7 +50,8 @@
    
    <%
       }
-   %>  <a href="/semi/voc/findMyVoc.jsp">고객센터</a>
+   %>  <a href="/semi/voc/findMyVoc.jsp">고객센터</a>|
+   <a href="/semi/order/myOrderList.jsp">나의주문</a>
       </div>
    </div>
 </header>

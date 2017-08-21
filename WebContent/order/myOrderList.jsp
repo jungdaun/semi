@@ -103,13 +103,28 @@ System.out.println (orderIdx);
 <!-- -------------------------------------------------------------- -->
 	
 	
+	<%
+
+	if (sid ==null || sid.equals("")){
+		
+		%>
+		<script type="text/javascript">
+		
+		window.alert ('로그인하세요.');
+		window.href = '/index.jsp';
+		
+		</script>
+		<%
+		return ; 
+	}
+//	 sid =(String) session.getAttribute("sid");
 	
+	%>
 	
 	<h2>[<%=sname %>]님의 주문 내역입니다. </h2>
 	
 	<%
 
-	 sid =(String) session.getAttribute("sid");
 	System.out.println (sid);
 	
 	int mem_idx = mdao.getMemIdx(sid);
@@ -179,12 +194,16 @@ System.out.println (orderIdx);
 				<th>배달상황</th>
 				<td >
 				<%
-				if (dtos.get(i).getFinish()==0){
-					%>배달중<%
+				switch(dtos.get(i).getFinish()){
+					
+					case 0 :	%>주문완료 <a href="deleteOrder.jsp?oIdx=<%=dtos.get(i).getOrder_idx()%>">[취소하기]</a><% break;
+					case 1:		%>배달중<% break;
+					case 2 :	%>배달 완료<% break;
+					case -1 : %><font color="gray">취소 완료</font><% break; 
+				
 				}
-				else {
-					%>배달완료<%
-				}
+				
+				
 				%>
 				
 				</td>
@@ -196,8 +215,16 @@ System.out.println (orderIdx);
 			</tr>
 			
 		</table>
-			<p align="right" ><font color="#D8D8D8"><a href="#">[리뷰쓰기]</a></font></p>
+		<%if (dtos.get(i).getFinish()== 2){
+			%>
+			
+				<p align="right" ><font color="#D8D8D8"><a href="#">[리뷰쓰기]</a></font></p>
 			<!--  dtos.get(i).getOrder_idx  -->
+			<%
+		}
+		
+		%>
+		
 		<br>
 			<%
 		}
