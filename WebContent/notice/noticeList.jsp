@@ -93,6 +93,11 @@ if ( cp %pageSize==0){
 		
 	
 	}
+	#noticeListwrap{
+	width: 850px;
+	height: 200px;
+	margin-top: 200px;
+	}
 	
 </style>
 
@@ -105,7 +110,7 @@ if ( cp %pageSize==0){
 		<div id="bodywrap">
 
 <!-- -------------------------------------------------------------- -->
-
+<div id="noticeListwrap">
 
 		<h2>공지사항</h2>
 		<table>
@@ -247,8 +252,10 @@ if ( cp %pageSize==0){
 
 		</table>
 <!-- -------------------------------------------------------------- -->
+
 		</div>
 <%@include file="/footer.jsp"%>
+</div>
 
 
 
