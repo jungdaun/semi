@@ -7,6 +7,7 @@ import java.util.ArrayList;
 
 import semi.food.FoodDTO;
 import semi.member.MemberDTO;
+import semi.store.StoreDTO;
 
 public class FoodDAO {
 	
@@ -58,7 +59,7 @@ public class FoodDAO {
 				String sql = "insert into food values(21, 1, 'fried', 'main', 17000, 'taste good!', '')";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, dto.getStore_idx());
-				ps.setInt(2, dto.getFood_num());
+				ps.setInt(2, maxfoodnum()+1);
 				ps.setString(3, dto.getFood_name());
 				ps.setString(4, dto.getFood_type());
 				ps.setInt(5, dto.getFood_price());
@@ -108,5 +109,7 @@ public class FoodDAO {
 			catch(Exception e2){}
 		}
 	}
+	
+	
 
 }

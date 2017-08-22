@@ -40,6 +40,33 @@ h3{
 	color:white;
 }
 </style>
+<script>
+function aa() {
+
+	chk = 0;
+	
+	if(document.image.upload.value == null||document.image.upload.value == "") {
+		chk = 1;
+		window.alert('이미지를 등록해주세요.');
+	}
+	if(document.image.food_name.value == null||document.image.food_name.value == "") {
+		chk = 1;
+		window.alert('음식 이름을 입력해주세요.');
+	}
+	
+	if(document.image.food_price.value == null||document.image.food_price.value == "") {
+		chk = 1;
+		window.alert('음식 가격을 입력해주세요.');
+	}
+	
+	if(chk==0) {
+		document.image.a.value = document.image.upload.value;
+		image.submit();
+	}
+	
+	
+}
+</script>
 </head>
 
 <body>
@@ -48,9 +75,8 @@ h3{
 <h3>메뉴수정하기</h3>
 
    <article>
-   <form name="image" action="foodimage_ok.jsp" method="post" enctype="multipart/form-data">
-      <legend style="background-color: #2F4038; color: #FEEEA7; font-size:22px; font-weight: bold;"/>
-        
+   <form name="image" action="addFood_ok.jsp" method="post" enctype="multipart/form-data">
+      
          <table>
          <tr>
 		<th>
@@ -106,7 +132,6 @@ h3{
 		</td>
 		</tr>
       </table> <br><br><br><br><br>
-      </legend>
       </form>
     </article>
   </div>

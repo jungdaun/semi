@@ -46,6 +46,18 @@ function edit() {
 function add() {
 	location.href = 'addFood.jsp';
 }
+function selectnum() {
+	window.alert(document.editMenu.food_num.value);
+	
+	bool = window.confirm('메뉴 순서를 바꾸시겠습니까');
+	if(bool) {
+		window.alert('바꾸겠습니다.');
+	}
+	
+	window.alert(document.editMenu.food_num.value);
+
+
+}
 </script>
 </head>
 
@@ -56,8 +68,8 @@ function add() {
 메뉴 수정을 하려면 해당 메뉴의 사진을 눌러주세요.
 <input type = "button" value = "메뉴 추가하기" onclick = "add()">
    <article>
-      <legend style="background-color: #2F4038; color: #FEEEA7; font-size:22px; font-weight: bold;">
-        
+   <form name = "editMenu">
+     
          <table>
     
   <% if(arr.equals("") || arr.size()==0){%>
@@ -79,14 +91,18 @@ function add() {
             <br><%=arr.get(count).getFood_price() %>원 </td>
          
             <td>
-            <form name="postFood_ok" action="postFood_ok.jsp">
             <!-- 예랑 --> 
             <input type="hidden" name="isOpen" value="<%=isOpen%>">
             <input type="hidden" name="c_sub_s" value="<%=c_sub_s %>">
             
-               <select name="food_num"><%
+               <select name="food_num2" onchange = "selectnum2()"><%
                for(int j=1; j<= fdao.maxfoodnum(); j++){%>
-                  <option value="<%=j%>" j==<%=arr.get(count).getFood_num()%>?selected:""; %>><%=j %></option>
+                  <option value="<%=j%>" 
+                  <%
+                  if(j==arr.get(count).getFood_num()) {
+                	 %>selected<%
+                  }
+                  %> ><%=j %></option>
                <% } %>
                </select>
                
@@ -94,8 +110,10 @@ function add() {
                <input type="hidden" name="store_idx" value="<%=store_idx%>">
                <input type="hidden" name="food_price" value="<%=arr.get(count).getFood_price()%>">
                <input type="hidden" name="food_name" value="<%=arr.get(count).getFood_name()%>">
-
-            </form>
+			 <select name="food_num" onchange = "selectnum()">
+                  <option value="aaaa">1</option>
+                   <option value="aaaa">2</option>
+               </select>
             </td>  
          <% count++;}
          else
@@ -103,8 +121,9 @@ function add() {
       } %></tr>
  <% } } %>
       </table> <br><br><br><br><br>
+      </form>
     </article>
-    
+    </div>
     
 <%@include file="/footer.jsp"%>
 </body>
