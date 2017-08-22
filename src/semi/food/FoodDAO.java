@@ -49,7 +49,7 @@ public class FoodDAO {
 					if(ps!=null) ps.close();
 					if(conn!=null) conn.close();
 				}
-				catch(Exception e2){}
+				catch(Exception e2){} 
 			}
 		}
 		
