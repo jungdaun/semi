@@ -80,7 +80,7 @@ function add() {
          
             <td>
             <form name="postFood_ok" action="postFood_ok.jsp">
-            <!-- 예랑 -->
+            <!-- 예랑 --> 
             <input type="hidden" name="isOpen" value="<%=isOpen%>">
             <input type="hidden" name="c_sub_s" value="<%=c_sub_s %>">
             
