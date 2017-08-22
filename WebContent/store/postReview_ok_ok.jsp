@@ -35,6 +35,9 @@ try {
 	String store_idx_s=mr.getParameter("store_idx");
 	store_idx = Integer.parseInt(store_idx_s);
 	store_type= mr.getParameter("store_type");
+	String review_num_s = mr.getParameter("review_num");
+//	int review_num = Integer.parseInt(review_num_s);
+	
 	
 //	String cstore_s = (String) session.getAttribute("cstore");
 //	String sid = (String) session.getAttribute("sid");
@@ -58,6 +61,5 @@ try {
 }
 %>
 <script>
-	window.alert(<%=msg%>);
 	location.href="postReview.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>";
 </script>

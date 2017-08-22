@@ -8,10 +8,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset=UTF-8">
+<meta charset="UTF-8">
+<link rel="stylesheet" type="text/css" href="/semi/css/mainLayout.css">
 <title>Insert title here</title>
 
+<style>
+	h2{
+		text-align: center;
+		color: white; 
+		
+	}
+	table{
+		width: 450px;
 
+		  
+
+		
+		margin: 0px auto;
+		border-spacing: 0px;
+		background-color: white ; 
+		
+	}
+	table th{
+	
+		  			border-top: 1px solid #BF0920;
+		border-bottom: 1px solid #BF0920;
+		color: black; 
+		text-align: center;
+	}
+	table td{
+	
+	
+		text-align: left
+		;
+					border-top: 1px solid #BF0920;
+		border-bottom: 1px solid #BF0920;
+		
+		color: black; 
+	
+		;
+	}
+	
+	tfoot tr{
+	text-align: center
+	;
+	
+	}
+	
+</style>
 </head>
 
 <%
@@ -71,60 +115,79 @@ return ;
 <body>
 
 
-		<h2 >공지사항-본문보기</h2>
-		<table   border="1">
+
+
+
+
+<%@include file="/header.jsp"%>
+		<div id="bodywrap">
+
+<!-- -------------------------------------------------------------- -->
+	<h2 >공지사항-수정</h2>
+	
 			<form action="noticeUpdate_ok.jsp" name="noticeUpdate">
-			
+			<input type="hidden" name="notice_idx" value="<%=notice_idx%>">
+					<table >
 				
+				<thead>
 				<tr>
 					
-					<th>idx</th>
-					<td><input type="text" readonly="readonly" name="notice_idx" value="<%=dto.getNotice_idx() %>">
+					<th>제목</th>
+					<td colspan="3"><input type="text" value="<%=dto.getNotice_title() %>" name="notice_title">
 					</td>
+					</tr>
 					
-						<th>writeDate</th>
-					<td><%=dto.getNotice_date()  %></td>
+					<tr>
+						<th>작성일</th>
+					<td colspan="3"><%=dto.getNotice_date()  %></td>
 					
-				</tr>s
+				</tr>
 		
 				
+	
 				<tr>
-					<th>title</th>
-					<td colspan="3">
-					<input type="text" value="<%=dto.getNotice_title() %>" name="notice_title">
-					</td>
-				</tr>
-				<tr>
-					<th>writer</th>
-					<td><input type="text" name="notice_writer" value="<%=dto.getNotice_writer() %>">
+					<th>작성자</th>
+					<td colspan="3"><input type="text" name="notice_writer" value="<%=dto.getNotice_writer() %>">
 					
 					</td>
 				</tr>
+				</thead>
+				<tbody>
 				<tr height="200">
 			
 					<td colspan="4"><textarea rows="10" cols="45" name="notice_content" maxlength="4000" >
-					<%=dto.getNotice_content().replaceAll("\n", "<br>") %>
+					<%=dto.getNotice_content()%>
 				
 					
 					</textarea></td>
 					
 					
 				</tr>
-				<tr>
-					<td colspan="4" align="center">
-						<input type="submit" value="ok">
+				</tbody>
+				<tfoot>
+				
+				<tr >
+					<td colspan="4" style="text-align: center;">
+						<input type="submit" value="수정">
 		
 					
 					
 					</td>
 				</tr>
+				</tfoot>
 				
-				
+				</table>
+		
 		</form>
 			
 
 
-		</table>
+		
+<!-- -------------------------------------------------------------- -->
+		</div>
+<%@include file="/footer.jsp"%>
+
+
 		
 	</body>
 </html>

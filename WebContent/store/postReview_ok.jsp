@@ -99,7 +99,7 @@ String date = "pm0930";
       </tfoot>
       
    </table>
-
+   
    <input type="hidden" name="date" value="<%=date%>">
    <input type="hidden" name="store_type" value="<%=store_type%>">
    <input type="hidden" name="store_idx" value="<%=store_idx%>">

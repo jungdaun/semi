@@ -32,7 +32,7 @@ System.out.println (userPwd);
 <%
 int res = ndao.noticeUpdate(title, content, idx);
 
-String msg = res>0?"success":"fail";
+String msg = res>0?"수정이 완료되었습니다.":"오류";
 
 
 %>

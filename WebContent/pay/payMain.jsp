@@ -64,6 +64,7 @@ fieldset table
 width: 600px ; 
  border-collapse:collapse;
 background-color: rgba( 255, 255, 255, 0.2 )
+
 }
 fieldset table th {
 	
@@ -76,10 +77,12 @@ border-top: 2px solid white;
 	
 	color: white;
 	background-color:  rgba( 255, 255, 255, 0.2 );
-	
+	text-align: center;
+
 	/* border-bottom: 2px double white; */
 }
 fieldset table td{
+text-align: center;
 	/*
 border-bottom: 2px solid white;
 border-left: 2px solid white;
@@ -172,7 +175,7 @@ function addOrder() {
 	
 	<table>
 	<tr>
-		<th>메뉴</th>
+		<th colspan="2">메뉴</th>
 		<th>수량</th>
 		<th>가격</th>
 		
@@ -184,7 +187,7 @@ function addOrder() {
 	for ( int i=0; i< cartDtos.size(); i ++){
 		%>
 		<tr>
-		<td><input type="text" name="menu" value="<%=cartDtos.get(i).getFood_name() %>" readonly="readonly"></td>
+		<td colspan="2"><input type="text" name="menu" value="<%=cartDtos.get(i).getFood_name() %>" readonly="readonly"></td>
 		<td><input type="text" name="count" value="<%=cartDtos.get(i).getFood_count()%>" readonly="readonly"> </td>
 		<td><input type="text" name="menuPrice" value="<%=cartDtos.get(i).getTotal_price() %>" readonly="readonly">  </td>
 		
