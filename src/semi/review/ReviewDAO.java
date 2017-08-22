@@ -61,6 +61,8 @@ public class ReviewDAO {
 			ps.setString(8, r_pwd);
 			int count = ps.executeUpdate();
 			cntReviewNum(store_idx);
+			sumScoreNum(store_idx, score_num);
+			scoreNum(store_idx);
 			
 			return count;
 		}
@@ -76,6 +78,42 @@ public class ReviewDAO {
 			catch(Exception e2){}
 		}
 		
+	}
+	
+	public void sumScoreNum(int store_idx, int score_num){
+		try{
+			String sql = "update store set score_sum = score_sum + ? where store_idx=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, score_num);
+			ps.setInt(2, store_idx);
+			int count = ps.executeUpdate();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			try{
+			}
+			catch(Exception e2){}
+		}
+		
+	}
+	
+	public void scoreNum(int store_idx){
+		try{
+			String sql = "update store set score_num=score_sum/review_num where store_idx=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, store_idx);
+			int count = ps.executeUpdate();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			try{
+			}
+			catch(Exception e2){}
+		}
 	}
 	
 	public void cntReviewNum(int store_idx){
