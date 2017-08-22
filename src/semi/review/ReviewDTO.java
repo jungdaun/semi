@@ -14,8 +14,10 @@ public class ReviewDTO {
 	
 	public ReviewDTO() { }
 
-	public ReviewDTO(String c_name, int score_num, String review, String r_picture) {
+	public ReviewDTO(int c_idx, String c_name, int score_num, String review, String r_picture, String up_date) {
 		super();
+		this.c_idx = c_idx;
+		this.up_date = up_date;
 		this.c_name = c_name;
 		this.score_num = score_num;
 		this.review = review;
@@ -89,10 +91,10 @@ public class ReviewDTO {
 }
 
 /* create table review(
-c_idx number(4),
+c_idx number(4), //
 c_name varchar2(10),
 store_idx number(4),
-up_date varchar2(20),
+up_date varchar2(20), //
 score_num number(4),
 review varchar2(200),
 r_picture varchar2(100),

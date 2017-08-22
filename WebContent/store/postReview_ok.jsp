@@ -39,7 +39,6 @@ thead td{
 </script>
 </head>
 <%
-
 //String c_name = (String) session.getAttribute("sname");
 //Integer c_idx = (Integer) session.getAttribute("c_idx");
 String store_idx_s=request.getParameter("store_idx");

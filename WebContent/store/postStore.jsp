@@ -61,7 +61,7 @@ else{
         
          if(count<arr.size()){
         	 String open_time_s = arr.get(count).getOpen_time();
-             System.out.println("time = "+open_time_s);
+             //System.out.println("time = "+open_time_s);
              String close_time_s = arr.get(count).getClose_time();
              String[] open = new String[3];
              String[] close = new String[3];

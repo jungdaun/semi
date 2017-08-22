@@ -16,7 +16,7 @@
 
 <style>
 thead th{
-   background-color:  #2F4038; color: #FEEEA7; font-size: 15px;
+   background-color:  #2F4038; color: #FEEEA7; font-size: 13px;
    width:25%;
 }
 thead td{
@@ -44,7 +44,7 @@ thead td{
 }
 
 .rev img{
-	width:315px; height:230px;
+	width:330px; height:230px;
 
 
   vertical-align: top;
@@ -118,10 +118,7 @@ ArrayList<ReviewDTO> arr = rdao.show(store_idx);
 %>
 <!-- window.open("postReview_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>", "글 쓰기", "width=490px, height=510px;"); -->
 <script>
-function post(){
-   
-   
-   
+function post(){  
    
    //넘겨줄 값 같이 넘겨주기
    location.href="postReview_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>";
@@ -156,6 +153,30 @@ function post(){
 
    <h4><input type="button" name="post" value="글쓰기" onclick="post()" style="float: right;"></h4>
    
+   <script>
+   	function dele(obj){
+   		var ref = window.confirm('소중한 리뷰를 정말로 삭제하시겠습니까?');
+   		if(ref==true){
+   			var num = document.getElementsByName(obj);
+   			for(var i=0; i<num.length; i++){
+   				if(num[i].checked==true){
+   					window.alert('들어옴');
+   					location.href="deleteReview_ok.jsp?i="+i+"&store_idx="+<%=store_idx%>;
+   					break;
+   				}
+   			}
+   		}
+   		else{
+   			window.alert('삭제를 취소했습니다.');
+   		}
+   	}
+   	
+   	function modi(obj){
+   		location.href="postReview.jsp"
+   		
+   	}
+   	</script>
+   		
    <table>
    <%
    if(arr.size()==0 || arr==null){%>
@@ -174,7 +195,7 @@ function post(){
    				<figure class="rev">
    				<img src=<%=arr.get(i).getR_picture()%> />
    				<figcaption>
-   					<h3><%=arr.get(i).getC_name()%>님의 평점은 
+   					<h3 align="center"><%=arr.get(i).getC_name()%>님의 별은 
    					<%for(int j=0; j<arr.get(i).getScore_num(); j++){%>
    						★ <%} %> 입니다.</h3>
    					<p> <%=arr.get(i).getReview()%></p>
@@ -182,6 +203,15 @@ function post(){
    				<a href="#"></a>
     			</figure>
    			</td>
+   		</tr>
+   		
+   		<tr >
+   			<td>
+   			<!-- form name="frm"-->
+   				<input type="checkbox" name="chk[]" value="<%=i%>">
+   				<input type="button" name="modi" value="게시물 수정" onclick="modi('chk[]')">
+   				<input type="button" name="dele" value="게시물 삭제" onclick="dele('chk[]')">
+   			<!-- /form--></td>
    		</tr>
   <% }	}  %>
    </table>
