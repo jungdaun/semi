@@ -21,8 +21,10 @@ background-color: #e4e4e4;
 td{
 text-align: left;
 }
-#aa{
-text-align: center;
+#joinceowrap{
+width: 850px;
+height: 100%;
+margin-top: 200px;
 }
 
 </style>
@@ -67,10 +69,12 @@ text-align: center;
 <body>
 	<%@include file="/header.jsp"%>
 	<div id="bodywrap">
+	<div id="joinceowrap">
 	<h1>사장회원가입</h1>
 		<section>
 			<article>
 				<form name="joinceo" action="joinceo_ok.jsp" method="post">
+						<div style="display: inline-block; text-align: center;">
 						<table>
 							<tr>
 								<th>ID</th>
@@ -131,10 +135,12 @@ text-align: center;
 							</tr>
 
 						</table>
+						</div>
 				</form>
 			</article>
 		</section>
 	</div>
 	<%@include file="/footer.jsp"%>
+</div>	
 </body>
 </html>

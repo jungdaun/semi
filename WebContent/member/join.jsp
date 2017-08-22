@@ -28,6 +28,12 @@ text-align: left;
 #aa{
 text-align: center;
 }
+#joinwrap{
+width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	
+	}
 </style>
 
 <script>
@@ -83,7 +89,7 @@ text-align: center;
 <body>
 <%@include file="/header.jsp"%>
 <div id="bodywrap">
-<div><img src ="img/badal.jpg"></div>
+<div id="joinwrap">
 <h1>배·민 회원가입</h1>
 <form action="join_ok.jsp" name="join" method="post">
          <table id="maintable">
@@ -166,7 +172,10 @@ text-align: center;
             </tr>
          </table>
       </form>
-</div>
+
 	<%@include file="/footer.jsp"%>
+	</div>
+</div>
+	
 </body>
 </html>

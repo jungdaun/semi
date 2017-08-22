@@ -59,7 +59,8 @@ function addr_search(){
 				<div id="mainbottom1"><a href="store/postStore.jsp?store_type=dakbal"><img src="img/dakbal.jpg" style="width:390px; height:195px;"></a></div>
 				<div id="mainbottom2"><a href="store/postStore.jsp?store_type=bbang"><img src="img/bbang.jpg" style="width:390px; height:195px;"></a></div>
 			</div>
-		</div>
+		
 <%@include file="footer.jsp"%>
+</div>
 </body>
 </html>

@@ -119,17 +119,25 @@ background-color: #e4e4e4;
 td{
 text-align: left;
 }
+#memberup{
+width: 850px;
+	height: 100%;
+	margin-top: 200px;
+}
 </style>
 </head>
 
 <body onload="show()">
 	<%@include file="/header.jsp"%>
 	<div id="bodywrap">
+	<div id="memberup">
+	
 		<h1>회원정보수정</h1>
 		<section>
 			<article>
 				<form name="update" action="memberUpdate_ok.jsp" method="post">
 					<input type="hidden" name="id">
+					<div style="display: inline-block; text-align: center;">
 					<table>
 						<tr>
 							<th>이름</th>
@@ -192,7 +200,7 @@ text-align: left;
 							required="required" size="23"></td>
 							</tr>
 					</table>
-
+					</div>
 					<p>
 						<input type="button" value="회원 탈퇴" onclick="goOut()"> <input
 							type="button" value="비밀번호 변경" onclick="changePwd()"> <input
@@ -202,7 +210,9 @@ text-align: left;
 				</form>
 			</article>
 		</section>
-	</div>
+	
 	<%@include file="/footer.jsp"%>
+	</div>
+	</div>
 </body>
 </html>

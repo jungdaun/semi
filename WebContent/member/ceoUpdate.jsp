@@ -103,17 +103,24 @@ text-align: left;
 section p {
 	text-align: center;
 }
+#ceoup{
+width: 850px;
+	height: 100%;
+	margin-top: 200px;
+}
 </style>
 </head>
 
 <body onload = "show()">
 <%@include file="/header.jsp"%>
 <div id="bodywrap">
+<div id="ceoup">
 <h1>사장님정보수정</h1>
 <section>
 		<article>
 			<form name="update" action="ceoUpdate_ok.jsp" method = "post">
 			<input type = "hidden" name = "id">
+			<div style="display: inline-block; text-align: center;">
 				<table>
 				<tr>
 						<th>이름</th>
@@ -152,6 +159,7 @@ section p {
 						<td><input type="text" name="ans" required="required" size="23"></td>
 						</tr>
 					</table>
+					</div>
 					<p>
 						<input type = "button" value = "회원 탈퇴" onclick = "goOut()">
 						<input type = "button" value = "비밀번호 변경" onclick = "changePwd()">
@@ -161,7 +169,9 @@ section p {
 			</form>
 		</article>
 	</section>
-	</div>
+	
 	<%@include file="/footer.jsp"%>
+	</div>
+	</div>
 </body>
 </html>
