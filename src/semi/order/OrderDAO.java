@@ -9,6 +9,7 @@ import java.util.Calendar;
 import com.sun.javafx.css.CalculatedValue;
 
 import semi.cart.CartDTO;
+import semi.db.SemiDb;
 import semi.voc.VocDTO;
 
 
@@ -19,6 +20,139 @@ public class OrderDAO {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
+
+	public int getOrderStat_temp (int key, int i,   String start ){
+		try {
+			String sql = "";
+			
+//			switch (key) {
+//			case 1:
+//			String s1 = start+"-"+i ; System.out.println(s1);
+//			String s2 = start+"-"+ (i+1);
+			
+//			
+				sql = "select count(*) from order_tb where order_date"
+						+ " between to_date ('"+start+"')- "+i+" and to_date ('"+start+"') +1-"+i+" and finish = 2 ";
+				
+				
+//				break;
+//
+//			default:
+//				break;
+//			}
+//			
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			rs.next();
+			
+			
+			System.out.println(rs.getInt(1));
+			return rs.getInt(1);
+			
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace( );
+			return -1; 
+		}finally {
+			try {
+				if (rs!=null)rs.close();
+				if (ps!=null)ps.close();
+				
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	
+	public int [] getOrderStat( int key  , String start  ){
+		try {
+		
+			
+			conn =semi.db.SemiDb.getConn();
+			
+		
+			
+
+			int arr [] = new int [7];
+			
+			for ( int i =0; i< arr.length; i ++){
+				arr[i]= getOrderStat_temp(key, i, start );
+			
+			}
+			
+			return arr ; 
+			
+//		 sql = "select count (*) from order_tb "
+//					+ "where order_date between '"+start+"' and to_date ('"+end+"')+1";
+//			ps = conn.prepareStatement(sql);
+//			rs = ps.executeQuery();
+//			
+//			rs.next();
+//			System.out.println(start+" "+end);
+//			System.out.println(rs.getInt(1));
+//			
+//			return rs.getInt(1);
+//			
+//			
+			
+		} catch (Exception e) {
+			// TODO: han
+			
+		e.printStackTrace( );
+		return null ; 
+		
+		}finally {
+			try {
+					if(rs!=null)rs.close();
+	            if(ps!=null) ps.close();
+	            if(conn!=null) conn.close();
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+		
+	}
+//	
+//	public int getStat( String start , String end  ){
+//		try {
+//			
+//			conn =semi.db.SemiDb.getConn();
+//			
+//			
+//			String sql = "select count (*) from order_tb "
+//					+ "where order_date between '"+start+"' and to_date ('"+end+"')+1";
+//			ps = conn.prepareStatement(sql);
+//			rs = ps.executeQuery();
+//			
+//			rs.next();
+//			System.out.println(start+" "+end);
+//			System.out.println(rs.getInt(1));
+//			
+//			return rs.getInt(1);
+//			
+//			
+//			
+//		} catch (Exception e) {
+//			// TODO: han
+//			
+//			e.printStackTrace( );
+//			return -1 ; 
+//			
+//		}finally {
+//			try {
+//				if(rs!=null)rs.close();
+//				if(ps!=null) ps.close();
+//				if(conn!=null) conn.close();
+//				
+//			} catch (Exception e2) {
+//				// TODO: handle exception
+//			}
+//		}
+//		
+//	}
 	
 	public int addSaleNum( int oIdx ){
 		try {

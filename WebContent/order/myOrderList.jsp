@@ -111,7 +111,7 @@ System.out.println (orderIdx);
 		<script type="text/javascript">
 		
 		window.alert ('로그인하세요.');
-		window.href = '/index.jsp';
+		window.location.href ='/semi/index.jsp';
 		
 		</script>
 		<%
