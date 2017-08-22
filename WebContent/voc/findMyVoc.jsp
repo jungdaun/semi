@@ -128,7 +128,7 @@ if (sid ==null || sid .equals("")){
 <%
 
 
-ArrayList <VocDTO> arr = vdao.findMyVoc(sid, cp, listSize);
+ArrayList <VocDTO> arr = vdao.findMyVoc(sname, cp, listSize);
 
 
 %>
@@ -215,7 +215,7 @@ ArrayList <VocDTO> arr = vdao.findMyVoc(sid, cp, listSize);
                   }
                   
                   %>
-                  <a href="vocContent.jsp?idx=<%=arr.get(i).getVod_idx()%>"><%=arr.get(i).getTitle() %> </a></td>s
+                  <a href="vocContent.jsp?idx=<%=arr.get(i).getVod_idx()%>"><%=arr.get(i).getTitle() %> </a></td>
                   
                 
                
