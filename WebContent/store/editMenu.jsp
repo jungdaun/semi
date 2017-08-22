@@ -84,9 +84,9 @@ function add() {
             <input type="hidden" name="isOpen" value="<%=isOpen%>">
             <input type="hidden" name="c_sub_s" value="<%=c_sub_s %>">
             
-               <select name="food_count"><%
-               for(int j=1; j<10; j++){%>
-                  <option value="<%=j%>"><%=j %></option>
+               <select name="food_num"><%
+               for(int j=1; j<= fdao.maxfoodnum(); j++){%>
+                  <option value="<%=j%>" j==<%=arr.get(count).getFood_num()%>?selected:""; %>><%=j %></option>
                <% } %>
                </select>
                

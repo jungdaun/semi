@@ -40,7 +40,6 @@ public class FoodDAO {
 			}
 			catch(Exception e){
 				e.printStackTrace();
-				System.out.print("dd");
 				return null;
 			}
 			finally{
@@ -80,6 +79,34 @@ public class FoodDAO {
 			}
 		
 		
+	}
+	
+	public int maxfoodnum(){
+		try{
+			conn = semi.db.SemiDb.getConn();
+			String sql = "select max(food_num) from food";
+			ps = conn.prepareStatement(sql);
+			rs = ps.executeQuery();
+			FoodDTO dto = null;
+			int max = 0;
+			
+			if(rs.next()) {
+				max = rs.getInt("max(food_num)");
+			}
+			return max;
+		}
+		catch(Exception e){
+			e.printStackTrace();
+			return 0;
+		}
+		finally{
+			try{
+				if(rs!=null) rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			}
+			catch(Exception e2){}
+		}
 	}
 
 }

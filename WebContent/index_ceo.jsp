@@ -20,6 +20,11 @@ function menumanager() {
 }
 
 </script>
+<style>
+h2 {
+	color:white;
+}
+</style>
 </head>    
 
 <body>
@@ -32,7 +37,7 @@ function menumanager() {
 				wf.setUserid(sid);
 				wf.userFolderExixts();
 				wf.setCrpath(wf.getUserid());
-				%><h3>사진업로드</h3>
+				%><h2>사진업로드</h2>
 				<input type = "button" value = "사진등록하기" onclick = "image()">
 				<input type = "button" value = "메뉴수정하기" onclick = "menumanager()">
 				<%
