@@ -96,7 +96,7 @@ function selectnum() {
             <input type="hidden" name="c_sub_s" value="<%=c_sub_s %>">
             
                <select name="food_num2" onchange = "selectnum2()"><%
-               for(int j=1; j<= fdao.maxfoodnum(); j++){%>
+               for(int j=1; j <= fdao.maxfoodnum(store_idx); j++){%>
                   <option value="<%=j%>" 
                   <%
                   if(j==arr.get(count).getFood_num()) {
@@ -110,10 +110,7 @@ function selectnum() {
                <input type="hidden" name="store_idx" value="<%=store_idx%>">
                <input type="hidden" name="food_price" value="<%=arr.get(count).getFood_price()%>">
                <input type="hidden" name="food_name" value="<%=arr.get(count).getFood_name()%>">
-			 <select name="food_num" onchange = "selectnum()">
-                  <option value="aaaa">1</option>
-                   <option value="aaaa">2</option>
-               </select>
+		
             </td>  
          <% count++;}
          else

@@ -121,6 +121,9 @@ public class ImageDAO {
 		try {
 			conn = semi.db.SemiDb.getConn();
 			
+			System.out.println(path);
+			System.out.println(idx);
+			
 			String sql = "update food set food_image = ? where store_idx = ?";
 
 			PreparedStatement ps = conn.prepareStatement(sql);

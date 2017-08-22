@@ -14,12 +14,13 @@ public class FoodDAO {
 	private Connection conn;
 	private PreparedStatement ps;
 	private ResultSet rs;
-	public FoodDAO() { }
+	public FoodDAO() {
+	}
 	
 		public ArrayList<FoodDTO> showStore(int store_idx){
 			try{
 				conn = semi.db.SemiDb.getConn();
-				String sql = "select * from food where store_idx=?";
+				String sql = "select * from food where store_idx=? order by food_num";
 				ps = conn.prepareStatement(sql);
 				ps.setInt(1, store_idx);
 				rs = ps.executeQuery();
@@ -53,18 +54,16 @@ public class FoodDAO {
 			}
 		}
 		
-	public int foodJoin(FoodDTO dto) {
+	public int foodJoin(int idx, String name, String type, int price, int num) {
 			try {
 				conn = semi.db.SemiDb.getConn();
-				String sql = "insert into food values(21, 1, 'fried', 'main', 17000, 'taste good!', '')";
+				String sql = "insert into food values(?, ?, ?, ?, ?, 'taste good!', '')";
 				ps = conn.prepareStatement(sql);
-				ps.setInt(1, dto.getStore_idx());
-				ps.setInt(2, maxfoodnum()+1);
-				ps.setString(3, dto.getFood_name());
-				ps.setString(4, dto.getFood_type());
-				ps.setInt(5, dto.getFood_price());
-				ps.setString(6, dto.getFood_info());
-				ps.setString(7, "");
+				ps.setInt(1, idx);
+				ps.setInt(2, num+1);
+				ps.setString(3, name);
+				ps.setString(4, type);
+				ps.setInt(5, price);
 				return ps.executeUpdate();
 			} catch (Exception e) {
 				e.printStackTrace();
@@ -82,11 +81,12 @@ public class FoodDAO {
 		
 	}
 	
-	public int maxfoodnum(){
+	public int maxfoodnum(int store_idx){
 		try{
 			conn = semi.db.SemiDb.getConn();
-			String sql = "select max(food_num) from food";
+			String sql = "select max(food_num) from (select food_num from food where store_idx = ?)";
 			ps = conn.prepareStatement(sql);
+			ps.setInt(1, store_idx);
 			rs = ps.executeQuery();
 			FoodDTO dto = null;
 			int max = 0;

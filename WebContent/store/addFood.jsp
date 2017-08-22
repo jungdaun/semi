@@ -26,10 +26,10 @@
 <%
 //String store_idx_s=request.getParameter("store_idx");
 //int store_idx = Integer.parseInt(store_idx_s);
-int store_idx=21;
 String store_type= request.getParameter("store_type");
 String c_sub_s = request.getParameter("c_sub_s");
-ArrayList<FoodDTO> arr = fdao.showStore(store_idx);
+String cstore = (String) session.getAttribute("cstore");
+int istore = Integer.parseInt(cstore);
 //Integer c_idx = (Integer) session.getAttribute("c_idx");
 Integer c_idx = (Integer)2;
 
@@ -89,7 +89,7 @@ function aa() {
 	File:<input type="file" name="upload">
 	
 	<input type = "hidden" name = "a">
-	
+	<input type = "hidden" name = "store_idx" value = "<%=istore%>">
 </fieldset>
 
 		
