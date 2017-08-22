@@ -48,7 +48,6 @@ public class ReviewDAO {
 	
 	public int postReview(Integer c_idx, String c_name, int store_idx, String up_date, int score_num, String review, String r_picture, String r_pwd){
 		try{
-			System.out.println("들어옴?");
 			conn = semi.db.SemiDb.getConn();
 			String sql="insert into review values(?, ?, ?, ?, ?, ?, ?, ?)";
 			ps = conn.prepareStatement(sql);
@@ -61,6 +60,7 @@ public class ReviewDAO {
 			ps.setString(7, r_picture);
 			ps.setString(8, r_pwd);
 			int count = ps.executeUpdate();
+			cntReviewNum(store_idx);
 			
 			return count;
 		}
@@ -76,6 +76,23 @@ public class ReviewDAO {
 			catch(Exception e2){}
 		}
 		
+	}
+	
+	public void cntReviewNum(int store_idx){
+		try{
+			String sql = "update store set review_num=review_num+1 where store_idx=?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, store_idx);
+			int count = ps.executeUpdate();
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		finally{
+			try{
+			}
+			catch(Exception e2){}
+		}
 	}
 
 }

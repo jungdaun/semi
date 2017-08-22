@@ -154,9 +154,9 @@ store_phone varchar2(20),
 open_time varchar2(20),
 close_time varchar2(20),
 lowest_price number(10), 
-review_num number(5), 
+review_num number(5), //count=3이면
 sale_num number(5), 
-score_num number(5),
+score_num number(5), //3명의 평균
 store_image varchar2(100)
 )
 

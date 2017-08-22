@@ -8,12 +8,7 @@ request.setCharacterEncoding("utf-8");
 
 <%
 
-
-
 String savePath=wf.USERS_HOME + "/" + wf.getCrpath();
-
-
-
 
 try {
 	MultipartRequest mr = new MultipartRequest(request, savePath, wf.getFreeSize(), "utf-8");
@@ -23,21 +18,17 @@ try {
 	String aa = mr.getParameter("a"); //img 불러올때 사용
 	String bb[] = aa.split("\\\\");
 	String path = "http://localhost:9090/semi/store/img/upload/" + sid + "/" + bb[2];
-	wf.setImage(path, cstore);
+	wf.setImage(path, cstore);	
 	
-	
-	
-} catch(Exception e) {
+}
+catch(Exception e) {
 	%> 
 	<script>
 		window.alert("예상치 못한 오류가 발생함!");
 		window.self.close();
 	</script>
 	<%
-	
 }
-
-
 %>
 
 <script>
