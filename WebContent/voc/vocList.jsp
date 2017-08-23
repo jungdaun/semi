@@ -56,36 +56,40 @@ if ( cp %pageSize==0){
 <title>Insert title here</title>
 
 <style>
-	h2{
-		text-align: center;
-		color: white; 
-		
-	}
-	table{
-		width: 450px;
-		border-top: 4px double white;
-		border-bottom: 4px double white;
-		margin: 0px auto;
-		border-spacing: 0px;
-		background-color: white ; 
-	}
-	table th{
-		background: #BF0920;
-		color: white; 
-		text-align: center;
-	}
-	table td{
-		text-align: center
-		
-		;
-	}
-	
-	tfoot {
-		border-top: 4px double #BF0920;
-		
-	
-	}
-	
+   h2{
+      text-align: center;
+      color: white; 
+      
+   }
+   table{
+      width: 450px;
+      border-top: 4px double white;
+      border-bottom: 4px double white;
+      margin: 0px auto;
+      border-spacing: 0px;
+      background-color: white ; 
+   }
+   table th{
+      background: #BF0920;
+      color: white; 
+      text-align: center;
+   }
+   table td{
+      text-align: center
+      
+      ;
+   }
+   
+   tfoot {
+      border-top: 4px double #BF0920;
+      
+   
+   }
+   #vocList{
+   width: 850px;
+   height: 100%;
+   margin-top: 200px;
+   }
 </style>
 
 
@@ -101,36 +105,37 @@ if ( cp %pageSize==0){
      
      
      
-     	<div id="bodywrap">
-     	
-     	
-     	
-     	<%
-     	if (sid==null|| sid.equals("") ){
-     		
-     		%>
-     		<script type="text/javascript">
-     		window.alert ('로그인 하세요');
-     		window.location.href ='/semi/index.jsp';
-     		
-     		
-     		
-     		</script>
-     		
-     		<%
-     		return ; 
-     	}
-     	
-     	%>
-     	
-     	
-     	
+        <div id="bodywrap">
+        
+        
+        
+        <%
+        if (sid==null|| sid.equals("") ){
+           
+           %>
+           <script type="text/javascript">
+           window.alert ('로그인 하세요');
+           window.href = '/semi/index.jsp';
+           
+           
+           
+           </script>
+           
+           <%
+           return ; 
+        }
+        
+        %>
+        
+        
+        
 <!-- --------------------------------------------------------- -->
 
-
-	<section>
-			<article>
-			<h2>Q&A</h2>
+<div id="vocList">
+   <section>
+         <article>
+         <h2>Q&A</h2>
+         <div style="display: inline-block; text-align: center;">
       <table>
          <thead>
             <tr>
@@ -139,7 +144,7 @@ if ( cp %pageSize==0){
                <th>글쓴이</th>
                <th>작성일</th>
            <!--     <th>turn</th>
-				-->
+            -->
                
                
             </tr>
@@ -186,13 +191,13 @@ if ( cp %pageSize==0){
                
             </tr>
             <tr>
-            	<td colspan="4">
-            	<form action="findMyVoc.jsp">
-            	작성자: <input type="text" name="mySid"  ><input type="submit" value="검색">
-            	
-            	<a href="findMyVoc.jsp?mySid=<%=sid%>">내글보기</a>
-            	</form>
-            	</td>
+               <td colspan="4">
+               <form action="findMyVoc.jsp">
+               작성자: <input type="text" name="mySid"  ><input type="submit" value="검색">
+               
+               <a href="findMyVoc.jsp?mySid=<%=sid%>">내글보기</a>
+               </form>
+               </td>
             </tr>
          
          </tfoot>            
@@ -225,17 +230,17 @@ if ( cp %pageSize==0){
                   <%
              //     String sid =(String ) session.getAttribute("sid");
                   if (!(sid ==null || sid .equals(""))){
-                	
-                	  if (sid .equals("admin")){
- 						out.println ("<a href='vocContent.jsp?idx="+arr.get(i).getVod_idx()+"'>"+arr.get(i).getTitle()+"</a> </td>");
- 						
-                		  
-                	  }
+                   
+                     if (sid .equals("admin")){
+                   out.println ("<a href='vocContent.jsp?idx="+arr.get(i).getVod_idx()+"'>"+arr.get(i).getTitle()+"</a> </td>");
+                   
+                        
+                     }
 
-                	  else out.println ("<a href='pwdCheck.jsp?idx="+arr.get(i).getVod_idx()+"'>"+arr.get(i).getTitle()+"</a> </td>");
-                	  
-                	  
-                	  
+                     else out.println ("<a href='pwdCheck.jsp?idx="+arr.get(i).getVod_idx()+"'>"+arr.get(i).getTitle()+"</a> </td>");
+                     
+                     
+                     
                   }
                   else out.println ("<a href='pwdCheck.jsp?idx="+arr.get(i).getVod_idx()+"'>"+arr.get(i).getTitle()+"</a> </td>");
                   
@@ -264,11 +269,11 @@ if ( cp %pageSize==0){
          
 
       </table>
+      </div>
+         
+         </article>
       
-			
-			</article>
-		
-		</section>
+      </section>
 
 
 
@@ -279,13 +284,14 @@ if ( cp %pageSize==0){
 
 
 
-		</div>
-	   
+      
+      
 
 
 
 <%@include file="/footer.jsp"%>
-      
+</div>
+     </div>
       
 </body>
 </html>

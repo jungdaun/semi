@@ -36,7 +36,9 @@ function addr_search(){
 	
 }
 </script>
+
 		<div id="bodywrap">
+		
 			<div id="maintitle">
 				<div id="maintitle1"><a href="/semi/notice/noticeList.jsp"><img src="img/notice.jpg" style="width:450px; height:200px;"></a></div>
 				<div id="maintitle2">
@@ -60,6 +62,8 @@ function addr_search(){
 				<div id="mainbottom2"><a href="store/postStore.jsp?store_type=bbang"><img src="img/bbang.jpg" style="width:390px; height:195px;"></a></div>
 			</div>
 		
+		
+	
 <%@include file="footer.jsp"%>
 </div>
 </body>
