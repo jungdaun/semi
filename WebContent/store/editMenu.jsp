@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%request.setCharacterEncoding("utf-8");%>
 <%@ page import="java.util.*" %>
 <%@ page import="semi.food.*" %>
 <%@ page import="semi.cart.*" %>
@@ -40,21 +39,18 @@ h3{
 }
 </style>
 <script>
-function edit() {
-	location.href = 'editFood.jsp';
-}
 function add() {
 	location.href = 'addFood.jsp';
 }
 function selectnum() {
 	window.alert(document.editMenu.food_num.value);
 	
-	bool = window.confirm('메뉴 순서를 바꾸시겠습니까');
+	/* bool = window.confirm('메뉴 순서를 바꾸시겠습니까');
 	if(bool) {
 		window.alert('바꾸겠습니다.');
 	}
 	
-	window.alert(document.editMenu.food_num.value);
+	window.alert(document.editMenu.food_num.value); */
 
 
 }
@@ -86,7 +82,7 @@ function selectnum() {
     %>     <tr> <%
          for(int i=0; i<2; i++){
             if(count<arr.size()){%>
-            <td><a onclick = "edit()"><img src="../img/store/<%=arr.get(count).getFood_name()%>.png" style="width:140px; height:120px;"/></a></td>
+            <td><a onclick = "javascript:location.href = 'editFood.jsp?foodnum=<%=arr.get(count).getFood_num()%>';"><img src="<%=arr.get(count).getFood_image()%>" style="width:140px; height:120px;"/></a></td>
             <td style="background-color: #2F4038; color:white;"><%=arr.get(count).getFood_name() %>
             <br><%=arr.get(count).getFood_price() %>원 </td>
          
@@ -95,7 +91,7 @@ function selectnum() {
             <input type="hidden" name="isOpen" value="<%=isOpen%>">
             <input type="hidden" name="c_sub_s" value="<%=c_sub_s %>">
             
-               <select name="food_num2" onchange = "selectnum2()"><%
+               <select name="food_num" onchange = "selectnum()"><%
                for(int j=1; j <= fdao.maxfoodnum(store_idx); j++){%>
                   <option value="<%=j%>" 
                   <%

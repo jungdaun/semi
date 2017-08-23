@@ -61,6 +61,7 @@ function aa() {
 	
 	if(chk==0) {
 		document.image.a.value = document.image.upload.value;
+		window.alert(document.image.a.value);
 		image.submit();
 	}
 	
