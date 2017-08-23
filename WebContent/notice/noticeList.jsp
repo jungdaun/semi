@@ -95,8 +95,9 @@ if ( cp %pageSize==0){
 	}
 	#noticeListwrap{
 	width: 850px;
-	height: 200px;
+	height: 100%;
 	margin-top: 200px;
+	margin-bottom: 160px;
 	}
 	
 </style>

@@ -100,7 +100,7 @@ else if ( (!adminId.equals(admin))){
 		<div id="bodywrap">
 
 <!-- -------------------------------------------------------------- -->
-	
+
 <h2>쿠폰 등록 페이지</h2> 
 
 <form action="couponWrite_ok.jsp" name="couponWrite">

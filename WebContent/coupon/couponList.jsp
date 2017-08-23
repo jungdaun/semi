@@ -60,6 +60,11 @@ a:visited {text-decoration: none; color: gray; }
 		
 	
 	}
+	#couponList{
+	width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	}
 	
 </style>
 
@@ -75,6 +80,7 @@ a:visited {text-decoration: none; color: gray; }
 		<div id="bodywrap">
 
 <!-- -------------------------------------------------------------- -->
+<div id="couponList">
 <h2>++쿠폰존++</h2>
 
 <h3 align="right" style="color: white;"><a href="/semi/coupon/myCouponList.jsp">나의쿠폰보기</a>
@@ -151,10 +157,10 @@ a:visited {text-decoration: none; color: gray; }
 	
 
 <!-- -------------------------------------------------------------- -->
-		</div>
+		
 <%@include file="/footer.jsp"%>
-
-
+</div>
+</div>
 		
 </body>
 </html>

@@ -21,34 +21,76 @@ public class OrderDAO {
 	private ResultSet rs;
 	
 
-	public int getOrderStat_temp (int key, int i,   String start ){
+	public int getOrderStat_temp (int key, int i,   int val ,int sIdx ){
 		try {
-			String sql = "";
+			String sql = " ";
 			
-//			switch (key) {
-//			case 1:
-//			String s1 = start+"-"+i ; System.out.println(s1);
-//			String s2 = start+"-"+ (i+1);
-			
-//			
-				sql = "select count(*) from order_tb where order_date"
-						+ " between to_date ('"+start+"')- "+i+" and to_date ('"+start+"') +1-"+i+" and finish = 2 ";
+			Calendar now = Calendar.getInstance();
+			int y = now.get(Calendar.YEAR);
+			int res = 0 ; 
+			switch (key) {
+			case 1:{
+				String day =  y+"-"+val+"-"+(i+1);
+				System.out.println(day);
+//				
+					sql = "select count(*) from order_tb where order_date"
+							+ " between to_date ('"+day+"') and to_date ('"+day+"') +1 and finish = 2 and store_idx = "+sIdx;
+					
+					
+//					break;
+	//
+//				default:
+//					break;
+//				}
+//				
+				ps = conn.prepareStatement(sql);
+				rs = ps.executeQuery();
+				rs.next();
 				
 				
-//				break;
-//
-//			default:
-//				break;
-//			}
-//			
-			ps = conn.prepareStatement(sql);
-			rs = ps.executeQuery();
-			rs.next();
+				// System.out.println(rs.getInt(1));
+				 res = rs.getInt(1);
+				
+				
+			}
+				
+				break;
+
+			case 3: {
+				String day =  val+"-"+(i+1)+"-1";
+				System.out.println("day:"+day);
+//				
+					sql = "select count(*) from order_tb where order_date"
+							+ " between to_date ('"+day+"') and last_day( to_date ('"+day+"') ) and finish = 2 and store_idx = "+sIdx;
+					
+					
+//					break;
+	//
+//				default:
+//					break;
+//				}
+//				
+				ps = conn.prepareStatement(sql);
+				rs = ps.executeQuery();
+				rs.next();
+				
+				
+				// System.out.println(rs.getInt(1));
+				 res = rs.getInt(1);
+				
+				
+				
+				
+			}
+				break ; 
+			default:
+				break;
+			}
 			
+
 			
-			System.out.println(rs.getInt(1));
-			return rs.getInt(1);
-			
+			return res ; 
+					
 			
 		} catch (Exception e) {
 			// TODO: handle exception
@@ -66,21 +108,70 @@ public class OrderDAO {
 		}
 	}
 	
-	public int [] getOrderStat( int key  , String start  ){
+	public int [] getOrderStat( int key  , int val, int sIdx ){
 		try {
 		
-			
+			// val = month 
 			conn =semi.db.SemiDb.getConn();
 			
+			
 		
-			
+			int arr [] = null ; 
 
-			int arr [] = new int [7];
+
+			switch (key) {
 			
-			for ( int i =0; i< arr.length; i ++){
-				arr[i]= getOrderStat_temp(key, i, start );
-			
+			case 1:{
+				switch (val) {
+				case 1:
+				case 3:
+				case 5:
+				case 7:
+				case 8:
+				case 10:
+				case 12: arr = new int [31]; break;
+				case 2: arr = new int [28]; break;
+				case 4: 
+				case 6: 
+				case 9: 
+				case 11:arr = new int [30]; break; 
+					
+				
+
+				default:
+					break;
+				}
+				
+		
+				
+				
+		
+				for ( int i =0; i< arr.length; i ++){
+					arr[i]= getOrderStat_temp(key, i , val, sIdx );
+				
+				}
+				
+				
 			}
+				
+				break;
+			case 3:{
+				
+				arr = new int [12];
+				for ( int i = 0; i< arr.length ; i ++){
+					arr[i] = getOrderStat_temp(key, i, val, sIdx);
+					
+					
+				}
+			}
+				
+				break;
+
+			default:
+				break;
+			}
+			
+		
 			
 			return arr ; 
 			
@@ -583,20 +674,83 @@ public class OrderDAO {
 	      }
 	   }
 	
-	
+	 public int getTotalCnt(int mem_idx ){
+	      try{
+	         conn = semi.db.SemiDb.getConn();
+	         
+
+	         
+	         String sql="select count(*) from order_tb where mem_idx = ? ";
+	        
+	         ps=conn.prepareStatement(sql);
+	         ps.setInt(1, mem_idx);
+	         rs=ps.executeQuery(); 
+	         rs.next();
+	         int count=rs.getInt(1);
+	         count=(count==0)?1:count;//count값이 0일때 1 아니면 count
+	         return count;
+	      }catch(Exception e){
+	         e.printStackTrace();
+	         return 1;
+	      }finally{
+	         try{
+	            if(rs!=null)rs.close();
+	            if(ps!=null)ps.close();
+	            if(conn!=null)conn.close();
+	         }catch(Exception e1){
+	         }
+	         
+	      }
+	   }
+	   
+	 public int getStoreTotalCnt(int store_idx ){
+		 try{
+			 conn = semi.db.SemiDb.getConn();
+			 
+			 
+			 
+			 String sql="select count(*) from order_tb where store_idx = ? ";
+			 
+			 ps=conn.prepareStatement(sql);
+			 ps.setInt(1, store_idx);
+			 rs=ps.executeQuery(); 
+			 rs.next();
+			 int count=rs.getInt(1);
+			 count=(count==0)?1:count;//count값이 0일때 1 아니면 count
+			 return count;
+		 }catch(Exception e){
+			 e.printStackTrace();
+			 return 1;
+		 }finally{
+			 try{
+				 if(rs!=null)rs.close();
+				 if(ps!=null)ps.close();
+				 if(conn!=null)conn.close();
+			 }catch(Exception e1){
+			 }
+			 
+		 }
+	 }
+	 
 			
 			
-	public ArrayList<OrderDTO> myOrderList (int mem_idx ){
+	public ArrayList<OrderDTO> myOrderList (int mem_idx, int currentPage, int listSize ){
 		try {
 
 			conn = semi.db.SemiDb.getConn();
 
-			String sql = "select * from order_tb where mem_idx = ? order by order_idx";
+		//	String sql = "select * from order_tb where mem_idx = ? order by order_idx";
 			
+			String sql = "select * from "
+					+ "(select rownum rNum, a.* from " 
+					+ "(select * from order_tb "
+					+ "where mem_idx = "+mem_idx+" order by order_idx desc) a) b "
+					+ "where rNum >=("+currentPage+"-1) * "+listSize+" +1 and rNum<="+currentPage+"*"+listSize;
+		
 		
 
 			ps=conn.prepareStatement(sql);
-			ps.setInt(1, mem_idx);
+			//ps.setInt(1, mem_idx);
 			
 			rs=ps.executeQuery();
 			
@@ -647,17 +801,20 @@ public class OrderDAO {
 		}
 	}
 	
-	public ArrayList<OrderDTO> myStoreOrderList (int store_idx ){
+	public ArrayList<OrderDTO> myStoreOrderList (int store_idx , int currentPage, int listSize){
 		try {
 			
 			conn = semi.db.SemiDb.getConn();
 			
-			String sql = "select * from order_tb where store_idx = ? order by order_idx";
-			
-			
+			String sql = "select * from "
+					+ "(select rownum rNum, a.* from " 
+					+ "(select * from order_tb "
+					+ "where store_idx = "+store_idx + "order by order_idx desc) a) b "
+					+ "where rNum >=("+currentPage+"-1) * "+listSize+" +1 and rNum<="+currentPage+"*"+listSize
+					 ;
 			
 			ps=conn.prepareStatement(sql);
-			ps.setInt(1, store_idx);
+		//	ps.setInt(1, store_idx);
 			
 			rs=ps.executeQuery();
 			
