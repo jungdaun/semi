@@ -4,31 +4,59 @@
 <jsp:useBean id="odao" class="semi.order.OrderDAO"></jsp:useBean>    
     
 <%
-/*
-String start = request.getParameter("startDate");
-String end = request.getParameter("endDate");
+//int sIdx = Integer.parseInt((String) session.getAttribute("cstore"));
 
-int res = odao.getStat(start, end);
-
-
-*/
-
-
+int sIdx = 21; 
 Calendar now = Calendar .getInstance(); 
-int y = now.get(Calendar.YEAR);
-int m = now . get(Calendar.MONTH)+ 1; 
-int d = now . get(Calendar.DATE);
 
-String start = request.getParameter("start");
-if (start == null || start .equals("") ){
-	start = y +"-"+m+"-"+d;
-	
+
+int y=0; int m = 0; 
+int key = Integer.parseInt(request.getParameter("key"));
+
+String y_s= ( request.getParameter("y"));
+String m_s = ( request.getParameter("m"));
+
+if (y_s==null || y_s.equals("") ){
+	y = now.get(Calendar.YEAR);
 	
 }
+else {
+	y = Integer.parseInt(y_s);
+	
+}
+if (m_s==null || m_s.equals("") ){
+	m = now.get(Calendar.MONTH)+1;
+}
+
+else {
+
+	m = Integer.parseInt(m_s);
+	if (m < 1){
+		m= 12; 
+		y = y-1; 
+	}
+	if(m>12){
+		m=1 ; y = y+1; 
+	}
+}
+
+int val = 0; 
 
 
-int key = Integer.parseInt(request.getParameter("key"));
-int arr []= odao.getOrderStat(key, start);
+	switch (key){
+	case 1: val = m; break; 
+	case 3: val = y ; break ; 
+
+	}
+
+
+
+
+int arr []= odao.getOrderStat(key, val, sIdx );
+
+//int next = Integer.parseInt(d)+7 ; 
+//int back = 0 ; 
+
 
 %>
 <!DOCTYPE html >
@@ -45,21 +73,54 @@ int arr []= odao.getOrderStat(key, start);
 </head>
 <body>
 
-<form action="">
-<a>이전7일</a><br>
+
+
 
 <%
+
+switch(key){
+
+case 1: %>
+<a href="orderStat_ok.jsp?key=<%=key%>&y=<%=y%>&m=<%=m-1%>">이전</a><br>
+<%=y %>년
+<%=m%>월<BR><%break;
+
+case 3: %>
+
+
+
+<a href="orderStat_ok.jsp?key=<%=key%>&y=<%=y-1%>&m=<%=m%>">이전</a><br>
+<%=y%>년<BR><%break;
+	
+
+}
+
 for ( int i =0; i< arr.length; i ++){
 	%>
-	<%=22-i%>:<%=arr[i] %><br>
+	<%=(i+1)%> :<%=arr[i] %><br>
 	<%
 }
  
 
+switch(key){
+
+case 1: %>
+<a href="orderStat_ok.jsp?key=<%=key%>&y=<%=y%>&m=<%=m+1%>">다음</a><br>
+<%break;
+
+case 3: %>
+
+
+
+<a href="orderStat_ok.jsp?key=<%=key%>&y=<%=y+1%>&m=<%=m%>">다음</a><br>
+<BR><%break;
+	
+
+}
+
 %>
 
-<a>다음7일</a>
+
 <br>
-</form>
 </body>
 </html>
