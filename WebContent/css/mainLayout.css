@@ -131,10 +131,10 @@ body {
    height: 50px;
    display: inline-block;
    text-align: right;
-   margin-left: 400px;
+   margin-left: 450px;
 }
 
-#headerinner2 a {
+#headerinner2 a { 
    text-decoration: none;
    color: black;
 }
