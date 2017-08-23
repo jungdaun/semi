@@ -122,6 +122,14 @@ fieldset {
 	text-align: left;
 	margin-bottom: 20px ; 
 }
+#payMain{
+	width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	margin-bottom: 160px;
+	margin-left: 30px;
+   margin-right: 30px;
+}
 
 </style>
 
@@ -146,6 +154,7 @@ function addOrder() {
 <body >
 <%@include file="/header.jsp"%>
 		<div id="bodywrap">
+		<div id="payMain">
 
 <!-- -------------------------------------------------------------- -->
 
@@ -161,9 +170,9 @@ function addOrder() {
 
 
 
-
+ <div style="display: inline-block; text-align: center;">
 <fieldset>
-	<legend>
+	<legend style="text-align: center;">
 	
 <h2>주문 내용</h2>
 	</legend>
@@ -229,14 +238,14 @@ function addOrder() {
 <p><h4>총 금액은 <input type="text" value="<%=tempPrice %>" name="price">원 입니다.</h4></p>
 
 </fieldset>
+</div>
 
 
 
 
-
-
+ <div style="display: inline-block; text-align: center;">
 <fieldset>
-	<legend>
+	<legend style="text-align: center;">
 <h2>배달 정보</h2>
 	</legend>
 
@@ -306,11 +315,11 @@ function addOrder() {
 	
 </table>
 </fieldset>
+</div>
 
-
-
+ <div style="display: inline-block; text-align: center;">
 <fieldset>
-	<legend>
+	<legend style="text-align: center;">
 	
 <h2>할인 선택</h2>
 	</legend>
@@ -337,10 +346,10 @@ function addOrder() {
 
 
 </fieldset>
-
-
+</div>
+ <div style="display: inline-block; text-align: center;">
 <fieldset>
-	<legend>
+	<legend style="text-align: center;">
 	
 <h2>최종결제정보</h2>
 	</legend>
@@ -372,7 +381,7 @@ function addOrder() {
 		</div>
 <%@include file="/footer.jsp"%>
 
-
+</div>
 
 
 

@@ -19,6 +19,8 @@
 	width: 850px;
 	height: 100%;
 	margin-top: 200px;
+	margin-left: 30px;
+   margin-right: 30px;
 }
 </style>
 </head>

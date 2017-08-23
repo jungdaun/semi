@@ -35,13 +35,25 @@ boolean isOpen = sdao.isOpen(store_idx);
 
 %>
 </head>
+<style>
+#postFood{
+	width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	margin-bottom: 160px;
+	margin-left: 30px;
+   margin-right: 30px;
+	}
+</style>
 <body>
 <%@include file="/header.jsp"%>
 
    <div id="bodywrap">
+   <div id="postFood">
    <article>
       <legend style="background-color: #2F4038; color: #FEEEA7; font-size:22px; font-weight: bold;">
          Home >> <%=store_type %> >> <%=c_sub_s %></legend><br>
+         <div style="display: inline-block;text-align: center;">
          <table>
             <tr style="background-color: white">
                <td rowspan="3" align="center" style="color:white; width:272px;">
@@ -55,7 +67,9 @@ boolean isOpen = sdao.isOpen(store_idx);
                </td>
             </tr>
          </table>
+         </div>
          
+        <div style="display: inline-block;text-align: center;">
          <table>
     
   <% if(arr.equals("") || arr.size()==0){%>
@@ -100,7 +114,10 @@ boolean isOpen = sdao.isOpen(store_idx);
             break;
       } %></tr>
  <% } } %>
-      </table> <br><br><br><br><br>
+      </table>
+       <br><br><br><br><br>
+       </div>
+      
     </article>
     
  
@@ -117,6 +134,7 @@ if (isOpen){
    ArrayList<CartDTO> brr = cdao.showData(store_idx, c_idx);%>
    
          <fieldset style="background-color: #BF0920; color: white; font-size: 25px; line-height: 40%;">장바구니</fieldset>
+        <div style="display: inline-block;text-align: center;">
          <table>
          <% if(brr.size()==0 || brr==null){%>
             <tr>
@@ -129,6 +147,7 @@ if (isOpen){
             
          <% } %>
         </table>
+      </div>
     </article>
 	<%
 }
@@ -145,6 +164,7 @@ else {
  
   </div>
 <%@include file="/footer.jsp"%>
+
 </body>
 </html>
 

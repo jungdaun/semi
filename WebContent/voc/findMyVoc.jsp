@@ -46,9 +46,12 @@ tfoot {
    border-top: 4px double #BF0920;
 }
 #myvoc{
-width: 850px;
-   height: 100%;
-   margin-top: 200px;
+	width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	margin-bottom: 160px;
+	margin-left: 30px;
+   margin-right: 30px;
 }
 </style>
 

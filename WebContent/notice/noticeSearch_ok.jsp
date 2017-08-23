@@ -116,7 +116,14 @@ if ( cp %pageSize==0){
 		
 	
 	}
-	
+	#ns_ok{
+		width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	margin-bottom: 160px;
+	margin-left: 30px;
+   margin-right: 30px;
+	}
 </style>
 </head>
 <body>
@@ -127,6 +134,7 @@ if ( cp %pageSize==0){
 
 <%@include file="/header.jsp"%>
 		<div id="bodywrap">
+		<div id="ns_ok">
 
 <!-- -------------------------------------------------------------- -->
 
@@ -281,6 +289,7 @@ if ( cp %pageSize==0){
 <!-- -------------------------------------------------------------- -->
 		</div>
 <%@include file="/footer.jsp"%>
+</div>
 
 
 

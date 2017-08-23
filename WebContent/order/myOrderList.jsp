@@ -65,6 +65,14 @@ border-top: 2px solid white;
 */
 	
 }
+#myOrderList{
+	width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	margin-bottom: 160px;
+	margin-left: 30px;
+   margin-right: 30px;
+}
 </style>
 
 <link rel="stylesheet" type="text/css" href="/semi/css/mainLayout.css">
@@ -103,7 +111,7 @@ System.out.println (orderIdx);
 
 <%@include file="/header.jsp"%>
 		<div id="bodywrap">
-
+<div id="myOrderList">
 <!-- -------------------------------------------------------------- -->
 	
 		
@@ -208,6 +216,7 @@ if ( cp %pageSize==0){
 			
 			%>
 			<h3>[<%=odao.getStoreName( dtos.get(i).getStore_idx()) %>]</h3>
+			 <div style="display: inline-block; text-align: center;">
 			<table class="del">
 			<tr style="border-bottom: 4px double white;">
 				<th >주문번호</th>
@@ -265,6 +274,7 @@ if ( cp %pageSize==0){
 			</tr>
 			
 		</table>
+		</div>
 		<%if (dtos.get(i).getFinish()== 2){
 			%>
 			
@@ -318,7 +328,7 @@ if ( cp %pageSize==0){
 <!-- -------------------------------------------------------------- -->
 		</div>
 <%@include file="/footer.jsp"%>
-	
+	</div>
 	
 	
 

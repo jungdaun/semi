@@ -128,6 +128,14 @@ width: 550px;
  text-align: left ;
 	
 }
+#payCheck{
+	width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	margin-bottom: 160px;
+	margin-left: 30px;
+   margin-right: 30px;
+}
 </style>
 
 
@@ -141,11 +149,12 @@ width: 550px;
 
 <%@include file="/header.jsp"%>
 		<div id="bodywrap">
+		<div id="payCheck">
 
 <!-- -------------------------------------------------------------- -->
 
 <h2 style="text-align: center; ">  [<%=sname %>]님의 주문 내역입니다.</h2>
-
+ <div style="display: inline-block; text-align: center;">
 <font color="white">
 <h2>  주문 품목</h2>
 	<table>	
@@ -190,6 +199,7 @@ width: 550px;
 	
 	
 	</table>
+	</div>
 	<%
 	
 	
@@ -206,7 +216,7 @@ width: 550px;
 	}
 	else {
 		%>
-		
+		 <div style="display: inline-block; text-align: center;">
 		<h2>배송 정보</h2>
 	<table class="del">
 	
@@ -233,6 +243,7 @@ width: 550px;
 		
 		
 	</table>
+	</div>
 		<%
 	}
 	%>
@@ -253,7 +264,7 @@ width: 550px;
 <!-- -------------------------------------------------------------- -->
 		</div>
 <%@include file="/footer.jsp"%>
-
+</div>
 
 
 

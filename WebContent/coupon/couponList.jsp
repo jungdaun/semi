@@ -64,6 +64,9 @@ a:visited {text-decoration: none; color: gray; }
 	width: 850px;
 	height: 100%;
 	margin-top: 200px;
+	margin-bottom: 160px;
+	margin-left: 30px;
+   margin-right: 30px;
 	}
 	
 </style>
@@ -82,8 +85,9 @@ a:visited {text-decoration: none; color: gray; }
 <!-- -------------------------------------------------------------- -->
 <div id="couponList">
 <h2>++쿠폰존++</h2>
-
-<h3 align="right" style="color: white;"><a href="/semi/coupon/myCouponList.jsp">나의쿠폰보기</a>
+<div style="display: inline-block; margin-right: -380px;">
+<h3  style="color: white;"><p><a href="/semi/coupon/myCouponList.jsp" style="text-decoration: none">
+나의쿠폰보기</a></div>
 		</h3>
 	<table>
 	

@@ -98,6 +98,8 @@ if ( cp %pageSize==0){
 	height: 100%;
 	margin-top: 200px;
 	margin-bottom: 160px;
+	margin-left: 30px;
+   margin-right: 30px;
 	}
 	
 </style>

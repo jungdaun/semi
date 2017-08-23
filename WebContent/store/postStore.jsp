@@ -13,11 +13,23 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link rel="stylesheet" type="text/css" href="../css/mainLayout.css">
+<style>
+#postStore{
+	width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	margin-bottom: 160px;
+	margin-left: 30px;
+   margin-right: 30px;
+}
+</style>
 </head>
+
 
 <body>
 <%@include file="/header.jsp"%>
 <div id="bodywrap">
+<div id="postStore">
 <section>
 <%
 //String saddr = (String)session.getAttribute("saddr");
@@ -41,6 +53,7 @@ while(list.hasNext()){
 %>
    <legend style="background-color:#2F4038; color:#FEEEA7; font-size:22px; font-weight: bold;">
    Home >> <%=store_type %> >> <%=c_sub_s %></legend>
+    <div style="display: inline-block; text-align: center;">
    <table>
 <% 
 if(arr.equals("") || arr.size()==0){%>
@@ -95,8 +108,10 @@ else{
       }%></tr> 
 <% } }%>
    </table>
+   </div>
 </section><br><br><br>
 </div>
 <%@include file="/footer.jsp"%>
+</div>
 </body>
 </html>
