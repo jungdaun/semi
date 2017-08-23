@@ -54,6 +54,48 @@ public class FoodDAO {
 			}
 		}
 		
+		public FoodDTO foodUpdate(FoodDTO dto, int idx, int foodnum) {
+			try {
+				conn=semi.db.SemiDb.getConn();
+				String sql = null;
+				
+					sql = "select * from food where store_idx = ? and food_num = ?";
+					ps = conn.prepareStatement(sql);
+					ps.setInt(1, idx);
+					ps.setInt(2, foodnum);
+					rs = ps.executeQuery();
+
+					if (rs.next()) {
+						int food_num = rs.getInt("food_num");
+						String food_name = rs.getString("food_name");
+						String food_type = rs.getString("food_type");
+						int food_price = rs.getInt("food_price");
+						String food_info = rs.getString("food_info");
+						String food_image = rs.getString("food_image");
+						
+						dto = new FoodDTO(idx, food_num, food_name, food_type, food_price, food_info, food_image);
+						
+					}
+				
+				
+				
+				return dto;
+			} catch (Exception e) {
+				e.printStackTrace();
+				return null;
+			} finally { // 에러 발생 시, 아닐 시 상관 없이 파이널리 안에 있는 것 실행
+				try {
+					if(rs!=null) rs.close();
+					if(ps!=null) ps.close();
+					if(conn!=null) conn.close();
+				} catch (Exception e2) {
+
+				}
+			} // 자원반환시 위의 형식 필수
+		}
+		
+		
+		
 	public int foodJoin(int idx, String name, String type, int price, int num) {
 			try {
 				conn = semi.db.SemiDb.getConn();

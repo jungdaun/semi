@@ -26,9 +26,15 @@ String cstore = (String) session.getAttribute("cstore");
 int store_idx = Integer.parseInt(cstore);
 String store_type= request.getParameter("store_type");
 String c_sub_s = request.getParameter("c_sub_s");
-ArrayList<FoodDTO> arr = fdao.showStore(store_idx);
+//ArrayList<FoodDTO> arr = fdao.showStore(store_idx);
 //Integer c_idx = (Integer) session.getAttribute("c_idx");
 Integer c_idx = (Integer)2;
+
+int foodnum = Integer.parseInt(request.getParameter("foodnum"));
+
+
+FoodDTO dto = fdao.foodUpdate(fdto, store_idx, foodnum);
+
 
 %>
 
@@ -37,15 +43,27 @@ h3{
 	color:white;
 }
 </style>
+<script>
+function show() {
+	var ask = '<%=dto.getFood_type()%>';
+	z = document.update.food_type.length;
+	for(i = 0; i < z; i++) {
+		if(document.update.food_type[i].value==ask) {
+			document.update.food_type.options[i].selected = true;
+		}
+	}
+}
+</script>
 </head>
 
-<body>
+<body onload = "show()">
 <%@include file="/header.jsp"%>
 <div id="bodywrap">
 <h3>메뉴수정하기</h3>
 
    <article>
-      <legend style="background-color: #2F4038; color: #FEEEA7; font-size:22px; font-weight: bold;"/>
+   <form name = "update">
+     
         
          <table>
          <tr>
@@ -53,7 +71,7 @@ h3{
 		음식 사진 
 		</th>
 		<td>
-		 <img src="../img/store/dd.png" style="width:110px; height:128px"/>
+		 <img src="<%=dto.getFood_image()%>" style="width:110px; height:128px"/>
 		</td>
 		</tr>
 		
@@ -62,7 +80,7 @@ h3{
 		음식 이름
 		</th>
 		<td>
-		chicken
+		<input type = "text" name = "food_name" value = "<%=dto.getFood_name()%>">
 		</td>
 		</tr>
 		
@@ -83,14 +101,20 @@ h3{
 		음식 가격
 		</th>
 		<td>
-		17000
+		<input type = "text" name = "food_name" value = "<%=dto.getFood_price()%>">
 		</td>
 		</tr>
 		
+		<tr>
+		<td colspan = "2">
+		<input type = "button" value = "수정하기" onclick = "update_ok()">
+		</td>
+		</tr>
 		
       </table> <br><br><br><br><br>
-      </legend>
+        </form>
     </article>
+  
   </div>
 <%@include file="/footer.jsp"%>
 </body>

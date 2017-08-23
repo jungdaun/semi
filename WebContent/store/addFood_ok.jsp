@@ -18,7 +18,8 @@ String food_name = null;
 String food_type = null;
 int food_price = 0;
 int food_num = fdao.maxfoodnum(istore);
-String savePath=wf.USERS_HOME + "/" + wf.getCrpath();
+String savePath=wf.USERS_HOME + "/store/img/upload/" + wf.getCrpath();
+String path = null;
 
 
 
@@ -29,9 +30,7 @@ try {
 	String sid = (String) session.getAttribute("sid"); //ceo id
 	String aa = mr.getParameter("a"); //img 불러올때 사용
 	String bb[] = aa.split("\\\\");
-	String path = "http://localhost:9090/semi/store/img/upload/" + sid + "/" + bb[2];
-	
-	wf.setImage2(path, istore);
+	path = "http://localhost:9090/semi/store/img/upload/" + sid + "/" + bb[2];
 	food_name = mr.getParameter("food_name");
 	food_type = mr.getParameter("food_type");
 	food_price = Integer.parseInt(mr.getParameter("food_price"));
@@ -56,7 +55,7 @@ try {
 <%
 
 		int result = fdao.foodJoin(istore, food_name, food_type, food_price, food_num);
-
+		wf.setImage2(path, istore, food_num);
 		String msg = result > 0 ? "음식등록성공" : "음식등록실패";
 		
 		
