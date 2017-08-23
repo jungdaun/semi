@@ -9,7 +9,7 @@
 
 	if (result) {
 %>
-<script>
+<script> 
 	window.alert('이미 등록된 아이디 입니다.');
 	location.href='ceoCheck.jsp';
 </script>
