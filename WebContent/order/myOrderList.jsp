@@ -4,6 +4,10 @@
 <%@page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+	
+	
+	
+
  <jsp:useBean id="mdao" class="semi.member.MemberDAO"></jsp:useBean>
  <jsp:useBean id="odao" class="semi.order.OrderDAO"></jsp:useBean>
  <jsp:useBean id="ctdao" class="semi.cart.CartDAO"></jsp:useBean>
@@ -102,7 +106,56 @@ System.out.println (orderIdx);
 
 <!-- -------------------------------------------------------------- -->
 	
+		
+	<%
 	
+	int mem_idx = mdao.getMemIdx(sid);
+	//System.out.println (mem_idx);
+	
+
+
+/////////////paging관련
+
+
+
+//필수정보4가지
+int totalCnt= odao.getTotalCnt(mem_idx);
+
+
+
+
+//sql : select count (*) from jsp_bbs
+
+int listSize = 5; 
+// 보여줄 게시물 수 
+
+int pageSize = 5; 
+//보여줄 페이지 수 
+
+
+String cp_s = request.getParameter("cp");
+if (cp_s==null|| cp_s.equals("")){
+	
+	cp_s="1";
+}
+int cp = Integer.parseInt(cp_s);
+
+//1. total pg 
+int totalPg = totalCnt/listSize+1;
+if (totalCnt % listSize==0){
+	totalPg= totalPg-1; 
+	
+}
+
+int userGp =cp/pageSize; 
+if ( cp %pageSize==0){
+	userGp= userGp-1;
+}
+
+
+
+
+%>
 	<%
 
 	if (sid ==null || sid.equals("")){
@@ -125,12 +178,9 @@ System.out.println (orderIdx);
 	
 	<%
 
-	System.out.println (sid);
-	
-	int mem_idx = mdao.getMemIdx(sid);
-	System.out.println (mem_idx);
-	
-	ArrayList<OrderDTO> dtos =odao.myOrderList(mem_idx);
+	//System.out.println (sid);
+
+	ArrayList<OrderDTO> dtos =odao.myOrderList(mem_idx, cp, listSize);
 	%>
 	
 	
@@ -231,6 +281,38 @@ System.out.println (orderIdx);
 		
 	}
 	%>
+	
+	
+               
+               <%
+
+
+            if (userGp !=0 ){
+            
+            %><a href="myOrderList.jsp?cp=<%=(userGp-1)*pageSize+pageSize%>">&lt;&lt;</a>
+            
+            
+            <% 
+            
+            
+            }
+            
+            
+            for ( int i =userGp*pageSize+1; i<=userGp*pageSize+pageSize ; i ++){
+               
+               %>&nbsp;&nbsp;&nbsp;<a href="myOrderList.jsp?cp=<%=i %>"><font <%=cp==i?"color='red'":"" %>> <%=i %> </font> </a>&nbsp;&nbsp;&nbsp;<%
+               if (i ==totalPg) break; 
+            }
+            
+            
+            if ( userGp!= (totalPg/pageSize -(totalPg%pageSize==0? 1:0)) ){
+               %><a href="myOrderList.jsp?cp=<%=(userGp+1)*pageSize+1%>">&gt;&gt;</a><%
+            }
+            %>
+               
+         
+             
+            
 	
 
 <!-- -------------------------------------------------------------- -->

@@ -674,20 +674,83 @@ public class OrderDAO {
 	      }
 	   }
 	
-	
+	 public int getTotalCnt(int mem_idx ){
+	      try{
+	         conn = semi.db.SemiDb.getConn();
+	         
+
+	         
+	         String sql="select count(*) from order_tb where mem_idx = ? ";
+	        
+	         ps=conn.prepareStatement(sql);
+	         ps.setInt(1, mem_idx);
+	         rs=ps.executeQuery(); 
+	         rs.next();
+	         int count=rs.getInt(1);
+	         count=(count==0)?1:count;//count값이 0일때 1 아니면 count
+	         return count;
+	      }catch(Exception e){
+	         e.printStackTrace();
+	         return 1;
+	      }finally{
+	         try{
+	            if(rs!=null)rs.close();
+	            if(ps!=null)ps.close();
+	            if(conn!=null)conn.close();
+	         }catch(Exception e1){
+	         }
+	         
+	      }
+	   }
+	   
+	 public int getStoreTotalCnt(int store_idx ){
+		 try{
+			 conn = semi.db.SemiDb.getConn();
+			 
+			 
+			 
+			 String sql="select count(*) from order_tb where store_idx = ? ";
+			 
+			 ps=conn.prepareStatement(sql);
+			 ps.setInt(1, store_idx);
+			 rs=ps.executeQuery(); 
+			 rs.next();
+			 int count=rs.getInt(1);
+			 count=(count==0)?1:count;//count값이 0일때 1 아니면 count
+			 return count;
+		 }catch(Exception e){
+			 e.printStackTrace();
+			 return 1;
+		 }finally{
+			 try{
+				 if(rs!=null)rs.close();
+				 if(ps!=null)ps.close();
+				 if(conn!=null)conn.close();
+			 }catch(Exception e1){
+			 }
+			 
+		 }
+	 }
+	 
 			
 			
-	public ArrayList<OrderDTO> myOrderList (int mem_idx ){
+	public ArrayList<OrderDTO> myOrderList (int mem_idx, int currentPage, int listSize ){
 		try {
 
 			conn = semi.db.SemiDb.getConn();
 
-			String sql = "select * from order_tb where mem_idx = ? order by order_idx";
+		//	String sql = "select * from order_tb where mem_idx = ? order by order_idx";
 			
+			String sql = "select * from "
+					+ "(select rownum rNum, a.* from " 
+					+ "(select * from order_tb "
+					+ "where mem_idx = "+mem_idx+" order by order_idx desc) a) b "
+					+ "where rNum >=("+currentPage+"-1) * "+listSize+" +1 and rNum<="+currentPage+"*"+listSize;
+		
 		
 
 			ps=conn.prepareStatement(sql);
-			ps.setInt(1, mem_idx);
+			//ps.setInt(1, mem_idx);
 			
 			rs=ps.executeQuery();
 			
@@ -738,17 +801,20 @@ public class OrderDAO {
 		}
 	}
 	
-	public ArrayList<OrderDTO> myStoreOrderList (int store_idx ){
+	public ArrayList<OrderDTO> myStoreOrderList (int store_idx , int currentPage, int listSize){
 		try {
 			
 			conn = semi.db.SemiDb.getConn();
 			
-			String sql = "select * from order_tb where store_idx = ? order by order_idx";
-			
-			
+			String sql = "select * from "
+					+ "(select rownum rNum, a.* from " 
+					+ "(select * from order_tb "
+					+ "where store_idx = "+store_idx + "order by order_idx desc) a) b "
+					+ "where rNum >=("+currentPage+"-1) * "+listSize+" +1 and rNum<="+currentPage+"*"+listSize
+					 ;
 			
 			ps=conn.prepareStatement(sql);
-			ps.setInt(1, store_idx);
+		//	ps.setInt(1, store_idx);
 			
 			rs=ps.executeQuery();
 			

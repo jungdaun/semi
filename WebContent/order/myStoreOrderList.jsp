@@ -117,6 +117,12 @@ System.out.println (orderIdx);
 	<%
 
 
+	
+	int sIdx =21; 
+
+	//Integer.parseInt((String) session.getAttribute("cstore"));
+
+
 	if (sid ==null || sid.equals("")){
 		
 		%>
@@ -131,10 +137,48 @@ System.out.println (orderIdx);
 	}
 	
 	
-	
-	int sIdx =21; 
-	//Integer.parseInt((String) session.getAttribute("cstore"));
+	///////////paging/////////////////////////////////////////////////////////////
 
+	
+//필수정보4가지
+int totalCnt= odao.getStoreTotalCnt(sIdx);
+	
+
+
+
+//sql : select count (*) from jsp_bbs
+
+int listSize = 5; 
+// 보여줄 게시물 수 
+
+int pageSize = 5; 
+//보여줄 페이지 수 
+
+
+String cp_s = request.getParameter("cp");
+if (cp_s==null|| cp_s.equals("")){
+	
+	cp_s="1";
+}
+int cp = Integer.parseInt(cp_s);
+
+//1. total pg 
+int totalPg = totalCnt/listSize+1;
+if (totalCnt % listSize==0){
+	totalPg= totalPg-1; 
+	
+}
+
+int userGp =cp/pageSize; 
+if ( cp %pageSize==0){
+	userGp= userGp-1;
+}
+
+
+
+	
+	
+	////////////////////////////////////////////////////////////////////////
 	
 //	 sid =(String) session.getAttribute("sid");
 	
@@ -151,7 +195,7 @@ System.out.println (orderIdx);
 //	int mem_idx = mdao.getMemIdx(sid);
 //	System.out.println (mem_idx);
 	
-	ArrayList<OrderDTO> dtos =odao.myStoreOrderList(sIdx);
+	ArrayList<OrderDTO> dtos =odao.myStoreOrderList(sIdx, cp, listSize);
 	%>
 	
 	
@@ -268,12 +312,44 @@ System.out.println (orderIdx);
 			</tr>
 			
 		</table>
+		<br><br>
 
 			<%
 		}
 		
 	}
 	%>
+	
+	       <%
+
+
+            if (userGp !=0 ){
+            
+            %><a href="myStoreOrderList.jsp?cp=<%=(userGp-1)*pageSize+pageSize%>">&lt;&lt;</a>
+            
+            
+            <% 
+            
+            
+            }
+            
+            
+            for ( int i =userGp*pageSize+1; i<=userGp*pageSize+pageSize ; i ++){
+               
+               %>&nbsp;&nbsp;&nbsp;<a href="myStoreOrderList.jsp?cp=<%=i %>"><font <%=cp==i?"color='red'":"" %>> <%=i %> </font> </a>&nbsp;&nbsp;&nbsp;<%
+               if (i ==totalPg) break; 
+            }
+            
+            
+            if ( userGp!= (totalPg/pageSize -(totalPg%pageSize==0? 1:0)) ){
+               %><a href="myStoreOrderList.jsp?cp=<%=(userGp+1)*pageSize+1%>">&gt;&gt;</a><%
+            }
+            %>
+               
+         
+             
+            
+	
 	
 
 <!-- -------------------------------------------------------------- -->
