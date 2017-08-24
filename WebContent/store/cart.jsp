@@ -56,14 +56,30 @@ function del(obj){
    }
    location.href="delete_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>&str="+tag;   
 }
+/*
+function checkAll() {
+
+	var i =0; 
+	for ( i =0; i <document.frm.chk.length; i ++ ){
+		chk [i].checked = "true";
+		
+		
+	}
+	
+	
+	
+}
+*/
+
 </script>
 </head>
 <body>
+	
+   <table border="1" width="450" cellspacing="0" align="center">
 
-   <table border="1" width="450" cellspacing="0" align="center"><br>
       <thead style="background-color:  #2F4038; color: #FEEEA7; font-size: 15px;">
          <tr>
-            <th>선택</th>
+            <th>선택<!-- <input type="button" name="checkAll" onclick="checkAll()">  --></th>
             <th>음식명</th>
             <th>음식 가격</th>
             <th>개수</th>
@@ -110,7 +126,7 @@ function del(obj){
             </tr>
          <% }%>
       </tbody>
+     
    </table>
-   
 </body>
 </html>

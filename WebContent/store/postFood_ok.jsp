@@ -16,9 +16,12 @@
 //Integer c_idx = (Integer) session.getAttribute("c_idx");
 //Integer c_idx = (Integer)2;
 
-Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
+
+
+
 
 //int c_idx =mdao.getMemIdx((String)session.getAttribute("sid"));
+
 
 String idx_s = request.getParameter("store_idx");
 int store_idx = Integer.parseInt(idx_s);
@@ -30,6 +33,32 @@ String[] c_sub = saddr.split(" ");
 String c_sub_s = c_sub[2];
 
 //request.getParameter("c_sub_s");
+
+
+
+
+String sid = (String)session.getAttribute("sid");
+
+
+if (sid ==null || sid.equals("")){
+	
+	%>
+	<script>
+	window.alert ('로그인 하세요');
+	window.location.href = 'postFood.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>n&c_sub_s=<%=c_sub_s%>';
+	
+	
+	</script>
+	
+	<%
+	return ;
+	
+}
+
+Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
+
+
+
 
 String isOpen = request.getParameter("isOpen");
 if (isOpen.equals("false")){

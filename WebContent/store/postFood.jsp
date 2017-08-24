@@ -163,7 +163,7 @@ if (isOpen){
 else {
 	%>
 	<article>
-	영업시간이아닙니다.
+	<h2 style="color: white;">영업시간이아닙니다.</h2>
 	</article>
 	<%
 }
