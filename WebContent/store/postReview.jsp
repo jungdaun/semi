@@ -122,8 +122,6 @@ String store_type= request.getParameter("store_type");
 String c_sub_s = request.getParameter("c_sub_s");
 
 String c_name = "송병훈";
-String modi_con = null;
-
 ArrayList<ReviewDTO> arr = rdao.show(store_idx);
 %>
 <!-- window.open("postReview_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>", "글 쓰기", "width=490px, height=510px;"); -->
@@ -181,26 +179,6 @@ function post(){
    			window.alert('삭제를 취소했습니다.');
    		}
    	}
-
-   	function modi(obj){
-   		if(ref==true){
-   		
-   		alert('11');
-   			var num = document.getElementsByName(obj);alert('22');
-   			for(var i=0; i<num.length; i++){alert('33');
-   				if(num[i].checked==true){
-   					alert('44');
-   				
-   					location.href="postReview_ok.jsp?content="+<%=modi_con%>;alert('5');
-   					break;
-   				}
-   			}
-   		}
-   		else{
-   			window.alert('수정를 취소했습니다.');
-   		}
-   		
-   	}
    	</script>
    		<div style="display: inline-block; text-align: center;">
    <table>
@@ -224,11 +202,7 @@ function post(){
    					<h3 align="center"><%=arr.get(i).getC_name()%>님의 별은 
    					<%for(int j=0; j<arr.get(i).getScore_num(); j++){%>
    						★ <%} %> 입니다.</h3>
-   					<p> 
-   					<%
-   					
-   					modi_con =arr.get(i).getReview(); %>
-   					<%=modi_con%></p>
+   					<p><%=arr.get(i).getReview()%></p>
    				</figcaption>
    				<a href="#"></a>
     			</figure>

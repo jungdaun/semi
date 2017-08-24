@@ -32,11 +32,25 @@
 <div id="postStore">
 <section>
 <%
-//String saddr = (String)session.getAttribute("saddr");
-String saddr = "서울시 중랑구 묵동";
-String[] c_sub = saddr.split(" ");
-String c_sub_s = c_sub[2];
+
 String store_type=request.getParameter("store_type");
+if(store_type.contains("치킨")){
+	store_type="chicken";
+}
+String c_sub_s=null;
+String[] c_sub;
+String c_s = request.getParameter("c");
+
+if(c_s==null){
+	//String saddr = (String)session.getAttribute("saddr");
+	//String saddr = "서울시 중랑구 묵동";
+	String saddr = "서울시 중랑구 묵동";
+	c_sub = saddr.split(" ");
+	c_sub_s = c_sub[2];
+}
+else
+	 c_sub_s = c_s;
+
 
 ArrayList<StoreDTO> arr = sdao.findStore(store_type);
 Iterator<StoreDTO> list = arr.iterator();
@@ -93,7 +107,7 @@ else{
     
             <div style="background-color: #2F4038; color:white; font-size: 17px;">
                영업시간 : <%=open[0]+'.'+open[1]+':'+open[2]%>~<%=close[0]+'.'+close[1]+':'+close[2]%><br> 
-               주소 : <%=c_sub[1]+" "+c_sub[2] %><br>
+            주소 : <%=c_sub_s%><br>   
                별점 : <% int num = arr.get(count).getScore_num();
                for(int j=1; j<=num; j++){%>&hearts;<%} %><br>
                리뷰수 : <%=arr.get(count).getReview_num() %><br>
