@@ -25,7 +25,6 @@
 </style>
 </head>
 
-
 <body>
 <%@include file="/header.jsp"%>
 <div id="bodywrap">
@@ -34,23 +33,28 @@
 <%
 
 String store_type=request.getParameter("store_type");
-if(store_type.contains("치킨")){
+if(store_type.contains("치킨"))
 	store_type="chicken";
-}
+else if(store_type.contains("피자"))
+	store_type="pizza";
+else if(store_type.contains("족발"))
+	store_type="jokbal";
+else if(store_type.contains("닭발"))
+	store_type="dakbal";
+else if(store_type.contains("빵"))
+	store_type="bbang";
+
 String c_sub_s=null;
 String[] c_sub;
 String c_s = request.getParameter("c");
 
 if(c_s==null){
-	//String saddr = (String)session.getAttribute("saddr");
-	//String saddr = "서울시 중랑구 묵동";
-	String saddr = "서울시 중랑구 묵동";
+	String saddr = (String)session.getAttribute("saddr");
 	c_sub = saddr.split(" ");
 	c_sub_s = c_sub[2];
 }
 else
 	 c_sub_s = c_s;
-
 
 ArrayList<StoreDTO> arr = sdao.findStore(store_type);
 Iterator<StoreDTO> list = arr.iterator();

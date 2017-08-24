@@ -10,24 +10,10 @@
 <jsp:useBean id="odao" class="semi.order.OrderDAO"></jsp:useBean>
  
 <%
-
-//System.out.println( (Integer) session.getAttribute("c_idx"));
-//Integer c_idx = (Integer)2;
-
-System.out.println (session.getAttribute("c_idx"));
-
-//int c_idx = (int) session.getAttribute("c_idx");
-//Integer c_idx = (Integer) session.getAttribute("c_idx");
-
-
 Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
 
-
-
-
-
 String store_idx_s = request.getParameter("store_idx");
-String store_type=request.getParameter("store_typpe");
+String store_type=request.getParameter("store_type");
 int store_idx = Integer.parseInt(store_idx_s);
 ArrayList<CartDTO> arr = cdao.showData(store_idx, c_idx);
 
@@ -56,30 +42,14 @@ function del(obj){
    }
    location.href="delete_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>&str="+tag;   
 }
-/*
-function checkAll() {
-
-	var i =0; 
-	for ( i =0; i <document.frm.chk.length; i ++ ){
-		chk [i].checked = "true";
-		
-		
-	}
-	
-	
-	
-}
-*/
-
 </script>
 </head>
 <body>
-	
-   <table border="1" width="450" cellspacing="0" align="center">
 
+   <table border="1" width="450" cellspacing="0" align="center"><br>
       <thead style="background-color:  #2F4038; color: #FEEEA7; font-size: 15px;">
          <tr>
-            <th>선택<!-- <input type="button" name="checkAll" onclick="checkAll()">  --></th>
+            <th>선택</th>
             <th>음식명</th>
             <th>음식 가격</th>
             <th>개수</th>
@@ -126,7 +96,7 @@ function checkAll() {
             </tr>
          <% }%>
       </tbody>
-     
    </table>
+   
 </body>
 </html>

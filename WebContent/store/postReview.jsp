@@ -6,7 +6,6 @@
 <jsp:useBean id="rdto" class="semi.review.ReviewDTO"/>
 <jsp:useBean id="rdao" class="semi.review.ReviewDAO"/>
 <jsp:setProperty property="*" name="rdto"/>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -114,25 +113,17 @@ thead td {
 
   
 <%
-//String c_name = (String) session.getAttribute("sname");
-//String store_idx_s=request.getParameter("store_idx");
-//int store_idx = Integer.parseInt(store_idx_s);
-int store_idx=21;
+String c_name = (String) session.getAttribute("sname");
+int store_idx=Integer.parseInt(request.getParameter("store_idx"));
 String store_type= request.getParameter("store_type");
 String c_sub_s = request.getParameter("c_sub_s");
-
-String c_name = "송병훈";
 ArrayList<ReviewDTO> arr = rdao.show(store_idx);
 %>
-<!-- window.open("postReview_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>", "글 쓰기", "width=490px, height=510px;"); -->
 <script>
 function post(){  
-   
-   //넘겨줄 값 같이 넘겨주기
    location.href="postReview_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>";
 }
 </script>
-
 </head>
 <body>
 
@@ -146,15 +137,11 @@ function post(){
          <table>
             <tr style="background-color: white">
                <td rowspan="3" align="center" style="color:white; width:272px;">
-               <!-- form name="menu" method="post"-->
-                  <!-- input type="hidden" name="menu" value="postMenu"-->
                   <a href="postFood.jsp?store_idx=<%=store_idx %>&store_type=<%=store_type %>">
                   <img src="../img/store/cart.png" style="width:60px; height:50px"/>
                </a></td>
                
                <td rowspan="3" align="center" style="color:white; width:272px;">
-               <!-- form name="re" method="post"-->
-                  <!-- input type="hidden" name="review" value="postReview"-->
                   <a href="postReview.jsp?store_idx=<%=store_idx %>&store_type=<%=store_type %>">
                   <img src="../img/store/review_one.png" style="width:60px; height:50px"/>
                </a></td>
@@ -175,9 +162,8 @@ function post(){
    				}
    			}
    		}
-   		else{
+   		else
    			window.alert('삭제를 취소했습니다.');
-   		}
    	}
    	</script>
    		<div style="display: inline-block; text-align: center;">
@@ -192,8 +178,7 @@ function post(){
 	   </tr>
    <%}
    else{
-	   for(int i=0; i<arr.size(); i++){
-   %>
+	   for(int i=0; i<arr.size(); i++){ %>
    		<tr>
    			<td>
    				<figure class="rev">
@@ -211,11 +196,9 @@ function post(){
    		
    		<tr >
    			<td>
-   			<!-- form name="frm"-->
    				<input type="checkbox" name="chk[]" value="<%=i%>">
-   				<!-- input type="button" name="modi" value="게시물 수정" onclick="modi('chk[]')"-->
    				<input type="button" name="dele" value="게시물 삭제" onclick="dele('chk[]')">
-   			<!-- /form--></td>
+   			</td>
    		</tr>
   <% }	}  %>
    </table>

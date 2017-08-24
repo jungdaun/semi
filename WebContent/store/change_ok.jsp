@@ -3,20 +3,14 @@
 <jsp:useBean id="cdao" class="semi.cart.CartDAO"/>
 <jsp:useBean id="cdto" class="semi.cart.CartDTO"/>
 <jsp:setProperty property="*" name="cdto"/>
-<jsp:useBean id="mdao" class="semi.member.MemberDAO"></jsp:useBean>
-<%request.setCharacterEncoding("utf-8");%>
 <%
-//Integer c_idx = (Integer) session.getAttribute("c_idx");
+request.setCharacterEncoding("utf-8");
 String store_type=request.getParameter("store_type");
-//Integer c_idx =mdao.getMemIdx((String)session.getAttribute("sid")) ;
-Integer c_idx = (Integer)2;
-String count_s = request.getParameter("count");
-String store_idx_s = request.getParameter("store_idx");
-String price_s = request.getParameter("price");
+Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
+int count = Integer.parseInt(request.getParameter("count"));
+int store_idx = Integer.parseInt(request.getParameter("store_idx"));
+int price = Integer.parseInt(request.getParameter("price"));
 String name = request.getParameter("food_name");
-int store_idx = Integer.parseInt(store_idx_s);
-int count = Integer.parseInt(count_s);
-int price = Integer.parseInt(price_s);
 
 int cnt = cdao.changeData(store_idx, c_idx, count, price, name);
 String msg = (cnt>0) ? "장바구니가 수정되었습니다.":"오류가 발생했습니다.";

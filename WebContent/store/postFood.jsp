@@ -23,21 +23,11 @@
 <%
 String store_idx_s=request.getParameter("store_idx");
 int store_idx = Integer.parseInt(store_idx_s);
-//int store_idx=21;
-String store_type=cdao.getStoreType(store_idx);
+String store_type=request.getParameter("store_type");
 
-//request.getParameter("store_type");
-//String c_sub_s =cdao.getStoreAddr(store_idx);
-
-String saddr = cdao.getStoreAddr(store_idx);
-
-String[] c_sub = saddr.split(" ");
-String c_sub_s = c_sub[2];
-
-//request.getParameter("c_sub_s");
+String c_sub_s = request.getParameter("c_sub_s");
 ArrayList<FoodDTO> arr = fdao.showStore(store_idx);
-//Integer c_idx = (Integer) session.getAttribute("c_idx");
-//Integer c_idx = (Integer)2;
+Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
 
 /*예랑*/
 boolean isOpen = sdao.isOpen(store_idx);
@@ -110,7 +100,7 @@ boolean isOpen = sdao.isOpen(store_idx);
                   <option value="<%=j%>"><%=j %></option>
                <% } %>
                </select>
-               
+               <input type="hidden" name="c_sub_s" value="<%=c_sub_s%>">
                <input type="hidden" name="store_type" value="<%=store_type%>">
                <input type="hidden" name="store_idx" value="<%=store_idx%>">
                <input type="hidden" name="food_price" value="<%=arr.get(count).getFood_price()%>">
@@ -127,7 +117,7 @@ boolean isOpen = sdao.isOpen(store_idx);
        <br><br><br><br><br>
        </div>
       
-    </article>
+   </article>
     
  
 
