@@ -45,6 +45,7 @@ h3{
 </style>
 <script>
 function show() {
+	
 	var ask = '<%=dto.getFood_type()%>';
 	z = document.update.food_type.length;
 	for(i = 0; i < z; i++) {
@@ -56,6 +57,9 @@ function show() {
 function image() {
 	window.open('/semi/store/foodimage.jsp?foodnum=<%=foodnum%>', 'image', 'width=550, height=150');
 }
+function update_ok() {
+	update.submit();
+}
 </script>
 </head>
 
@@ -65,7 +69,7 @@ function image() {
 <h3>메뉴수정하기</h3>
 
    <article>
-   <form name = "update">
+   <form name = "update" action = "editfood_ok.jsp">
      
         
          <table>
@@ -81,6 +85,8 @@ function image() {
 		<tr>
 		<td colspan = "2">
 		<input type = "button" value = "이미지 수정하기" onclick = "image()">
+		<input type = "hidden" name = "store_idx" value = "<%=store_idx%>">
+		<input type = "hidden" name = "food_num" value = "<%=foodnum%>">
 		</td>
 		</tr>
 		
@@ -110,7 +116,7 @@ function image() {
 		음식 가격
 		</th>
 		<td>
-		<input type = "text" name = "food_name" value = "<%=dto.getFood_price()%>">
+		<input type = "text" name = "food_price" value = "<%=dto.getFood_price()%>">
 		</td>
 		</tr>
 		

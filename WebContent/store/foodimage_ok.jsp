@@ -28,7 +28,8 @@ try {
 	int food_num = Integer.parseInt(food_nums);
 	String bb[] = aa.split("\\\\");
 	String path = "http://localhost:9090/semi/store/img/upload/" + sid + "/" + bb[2];
-	wf.setImage2(path, istore, food_num);
+	
+	wf.setImage2(path, istore, food_num-1);
 	
 } catch(Exception e) {
 	e.getStackTrace();

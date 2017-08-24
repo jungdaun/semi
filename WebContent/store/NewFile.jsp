@@ -43,11 +43,13 @@ h3{
 function add() {
 	location.href = 'addFood.jsp';
 }
-
+function show() {
+	window.alert
+}
 </script>
 </head>
 
-<body>
+<body onload = "show()">
 <%@include file="/header.jsp"%>
 <div id="bodywrap">
 <h3>메뉴수정하기</h3>
@@ -92,48 +94,16 @@ function add() {
             break;
       } %></tr>
  <% } } %>
-      </table> <br><br><br><br><br>
+      </table> 
+      
+      <ol>
+    <li>순서 있는 목록의 아이템 1</li>
+    <li>순서 있는 목록의 아이템 2</li>
+    <li>순서 있는 목록의 아이템 3</li>
+	</ol>
       
       
-      
-      <h3>Side</h3>
-      <table>
-    
-  <% if(arr2.equals("") || arr2.size()==0){%>
-         <tr style="color:white; font-size: 30px;">
-            <td rowspan="6" align="center" style="font-size:25px; color:white;">
-        	<br><img src="../img/store/sad.png" style="width:250px; height:250px "/><br>
-        	음식을 등록해주세요!
-         </td>
-         </tr>   
-   <% }
-   else{
-         int count=0;
-         while(count<arr2.size()) {
-    %>     <tr> <%
-         for(int i=0; i<4; i++){
-            if(count<arr2.size()){%>
-            <td><a onclick = "javascript:location.href = 'editFood.jsp?foodnum=<%=arr2.get(count).getFood_num()%>';"><img src="<%=arr2.get(count).getFood_image()%>" style="width:140px; height:120px;"/></a></td>
-            <td style="background-color: #2F4038; color:white;"><%=arr2.get(count).getFood_name() %>
-            <br><%=arr2.get(count).getFood_price() %>원 </td>
-         
-            <td>
-            <!-- 예랑 --> 
-            <input type="hidden" name="isOpen" value="<%=isOpen%>">
-            <input type="hidden" name="c_sub_s" value="<%=c_sub_s %>">
-               
-               <input type="hidden" name="store_type" value="<%=store_type%>">
-               <input type="hidden" name="store_idx" value="<%=store_idx%>">
-               <input type="hidden" name="food_price" value="<%=arr2.get(count).getFood_price()%>">
-               <input type="hidden" name="food_name" value="<%=arr2.get(count).getFood_name()%>">
-		
-            </td>  
-         <% count++;}
-         else
-            break;
-      } %></tr>
- <% } } %>
-      </table> <br><br><br><br><br>
+
       </form>
     </article>
     </div>
