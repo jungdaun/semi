@@ -37,6 +37,14 @@ boolean isOpen = sdao.isOpen(store_idx);
 h3{
 	color:white;
 }
+#editMenu{
+	width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	margin-bottom: 160px;
+	margin-left: 30px;
+   margin-right: 30px;
+}
 </style>
 <script>
 function add() {
@@ -60,10 +68,12 @@ function selectnum() {
 <body>
 <%@include file="/header.jsp"%>
 <div id="bodywrap">
+<div id="editMenu">
 <h3>메뉴수정하기</h3>
 메뉴 수정을 하려면 해당 메뉴의 사진을 눌러주세요.
 <input type = "button" value = "메뉴 추가하기" onclick = "add()">
    <article>
+ <div style="display: inline-block; text-align: center;">
    <form name = "editMenu">
      
          <table>
@@ -114,10 +124,13 @@ function selectnum() {
       } %></tr>
  <% } } %>
       </table> <br><br><br><br><br>
+      
       </form>
+      </div>
     </article>
     </div>
     
 <%@include file="/footer.jsp"%>
+</div>
 </body>
 </html>

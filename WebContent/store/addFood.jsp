@@ -1,7 +1,3 @@
-
-
-
-
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%request.setCharacterEncoding("utf-8");%>
@@ -39,6 +35,24 @@ Integer c_idx = (Integer)2;
 h3{
 	color:white;
 }
+#addFood{
+width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	margin-bottom: 160px;
+	margin-left: 30px;
+   margin-right: 30px;
+}
+th{
+height: 25px;
+font-size: 15px;
+text-align: left;
+border: 1px solid black;
+background-color: #e4e4e4;
+}
+td{
+text-align: left;
+}
 </style>
 <script>
 function aa() {
@@ -73,25 +87,25 @@ function aa() {
 <body>
 <%@include file="/header.jsp"%>
 <div id="bodywrap">
+<div id="addFood">
+ <div style="display: inline-block; text-align: center;">
 <h3>메뉴수정하기</h3>
 
    <article>
    <form name="image" action="addFood_ok.jsp" method="post" enctype="multipart/form-data">
       
-         <table>
+         <table border="1">
          <tr>
 		<th>
 		음식 사진 
 		</th>
-		<td>
+		<td style="color: white;">
 		
-<fieldset>
-	<legend>파일 선택하기</legend>
+
 	File:<input type="file" name="upload">
 	
 	<input type = "hidden" name = "a">
 	<input type = "hidden" name = "store_idx" value = "<%=istore%>">
-</fieldset>
 
 		
 		</td>
@@ -136,6 +150,8 @@ function aa() {
       </form>
     </article>
   </div>
+  </div>
 <%@include file="/footer.jsp"%>
+</div>
 </body>
 </html>
