@@ -191,10 +191,7 @@ if ( cp %pageSize==0){
                
                <% 
                
-               
-               
-               //////////// the people who has admin id can write notice 
-			//	String sid = (String)session.getAttribute("sid");
+
 				
                
                if (sid !=null ){

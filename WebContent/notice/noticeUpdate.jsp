@@ -75,19 +75,6 @@ else {
 }
 
 
-/*
-boolean check= false; 
-if (session.getAttribute(userIdx+"")!=null){
-
-	check = true; 
-	
-}
-
-
-session.setAttribute(userIdx+"", true);
-
-*/
-
 NoticeDTO dto = ndao.noticeContent(notice_idx);
 
 if (dto == null){

@@ -81,34 +81,8 @@ border-top: 2px solid white;
 <title>Insert title here</title>
 </head>
 <body>
+
 	
-	<%
-/*
-Calendar now = Calendar.getInstance();
-int y= (now.get(Calendar.YEAR)-2000) ;
-int m= (now.get(Calendar.MONTH)+1); 
-int d= (now.get(Calendar.DATE));
-
-int h =( now.get(Calendar.HOUR_OF_DAY));
-int min = now.get(Calendar.MINUTE);
-int s = now.get(Calendar.SECOND);
-
-int orderIdx = y+ m+ d+h+min+s ; 
-System.out.println (orderIdx);
-
-*/
-
-
-
-
-%>
- 
-	
-	
-	
-	
-	
-
 <%@include file="/header.jsp"%>
 		<div id="bodywrap">
 <div id="myOrderList">
@@ -132,7 +106,6 @@ int totalCnt= odao.getTotalCnt(mem_idx);
 
 
 
-//sql : select count (*) from jsp_bbs
 
 int listSize = 5; 
 // 보여줄 게시물 수 
@@ -178,23 +151,17 @@ if ( cp %pageSize==0){
 		<%
 		return ; 
 	}
-//	 sid =(String) session.getAttribute("sid");
-	
 	%>
 	
 	<h2>[<%=sname %>]님의 주문 내역입니다. </h2>
 	
 	<%
 
-	//System.out.println (sid);
-
+	
 	ArrayList<OrderDTO> dtos =odao.myOrderList(mem_idx, cp, listSize);
 	%>
 	
 	
-	
-	
-		
 
 	<%
 	
@@ -202,8 +169,9 @@ if ( cp %pageSize==0){
 	
 	if (dtos ==null || dtos.size()==0){
 		%>
-		no data
-		<%
+	<h2 style="color: gray;"> 주문 내역이 없습니다. </h2><br>
+	
+			<%
 	}
 	
 	else {
@@ -278,7 +246,7 @@ if ( cp %pageSize==0){
 		<%if (dtos.get(i).getFinish()== 2){
 			%>
 			
-				<p align="right" ><font color="#D8D8D8"><a href="#">[리뷰쓰기]</a></font></p>
+				<p align="right" ><font color="#D8D8D8"><a href="/semi/store/postReview_ok.jsp?store_idx=<%=dtos.get(i).getStore_idx() %>&store_type=<%=odao.getStoreType(dtos.get(i).getStore_idx())%>">[리뷰쓰기]</a></font></p>
 			<!--  dtos.get(i).getOrder_idx  -->
 			<%
 		}

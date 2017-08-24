@@ -9,12 +9,6 @@
 
 request.setCharacterEncoding("utf-8");
 
-//String user_id=(String) session.getAttribute("sid");
-//String user_id = "고객1";
-
-//System.out.println (user_id);
-
-
 %>
 
 <!DOCTYPE html>
@@ -80,11 +74,6 @@ a:visited {text-decoration: none; color: gray; }
 String admin = "admin"; 
 
 %>
-
-
-
-
-
 <%@include file="/header.jsp"%>
 		<div id="bodywrap">
 

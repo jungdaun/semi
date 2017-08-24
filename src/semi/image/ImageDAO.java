@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 
 public class ImageDAO {
 
-	public static final String USERS_HOME = "C:/Users/song/git/semi/WebContent";
+	public static final String USERS_HOME = "C:/WorkSpace/git/0824_02/WebContent";
 
 
 	private String userid; // 계정정보

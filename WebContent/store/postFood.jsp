@@ -25,9 +25,24 @@ String store_idx_s=request.getParameter("store_idx");
 int store_idx = Integer.parseInt(store_idx_s);
 String store_type=request.getParameter("store_type");
 
+<<<<<<< HEAD
+//String c_sub_s =cdao.getStoreAddr(store_idx);
+//String saddr = cdao.getStoreAddr(store_idx);
+//String[] c_sub = saddr.split(" ");
+//String c_sub_s = c_sub[2];
+
+=======
+>>>>>>> branch 'master' of https://github.com/jungdaun/semi.git
 String c_sub_s = request.getParameter("c_sub_s");
 ArrayList<FoodDTO> arr = fdao.showStore(store_idx);
+<<<<<<< HEAD
+//Integer c_idx_s = (String) session.getAttribute("c_idx");
 Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
+//Integer c_idx = Integer.parseInt("")
+//Integer c_idx = (Integer)2;
+=======
+Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
+>>>>>>> branch 'master' of https://github.com/jungdaun/semi.git
 
 /*예랑*/
 boolean isOpen = sdao.isOpen(store_idx);
@@ -36,13 +51,13 @@ boolean isOpen = sdao.isOpen(store_idx);
 </head>
 <style>
 #postFood{
-	width: 850px;
-	height: 100%;
-	margin-top: 200px;
-	margin-bottom: 160px;
-	margin-left: 30px;
+   width: 850px;
+   height: 100%;
+   margin-top: 200px;
+   margin-bottom: 160px;
+   margin-left: 30px;
    margin-right: 30px;
-	}
+   }
 </style>
 <body>
 <%@include file="/header.jsp"%>
@@ -56,12 +71,12 @@ boolean isOpen = sdao.isOpen(store_idx);
          <table>
             <tr style="background-color: white">
                <td rowspan="3" align="center" style="color:white; width:272px;">
-               	<a href="postFood.jsp?store_idx=<%=store_idx %>&store_type=<%=store_type %>">
+                  <a href="postFood.jsp?store_idx=<%=store_idx %>&store_type=<%=store_type %>">
                   <img src="../img/store/cart.png" style="width:60px; height:50px"/></a>
                </td>
                
                <td rowspan="3" align="center" style="color:white; width:272px;">
-               	<a href="postReview.jsp?store_idx=<%=store_idx %>&store_type=<%=store_type %>">
+                  <a href="postReview.jsp?store_idx=<%=store_idx %>&store_type=<%=store_type %>">
                   <img src="../img/store/review_one.png" style="width:60px; height:50px"/></a>
                </td>
             </tr>
@@ -74,8 +89,8 @@ boolean isOpen = sdao.isOpen(store_idx);
   <% if(arr.equals("") || arr.size()==0){%>
          <tr style="color:white; font-size: 30px;">
             <td rowspan="6" align="center" style="font-size:25px; color:white;">
-        	<br><img src="../img/store/sad.png" style="width:250px; height:250px "/><br>
-        	음식을 등록해주세요!
+           <br><img src="../img/store/sad.png" style="width:250px; height:250px "/><br>
+           음식을 등록해주세요!
          </td>
          </tr>   
    <% }
@@ -124,11 +139,11 @@ boolean isOpen = sdao.isOpen(store_idx);
 <%
 
 if (isOpen){
-	%>
-	
-	   <article>
+   %>
+   
+      <article>
  <% 
- int c_idx = mdao.getMemIdx(sid);
+ //int c_idx = mdao.getMemIdx(sid);
  
    ArrayList<CartDTO> brr = cdao.showData(store_idx, c_idx);%>
    
@@ -137,7 +152,7 @@ if (isOpen){
          <table>
          <% if(brr.size()==0 || brr==null){%>
             <tr>
-            	<td style="font-size:25px; color:white;">주문 내역이 없습니다.</td>
+               <td style="font-size:25px; color:white;">주문 내역이 없습니다.</td>
             </tr> <% 
             }
          else{ %>
@@ -148,14 +163,14 @@ if (isOpen){
         </table>
       </div>
     </article>
-	<%
+   <%
 }
 else {
-	%>
-	<article>
-	<h2 style="color: white;">영업시간이아닙니다.</h2>
-	</article>
-	<%
+   %>
+   <article>
+  <h2 style="color: white;">영업시간이아닙니다.</h2> 
+   </article>
+   <%
 }
 
 %>

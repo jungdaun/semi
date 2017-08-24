@@ -10,7 +10,49 @@
 <jsp:useBean id="mdao" class="semi.member.MemberDAO"></jsp:useBean>
 
 <%
+<<<<<<< HEAD
+
+//String store_type=request.getParameter("store_type");
+//Integer c_idx = (Integer) session.getAttribute("c_idx");
+//Integer c_idx = (Integer)2;
+
+
+
+
+
+//int c_idx =mdao.getMemIdx((String)session.getAttribute("sid"));
+
+
+String idx_s = request.getParameter("store_idx");
+int store_idx = Integer.parseInt(idx_s);
+String store_type =cdao.getStoreType(store_idx);
+
+String c_sub_s =request.getParameter("c_sub_s");
+
+
+
+
+String sid = (String)session.getAttribute("sid");
+
+
+if (sid ==null || sid.equals("")){
+	
+	%>
+	<script>
+	window.alert ('로그인 하세요');
+	window.location.href = 'postFood.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>n&c_sub_s=<%=c_sub_s%>';
+	
+	
+	</script>
+	
+	<%
+	return ;
+	
+}
+
+=======
 String store_type=request.getParameter("store_type");
+>>>>>>> branch 'master' of https://github.com/jungdaun/semi.git
 Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
 int store_idx = Integer.parseInt(request.getParameter("store_idx"));
 String c_sub_s = request.getParameter("c_sub_s");

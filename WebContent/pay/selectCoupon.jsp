@@ -15,8 +15,7 @@
 
 request.setCharacterEncoding("utf-8");
 
-//String sid=(String) session.getAttribute("sid");
-//System.out.println (user_id);
+
 int tempPrice = Integer.parseInt(request.getParameter("tp"));
 
 String sname = (String) session.getAttribute("sname");
@@ -28,22 +27,13 @@ String sType = request.getParameter("sType");
 
 
 
-//System.out.println (tempPrice);
-
 
 %>
 
 <!DOCTYPE html>
 <html>
 <head>
-<!-- 
-<script type="text/javascript">
- function autoWrite() {
-	var couponIdx = document.couponSelect.couponOption.value;
-	document.couponSelect.coupon.value=couponIdx; 
-}
-</script>
- -->
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">

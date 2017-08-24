@@ -64,8 +64,7 @@ tfoot tr {
 </head>
 
 <%
-	//String userIdx_s = request.getParameter("idx");
-	//System.out.println (userIdx);
+
 
 	String userIdx_s = request.getParameter("notice_idx");
 	int notice_idx;
@@ -77,18 +76,7 @@ tfoot tr {
 		notice_idx = Integer.parseInt(userIdx_s);
 	}
 
-	/*
-	boolean check= false; 
-	if (session.getAttribute(userIdx+"")!=null){
-	
-		check = true; 
-		
-	}
-	
-	
-	session.setAttribute(userIdx+"", true);
-	
-	*/
+
 
 	NoticeDTO dto = ndao.noticeContent(notice_idx);
 
@@ -145,12 +133,11 @@ tfoot tr {
 				</td>
 			</tr>
 			<tr>
-				<td colspan="4" style="text-align: center;"><a
-					href="noticeList.jsp">목록보기</a> <%
- 	if (sid == null || sid.equals("")) {
+				<td colspan="4" style="text-align: center;"><a href="noticeList.jsp">목록보기</a> <%
+ 					if (sid == null || sid.equals("")) {
 
- 	} else if (sid.equals(admin)) {
- %> | <a href="noticeWrite.jsp">글쓰기</a> |<a
+ 					} else if (sid.equals(admin)) {
+ %> 				| <a href="noticeWrite.jsp">글쓰기</a> |<a
 					href="noticeUpdate.jsp?notice_idx=<%=dto.getNotice_idx()%>">글수정</a>|
 					<a href="noticeDelete_ok.jsp?notice_idx=<%=dto.getNotice_idx()%>">글삭제</a>
 

@@ -137,7 +137,7 @@ public class CouponDAO {
 		
 			ps=conn.prepareStatement(sql);
 			int res = ps.executeUpdate();
-			System.out.println(res);
+		//	System.out.println(res);
 			
 			return res;
 			
@@ -163,7 +163,7 @@ public class CouponDAO {
 		
 		
 		try {
-			System.out.println(sid);
+		//	System.out.println(sid);
 			
 			conn = semi.db.SemiDb.getConn();
 			
@@ -229,7 +229,7 @@ public ArrayList<CouponDTO> myCouponList (String sid){
 		
 		
 		try {
-			System.out.println(sid);
+			//System.out.println(sid);
 			
 			conn = semi.db.SemiDb.getConn();
 			

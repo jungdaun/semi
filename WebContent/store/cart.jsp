@@ -10,6 +10,19 @@
 <jsp:useBean id="odao" class="semi.order.OrderDAO"></jsp:useBean>
  
 <%
+<<<<<<< HEAD
+
+//System.out.println( (Integer) session.getAttribute("c_idx"));
+//Integer c_idx = (Integer)2;
+
+//System.out.println (session.getAttribute("c_idx"));
+
+//int c_idx = (int) session.getAttribute("c_idx");
+//Integer c_idx = (Integer) session.getAttribute("c_idx");
+
+
+=======
+>>>>>>> branch 'master' of https://github.com/jungdaun/semi.git
 Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
 
 String store_idx_s = request.getParameter("store_idx");

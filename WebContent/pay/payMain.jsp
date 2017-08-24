@@ -18,14 +18,17 @@
 <%
 String sIdxs = request.getParameter("sIdx");
 int store_idx = Integer.parseInt(sIdxs);
+
 String cIdxs = request.getParameter("cIdx");
 int c_idx =Integer.parseInt(cIdxs);
+
 String oIdxs =request.getParameter("oIdx");
 int order_idx =Integer.parseInt(oIdxs);
+
 int res =odao.addOrderIdx(store_idx, order_idx, c_idx);
-System.out.println (store_idx);
-System.out.println (c_idx);
-System.out.println (order_idx);
+//System.out.println (store_idx);
+//System.out.println (c_idx);
+//System.out.println (order_idx);
 ArrayList <CartDTO> cartDtos = ctdao.myCartList(order_idx, store_idx);
 //String sid = "고객1";
 

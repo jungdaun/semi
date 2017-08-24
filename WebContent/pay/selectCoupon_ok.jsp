@@ -8,11 +8,11 @@ request.setCharacterEncoding("utf-8");
 
 int tp = Integer.parseInt(request.getParameter("tp"));
 
-System.out.println ("---");
-System.out.println (tp);
+//System.out.println ("---");
+//System.out.println (tp);
 
 int cIdx = Integer.parseInt(request.getParameter("cIdx"));
-System.out.println (cIdx);
+//System.out.println (cIdx);
 
 
 if (cIdx == 0 ){

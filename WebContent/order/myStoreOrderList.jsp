@@ -80,27 +80,7 @@ border-top: 2px solid white;
 <title>Insert title here</title>
 </head>
 <body>
-	
-	<%
-/*
-Calendar now = Calendar.getInstance();
-int y= (now.get(Calendar.YEAR)-2000) ;
-int m= (now.get(Calendar.MONTH)+1); 
-int d= (now.get(Calendar.DATE));
 
-int h =( now.get(Calendar.HOUR_OF_DAY));
-int min = now.get(Calendar.MINUTE);
-int s = now.get(Calendar.SECOND);
-
-int orderIdx = y+ m+ d+h+min+s ; 
-System.out.println (orderIdx);
-
-*/
-
-
-
-
-%>
  
 	
 	
@@ -118,9 +98,7 @@ System.out.println (orderIdx);
 
 
 	
-	int sIdx =21; 
-
-	//Integer.parseInt((String) session.getAttribute("cstore"));
+	int sIdx =Integer.parseInt((String) session.getAttribute("cstore"));
 
 
 	if (sid ==null || sid.equals("")){
@@ -180,20 +158,12 @@ if ( cp %pageSize==0){
 	
 	////////////////////////////////////////////////////////////////////////
 	
-//	 sid =(String) session.getAttribute("sid");
-	
+
 	%>
 	
 	<h2>[<%=odao.getStoreName(sIdx) %>]의 주문 이력입니다. </h2>
 	
 	<%
-
-//	System.out.println (sid);
-	
-	
-	
-//	int mem_idx = mdao.getMemIdx(sid);
-//	System.out.println (mem_idx);
 	
 	ArrayList<OrderDTO> dtos =odao.myStoreOrderList(sIdx, cp, listSize);
 	%>

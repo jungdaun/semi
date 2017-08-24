@@ -12,7 +12,7 @@ request.setCharacterEncoding("utf-8");
 
 
 
-/////////////paging관련
+/////////////paging관련////////////////////////////////////
 
 
 
@@ -50,7 +50,7 @@ if ( cp %pageSize==0){
 	userGp= userGp-1;
 }
 
-
+/////////////////////////////////////////////////////////
 
 
 %>
@@ -166,12 +166,10 @@ if ( cp %pageSize==0){
                
                
                
-               //////////// the people who has admin id can write notice 
-//				String sid = (String)session.getAttribute("sid");
-				
+
                
                if (sid !=null ){
-                   System.out.println (sid);
+            	   
    				if (sid.equals("admin")){
    					System.out.println ("true");
    					out.println (" <a href='noticeWrite.jsp'>글쓰기</a>");

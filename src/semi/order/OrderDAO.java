@@ -31,7 +31,7 @@ public class OrderDAO {
 			switch (key) {
 			case 1:{
 				String day =  y+"-"+val+"-"+(i+1);
-				System.out.println(day);
+				//System.out.println(day);
 //				
 					sql = "select count(*) from order_tb where order_date"
 							+ " between to_date ('"+day+"') and to_date ('"+day+"') +1 and finish = 2 and store_idx = "+sIdx;
@@ -58,7 +58,7 @@ public class OrderDAO {
 
 			case 3: {
 				String day =  val+"-"+(i+1)+"-1";
-				System.out.println("day:"+day);
+			//	System.out.println("day:"+day);
 //				
 					sql = "select count(*) from order_tb where order_date"
 							+ " between to_date ('"+day+"') and last_day( to_date ('"+day+"') ) and finish = 2 and store_idx = "+sIdx;
@@ -417,7 +417,7 @@ public class OrderDAO {
 			    rs.next();
 			    
 			    if (rs.getInt(1) > 0 ){
-			    	System.out.println(rs.getInt(1));
+			//    	System.out.println(rs.getInt(1));
 			    	return true; 
 			    }
 			    

@@ -51,27 +51,4 @@ else {
 window.alert ('<%=msg%>');
 window.location.href='couponList.jsp';
 
-
-
-<!--
-
-//-->
 </script>
-<html>
-<head>
-
-
-</head>
-
-<body>
-
-<!-- 
-<%=request.getParameter("coupon_name") %>
-<%=request.getParameter("coupon_food_type") %>
-<%=request.getParameter("coupon_type") %>
-<%=request.getParameter("coupon_value") %>
-<%=request.getParameter("coupon_end") %>
-
- -->
-</body>
-</html>

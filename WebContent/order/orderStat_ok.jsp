@@ -4,9 +4,9 @@
 <jsp:useBean id="odao" class="semi.order.OrderDAO"></jsp:useBean>    
     
 <%
-//int sIdx = Integer.parseInt((String) session.getAttribute("cstore"));
+int sIdx = Integer.parseInt((String) session.getAttribute("cstore"));
+//System.out.println (sIdx);
 
-int sIdx = 21; 
 Calendar now = Calendar .getInstance(); 
 
 
@@ -58,8 +58,7 @@ int val = 0;
 
 int arr []= odao.getOrderStat(key, val, sIdx );
 
-//int next = Integer.parseInt(d)+7 ; 
-//int back = 0 ; 
+
 
 
 %>
