@@ -105,7 +105,7 @@ tfoot {
 
       <script type="text/javascript">
          window.alert('로그인 하세요');
-         window.href = '/semi/index.jsp';
+    		window.location.href ='/semi/index.jsp';
       </script>
       <%
          return;

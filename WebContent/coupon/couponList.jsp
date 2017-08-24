@@ -82,7 +82,7 @@ String admin = "admin";
 <h2>++쿠폰존++</h2>
 <div style="display: inline-block; margin-right: -380px;">
 <h3  style="color: white;">
-<%if (sid.equals(admin)){
+<%if (sid!=null && sid.equals(admin)){
 	%>
 	<a href="couponWrite.jsp">쿠폰등록하기</a>
 	<%
