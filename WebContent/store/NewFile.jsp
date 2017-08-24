@@ -44,7 +44,7 @@ function add() {
 	location.href = 'addFood.jsp';
 }
 function show() {
-	window.alert
+	window.alert();
 }
 </script>
 </head>

@@ -10,6 +10,10 @@ request.setCharacterEncoding("utf-8");
 
 String savePath=wf.USERS_HOME + "/img/upload/" + wf.getCrpath();
 
+System.out.println(request);
+System.out.println(savePath);
+System.out.println(wf.getFreeSize());
+
 try {
 	MultipartRequest mr = new MultipartRequest(request, savePath, wf.getFreeSize(), "utf-8");
 	String cstore_s = (String) session.getAttribute("cstore"); //ceo idx
@@ -22,7 +26,9 @@ try {
 	
 }
 catch(Exception e) {
+	e.getStackTrace();
 	%> 
+	
 	<script>
 		window.alert("예상치 못한 오류가 발생함!");
 		window.self.close();

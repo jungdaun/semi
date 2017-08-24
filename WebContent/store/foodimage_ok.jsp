@@ -16,6 +16,7 @@ int istore = Integer.parseInt(cstore);
 
 String savePath=wf.USERS_HOME + "/store/img/upload/" + wf.getCrpath();
 
+System.out.print(savePath);
 
 
 

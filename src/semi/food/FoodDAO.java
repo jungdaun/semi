@@ -128,6 +128,43 @@ public class FoodDAO {
 			}
 		}
 		
+		public ArrayList<FoodDTO> showStore3(int store_idx){
+			try{
+				conn = semi.db.SemiDb.getConn();
+				String sql = "select * from food where store_idx=? and food_type = 'etc' order by food_num";
+				ps = conn.prepareStatement(sql);
+				ps.setInt(1, store_idx);
+				rs = ps.executeQuery();
+				ArrayList<FoodDTO> arr = 
+						new ArrayList<FoodDTO>();
+				
+				while(rs.next()){
+					int food_num = rs.getInt("food_num");
+					String food_name = rs.getString("food_name");
+					String food_type = rs.getString("food_type");
+					int food_price = rs.getInt("food_price");
+					String food_info = rs.getString("food_info");
+					String food_image = rs.getString("food_image");
+					
+					FoodDTO dto = new FoodDTO(store_idx, food_num, food_name, food_type, food_price, food_info, food_image);
+					arr.add(dto);
+				}
+				return arr;
+			}
+			catch(Exception e){
+				e.printStackTrace();
+				return null;
+			}
+			finally{
+				try{
+					if(rs!=null) rs.close();
+					if(ps!=null) ps.close();
+					if(conn!=null) conn.close();
+				}
+				catch(Exception e2){} 
+			}
+		}
+		
 		public FoodDTO foodUpdate(FoodDTO dto, int idx, int foodnum) {
 			try {
 				conn=semi.db.SemiDb.getConn();
