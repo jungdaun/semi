@@ -40,7 +40,7 @@ FoodDTO dto = fdao.foodUpdate(fdto, store_idx, foodnum);
 
 <style>
 h3{
-	color:white;
+	color:white;  
 }
 </style>
 <script>
@@ -52,6 +52,9 @@ function show() {
 			document.update.food_type.options[i].selected = true;
 		}
 	}
+}
+function image() {
+	window.open('/semi/store/foodimage.jsp?foodnum=<%=foodnum%>', 'image', 'width=550, height=150');
 }
 </script>
 </head>
@@ -72,6 +75,12 @@ function show() {
 		</th>
 		<td>
 		 <img src="<%=dto.getFood_image()%>" style="width:110px; height:128px"/>
+		</td>
+		</tr>
+		
+		<tr>
+		<td colspan = "2">
+		<input type = "button" value = "이미지 수정하기" onclick = "image()">
 		</td>
 		</tr>
 		
