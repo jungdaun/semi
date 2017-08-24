@@ -123,6 +123,7 @@ function update_ok() {
 		<tr>
 		<td colspan = "2">
 		<input type = "button" value = "수정하기" onclick = "update_ok()">
+		<input type = "button" value = "삭제하기" onclick = "javascript:location.href='deletemenu.jsp?food_num=<%=foodnum%>&store_idx=<%=store_idx%>'">
 		</td>
 		</tr>
 		
