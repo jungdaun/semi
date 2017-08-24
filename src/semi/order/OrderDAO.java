@@ -206,44 +206,7 @@ public class OrderDAO {
 		}
 		
 	}
-//	
-//	public int getStat( String start , String end  ){
-//		try {
-//			
-//			conn =semi.db.SemiDb.getConn();
-//			
-//			
-//			String sql = "select count (*) from order_tb "
-//					+ "where order_date between '"+start+"' and to_date ('"+end+"')+1";
-//			ps = conn.prepareStatement(sql);
-//			rs = ps.executeQuery();
-//			
-//			rs.next();
-//			System.out.println(start+" "+end);
-//			System.out.println(rs.getInt(1));
-//			
-//			return rs.getInt(1);
-//			
-//			
-//			
-//		} catch (Exception e) {
-//			// TODO: han
-//			
-//			e.printStackTrace( );
-//			return -1 ; 
-//			
-//		}finally {
-//			try {
-//				if(rs!=null)rs.close();
-//				if(ps!=null) ps.close();
-//				if(conn!=null) conn.close();
-//				
-//			} catch (Exception e2) {
-//				// TODO: handle exception
-//			}
-//		}
-//		
-//	}
+
 	
 	public int addSaleNum( int oIdx ){
 		try {

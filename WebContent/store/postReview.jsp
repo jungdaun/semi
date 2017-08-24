@@ -122,7 +122,6 @@ String store_type= request.getParameter("store_type");
 String c_sub_s = request.getParameter("c_sub_s");
 
 String c_name = "송병훈";
-
 ArrayList<ReviewDTO> arr = rdao.show(store_idx);
 %>
 <!-- window.open("postReview_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>", "글 쓰기", "width=490px, height=510px;"); -->
@@ -180,11 +179,6 @@ function post(){
    			window.alert('삭제를 취소했습니다.');
    		}
    	}
-   	
-   	function modi(obj){
-   		location.href="postReview_ok.jsp?content="+<%=arr.get(i).getReview()%>;
-   		
-   	}
    	</script>
    		<div style="display: inline-block; text-align: center;">
    <table>
@@ -208,7 +202,7 @@ function post(){
    					<h3 align="center"><%=arr.get(i).getC_name()%>님의 별은 
    					<%for(int j=0; j<arr.get(i).getScore_num(); j++){%>
    						★ <%} %> 입니다.</h3>
-   					<p> <%=arr.get(i).getReview()%></p>
+   					<p><%=arr.get(i).getReview()%></p>
    				</figcaption>
    				<a href="#"></a>
     			</figure>
@@ -219,7 +213,7 @@ function post(){
    			<td>
    			<!-- form name="frm"-->
    				<input type="checkbox" name="chk[]" value="<%=i%>">
-   				<input type="button" name="modi" value="게시물 수정" onclick="modi('chk[]')">
+   				<!-- input type="button" name="modi" value="게시물 수정" onclick="modi('chk[]')"-->
    				<input type="button" name="dele" value="게시물 삭제" onclick="dele('chk[]')">
    			<!-- /form--></td>
    		</tr>

@@ -47,7 +47,7 @@ String store_type= request.getParameter("store_type");
 String c_name="송병훈";
 Integer c_idx = (Integer)21;
 
-String modi_con = request.getParameter("content");
+//String modi_con = request.getParameter("content");
 
 
 //Calendar cal = Calendar.getInstance(); ->이걸 받아서 string으로 다시
@@ -86,7 +86,7 @@ String date = "pm0930";
       </tr>
       <tr>
          <td colspan="4">
-         <textarea rows="25%" cols="60%" name="contents" value="<%=modi_con%>"></textarea>
+         <textarea rows="25%" cols="60%" name="contents"></textarea>
          </td>
       </tr>
       </tbody>

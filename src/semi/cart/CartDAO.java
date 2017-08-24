@@ -236,6 +236,85 @@ public class CartDAO {
       } 
    }
    
+   public String getStoreType ( int sIdx ){
+		
+		try {
+			conn = semi.db.SemiDb.getConn();
+			
+			String sql = "select store_type from store where store_idx = ? "; 
+			
+			
+			ps=conn.prepareStatement(sql);
+			
+			ps.setInt(1, sIdx);
+			rs= ps.executeQuery(); 
+			//   ps.setInt(1, oIdx);
+			
+			
+			if (   rs.next()) {
+				return  rs.getString(1);
+				
+				
+			}
+			
+			else {
+				return null; 
+			}
+		} catch (Exception e) {
+			e.printStackTrace( );
+			return null; 
+			// TODO: handle exception
+		}finally {
+			try {
+				
+				if(rs!=null)rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+		
+		
+	}
+   
+   public String getStoreAddr (int sIdx ){
+
+	   try {
+		    conn = semi.db.SemiDb.getConn();
+	 
+		    String sql = "select store_addr from store where store_idx = ? "; 
+		    
+
+		    ps=conn.prepareStatement(sql);
+		    
+		    ps.setInt(1, sIdx);
+		    rs= ps.executeQuery(); 
+		 //   ps.setInt(1, oIdx);
+    
+
+		
+		    
+		    rs.next();
+		    return rs.getString(1)
+;
+		    
+		    
+	} catch (Exception e) {
+		e.printStackTrace( );
+		return null; 
+		// TODO: handle exception
+	}finally {
+		try {
+			
+			if(rs!=null)rs.close();
+            if(ps!=null) ps.close();
+            if(conn!=null) conn.close();
+		} catch (Exception e2) {
+			// TODO: handle exception
+		}
+	}
+}
 //   
 //   public int addOrderIdx (CartDTO dto, int oIdx){
 //	   System.out.println("addOrderIdx");

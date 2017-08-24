@@ -22,17 +22,9 @@ function check() {
 }
 
 function addr_search(){
-	alert('come');
 	var str = document.getElementById("addr").value;
 	var arr = str.split(' ');
-	document.frm.store_type.value = arr[0];
-//	alert(arr[0]);
-//	alert(arr[1]);
-//	if(arr[1].indexOf('치킨')){
-		frm.submit();
-		
-		
-//	}
+	location.href="store/postStore.jsp?store_type="+arr[1]+"&c="+arr[0];
 	
 }
 </script>
