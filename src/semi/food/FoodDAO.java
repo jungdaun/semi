@@ -294,6 +294,27 @@ public class FoodDAO {
 		} // 자원반환시 위의 형식 필수
 	}
 	
+	public int foodOut(int store_idx, int food_num) {
+		try {
+			conn = semi.db.SemiDb.getConn();
+			String sql = "delete from food where store_idx = ? and food_num = ?";
+			ps = conn.prepareStatement(sql);
+			ps.setInt(1, store_idx);
+			ps.setInt(2, food_num);
+			return ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+			}
+		}
+	}
 	
 
 }

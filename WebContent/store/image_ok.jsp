@@ -1,6 +1,8 @@
+<%@page import="com.oreilly.servlet.multipart.FileRenamePolicy"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ page import="com.oreilly.servlet.*"%>
+<%@ page import="com.oreilly.servlet.multipart.*"%>
 <%
 request.setCharacterEncoding("utf-8");
 %>
@@ -15,7 +17,8 @@ System.out.println(savePath);
 System.out.println(wf.getFreeSize());
 
 try {
-	MultipartRequest mr = new MultipartRequest(request, savePath, wf.getFreeSize(), "utf-8");
+	
+	MultipartRequest mr = new MultipartRequest(request, savePath, wf.getFreeSize(), "utf-8", new DefaultFileRenamePolicy());
 	String cstore_s = (String) session.getAttribute("cstore"); //ceo idx
 	String sid = (String) session.getAttribute("sid"); //ceo id
 	int cstore = Integer.parseInt(cstore_s);
