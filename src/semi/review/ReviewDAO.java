@@ -101,7 +101,7 @@ public class ReviewDAO {
 			conn = semi.db.SemiDb.getConn();
 			String sql="insert into review values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, 6);
+			ps.setInt(1, 8); //nextval로 바꿔야 한다.
 			ps.setInt(2, (c_idx !=null? c_idx.intValue() : 0));
 			ps.setString(3, c_name);
 			ps.setInt(4, store_idx);
@@ -114,7 +114,8 @@ public class ReviewDAO {
 			cntReviewNum(store_idx);
 			sumScoreNum(store_idx, score_num);
 			scoreNum(store_idx);
-			
+			System.out.println("5555");
+			System.out.println("count = "+count);
 			return count;
 		}
 		catch(Exception e){
@@ -133,6 +134,7 @@ public class ReviewDAO {
 	
 	public void sumScoreNum(int store_idx, int score_num){
 		try{
+			System.out.println("3333");
 			String sql = "update store set score_sum = score_sum + ? where store_idx=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, score_num);
@@ -152,6 +154,7 @@ public class ReviewDAO {
 	
 	public void scoreNum(int store_idx){
 		try{
+			System.out.println("444");
 			String sql = "update store set score_num=score_sum/review_num where store_idx=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, store_idx);
@@ -169,6 +172,7 @@ public class ReviewDAO {
 	
 	public void cntReviewNum(int store_idx){
 		try{
+			System.out.println("2222");
 			String sql = "update store set review_num=review_num+1 where store_idx=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, store_idx);

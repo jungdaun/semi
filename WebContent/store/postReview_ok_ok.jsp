@@ -13,9 +13,9 @@
 String c_name = (String) session.getAttribute("sname");
 Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
 String msg=null;
-String savePath="C:/Users/JungDaun/git/semi/WebContent/store/img/review";
+String savePath="C:/Users/JungDaun/git/semi/WebContent/img/review";
 int store_idx=0;
-String store_type="";
+String store_type=null;
 int size = 10*1024*1024;
 
 try {
@@ -27,11 +27,10 @@ try {
 	int score_num = Integer.parseInt(mr.getParameter("score"));
 	store_idx = Integer.parseInt(mr.getParameter("store_idx"));
 	store_type= mr.getParameter("store_type");
-	int cstore =Integer.parseInt((String) session.getAttribute("cstore"));
 	String sid = (String) session.getAttribute("sid");
-	String aa = mr.getParameter("a");
-	String bb[] = aa.split("\\\\");
-	String path = "http://localhost:9090/semi/store/img/review/"+bb[2];
+	String img_name = mr.getParameter("f");
+	String bb[] = img_name.split("\\\\");
+	String path = "http://localhost:9090/semi/img/review/"+bb[2];
 
 	int result = rdao.postReview(c_idx, c_name, store_idx, up_date, score_num, review, path, r_pwd);
 	msg = (result>0)?"리뷰가 등록되었습니다.":"리뷰가 등록되지 않았습니다.";
