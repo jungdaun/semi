@@ -50,24 +50,27 @@ String c_s = request.getParameter("c");
 
 if(c_s==null){
 	String saddr = (String)session.getAttribute("saddr");
-	c_sub = saddr.split(" ");
-	c_sub_s = c_sub[2];
+	if(saddr==null){%>
+		<script>
+			window.alert('로그인해주세요');
+			location.href="../index.jsp";
+		</script>
+	<%}
+	else{
+		c_sub = saddr.split(" ");
+		c_sub_s = c_sub[2];
+	}
 }
 else
 	 c_sub_s = c_s;
 
 ArrayList<StoreDTO> arr = sdao.findStore(store_type);
 Iterator<StoreDTO> list = arr.iterator();
-
 /**같은 동네 가게들만 보이게 하는 부분*/
-while(list.hasNext()){
-    String s_addr = list.next().getStore_addr();
-    
-    if(!s_addr.contains(c_sub_s)){
-      list.remove();
-    }
- }
-
+while(list.hasNext() && c_sub_s!=null){
+    String s_addr = list.next().getStore_addr(); 
+    if(!s_addr.contains(c_sub_s)) list.remove();
+}
 %>
    <legend style="background-color:#2F4038; color:#FEEEA7; font-size:22px; font-weight: bold;">
    Home >> <%=store_type %> >> <%=c_sub_s %></legend>
