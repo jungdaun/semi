@@ -75,6 +75,12 @@ a:visited {text-decoration: none; color: gray; }
 <body>
 
 <%ArrayList<CouponDTO> dtos= cdao.couponList();  %>
+<%
+
+String admin = "admin"; 
+
+%>
+
 
 
 
@@ -86,9 +92,23 @@ a:visited {text-decoration: none; color: gray; }
 <div id="couponList">
 <h2>++쿠폰존++</h2>
 <div style="display: inline-block; margin-right: -380px;">
-<h3  style="color: white;"><p><a href="/semi/coupon/myCouponList.jsp" style="text-decoration: none">
-나의쿠폰보기</a></div>
-		</h3>
+<h3  style="color: white;">
+<%if (sid.equals(admin)){
+	%>
+	<a href="couponWrite.jsp">쿠폰등록하기</a>
+	<%
+}
+
+else {
+	%>
+	<a href="/semi/coupon/myCouponList.jsp" style="text-decoration: none">
+나의쿠폰보기</a>
+	<%
+}
+	%>
+</h3>
+</div>
+		
 	<table>
 	
 		<tr>
@@ -97,7 +117,7 @@ a:visited {text-decoration: none; color: gray; }
 		<th>음식 종류</th>
 		<th>할인액(률)</th>
 		<th>유효기간</th>
-		
+		<th></th>
 
 		
 		
@@ -107,8 +127,7 @@ a:visited {text-decoration: none; color: gray; }
 		if ( dtos.size()==0|| dtos==null){
 			%>
 			<tr>
-				<td>등록된 쿠폰이 없습니다. </td>
-			
+				<td colspan="5" style="text-align: center;">등록된 쿠폰이 없습니다. </td>
 			</tr>
 		
 			<%

@@ -11,7 +11,8 @@
 <jsp:useBean id="mdao" class="semi.member.MemberDAO"></jsp:useBean>
 
 <%
-String store_type=request.getParameter("store_type");
+
+//String store_type=request.getParameter("store_type");
 //Integer c_idx = (Integer) session.getAttribute("c_idx");
 //Integer c_idx = (Integer)2;
 
@@ -21,8 +22,14 @@ Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
 
 String idx_s = request.getParameter("store_idx");
 int store_idx = Integer.parseInt(idx_s);
+String store_type =cdao.getStoreType(store_idx);
 
-String c_sub_s = request.getParameter("c_sub_s");
+String saddr = cdao.getStoreAddr(store_idx);
+
+String[] c_sub = saddr.split(" ");
+String c_sub_s = c_sub[2];
+
+//request.getParameter("c_sub_s");
 
 String isOpen = request.getParameter("isOpen");
 if (isOpen.equals("false")){
