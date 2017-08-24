@@ -3,6 +3,7 @@ import java.util.*;
 
 public class ReviewDTO {
 	
+	private int r_idx;
 	private int c_idx;
 	private String c_name; //손님 id
 	private int store_idx; //가게 idx
@@ -14,8 +15,9 @@ public class ReviewDTO {
 	
 	public ReviewDTO() { }
 
-	public ReviewDTO(int c_idx, String c_name, int score_num, String review, String r_picture, String up_date) {
+	public ReviewDTO(int r_idx, int c_idx, String c_name, int score_num, String review, String r_picture, String up_date) {
 		super();
+		this.r_idx = r_idx;
 		this.c_idx = c_idx;
 		this.up_date = up_date;
 		this.c_name = c_name;
@@ -88,9 +90,19 @@ public class ReviewDTO {
 	public void setR_pwd(String r_pwd) {
 		this.r_pwd = r_pwd;
 	}
+
+	public int getR_idx() {
+		return r_idx;
+	}
+
+	public void setR_idx(int r_idx) {
+		this.r_idx = r_idx;
+	}
+	
 }
 
 /* create table review(
+r_idx number(4) primary key,
 c_idx number(4), //
 c_name varchar2(10),
 store_idx number(4),
@@ -101,9 +113,9 @@ r_picture varchar2(100),
 r_pwd varchar2(20)
 )
 
-insert into review values(1, '송병훈', 21, 'am1230', 4, '맛있네요!', 'http://localhost:9090/semi/store/img/review/2na.png', '1234')
-insert into review values(6, '송민기', 21, 'pm1230', 3, '맛있네요!', 'http://localhost:9090/semi/store/img/review/2na.png', '1234')
-insert into review values(7, '송다운', 21, 'am1230', 2, '맛있네요!', 'http://localhost:9090/semi/store/img/review/2na.png', '1234')
-insert into review values(8, '송예랑', 21, 'pm1230', 1, '맛있네요!', 'http://localhost:9090/semi/store/img/review/2na.png', '1234')
+insert into review values(1 , 1, '송병훈', 21, 'am1230', 4, '맛있네요!', 'http://localhost:9090/semi/store/img/review/2na.png', '1234')
+insert into review values(2 , 6, '송민기', 21, 'pm1230', 3, '맛있네요!', 'http://localhost:9090/semi/store/img/review/2na.png', '1234')
+insert into review values(3 , 7, '송다운', 21, 'am1230', 2, '맛있네요!', 'http://localhost:9090/semi/store/img/review/2na.png', '1234')
+insert into review values(4 , 8, '송예랑', 21, 'pm1230', 1, '맛있네요!', 'http://localhost:9090/semi/store/img/review/2na.png', '1234')
 
  */

@@ -19,7 +19,7 @@ int store_idx=21;
 String store_type="chicken";
 
 ArrayList<ReviewDTO> brr = rdao.show(store_idx);
-int result = rdao.deleteReview(store_idx, brr.get(i).getC_idx(), brr.get(i).getUp_date(), brr.get(i).getScore_num());
+int result = rdao.deleteReview(store_idx, brr.get(i).getC_idx(), brr.get(i).getR_idx(), brr.get(i).getScore_num());
 String msg = (result>0)?"리뷰가 삭제되었습니다.":"리뷰가 삭제되지 않았습니다.";
 %>
 <script>

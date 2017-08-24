@@ -32,13 +32,13 @@ public class ReviewDAO {
 		}
 	}
 	
-	public int deleteReview(int store_idx, int c_idx, String up_date, int score_num){
+	public int deleteReview(int store_idx, int c_idx, int r_idx, int score_num){
 		try{
 			conn = semi.db.SemiDb.getConn();
-			String sql="delete from review where c_idx=? and up_date=? and store_idx=?";
+			String sql="delete from review where c_idx=? and r_idx=? and store_idx=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, c_idx);
-			ps.setString(2, up_date);
+			ps.setInt(2, r_idx);
 			ps.setInt(3, store_idx);
 			int count = ps.executeUpdate();
 			d_change(store_idx, score_num);
@@ -69,13 +69,14 @@ public class ReviewDAO {
 			rs = ps.executeQuery();
 			ArrayList<ReviewDTO> arr = new ArrayList<ReviewDTO>();
 			while(rs.next()){
+				int r_idx = rs.getInt("r_idx");
 				int c_idx = rs.getInt("c_idx");
 				String c_name = rs.getString("c_name");
 				int score_num = rs.getInt("score_num");
 				String review = rs.getString("review");
 				String r_picture = rs.getString("r_picture");
 				String up_date = rs.getString("up_date");
-				ReviewDTO dto = new ReviewDTO(c_idx, c_name, score_num, review, r_picture, up_date);
+				ReviewDTO dto = new ReviewDTO(r_idx, c_idx, c_name, score_num, review, r_picture, up_date);
 				arr.add(dto);
 			}
 			return arr;
@@ -98,16 +99,17 @@ public class ReviewDAO {
 	public int postReview(Integer c_idx, String c_name, int store_idx, String up_date, int score_num, String review, String r_picture, String r_pwd){
 		try{
 			conn = semi.db.SemiDb.getConn();
-			String sql="insert into review values(?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql="insert into review values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, (c_idx !=null? c_idx.intValue() : 0));
-			ps.setString(2, c_name);
-			ps.setInt(3, store_idx);
-			ps.setString(4, up_date);
-			ps.setInt(5, score_num);
-			ps.setString(6, review);
-			ps.setString(7, r_picture);
-			ps.setString(8, r_pwd);
+			ps.setInt(1, 6);
+			ps.setInt(2, (c_idx !=null? c_idx.intValue() : 0));
+			ps.setString(3, c_name);
+			ps.setInt(4, store_idx);
+			ps.setString(5, up_date);
+			ps.setInt(6, score_num);
+			ps.setString(7, review);
+			ps.setString(8, r_picture);
+			ps.setString(9, r_pwd);
 			int count = ps.executeUpdate();
 			cntReviewNum(store_idx);
 			sumScoreNum(store_idx, score_num);

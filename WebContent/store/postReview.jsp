@@ -41,7 +41,7 @@ thead td {
 	float: left;
 	overflow: hidden;
 	margin: 10px 1%;
-	width: 315px;
+	width: 300px;
 	color: #141414;
 	text-align: left;
 	line-height: 1.4em;
@@ -56,8 +56,8 @@ thead td {
 }
 
 .rev img {
-	width: 330px;
-	height: 230px;
+	width: 300px;
+	height: 215px;
 	vertical-align: top;
 }
 
@@ -171,7 +171,6 @@ function post(){
    			var num = document.getElementsByName(obj);
    			for(var i=0; i<num.length; i++){
    				if(num[i].checked==true){
-   					window.alert('들어옴');
    					location.href="deleteReview_ok.jsp?i="+i+"&store_idx="+<%=store_idx%>;
    					break;
    				}
@@ -183,7 +182,7 @@ function post(){
    	}
    	
    	function modi(obj){
-   		location.href="postReview.jsp"
+   		location.href="postReview_ok.jsp?content="+<%=arr.get(i).getReview()%>;
    		
    	}
    	</script>
