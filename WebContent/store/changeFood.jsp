@@ -57,24 +57,45 @@ function change() {
 	location.href = 'changeFood.jsp';
 }
 
-<%
-for(int i = 0; i < arr.size(); i++) {
-%>
-function fill<%=i%>() {
-	window.alert('지금 선택한 것은');
+<%for(int i = 0; i < arr.size(); i++) {
 	
-	document.
-	window.alert(<%=i%>);
+	String i_s = Integer.toString(i);
+	
+	%>
+function fill<%=i%>() {
+	
+	var a  = document.editMenu2.a<%=i_s%>.value;
+	
+	if(a==null||a=="") {
+		window.alert('이미 선택된 메뉴입니다.');
+	}else {
+		<%
+		for(int j = 0; j < arr.size(); j++) {
+		String i_s2 = Integer.toString(j+100);
+		
+		%>
+			if(document.editMenu2.a<%=i_s2%>.value==null || document.editMenu2.a<%=i_s2%>.value == "") {
+				document.editMenu2.a<%=i_s2%>.value = a;
+				document.editMenu2.a<%=i_s%>.value = "";
+				a = "";
+				
+			}
+			
+			<%
+		}
+			%>
+	}
+	
+	
+	
 }
-<%
-}
-%>
-
+<%} %>
 </script>
 </head>
 
 <body>
 <%@include file="/header.jsp"%>
+<form name = "editMenu2">
 <div id="bodywrap">
 <div id="editMenu">
 <h3>메뉴수정하기</h3>
@@ -82,9 +103,8 @@ function fill<%=i%>() {
 <input type = "button" value = "메뉴 추가하기" onclick = "add()">
 <input type = "button" value = "메뉴 순서바꾸기" onclick = "change()">
    <article>
- <div style="display: inline-block; text-align: center;">
-   <form name = "editMenu">
      <h3>Main</h3>
+     
          <table>
     
   <% if(arr.equals("") || arr.size()==0){%>
@@ -99,25 +119,42 @@ function fill<%=i%>() {
          
          for(int i = 0; i < arr.size(); i++) {
         	 %>     <tr> <td>
-        	 
-        	  <input type = "text" name = "<%=i%>" onclick = "fill<%=i%>()" readonly value = "<%=i+1%>.<%=arr.get(i).getFood_name() %>">
-        	  <input type = "text" name = "<%=i*10%>" readonly>
+        	  <input type = "text" name = "a<%=i%>" onclick = "fill<%=i%>()" readonly value = "<%=i+1%>.<%=arr.get(i).getFood_name() %>">
+        	  <input type = "text" name = "a<%=i+100%>" readonly value = "">
         	 </td>
         	 </tr>
-        	 <%
-        	 
-         } } %>
-         <tr><td>
-         <input type = "button" value = "순서 변경하기">
-        </td> </tr>
+        	 <% }
+         
+         %><tr><td>
+         <input type = "button" value = "순서 변경하기" onclick = "setmenu()">
+         <input type = "reset" value = "리셋하기">
+        </td> </tr> <%
+   } %>
+         
       </table> <br><br><br><br><br>
       
     
-      </form>
-      </div>
+      
+      
     </article>
     </div>
+    </div>
+    </form>
     
+    <script>
+    	function setmenu() {
+    		<%
+    		int j = 0;
+    		for(int i = 0; i < arr.size(); i++) { 
+    			fdao.changeNum("dd", arr.get(i).getFood_num());
+    			String i_s2 = Integer.toString(j+100);%>
+    			window.alert(document.editMenu2.a<%=i_s2%>.value);
+    			window.alert('<%=arr.get(i).getFood_num()%>');
+    			<%j++;
+    		} 
+    		%>
+    	}
+    </script>
 <%@include file="/footer.jsp"%>
 </div>
 </body>

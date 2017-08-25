@@ -316,5 +316,33 @@ public class FoodDAO {
 		}
 	}
 	
+	public int changeNum(String name, int num) {
+		try {
+			conn=semi.db.SemiDb.getConn();
+			String sql = "update food set food_num = ?  where food_name = ?";
+
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			
+			ps.setInt(1, num);
+			ps.setString(2, name);
+			
+			
+			int count = ps.executeUpdate();
+
+			return count;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		} finally { // 에러 발생 시, 아닐 시 상관 없이 파이널리 안에 있는 것 실행
+			try {
+				if(rs!=null) rs.close();
+				if(ps!=null) ps.close();
+				if(conn!=null) conn.close();
+			} catch (Exception e2) {
+
+			}
+		} // 자원반환시 위의 형식 필수
+	}
 
 }
