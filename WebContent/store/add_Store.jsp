@@ -45,6 +45,30 @@
 
 	
 </script>
+<style>
+#add_Store{
+	width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	margin-bottom: 50px;
+	margin-left: 30px;
+   margin-right: 30px;
+}
+th{
+height: 25px;
+font-size: 15px;
+text-align: left;
+border: 1px solid black;
+background-color: #e4e4e4;
+}
+
+td{
+text-align: left;
+}
+#aa{
+text-align: center;
+}
+</style>
 </head>    
 
 <body>
@@ -53,9 +77,11 @@
 String cstore = (String) session.getAttribute("cstore");
 %>
 		<div id="bodywrap">
-			<h3>가게 기본 정보 입력하기</h3>
+		<div id="add_Store">
+			<h3 style="color: white;">가게 기본 정보 입력하기</h3>
+			<div style="display: inline-block; text-align: center;">
 			<form name = "join" action = "add_Store_ok.jsp">
-			<table id="maintable">
+			<table id="maintable" style="margin: 0px auto; background-color: white;">
            	
 
             <tr>
@@ -164,9 +190,10 @@ String cstore = (String) session.getAttribute("cstore");
                   type="reset" value="다시작성"></td>
             </tr>
          </table>
-			
+			</div>
 			</form>
 		</div>
 <%@include file="/footer.jsp"%>
+</div>
 </body>
 </html>

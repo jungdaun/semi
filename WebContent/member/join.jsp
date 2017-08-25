@@ -170,7 +170,7 @@ width: 850px;
 
             <tr>
                <td id="aa"align="center" colspan="3"><input type="button" onclick="javascript:aa()"value="회원가입">
-               &nbsp&nbsp&nbsp&nbsp&nbsp<input type="reset" value="다시작성"></td>
+               <input type="reset" value="다시작성"></td>
             </tr>
          </table>
       </form>
