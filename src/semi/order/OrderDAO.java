@@ -764,7 +764,20 @@ public class OrderDAO {
 		}
 	}
 	
-	public ArrayList<OrderDTO> myStoreOrderList (int store_idx , int currentPage, int listSize){
+//	 sql = "select count (*) from order_tb "
+//	+ "where order_date between '"+start+"' and to_date ('"+end+"')+1";
+//ps = conn.prepareStatement(sql);
+//rs = ps.executeQuery();
+//
+//rs.next();
+//System.out.println(start+" "+end);
+//System.out.println(rs.getInt(1));
+//
+//return rs.getInt(1);
+//
+//
+	
+	public ArrayList<OrderDTO> myStoreOrderList (int store_idx , int currentPage, int listSize, String start, String end ){
 		try {
 			
 			conn = semi.db.SemiDb.getConn();
@@ -772,7 +785,9 @@ public class OrderDAO {
 			String sql = "select * from "
 					+ "(select rownum rNum, a.* from " 
 					+ "(select * from order_tb "
-					+ "where store_idx = "+store_idx + "order by order_idx desc) a) b "
+					+ "where store_idx = "+store_idx 
+							+ " and order_date between to_date ('"+start+"') and to_date ('"+end+"')+1 "
+							+ " order by order_idx desc) a) b "
 					+ "where rNum >=("+currentPage+"-1) * "+listSize+" +1 and rNum<="+currentPage+"*"+listSize
 					 ;
 			
