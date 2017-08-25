@@ -49,7 +49,7 @@ boolean isOpen = sdao.isOpen(store_idx);
    <article>
       <legend style="background-color: #2F4038; color: #FEEEA7; font-size:22px; font-weight: bold;">
          Home >> <%=store_type %> >> <%=c_sub_s %></legend><br>
-         <div style="display: inline-block;text-align: center;">
+         <div style="margin-left: 150px;">
          <table>
             <tr style="background-color: white">
                <td rowspan="3" align="center" style="color:white; width:272px;">

@@ -19,17 +19,14 @@ function check() {
 
 	
 	var admin = "admin";
-	var sId = <%=sid%>;
+	var sId = "<%=sid%>";
 	if(tt == tt2) {
-	
+		location.href = '/semi/index_ceo.jsp';
 		if ( admin == sId ){
 			
 			location.href = '/semi/index_admin.jsp';
 		}
-		else {
-			location.href = '/semi/index_ceo.jsp';
-				
-		}
+		  
 	}
 	
 	

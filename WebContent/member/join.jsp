@@ -94,7 +94,7 @@ width: 850px;
 <div id="joinwrap">
 <h1>배·민 회원가입</h1>
 <form action="join_ok.jsp" name="join" method="post">
-         <table id="maintable">
+         <table id="maintable" style="background-color: white;" cellspacing="8px;">
             <tr>
                <th>ID</th>
                <td><input type="text" name="id" 
@@ -169,8 +169,8 @@ width: 850px;
             </tr>
 
             <tr>
-               <td id="aa"align="center" colspan="3"><input type="button" onclick="javascript:aa()"value="회원가입">&nbsp&nbsp&nbsp&nbsp&nbsp<input
-                  type="reset" value="다시작성"></td>
+               <td id="aa"align="center" colspan="3"><input type="button" onclick="javascript:aa()"value="회원가입">
+               &nbsp&nbsp&nbsp&nbsp&nbsp<input type="reset" value="다시작성"></td>
             </tr>
          </table>
       </form>

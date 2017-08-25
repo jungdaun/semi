@@ -119,6 +119,9 @@ background-color: #e4e4e4;
 td{
 text-align: left;
 }
+#aa{
+text-align: center;
+}
 #memberup{
 width: 850px;
 	height: 100%;
@@ -140,7 +143,7 @@ width: 850px;
 				<form name="update" action="memberUpdate_ok.jsp" method="post">
 					<input type="hidden" name="id">
 					<div style="display: inline-block; text-align: center;">
-					<table>
+					<table style="background-color: white;" cellspacing="8px;">
 						<tr>
 							<th>이름</th>
 							<td><input type="text" name="name" size="23"
@@ -201,13 +204,16 @@ width: 850px;
 						<td><input type="text" name="ans"
 							required="required" size="23"></td>
 							</tr>
-					</table>
-					</div>
-					<p>
+					
+					<tr>
+					<td id="aa"align="center" colspan="3">
 						<input type="button" value="회원 탈퇴" onclick="goOut()"> <input
 							type="button" value="비밀번호 변경" onclick="changePwd()"> <input
 							type="button" onclick="javascript:aa()" value="수정하기">
-					</p>
+							</td>
+					</tr>
+					</table>
+					</div>
 
 				</form>
 			</article>

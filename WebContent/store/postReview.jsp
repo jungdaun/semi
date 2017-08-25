@@ -29,10 +29,12 @@ thead td {
 }
 
 #postReview {
-	width: 850px;
-	height: 100%;
-	margin-top: 200px;
-	margin-bottom: 20px;
+   width: 850px;
+   margin-top: 200px;
+   margin-bottom: 160px;
+   margin-left: 30px;
+   margin-right: 30px;
+   height:100%;
 }
 
 .rev {
@@ -133,7 +135,7 @@ function post(){
    <article >
       <legend><h2 style="background-color: #2F4038; color: #FEEEA7;">
          Home >> <%=store_type %> >> <%=c_sub_s %></h2></legend>
-         <div style="display: inline-block; text-align: center;">
+         <div style="margin-left: 150px;">
          <table>
             <tr style="background-color: white">
                <td rowspan="3" align="center" style="color:white; width:272px;">
@@ -148,7 +150,8 @@ function post(){
             </tr>
          </table>
 </div>
-   <h4><input type="button" name="post" value="글쓰기" onclick="post()" style="float: right;"></h4>
+   <div style="margin-right: -490px;">
+<input type="button" name="post" value="글쓰기" onclick="post()" >  </div>
    
    <script>
    	function dele(obj){
@@ -167,7 +170,7 @@ function post(){
    	}
    	</script>
    	
-   	<div style="display: inline-block; text-align: center; color:white; font-size: 20px; overflow: auto; height: 820px; width: 350px;">
+   	<div style="margin-top: 30px; margin-left: 260px; width:440px; height: 500px; overflow: auto;">
    <table>
    <%
    if(arr.size()==0 || arr==null){%>

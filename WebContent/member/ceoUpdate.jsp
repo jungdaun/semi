@@ -107,6 +107,11 @@ section p {
 width: 850px;
 	height: 100%;
 	margin-top: 200px;
+	margin-left: 30px;
+   margin-right: 30px;
+}
+#aa{
+text-align: center;
 }
 </style>
 </head>
@@ -121,7 +126,7 @@ width: 850px;
 			<form name="update" action="ceoUpdate_ok.jsp" method = "post">
 			<input type = "hidden" name = "id">
 			<div style="display: inline-block; text-align: center;">
-				<table>
+				<table style="background-color: white;" cellspacing="8px;">
 				<tr>
 						<th>이름</th>
 						<td><input type="text" name="name" size="23" value = "<%=dto.getName()%>">
@@ -158,14 +163,16 @@ width: 850px;
 						<th>2차비밀번호 답변</th>
 						<td><input type="text" name="ans" required="required" size="23"></td>
 						</tr>
-					</table>
-					</div>
-					<p>
+					
+					<tr>
+					<td id="aa"align="center" colspan="3">
 						<input type = "button" value = "회원 탈퇴" onclick = "goOut()">
 						<input type = "button" value = "비밀번호 변경" onclick = "changePwd()">
 						<input type="button" onclick="javascript:aa()" value="수정하기">
-					</p>
-				
+						</td>
+					</tr>
+				</table>
+					</div>
 			</form>
 		</article>
 	</section>

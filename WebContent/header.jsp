@@ -13,7 +13,7 @@
 
 <script>
    function openLogin() {
-      window.open("/semi/member/login.jsp", "login", "width=440,height=330");
+      window.open("/semi/member/login.jsp", "login", "width=440,height=250");
    }
    function usermod() {
 

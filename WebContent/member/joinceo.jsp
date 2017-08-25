@@ -21,6 +21,9 @@ background-color: #e4e4e4;
 td{
 text-align: left;
 }
+#aa{
+text-align: center;
+}
 #joinceowrap{
 width: 850px;
 height: 100%;
@@ -77,13 +80,13 @@ margin-left: 30px;
 			<article>
 				<form name="joinceo" action="joinceo_ok.jsp" method="post">
 						<div style="display: inline-block; text-align: center;">
-						<table>
+						<table style="background-color: white;" cellspacing="8px;">
 							<tr>
 								<th>ID</th>
 								<td><input type="text" name="id" readonly="readonly"
 									onclick="openIdCheck()" size="27"></td>
 								<td><input type="button" value="중복검사"
-									onclick="openIdCheck()"></td>
+									onclick="openIdCheck()"  style="margin-left: -11px;"></td>
 							</tr>
 							<tr>
 								<th>이름</th>
@@ -108,7 +111,7 @@ margin-left: 30px;
 									size="10">@
 								<input type="text" name="email2" required="required" size="10">
 								</td>
-								<td><select name="email3" onchange="selectEmail()">
+								<td><select name="email3" onchange="selectEmail()" style="margin-left: -8px;">
 
 										<option value="0">직접입력</option>
 										<option value="naver.com">네이버</option>

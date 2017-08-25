@@ -22,7 +22,7 @@ request.setCharacterEncoding("utf-8");
 <style>
 
 
-a:visited {text-decoration: none; color: gray; }
+a{text-decoration: none; color: gray; }
 
 	h2{
 		text-align: center;
@@ -90,8 +90,9 @@ String admin = "admin";
 
 else {
 	%>
+	<div style="margin-left: -30px;">
 	<a href="/semi/coupon/myCouponList.jsp" style="text-decoration: none">
-나의쿠폰보기</a>
+나의쿠폰보기</a></div>
 	<%
 }
 	%>
