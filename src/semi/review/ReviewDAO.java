@@ -99,17 +99,17 @@ public class ReviewDAO {
 	public int postReview(Integer c_idx, String c_name, int store_idx, String up_date, int score_num, String review, String r_picture, String r_pwd){
 		try{
 			conn = semi.db.SemiDb.getConn();
-			String sql="insert into review values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql="insert into review values(r_idx.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, 8); //nextval로 바꿔야 한다.
-			ps.setInt(2, (c_idx !=null? c_idx.intValue() : 0));
-			ps.setString(3, c_name);
-			ps.setInt(4, store_idx);
-			ps.setString(5, up_date);
-			ps.setInt(6, score_num);
-			ps.setString(7, review);
-			ps.setString(8, r_picture);
-			ps.setString(9, r_pwd);
+		//	ps.setInt(1, ); //nextval로 바꿔야 한다.
+			ps.setInt(1, (c_idx !=null? c_idx.intValue() : 0));
+			ps.setString(2, c_name);
+			ps.setInt(3, store_idx);
+			ps.setString(4, up_date);
+			ps.setInt(5, score_num);
+			ps.setString(6, review);
+			ps.setString(7, r_picture);
+			ps.setString(8, r_pwd);
 			int count = ps.executeUpdate();
 			cntReviewNum(store_idx);
 			sumScoreNum(store_idx, score_num);

@@ -32,7 +32,7 @@ thead td {
 	width: 850px;
 	height: 100%;
 	margin-top: 200px;
-	margin-bottom: 160px;
+	margin-bottom: 20px;
 }
 
 .rev {
@@ -166,7 +166,8 @@ function post(){
    			window.alert('삭제를 취소했습니다.');
    	}
    	</script>
-   		<div style="display: inline-block; text-align: center; color:white; font-size: 20px;">
+   	
+   	<div style="display: inline-block; text-align: center; color:white; font-size: 20px; overflow: auto; height: 820px; width: 350px;">
    <table>
    <%
    if(arr.size()==0 || arr==null){%>
