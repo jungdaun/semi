@@ -159,6 +159,70 @@ public class CouponDAO {
 	}
 	
 	
+	public int deleteCoupon (int coupon_idx){
+		try {
+			
+			conn = semi.db.SemiDb.getConn();
+			
+			
+			int userCouponDel = deleteUserCoupon(coupon_idx);
+	
+			String sql = "delete from coupon where coupon_idx= ? ";
+			
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, coupon_idx);
+			int res = ps.executeUpdate();
+			//	System.out.println(res);
+			
+			return res;
+			
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace( );
+			return 0 ; 
+			// TODO: handle exception
+		}finally {
+			try {
+				
+				if (ps!=null)ps.close();
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	
+	public int deleteUserCoupon (int coupon_idx){
+		try {
+			
+			String sql = "delete from user_coupon where coupon_idx= ? ";
+			
+			ps=conn.prepareStatement(sql);
+			ps.setInt(1, coupon_idx);
+			int res = ps.executeUpdate();
+			//	System.out.println(res);
+			
+			return res;
+			
+			
+		} catch (Exception e) {
+			
+			e.printStackTrace( );
+			return 0 ; 
+			// TODO: handle exception
+		}finally {
+			try {
+				
+				if (ps!=null)ps.close();
+				
+			} catch (Exception e2) {
+				// TODO: handle exception
+			}
+		}
+	}
+	
+	
 	public ArrayList<CouponDTO> myCouponList (String sid, String food_type ){
 		
 		

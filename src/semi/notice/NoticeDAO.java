@@ -42,7 +42,7 @@ public class NoticeDAO {
 					sql ="select count (*) from notice where notice_idx = "+searchVal ; 
 					break;
 				case 2: 
-					sql = "select count (*) from notice where notice_writer like '"+searchVal+"'" ;
+					sql = "select count (*) from notice where notice_writer like '%"+searchVal+"%'" ;
 					break;
 					
 				case 3: 
@@ -277,7 +277,7 @@ public class NoticeDAO {
 				sql =  "select * from "
 						+ "(select rownum rNum, a.* from " 
 						+ "(select * from notice "
-						+ "where notice_writer like '"+searchVal+"' "
+						+ "where notice_writer like '%"+searchVal+"%' "
 						+ " order by notice_idx desc) a) b "
 						+ "where rNum >=("+currentPage+"-1) * "+listSize+" +1 and rNum<="+currentPage+"*"+listSize;
 			//	System.out.println(sql);

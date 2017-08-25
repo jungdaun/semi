@@ -84,7 +84,7 @@ String admin = "admin";
 <h3  style="color: white;">
 <%if (sid!=null && sid.equals(admin)){
 	%>
-	<a href="couponWrite.jsp">쿠폰등록하기</a>
+	<a href="couponWrite.jsp">쿠폰 등록</a>
 	<%
 }
 
@@ -152,7 +152,22 @@ else {
 								%>
 								
 							<td><%=dtos.get(i).getCoupon_end() %></td>
-							<td  ><a href="couponReceive.jsp?coupon_idx=<%=dtos.get(i).getCoupon_idx()%>">쿠폰받기</a></td>
+							<td >
+							<%
+							if (sid!=null && sid.equals(admin)){
+								%>
+								<a href="couponDel.jsp?coupon_idx=<%=dtos.get(i).getCoupon_idx()%>">삭제</a>
+								<%
+							}
+							else {
+								%>
+								<a href="couponReceive.jsp?coupon_idx=<%=dtos.get(i).getCoupon_idx()%>">쿠폰받기</a>
+								
+								<%
+							}
+							%>
+							
+							</td>
 					
 						</tr>	
 					<%
