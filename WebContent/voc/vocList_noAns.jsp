@@ -13,7 +13,7 @@ request.setCharacterEncoding("utf-8");
 
 
 //필수정보4가지
-int totalCnt= vdao.getTotalCnt(); 
+int totalCnt= vdao.getTotalCnt(false); 
 //총 게시물 수
 //sql : select count (*) from jsp_bbs
 
@@ -175,13 +175,13 @@ if ( cp %pageSize==0){
             
             for ( int i =userGp*pageSize+1; i<=userGp*pageSize+pageSize ; i ++){
                
-               %>&nbsp;&nbsp;&nbsp;<a href="vocList.jsp?cp=<%=i %>"><font <%=cp==i?"color='red'":"" %>> <%=i %> </font> </a>&nbsp;&nbsp;&nbsp;<%
+               %>&nbsp;&nbsp;&nbsp;<a href="vocList_noAns.jsp?cp=<%=i %>"><font <%=cp==i?"color='red'":"" %>> <%=i %> </font> </a>&nbsp;&nbsp;&nbsp;<%
                if (i ==totalPg) break; 
             }
             
             
             if ( userGp!= (totalPg/pageSize -(totalPg%pageSize==0? 1:0)) ){
-               %><a href="vocList.jsp?cp=<%=(userGp+1)*pageSize+1%>">&gt;&gt;</a><%
+               %><a href="vocList_noAns.jsp?cp=<%=(userGp+1)*pageSize+1%>">&gt;&gt;</a><%
             }
             %>
                
@@ -196,7 +196,7 @@ if ( cp %pageSize==0){
                <form action="findMyVoc.jsp">
                작성자: <input type="text" name="mySid"  ><input type="submit" value="검색">
                
-               <a href="vocList_noAns.jsp">미답변 글보기</a>
+               <a href="vocList.jsp">목록보기</a>
                </form>
                </td>
             </tr>
@@ -205,7 +205,7 @@ if ( cp %pageSize==0){
          <tbody>
          
          <% 
-         ArrayList <VocDTO> arr = vdao.vocList(cp, listSize);
+         ArrayList <VocDTO> arr = vdao.vocList_noAns(cp, listSize);
       
          
          if (arr== null|| arr.size()==0){

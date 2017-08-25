@@ -7,7 +7,7 @@
 <jsp:useBean id="vdao" class="semi.voc.VocDAO"></jsp:useBean>
 
 
-
+<%String admin = "admin"; %>
 
 <!DOCTYPE html >
 <html>
@@ -66,10 +66,15 @@ tfoot {
       <%
          request.setCharacterEncoding("utf-8");
 
-         //   String mySid = request.getParameter("mySid");
+      if (	 request.getParameter("mySid")!=null){
 
+          
+          sname = request.getParameter("mySid");  
+      }
+ 
+        
          //필수정보4가지
-         int totalCnt = vdao.getTotalCnt(sid);
+         int totalCnt = vdao.getTotalCnt(sname);
          //총 게시물 수
          //sql : select count (*) from jsp_bbs
 
@@ -122,7 +127,7 @@ tfoot {
       %>
       <section>
          <article>
-            <h2><%=sname%>님이 작성하신 질문입니다.
+            <h2><%=sname%>님이 작성하신 글입니다. 
             </h2>
             <div style="display: inline-block; text-align: center;">
             <table>
