@@ -67,19 +67,7 @@ tfoot tr {
 					idx_s = "0";
 				}
 				int idx = Integer.parseInt(idx_s);
-				/*
-				   String userPwd="";
-				    
-				    
-				    if (sid !=null && sid.equals(admin)){
-				    	userPwd = vdao.getUserPwd(idx);
-				    	
-				    }
-				    else {
-				        userPwd = request.getParameter("pwd");
-				    }
-				    
-				    */
+			
 
 				VocDTO dto = vdao.vocContent(idx);
 
@@ -136,10 +124,9 @@ tfoot tr {
 
 						<tr>
 							<td colspan="4" style="text-align: center;"><a
-								href="findMyVoc.jsp">목록으로</a>|| <%
-								if (sid.equals(admin)) {
-							%> <a
-								href="vocReWrite.jsp?title=<%=dto.getTitle()%>&ref=<%=dto.getRef()%>&lev=<%=dto.getLev()%>&turn=<%=dto.getTurn()%>&idx=<%=dto.getVod_idx()%>">답변쓰기||</a>
+								href="findMyVoc.jsp">목록으로</a> <%
+								if (sid.equals(admin) || sname.equals(dto.getWriter())) {
+							%> ||<a href="vocReWrite.jsp?title=<%=dto.getTitle()%>&ref=<%=dto.getRef()%>&lev=<%=dto.getLev()%>&turn=<%=dto.getTurn()%>&idx=<%=dto.getVod_idx()%>">답변쓰기||</a>
 
 
 								<a href="vocDel.jsp?voc_idx=<%=dto.getVod_idx()%>">글삭제</a>||<a
