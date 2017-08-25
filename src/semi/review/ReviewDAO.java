@@ -99,22 +99,23 @@ public class ReviewDAO {
 	public int postReview(Integer c_idx, String c_name, int store_idx, String up_date, int score_num, String review, String r_picture, String r_pwd){
 		try{
 			conn = semi.db.SemiDb.getConn();
-			String sql="insert into review values(?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			String sql="insert into review values(r_idx.nextval, ?, ?, ?, ?, ?, ?, ?, ?)";
 			ps = conn.prepareStatement(sql);
-			ps.setInt(1, 6);
-			ps.setInt(2, (c_idx !=null? c_idx.intValue() : 0));
-			ps.setString(3, c_name);
-			ps.setInt(4, store_idx);
-			ps.setString(5, up_date);
-			ps.setInt(6, score_num);
-			ps.setString(7, review);
-			ps.setString(8, r_picture);
-			ps.setString(9, r_pwd);
+		//	ps.setInt(1, ); //nextval로 바꿔야 한다.
+			ps.setInt(1, (c_idx !=null? c_idx.intValue() : 0));
+			ps.setString(2, c_name);
+			ps.setInt(3, store_idx);
+			ps.setString(4, up_date);
+			ps.setInt(5, score_num);
+			ps.setString(6, review);
+			ps.setString(7, r_picture);
+			ps.setString(8, r_pwd);
 			int count = ps.executeUpdate();
 			cntReviewNum(store_idx);
 			sumScoreNum(store_idx, score_num);
 			scoreNum(store_idx);
-			
+			System.out.println("5555");
+			System.out.println("count = "+count);
 			return count;
 		}
 		catch(Exception e){
@@ -133,6 +134,7 @@ public class ReviewDAO {
 	
 	public void sumScoreNum(int store_idx, int score_num){
 		try{
+			System.out.println("3333");
 			String sql = "update store set score_sum = score_sum + ? where store_idx=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, score_num);
@@ -152,6 +154,7 @@ public class ReviewDAO {
 	
 	public void scoreNum(int store_idx){
 		try{
+			System.out.println("444");
 			String sql = "update store set score_num=score_sum/review_num where store_idx=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, store_idx);
@@ -169,6 +172,7 @@ public class ReviewDAO {
 	
 	public void cntReviewNum(int store_idx){
 		try{
+			System.out.println("2222");
 			String sql = "update store set review_num=review_num+1 where store_idx=?";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, store_idx);

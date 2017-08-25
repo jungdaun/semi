@@ -36,7 +36,7 @@ boolean isOpen = sdao.isOpen(store_idx);
 	width: 850px;
 	height: 100%;
 	margin-top: 200px;
-	margin-bottom: 160px;
+	margin-bottom: 50px;
 	margin-left: 30px;
    margin-right: 30px;
 	}
@@ -65,7 +65,7 @@ boolean isOpen = sdao.isOpen(store_idx);
          </table>
          </div>
          
-        <div style="display: inline-block;text-align: center;">
+        <div style="display: inline-block;text-align: center; overflow: auto; height: 670px;">
          <table>
     
   <% if(arr.equals("") || arr.size()==0){%>
@@ -129,7 +129,7 @@ if (isOpen){
    ArrayList<CartDTO> brr = cdao.showData(store_idx, c_idx);%>
    
          <fieldset style="background-color: #BF0920; color: white; font-size: 25px; line-height: 40%;">장바구니</fieldset>
-        <div style="display: inline-block;text-align: center;">
+        <div style="display: inline-block;text-align: center; overflow: auto; height:180px;">
          <table>
          <% if(brr.size()==0 || brr==null){%>
             <tr>

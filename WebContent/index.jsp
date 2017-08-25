@@ -16,9 +16,23 @@
 function check() {
 	var tt = '사장';
 	var tt2 = '<%=stype%>';
+
+	
+	var admin = "admin";
+	var sId = <%=sid%>;
 	if(tt == tt2) {
-		location.href = '/semi/index_ceo.jsp';
+	
+		if ( admin == sId ){
+			
+			location.href = '/semi/index_admin.jsp';
+		}
+		else {
+			location.href = '/semi/index_ceo.jsp';
+				
+		}
 	}
+	
+	
 }
 
 function addr_search(){

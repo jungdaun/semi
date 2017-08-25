@@ -27,8 +27,8 @@ thead td{
 </style>
 <script>
 	function load(){
-		document.post_review.a.value = document.post_review.upload.value;
-		a.submit();	
+		document.post_review.f.value = document.post_review.upload.value;
+		f.submit();	
 	}
 </script>
 </head>
@@ -65,7 +65,7 @@ String date = "pm0930";
          <th>사진 올리기  </th>
          <td colspan="3">
          File:<input type="file" name="upload" onchange="load(this)">
-         <input type="hidden" name="a">
+         <input type="hidden" name="f">
          </td>
       </tr>
       <tr>

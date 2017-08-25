@@ -18,6 +18,36 @@
  <jsp:useBean id="mdao" class="semi.member.MemberDAO"></jsp:useBean>
  <jsp:useBean id="odao" class="semi.order.OrderDAO"></jsp:useBean>
  <jsp:useBean id="ctdao" class="semi.cart.CartDAO"></jsp:useBean>
+ 
+ <% 
+ String start = request.getParameter("start");
+ String end = request.getParameter("end");
+ 
+ Calendar now = Calendar.getInstance();
+ int y = now.get(Calendar.YEAR);
+ int m = now.get(Calendar.MONTH)+1;
+ int d = now.get(Calendar.DATE);
+ 
+ 
+ String today =  y +"-"+m +"-"+d;
+ 
+ 
+ if (start ==null || start.equals("") ){
+	start =today;
+ }
+ 
+ if (end ==null || end.equals("") ){
+	 end =today;}
+ 
+ 
+ 
+ //System.out.println(start); 
+// System.out.println(end); 
+ %>
+ 
+ 
+ 
+ 
 <!DOCTYPE html >
 <html>
 
@@ -163,9 +193,17 @@ if ( cp %pageSize==0){
 	
 	<h2>[<%=odao.getStoreName(sIdx) %>]의 주문 이력입니다. </h2>
 	
+<form action="myStoreOrderList.jsp">	
+<h3>날짜를 선택하세요
+	<input type="date" name="start" value="<%=start%>">~<input type="date" name="end" value="<%=end %>" > <input type="submit" value="조회">
+	<a href="myStoreOrderList.jsp?start=<%=today%>&end=<%=today%>">[오늘의 주문]</a>
+	</h3>
+	</form>
+	
+	
 	<%
 	
-	ArrayList<OrderDTO> dtos =odao.myStoreOrderList(sIdx, cp, listSize);
+	ArrayList<OrderDTO> dtos =odao.myStoreOrderList(sIdx, cp, listSize, start, end);
 	%>
 	
 	

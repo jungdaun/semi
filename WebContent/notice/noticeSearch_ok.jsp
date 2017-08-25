@@ -24,7 +24,7 @@ case 1:
 	
 	break;
 case 2:
-	msg = "글쓴이가 "+ searchVal+"인 글입니다. ";
+	msg = "글쓴이에 "+ searchVal+"이(가) 포함된 글입니다. ";
 	
 	break;
 case 3: 
@@ -87,6 +87,9 @@ if ( cp %pageSize==0){
 
 
 <style>
+
+a:visited {text-decoration: none; color: gray; }
+
 	h2{
 		text-align: center;
 		color: white; 
@@ -100,10 +103,11 @@ if ( cp %pageSize==0){
 		border-spacing: 0px;
 		background-color: white ; 
 	}
-	table thead th{
+	table  th{
 		background: #BF0920;
 		color: white; 
 		text-align: center;
+
 	}
 	table td{
 		text-align: center
@@ -116,14 +120,15 @@ if ( cp %pageSize==0){
 		
 	
 	}
-	#ns_ok{
-		width: 850px;
+	#couponList{
+	width: 850px;
 	height: 100%;
 	margin-top: 200px;
 	margin-bottom: 160px;
 	margin-left: 30px;
    margin-right: 30px;
 	}
+	
 </style>
 </head>
 <body>
