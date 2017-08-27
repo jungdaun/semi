@@ -85,10 +85,10 @@ public class FoodDTO {
 /* Create table food (
 	Store_idx number(4),
 	food_num number(3),
-	food_name varchar2(10),
-	food_type varchar2(10),
+	food_name varchar2(50),
+	food_type varchar2(50),
 	food_price number(5),
-	food_info varchar2(20),
+	food_info varchar2(50),
 	food_image varchar2(100)
 )
 

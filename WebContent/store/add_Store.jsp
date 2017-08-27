@@ -186,7 +186,7 @@ String cstore = (String) session.getAttribute("cstore");
             </tr>
 
             <tr>
-               <td id="aa"align="center" colspan="3"><input type="button" onclick="javascript:aa()"value="회원가입">&nbsp&nbsp&nbsp&nbsp&nbsp<input
+               <td id="aa"align="center" colspan="3"><input type="button" onclick="javascript:aa()"value="가게등록">&nbsp&nbsp&nbsp&nbsp&nbsp<input
                   type="reset" value="다시작성"></td>
             </tr>
          </table>

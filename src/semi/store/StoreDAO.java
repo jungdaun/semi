@@ -202,7 +202,7 @@ public class StoreDAO {
    public int storeJoin(StoreDTO dto) {
 		try {
 			conn = semi.db.SemiDb.getConn();
-			String sql = "insert into store values(?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0, '')";
+			String sql = "insert into store values(?, ?, ?, ?, ?, ?, ?, ?, 0, 0, 0, 0, 'http://localhost:9090/semi/img/store/sad.png')";
 			ps = conn.prepareStatement(sql);
 			ps.setInt(1, dto.getStore_idx());
 			ps.setString(2, dto.getStore_type());

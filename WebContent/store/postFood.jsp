@@ -82,7 +82,7 @@ boolean isOpen = sdao.isOpen(store_idx);
     %>     <tr> <%
          for(int i=0; i<2; i++){
             if(count<arr.size()){%>
-            <td><img src="../img/store/<%=arr.get(count).getFood_name()%>.png" style="width:140px; height:120px;"/></td>
+            <td><img src="<%=arr.get(count).getFood_image()%>" style="width:140px; height:120px;"/></td>
             <td style="background-color: #2F4038; color:white;"><%=arr.get(count).getFood_name() %>
             <br><%=arr.get(count).getFood_price() %>원 </td>
          

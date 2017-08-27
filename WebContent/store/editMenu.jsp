@@ -114,7 +114,7 @@ function change() {
       <div style="display: inline-block; text-align: center;">
       <h3>Side</h3>
       <table>
-    
+    <br>
   <% if(arr2.equals("") || arr2.size()==0){%>
          <tr style="color:white; font-size: 30px;">
             <td rowspan="6" align="center" style="font-size:25px; color:white;">
@@ -152,6 +152,7 @@ function change() {
       </table> <br><br><br><br><br>
       
       </div>
+      <br>
       <div style="display: inline-block; text-align: center;">
       <h3>Etc</h3>
       <table>

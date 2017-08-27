@@ -126,23 +126,7 @@ function fill<%=i%>() {
         	 </tr>
         	 <% }
          
-         for(int i = 0; i < arr2.size(); i++) {
-        	 %>     <tr> <td>
-        	  <input type = "text" id = "a<%=i%>"  onclick = "fill<%=i%>()" readonly value = "<%=arr.get(i).getFood_name() %>">
-        	  <input type = "text" id = "a<%=i+100%>" readonly value = "" name = "bb">
-        	  <input type = "hidden" name = "aa" value = <%=arr.get(i).getFood_num() %>>
-        	 </td>
-        	 </tr>
-        	 <% }
-         
-         for(int i = 0; i < arr3.size(); i++) {
-        	 %>     <tr> <td>
-        	  <input type = "text" id = "a<%=i%>"  onclick = "fill<%=i%>()" readonly value = "<%=arr.get(i).getFood_name() %>">
-        	  <input type = "text" id = "a<%=i+100%>" readonly value = "" name = "bb">
-        	  <input type = "hidden" name = "aa" value = <%=arr.get(i).getFood_num() %>>
-        	 </td>
-        	 </tr>
-        	 <% }
+ 
          
          %><tr><td>
          <input type = "button" value = "순서 변경하기" onclick = "setmenu()">

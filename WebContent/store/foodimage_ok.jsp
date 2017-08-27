@@ -15,10 +15,10 @@ request.setCharacterEncoding("utf-8");
 String cstore = (String) session.getAttribute("cstore");
 int istore = Integer.parseInt(cstore);
 
-String savePath=wf.USERS_HOME + "/img/upload/" + wf.getCrpath();
+String savePath=wf.USERS_HOME + "img/upload/" + wf.getCrpath();
 
 
-
+System.out.print(savePath);
 
 try {
 	MultipartRequest mr = new MultipartRequest(request, savePath, wf.getFreeSize(), "utf-8", new DefaultFileRenamePolicy());

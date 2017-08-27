@@ -75,7 +75,6 @@ function aa() {
 	
 	if(chk==0) {
 		document.image.a.value = document.image.upload.value;
-		window.alert(document.image.a.value);
 		image.submit();
 	}
 	
@@ -128,6 +127,7 @@ function aa() {
 		  <select name="food_type">
 		  <option value="main" selected>main</option>
 		  <option value="side">side</option>
+		   <option value="etc">etc</option>
                </select>
 		</td>
 		</tr>

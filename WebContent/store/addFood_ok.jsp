@@ -18,11 +18,11 @@ String food_name = null;
 String food_type = null;
 int food_price = 0;
 int food_num = fdao.maxfoodnum(istore);
-String savePath=wf.USERS_HOME + "img/upload/" + wf.getCrpath();
+String savePath = wf.USERS_HOME + "img/upload/" + wf.getCrpath();
 String path = null;
 
+System.out.print(savePath);
 
-System.out.print("음식 더할떄 : " + savePath);
 
 
 try {

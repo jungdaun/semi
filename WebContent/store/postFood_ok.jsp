@@ -11,7 +11,7 @@
 
 <%
 String store_type=request.getParameter("store_type");
-Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
+int c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
 int store_idx = Integer.parseInt(request.getParameter("store_idx"));
 String c_sub_s = request.getParameter("c_sub_s");
 String isOpen = request.getParameter("isOpen");
@@ -29,6 +29,12 @@ int food_count = Integer.parseInt(request.getParameter("food_count")); //선택�
 int food_price = Integer.parseInt(request.getParameter("food_price"));
 String food_name = request.getParameter("food_name");
 int total_price = food_count*food_price;
+System.out.println(store_idx);
+System.out.println(c_idx);
+System.out.println(food_name);
+System.out.println(food_price);
+System.out.println(food_count);
+System.out.println(total_price);
 int num = cdao.insertData(store_idx, c_idx, food_name, food_price, food_count, total_price);
 String msg = (num==-1)? "장바구니에 추가되지 않았습니다.": "장바구니에 목록이 추가되었습니다.";
 %>

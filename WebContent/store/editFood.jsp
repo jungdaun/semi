@@ -125,6 +125,7 @@ function update_ok() {
 		  <select name="food_type">
 		  <option value="main">main</option>
 		  <option value="side">side</option>
+		  <option value="etc">etc</option>
                </select>
 		</td>
 		</tr>
