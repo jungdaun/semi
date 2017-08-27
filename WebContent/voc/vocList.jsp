@@ -86,9 +86,12 @@ if ( cp %pageSize==0){
    
    }
    #vocList{
-   width: 850px;
-   height: 100%;
-   margin-top: 200px;
+	width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	margin-bottom: 50px;
+	margin-left: 30px;
+   margin-right: 30px;
    }
 </style>
 
@@ -106,6 +109,7 @@ if ( cp %pageSize==0){
      
      
         <div id="bodywrap">
+        
         
         
         

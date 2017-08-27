@@ -65,7 +65,7 @@ function change() {
 <div id="bodywrap">
 <div id="editMenu">
 <h3>메뉴수정하기</h3>
-메뉴 수정을 하려면 해당 메뉴의 사진을 눌러주세요.
+<font style="color: white;">메뉴 수정을 하려면 해당 메뉴의 사진을 눌러주세요.</font>
 <input type = "button" value = "메뉴 추가하기" onclick = "add()">
 <input type = "button" value = "메뉴 순서바꾸기" onclick = "change()">
    <article>
@@ -110,7 +110,8 @@ function change() {
  <% } } %>
       </table> <br><br><br><br><br>
       
-      
+      </div>
+      <div style="display: inline-block; text-align: center;">
       <h3>Side</h3>
       <table>
     
@@ -150,7 +151,8 @@ function change() {
  <% } } %>
       </table> <br><br><br><br><br>
       
-      
+      </div>
+      <div style="display: inline-block; text-align: center;">
       <h3>Etc</h3>
       <table>
     
@@ -194,7 +196,7 @@ function change() {
       </div>
     </article>
  
-    
+ 
 <%@include file="/footer.jsp"%>
 
 </div>
