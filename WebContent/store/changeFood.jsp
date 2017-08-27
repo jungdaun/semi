@@ -95,7 +95,7 @@ function fill<%=i%>() {
 
 <body>
 <%@include file="/header.jsp"%>
-<form name = "editMenu2">
+<form name = "editMenu2" action = "changeFood_ok.jsp">
 <div id="bodywrap">
 <div id="changeFood">
 <h3>메뉴수정하기</h3>
@@ -119,8 +119,27 @@ function fill<%=i%>() {
          
          for(int i = 0; i < arr.size(); i++) {
         	 %>     <tr> <td>
-        	  <input type = "text" name = "a<%=i%>" onclick = "fill<%=i%>()" readonly value = "<%=i+1%>.<%=arr.get(i).getFood_name() %>">
-        	  <input type = "text" name = "a<%=i+100%>" readonly value = "">
+        	  <input type = "text" id = "a<%=i%>"  onclick = "fill<%=i%>()" readonly value = "<%=arr.get(i).getFood_name() %>">
+        	  <input type = "text" id = "a<%=i+100%>" readonly value = "" name = "bb">
+        	  <input type = "hidden" name = "aa" value = <%=arr.get(i).getFood_num() %>>
+        	 </td>
+        	 </tr>
+        	 <% }
+         
+         for(int i = 0; i < arr2.size(); i++) {
+        	 %>     <tr> <td>
+        	  <input type = "text" id = "a<%=i%>"  onclick = "fill<%=i%>()" readonly value = "<%=arr.get(i).getFood_name() %>">
+        	  <input type = "text" id = "a<%=i+100%>" readonly value = "" name = "bb">
+        	  <input type = "hidden" name = "aa" value = <%=arr.get(i).getFood_num() %>>
+        	 </td>
+        	 </tr>
+        	 <% }
+         
+         for(int i = 0; i < arr3.size(); i++) {
+        	 %>     <tr> <td>
+        	  <input type = "text" id = "a<%=i%>"  onclick = "fill<%=i%>()" readonly value = "<%=arr.get(i).getFood_name() %>">
+        	  <input type = "text" id = "a<%=i+100%>" readonly value = "" name = "bb">
+        	  <input type = "hidden" name = "aa" value = <%=arr.get(i).getFood_num() %>>
         	 </td>
         	 </tr>
         	 <% }
@@ -143,16 +162,7 @@ function fill<%=i%>() {
      
     <script>
     	function setmenu() {
-    		<%
-    		int j = 0;
-    		for(int i = 0; i < arr.size(); i++) { 
-    			fdao.changeNum("dd", arr.get(i).getFood_num());
-    			String i_s2 = Integer.toString(j+100);%>
-    			window.alert(document.editMenu2.a<%=i_s2%>.value);
-    			window.alert('<%=arr.get(i).getFood_num()%>');
-    			<%j++;
-    		} 
-    		%>
+    		editMenu2.submit();
     	}
     </script>
     </div>

@@ -8,71 +8,27 @@
 <%
 	//모든 값 검증..
 	
-	boolean chk = true;
 
-if (request.getParameter("store_name") == null || request.getParameter("store_name").equals("")) {
-		chk = false;
-		%>
-		<script>
-			window.alert("이름을 입력해주세요.");
-			history.back();
-		</script>
-		
-		<%
-	}
-	
-	else if (request.getParameter("tel2") == null || request.getParameter("tel2").equals("")) {
-		chk = false;
-		%>
-		<script>
-			window.alert("전화번호를 입력해주세요.");
-			history.back();
-		</script>
-		
-		<%
-
-	}
-	else if (request.getParameter("tel3") == null || request.getParameter("tel3").equals("")) {
-		chk = false;
-		%>
-		<script>
-			window.alert("전화번호를 입력해주세요.");
-			history.back();
-		</script>
-		
-		<%
-
-	}
-	else if (request.getParameter("store_addr") == null || request.getParameter("store_addr").equals("")) {
-		chk = false;
-		%>
-		<script>
-			window.alert("주소를 입력해주세요.");
-			history.back();
-		</script>
-		
-		<%
-
-	}
-	else if (request.getParameter("store_addr2") == null || request.getParameter("store_addr2").equals("")) {
-		chk = false;
-		%>
-		<script>
-			window.alert("상세주소를 입력해주세요.");
-			history.back();
-		</script>
-		
-		<%
-
-	}
 	
 	
-	if(chk) {
+	
 		int num = 0;
 		String name = "";
-		int result = fdao.changeNum(name, num);
+		String[] aa = request.getParameterValues("aa");
+		String[] bb = request.getParameterValues("bb");
+		
+		
+		for(int i = 0; i < aa.length; i++) {
+			System.out.print("aa의 길이" + aa.length);
+			System.out.print("bb의 길이" + bb.length);
+			System.out.println("aa는" + aa[i] + "bb는"+ bb[i]);
+			
+			fdao.changeNum(bb[i], Integer.parseInt(aa[i]));
+		}
+		
+		
 
-		String msg = result > 0 ? "가게등록성공" : "가게등록실패";
+		String msg = "순서 변경 성공!";
 		
 		
 		%>
@@ -80,10 +36,6 @@ if (request.getParameter("store_name") == null || request.getParameter("store_na
 		<script>window.alert('<%=msg%>');
 			location.href = '/semi/index.jsp';
 		</script>
-		<%
-	} 
-		%>
-
 
 	
 
