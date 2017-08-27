@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 
 public class ImageDAO {
 
-	public static final String USERS_HOME = "C:/Users/mg/git/semi/WebContent";
+	public static final String USERS_HOME = "C:/Users/song/git/semi/WebContent/";
 
 
 	private String userid; // 계정정보
@@ -65,7 +65,8 @@ public class ImageDAO {
 
 	/** 사용자 개인공간의 존재유무 */
 	public void userFolderExixts() {
-		File f = new File(USERS_HOME + "/" + userid);
+		System.out.println("폴더 생성");
+		File f = new File(USERS_HOME + "/img/upload/" + userid);
 		if (!f.exists()) {
 			f.mkdir();
 		}

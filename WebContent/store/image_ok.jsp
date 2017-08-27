@@ -12,9 +12,7 @@ request.setCharacterEncoding("utf-8");
 
 String savePath=wf.USERS_HOME + "/img/upload/" + wf.getCrpath();
 
-System.out.println(request);
-System.out.println(savePath);
-System.out.println(wf.getFreeSize());
+System.out.println(wf.getCrpath());
 
 try {
 	

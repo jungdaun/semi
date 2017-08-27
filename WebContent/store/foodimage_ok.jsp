@@ -15,9 +15,8 @@ request.setCharacterEncoding("utf-8");
 String cstore = (String) session.getAttribute("cstore");
 int istore = Integer.parseInt(cstore);
 
-String savePath=wf.USERS_HOME + "/store/img/upload/" + wf.getCrpath();
+String savePath=wf.USERS_HOME + "/img/upload/" + wf.getCrpath();
 
-System.out.print(savePath);
 
 
 
@@ -29,7 +28,7 @@ try {
 	String food_nums = mr.getParameter("b");
 	int food_num = Integer.parseInt(food_nums);
 	String bb[] = aa.split("\\\\");
-	String path = "http://localhost:9090/semi/store/img/upload/" + sid + "/" + bb[2];
+	String path = "http://localhost:9090/semi/img/upload/" + sid + "/" + bb[2];
 	
 	wf.setImage2(path, istore, food_num-1);
 	

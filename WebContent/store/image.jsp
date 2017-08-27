@@ -4,6 +4,7 @@
     <jsp:useBean id="wf" class="semi.image.ImageDAO" scope="session" />
     <%
 request.setCharacterEncoding("utf-8");
+    wf.userFolderExixts();
 %>
 <!DOCTYPE html>
 <html>
