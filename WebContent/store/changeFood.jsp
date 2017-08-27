@@ -39,7 +39,7 @@ boolean isOpen = sdao.isOpen(store_idx);
 h3{
 	color:white;
 }
-#editMenu{
+#changeFood{
 	width: 850px;
 	height: 100%;
 	margin-top: 200px;
@@ -97,15 +97,15 @@ function fill<%=i%>() {
 <%@include file="/header.jsp"%>
 <form name = "editMenu2">
 <div id="bodywrap">
-<div id="editMenu">
+<div id="changeFood">
 <h3>메뉴수정하기</h3>
 메뉴 수정을 하려면 해당 메뉴의 사진을 눌러주세요.
 <input type = "button" value = "메뉴 추가하기" onclick = "add()">
 <input type = "button" value = "메뉴 순서바꾸기" onclick = "change()">
    <article>
      <h3>Main</h3>
-     
-         <table>
+     <div>
+         <table style="display: inline-block; text-align: center;"> 
     
   <% if(arr.equals("") || arr.size()==0){%>
          <tr style="color:white; font-size: 30px;">
@@ -132,13 +132,13 @@ function fill<%=i%>() {
    } %>
          
       </table> <br><br><br><br><br>
-      
+      </div>
     
       
       
     </article>
-    </div>
-    </div>
+    
+    
     </form>
      
     <script>
@@ -155,6 +155,7 @@ function fill<%=i%>() {
     		%>
     	}
     </script>
+    </div>
 <%@include file="/footer.jsp"%>
 </div>
 </body>

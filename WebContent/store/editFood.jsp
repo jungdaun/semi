@@ -39,9 +39,25 @@ FoodDTO dto = fdao.foodUpdate(fdto, store_idx, foodnum);
 %>
 
 <style>
-h3{
+h2{
 	color:white;  
 }
+#editFood{
+	width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	margin-bottom: 50px;
+	margin-left: 30px;
+   margin-right: 30px;
+}
+th{
+height: 25px;
+font-size: 15px;
+text-align: left;
+border: 1px solid black;
+background-color: #e4e4e4;
+}
+
 </style>
 <script>
 function show() {
@@ -66,25 +82,27 @@ function update_ok() {
 <body onload = "show()">
 <%@include file="/header.jsp"%>
 <div id="bodywrap">
-<h3>메뉴수정하기</h3>
+<div id="editFood">
+<h2>메뉴수정하기</h2>
 
    <article>
+   <div style="display: inline-block; margin-left: -60px;">
    <form name = "update" action = "editfood_ok.jsp">
      
         
-         <table>
+         <table border="1">
          <tr>
 		<th>
 		음식 사진 
 		</th>
 		<td>
-		 <img src="<%=dto.getFood_image()%>" style="width:110px; height:128px"/>
+		 <img src="<%=dto.getFood_image()%>" style="width:110px; height:128px; margin-left: -30px;">
 		</td>
 		</tr>
 		
 		<tr>
 		<td colspan = "2">
-		<input type = "button" value = "이미지 수정하기" onclick = "image()">
+		<input type = "button" value = "이미지 수정하기" onclick = "image()" style="margin-left: 80px;">
 		<input type = "hidden" name = "store_idx" value = "<%=store_idx%>">
 		<input type = "hidden" name = "food_num" value = "<%=foodnum%>">
 		</td>
@@ -129,10 +147,12 @@ function update_ok() {
 		
       </table> <br><br><br><br><br>
         </form>
+        </div>
     </article>
   
   </div>
 <%@include file="/footer.jsp"%>
+</div>
 </body>
 </html>
 
