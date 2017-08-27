@@ -14,6 +14,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="../css/mainLayout.css">
 <style>
 th{
    background-color:  #2F4038; color: #FEEEA7; font-size: 15px;
@@ -23,6 +24,14 @@ thead td{
    font-weight:bolder;
    background-color:  white; color: black; font-size: 15px;
    width:25%
+}
+#postReview_ok{
+	width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	margin-bottom: 50px;
+	margin-left: 30px;
+   margin-right: 30px;
 }
 </style>
 <script>
@@ -42,6 +51,10 @@ Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
 String date = "pm0930";
 %>
 <body>
+<%@include file="/header.jsp" %>
+<div id="bodywrap">
+<div id="postReview_ok">
+<div style="display: inline-block; text-align: center;">
 	<form name="post_review" action="postReview_ok_ok.jsp" method="post" enctype="multipart/form-data">
 	
     <table>
@@ -63,7 +76,7 @@ String date = "pm0930";
       <tbody>
       <tr>
          <th>사진 올리기  </th>
-         <td colspan="3">
+         <td colspan="3" style="background-color: white;">
          File:<input type="file" name="upload" onchange="load(this)">
          <input type="hidden" name="f">
          </td>
@@ -77,8 +90,8 @@ String date = "pm0930";
       
       <tfoot>
          <tr>
-            <td colspan="2" align="center"><input type="reset" value="다시 작성"></td>
-            <td colspan="2" align="center"><input type="submit" value="등록"></td>
+            <td colspan="4" align="right;"><input type="reset" value="다시 작성">
+           <input type="submit" value="등록"></td>
          </tr>
       </tfoot>   
    </table>
@@ -87,5 +100,9 @@ String date = "pm0930";
    <input type="hidden" name="store_type" value="<%=store_type%>">
    <input type="hidden" name="store_idx" value="<%=store_idx%>">
    </form>
+   </div>
+   </div>
+   <%@include file="/footer.jsp" %>
+   </div>
 </body>
 </html>

@@ -21,6 +21,7 @@
 	margin-bottom: 160px;
 	margin-left: 30px;
    margin-right: 30px;
+   
 }
 </style>
 </head>
@@ -28,7 +29,7 @@
 <body>
 <%@include file="/header.jsp"%>
 <div id="bodywrap">
-<div id="postStore">
+<div id="postStore" >
 <section>
 <%
 
@@ -74,7 +75,7 @@ while(list.hasNext() && c_sub_s!=null){
 %>
    <legend style="background-color:#2F4038; color:#FEEEA7; font-size:22px; font-weight: bold;">
    Home >> <%=store_type %> >> <%=c_sub_s %></legend>
-    <div style="display: inline-block; text-align: center;">
+    <div style="display: inline-block; text-align: center; overflow: auto; width:700px; height:500px;">
    <table>
 <% 
 if(arr.equals("") || arr.size()==0){%>
@@ -91,7 +92,7 @@ else{
    int count=0;
    while(count<arr.size()) {%> 
      <tr><%
-      for(int i=0; i<4; i++){
+      for(int i=0; i<3; i++){
         
          if(count<arr.size()){
         	 String open_time_s = arr.get(count).getOpen_time();
