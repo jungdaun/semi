@@ -196,7 +196,9 @@ if ( cp %pageSize==0){
 <form action="myStoreOrderList.jsp">	
 <h3>날짜를 선택하세요
 	<input type="date" name="start" value="<%=start%>">~<input type="date" name="end" value="<%=end %>" > <input type="submit" value="조회">
+	<br>
 	<a href="myStoreOrderList.jsp?start=<%=today%>&end=<%=today%>">[오늘의 주문]</a>
+	<a href="orderStat.jsp">주문통계보기</a>
 	</h3>
 	</form>
 	

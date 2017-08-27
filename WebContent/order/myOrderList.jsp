@@ -79,11 +79,30 @@ border-top: 2px solid white;
 
 <meta charset=UTF-8">
 <title>Insert title here</title>
+
+
 </head>
-<body>
+<body onload = "check()">
 
 	
 <%@include file="/header.jsp"%>
+
+<script>
+function check() {
+	var tt = '사장';
+	var tt2 = '<%=stype%>';
+
+	
+	var sId = "<%=sid%>";
+	if(tt == tt2) {
+		location.href = 'myStoreOrderList.jsp';
+		  
+	}
+	
+	
+}
+
+</script>
 		<div id="bodywrap">
 <div id="myOrderList">
 <!-- -------------------------------------------------------------- -->
