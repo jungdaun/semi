@@ -131,8 +131,9 @@ else{
    </table>
    </div>
 </section><br><br><br>
-</div>
+
 <%@include file="/footer.jsp"%>
+</div>
 </div>
 </body>
 </html>
