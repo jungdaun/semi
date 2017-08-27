@@ -86,107 +86,24 @@ body {
    width: 100%;
    text-align: center;
    margin: 0px auto;
-   font-family: "Typo_Papyrus B";
+
 }
 
 #bodywrap {
-color: white; 
+
    margin: 0px auto;
    display: inline-block;
    margin-top: 0px;
    background-repeat: no-repeat;
    background-image: url("../img/background1.jpg");
-   background-size: cover;
+   background-size: 100%;
    height:100%;
    
    text-align: left;
   
 }
 
-#maintitle {
-   width: 850px;
-   height: 200px;
-   margin-top: 200px;
-   margin-left: 30px;
-   margin-right: 30px;
-   
-}
 
-#maintitle1 {
-   width: 450px;
-   height: 200px;
-   display: inline-block;
-   float: left;
-}
-
-#maintitle2 {
-   width: 350px;
-   height: 200px;
-   display: inline-block;
-   float: right;
-}
-
-#find {
-   width: 350px;
-   height: 90px;
-   margin-bottom: 15px;
-   background-image: url("/semi/img/find.jpg");
-}
-
-#coupon_board {
-   width: 350px;
-   height: 90px;
-}
-
-#mainbody {
-   width: 850px;
-   height: 200px;
-   margin: 20px 0px;
-    margin-left: 30px;
-   margin-right: 30px;
-}
-
-#mainbody1 {
-   width: 240px;
-   height: 200px;
-   display: inline-block;
-   float: left;
-}
-
-#mainbody2 {
-   width: 240px;
-   height: 200px;
-   display: inline-block;
-}
-
-#mainbody3 {
-   width: 240px;
-   height: 200px;
-   display: inline-block;
-   float: right;
-}
-
-#mainbottom {
-   width: 850px;
-   height: 195px;
-   margin: 20px 0px;
-    margin-left: 30px;
-   margin-right: 30px;
-}
-
-#mainbottom1 {
-   width: 390px;
-   height: 195px;
-   display: inline-block;
-   float: left;
-}
-
-#mainbottom2 {
-   width: 390px;
-   height: 195px;
-   display: inline-block;
-   float: right;
-}
 
 #headerwrap img {
    width: 150px;
@@ -232,7 +149,14 @@ color: white;
    font-family: "Typo_Papyrus B";
    color: white;
 }
-
+#orderStat_ok{
+	width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	margin-bottom: 160px;
+	margin-left: 30px;
+   margin-right: 30px;
+}
 
 .hGraph ul{ margin:0 50px 0 50px; padding:1px 0 0 0; border:1px solid #ddd; border-top:0; border-right:0; font-size:11px; font-family:Tahoma, Geneva, sans-serif; list-style:none;}
 .hGraph li{ position:relative; margin:10px 0; white-space:nowrap; vertical-align:top;}
@@ -245,13 +169,9 @@ color: white;
 <title>Insert title here</title>
 </head>
 <body>
-
-
-	
-	
-
 <%@include file="/header.jsp"%>
 		<div id="bodywrap">
+		<div id="orderStat_ok">
 
 <!-- -------------------------------------------------------------- -->
 	
@@ -331,22 +251,7 @@ for ( int i =0; i< arr.length; i ++){
 <!-- -------------------------------------------------------------- -->
 		</div>
 <%@include file="/footer.jsp"%>
-	
-
-
-
-
-
-
-
-
-
+</div>
 
 </body>
-
-
-
-
-
-
 </html>

@@ -108,18 +108,21 @@ border-top: 2px solid white;
 
 <meta charset=UTF-8">
 <title>Insert title here</title>
+<style>
+#myStoreOrderList{
+	width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	margin-bottom: 160px;
+	margin-left: 30px;
+   margin-right: 30px;
+}
+</style>
 </head>
 <body>
-
- 
-	
-	
-	
-	
-	
-
 <%@include file="/header.jsp"%>
 		<div id="bodywrap">
+		<div id="myStoreOrderList">
 
 <!-- -------------------------------------------------------------- -->
 	
@@ -192,7 +195,7 @@ if ( cp %pageSize==0){
 	%>
 	
 	<h2>[<%=odao.getStoreName(sIdx) %>]의 주문 이력입니다. </h2>
-	
+	<div style="display: inline-block; text-align: center;">
 <form action="myStoreOrderList.jsp">	
 <h3>날짜를 선택하세요
 	<input type="date" name="start" value="<%=start%>">~<input type="date" name="end" value="<%=end %>" > <input type="submit" value="조회">
@@ -232,6 +235,7 @@ if ( cp %pageSize==0){
 			
 			
 			%>
+			</div>
 			<h3>[주문번호: <%=dtos.get(i).getOrder_idx() %>] <%=dtos.get(i).getOrder_date() %></h3>
 			<table class="del">
 			<tr style="border-bottom: 1px dotted gray;">
@@ -365,7 +369,7 @@ if ( cp %pageSize==0){
 <!-- -------------------------------------------------------------- -->
 		</div>
 <%@include file="/footer.jsp"%>
-	
+	</div>
 	
 	
 
