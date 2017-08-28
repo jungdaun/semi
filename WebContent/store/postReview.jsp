@@ -160,7 +160,7 @@ function post(){
    			var num = document.getElementsByName(obj);
    			for(var i=0; i<num.length; i++){
    				if(num[i].checked==true){
-   					location.href="deleteReview_ok.jsp?i="+i+"&store_idx="+<%=store_idx%>;
+   					location.href="deleteReview_ok.jsp?i="+i+"&store_idx="+<%=store_idx%>+"%store_type="+<%=store_type%>+"&c_sub_s="+<%=c_sub_s%>;
    					break;
    				}
    			}

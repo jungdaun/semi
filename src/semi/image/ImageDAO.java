@@ -65,7 +65,7 @@ public class ImageDAO {
 
 	/** 사용자 개인공간의 존재유무 */
 	public void userFolderExixts() {
-		System.out.println("폴더 생성");
+	//	System.out.println("폴더 생성");
 		File f = new File(USERS_HOME + "/img/upload/" + userid);
 		if (!f.exists()) {
 			f.mkdir();

@@ -22,7 +22,7 @@ try {
 	int cstore = Integer.parseInt(cstore_s);
 	String aa = mr.getParameter("a"); //img 불러올때 사용
 	String bb[] = aa.split("\\\\");
-	String path = "http://localhost:9090/semi/img/upload/" + sid + "/" + bb[2];
+	String path = "http://192.168.20.168:9090/semi/img/upload/" + sid + "/" + bb[2];
 	wf.setImage(path, cstore);	
 	
 }

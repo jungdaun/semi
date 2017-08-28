@@ -47,7 +47,7 @@ h2 {
 				wf.setUserid(sid);
 				wf.userFolderExixts();
 				wf.setCrpath(wf.getUserid());
-		%><h2>사진업로드</h2>
+		%><h2>가게 정보</h2>
 		<input type="button" value="가게사진등록하기" onclick="image()"> <input
 			type="button" value="메뉴수정하기" onclick="menumanager()">
 			

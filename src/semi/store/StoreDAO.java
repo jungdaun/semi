@@ -119,85 +119,101 @@ public class StoreDAO {
    /*예랑 추가*/
    
    public boolean isOpen (int sIdx ){
-	   try {
-		   conn = semi.db.SemiDb.getConn();
-		   String sql ="select open_time, close_time from store where store_idx = ? ";
-		   ps=conn.prepareStatement(sql);
-		   ps.setInt(1, sIdx);
-		   rs=ps.executeQuery();
-		   
-		   String open_s= "";
-		   String close_s = "";
-		   
-		   
-		   while (rs.next()){
-			   open_s = rs.getString(1);
-			   close_s= rs.getString(2);
-			   
-		   }
-		   
-		 //  open_s = open_s.substring(11,13);
-		  // close_s = close_s .substring(11, 13);
-		   
-		   int open = 0; 
-		   int close = 0; 
-		   
-		   if (open_s.substring(0, 2).equals("am")){
-			   open = Integer.parseInt(open_s.substring(2));
-			   
-		   }
-		   else if (  open_s.substring(0, 2).equals("pm")){
-			   open = Integer.parseInt(open_s.substring(2))+ 1200;
-			 }
-		   
-		   
-		   if (close_s.substring(0, 2).equals("am")){
-			   close = Integer.parseInt(open_s.substring(2))+ 2400;
-			   
-		   }
-		   else if (  close_s.substring(0, 2).equals("pm")){
-			   close = Integer.parseInt(open_s.substring(2))+ 1200;
-		   }
-		   
-		   
-		 
-		   
-		   
-		   
-		   
-		   Calendar now = Calendar.getInstance();
-		   int h =now.get(Calendar.HOUR_OF_DAY);
-		   int min = now.get(Calendar.MINUTE);
-		   
-		   int hour = h * 100 + min ; 
-		//   System.out.println(sIdx+" hour: "+hour);
-	//	   
-	// 	   if (close < 6 ) close += 24; 
-		//   System.out.println(sIdx+" open"+open);
-		//   System.out.println(sIdx+" close"+close);
-		   if (hour >= open && hour < close){
-			   return true; 
-			   
-		   }
-		   else return false; 
-		   
-		   
-	} catch (Exception e) {
-		e.printStackTrace( );
-		return false;
-		
-		// TODO: handle exception
-	}finally {
-		try {
-			   if(rs!=null) rs.close();
-               if(ps!=null) ps.close();
-               if(conn!=null) conn.close();   
-            
-		} catch (Exception e2) {
-			// TODO: handle exception
-		}
-	}
-   }
+	      try {
+	         conn = semi.db.SemiDb.getConn();
+	         String sql ="select open_time, close_time from store where store_idx = ? ";
+	         ps=conn.prepareStatement(sql);
+	         ps.setInt(1, sIdx);
+	         rs=ps.executeQuery();
+	         
+	         String open_s= "";
+	         String close_s = "";
+	         
+	         
+	         while (rs.next()){
+	            open_s = rs.getString(1);
+	            close_s= rs.getString(2);
+	            
+	         }
+	         
+	       //  open_s = open_s.substring(11,13);
+	        // close_s = close_s .substring(11, 13);
+	         
+	         int open = 0; 
+	         int close = 0; 
+	         
+	         if (open_s.substring(0, 2).equals("am")){
+	            open = Integer.parseInt(open_s.substring(2));
+	            
+	         }
+	         else if (  open_s.substring(0, 2).equals("pm")){
+	            open = Integer.parseInt(open_s.substring(2))+ 1200;
+	          }
+	         
+	         System.out.println(open);
+	         
+	         
+	         close = Integer.parseInt(close_s.substring(2)); 
+	      
+	         
+	         
+	         
+	         
+	         
+	         if (close_s.substring(0, 2).equals("am")){
+	            
+	            if (close < open ){
+
+	               close = Integer.parseInt(close_s.substring(2))+ 2400;
+	               
+	            }
+	            
+	         }
+	         else if (  close_s.substring(0, 2).equals("pm")){
+	            close = Integer.parseInt(close_s.substring(2))+ 1200;
+	         }
+	         System.out.println(close);
+	         
+	         
+	       
+	         
+	         
+	         
+	         
+	         Calendar now = Calendar.getInstance();
+	         int h =now.get(Calendar.HOUR_OF_DAY);
+	         int min = now.get(Calendar.MINUTE);
+	         
+	         int hour = h * 100 + min ; 
+	      //   System.out.println(sIdx+" hour: "+hour);
+	   //      
+	   //       if (close < 6 ) close += 24; 
+	      //   System.out.println(sIdx+" open"+open);
+	      //   System.out.println(sIdx+" close"+close);
+	         if (hour >= open && hour < close){
+	            return true; 
+	            
+	         }
+	         else return false; 
+	         
+	         
+	   } catch (Exception e) {
+	      e.printStackTrace( );
+	      return false;
+	      
+	      // TODO: handle exception
+	   }finally {
+	      try {
+	            if(rs!=null) rs.close();
+	               if(ps!=null) ps.close();
+	               if(conn!=null) conn.close();   
+	            
+	      } catch (Exception e2) {
+	         // TODO: handle exception
+	      }
+	   }
+	   }
+	   
    
    public int storeJoin(StoreDTO dto) {
 		try {
