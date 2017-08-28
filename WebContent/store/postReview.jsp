@@ -139,12 +139,12 @@ function post(){
          <table>
             <tr style="background-color: white">
                <td rowspan="3" align="center" style="color:white; width:272px;">
-                  <a href="postFood.jsp?store_idx=<%=store_idx %>&store_type=<%=store_type %>">
+                  <a href="postFood.jsp?store_idx=<%=store_idx %>&store_type=<%=store_type %>&c_sub_s=<%=c_sub_s%>">
                   <img src="../img/store/cart.png" style="width:60px; height:50px"/>
                </a></td>
                
                <td rowspan="3" align="center" style="color:white; width:272px;">
-                  <a href="postReview.jsp?store_idx=<%=store_idx %>&store_type=<%=store_type %>">
+                  <a href="postReview.jsp?store_idx=<%=store_idx %>&store_type=<%=store_type %>&c_sub_s=<%=c_sub_s%>">
                   <img src="../img/store/review_one.png" style="width:60px; height:50px"/>
                </a></td>
             </tr>

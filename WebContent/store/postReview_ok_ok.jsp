@@ -13,7 +13,7 @@
 String c_name = (String) session.getAttribute("sname");
 Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
 String msg=null;
-String savePath="C:/Users/JungDaun/git/semi/WebContent/img/review";
+String savePath="C:/Users/song/git/semi/WebContent/img/review";
 int store_idx=0;
 String store_type=null;
 int size = 10*1024*1024;

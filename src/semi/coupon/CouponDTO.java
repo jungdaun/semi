@@ -119,7 +119,7 @@ create table user_coupon (
 user_coupon_idx number primary key, 
 mem_idx number, 
 coupon_idx number, 
-isused number (1)
+is_used number (1)
 
 )
 

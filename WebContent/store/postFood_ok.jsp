@@ -11,7 +11,7 @@
 
 <%
 String store_type=request.getParameter("store_type");
-int c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
+Integer c_idx = Integer.parseInt((String)session.getAttribute("c_idx"));
 int store_idx = Integer.parseInt(request.getParameter("store_idx"));
 String c_sub_s = request.getParameter("c_sub_s");
 String isOpen = request.getParameter("isOpen");

@@ -110,7 +110,7 @@ up_date varchar2(20), //
 score_num number(4),
 review varchar2(200),
 r_picture varchar2(100),
-r_pwd varchar2(20)
+r_pwd varchar2(100)
 )
 
 insert into review values(1 , 1, '송병훈', 21, 'am1230', 4, '맛있네요!', 'http://localhost:9090/semi/store/img/review/2na.png', '1234')

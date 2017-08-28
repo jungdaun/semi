@@ -244,7 +244,36 @@ function addOrder() {
 </div>
 
 
+<div style="display: inline-block; text-align: center;">
+<fieldset>
+	<legend style="text-align: center;">
+	
+<h2>할인 선택</h2>
+	</legend>
 
+
+<table class="coupon">
+
+
+	<tr>
+		<th>쿠폰</th>
+		<td><input type="text" name="user_coupon" readonly="readonly" ><!--   -->
+
+	<a href="" onclick="window.open ('selectCoupon.jsp?tp=<%=tempPrice%>&sType=<%=odao.getStoreType(store_idx)%>', 'selectCoupon', 'height=450, width=500')">쿠폰 선택</a>
+		</td>
+		
+	</tr>
+
+</table>
+
+<p>
+<h4><input type="text" name="discount" readonly="readonly">원 할인받으셨습니다.</h4>
+</p>
+
+
+
+</fieldset>
+</div>
 
  <div style="display: inline-block; text-align: center;">
 <fieldset>
@@ -320,36 +349,7 @@ function addOrder() {
 </fieldset>
 </div>
 
- <div style="display: inline-block; text-align: center;">
-<fieldset>
-	<legend style="text-align: center;">
-	
-<h2>할인 선택</h2>
-	</legend>
-
-
-<table class="coupon">
-
-
-	<tr>
-		<th>쿠폰</th>
-		<td><input type="text" name="user_coupon" readonly="readonly" ><!--   -->
-
-	<a href="" onclick="window.open ('selectCoupon.jsp?tp=<%=tempPrice%>&sType=<%=odao.getStoreType(store_idx)%>', 'selectCoupon', 'height=450, width=500')">쿠폰 선택</a>
-		</td>
-		
-	</tr>
-
-</table>
-
-<p>
-<h4><input type="text" name="discount" readonly="readonly">원 할인받으셨습니다.</h4>
-</p>
-
-
-
-</fieldset>
-</div>
+ 
  <div style="display: inline-block; text-align: center;">
 <fieldset>
 	<legend style="text-align: center;">
