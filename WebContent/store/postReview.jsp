@@ -123,7 +123,7 @@ ArrayList<ReviewDTO> arr = rdao.show(store_idx);
 %>
 <script>
 function post(){  
-   location.href="postReview_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>";
+   location.href="postReview_ok.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>&c_sub_s=<%=c_sub_s%>";
 }
 </script>
 </head>

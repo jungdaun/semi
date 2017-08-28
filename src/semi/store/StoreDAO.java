@@ -229,6 +229,38 @@ public class StoreDAO {
 	
 	
 }
+   
+   public int changeTime(StoreDTO dto) {
+		try {
+			conn = semi.db.SemiDb.getConn();
+			String sql = "update store set open_time = ?, close_time = ? where store_idx = ?";
+			ps = conn.prepareStatement(sql);
+			
+
+			System.out.println(dto.getOpen_time());
+			System.out.println(dto.getClose_time());
+			System.out.println(dto.getStore_idx());
+			
+			ps.setString(1, dto.getOpen_time());
+			ps.setString(2, dto.getClose_time());
+			ps.setInt(3, dto.getStore_idx());
+			
+			return ps.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			return -1;
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+			}
+		}
+	
+	
+}
 
 //   public ArrayList<StoreDTO> showReview(int idx){
 //      try{
