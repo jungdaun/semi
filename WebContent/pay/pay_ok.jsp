@@ -17,7 +17,20 @@
 int result=odao.addOrder(odto);
 int oIdx = Integer.parseInt(request.getParameter("order_idx"));
 
+String add2 = request.getParameter("add2");
+if (add2 == null || add2.equals("")){
+   %>
+   <script>
 
+   window.alert ('주소를 입력하세요');
+   location.href = 'javascript:history.back()';
+   
+   </script>
+   
+   <%
+   return; 
+   
+}
 
 
 
@@ -25,37 +38,37 @@ int oIdx = Integer.parseInt(request.getParameter("order_idx"));
 String msg=result>0?"주문완료":"실패";
 
 if (result>0){
-	int cartRes =odao.deleteCart(oIdx);
-	
-	%>
-	
-	<script type="text/javascript">
+   int cartRes =odao.deleteCart(oIdx);
+   
+   %>
+   
+   <script type="text/javascript">
 
-	window.alert ('주문완료');
+   window.alert ('주문완료');
 
-	location.href='payCheck.jsp?oIdx=<%=oIdx%>';
+   location.href='payCheck.jsp?oIdx=<%=oIdx%>';
 <!--
 
 //-->
 </script>
-	<%
-	
+   <%
+   
 }
 else {
-	%>
-	
-	<script type="text/javascript">
+   %>
+   
+   <script type="text/javascript">
 
-	window.alert ('실패');
+   window.alert ('실패');
 
-	location.href='payMain.jsp';
+   location.href='payMain.jsp';
 <!--
 
 //-->
 </script>
-	
-	<%
-	
+   
+   <%
+   
 }
 
 

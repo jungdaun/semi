@@ -236,7 +236,8 @@ if ( cp %pageSize==0){
 			
 			%>
 			</div>
-			<h3>[주문번호: <%=dtos.get(i).getOrder_idx() %>] <%=dtos.get(i).getOrder_date() %></h3>
+			<div style="display: inline-block;text-align: center;">
+			<h3 >[주문번호: <%=dtos.get(i).getOrder_idx() %>] <%=dtos.get(i).getOrder_date() %></h3>
 			<table class="del">
 			<tr style="border-bottom: 1px dotted gray;">
 			<th >받는분</th>
@@ -361,16 +362,16 @@ if ( cp %pageSize==0){
             %>
                
          
-             
+             </div>
             
 	
 	
 
 <!-- -------------------------------------------------------------- -->
-		</div>
+		
 <%@include file="/footer.jsp"%>
 	</div>
-	
+	</div>
 	
 
 	

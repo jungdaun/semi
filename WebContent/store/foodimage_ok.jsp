@@ -28,7 +28,7 @@ try {
 	String food_nums = mr.getParameter("b");
 	int food_num = Integer.parseInt(food_nums);
 	String bb[] = aa.split("\\\\");
-	String path = "http://localhost:9090/semi/img/upload/" + sid + "/" + bb[2];
+	String path = "http://192.168.20.168:9090/semi/img/upload/" + sid + "/" + bb[2];
 	
 	wf.setImage2(path, istore, food_num-1);
 	

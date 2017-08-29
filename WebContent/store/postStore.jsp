@@ -114,6 +114,7 @@ else{
             </div>
     
             <div style="background-color: #2F4038; color:white; font-size: 17px;">
+                <%=arr.get(count).getStore_name() %>  <br>      
                영업시간 : <%=open[0]+'.'+open[1]+':'+open[2]%>~<%=close[0]+'.'+close[1]+':'+close[2]%><br> 
             주소 : <%=c_sub_s%><br>   
                별점 : <% int num = arr.get(count).getScore_num();

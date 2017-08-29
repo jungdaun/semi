@@ -50,7 +50,7 @@ else if (request.getParameter("food_price") == null || request.getParameter("foo
 if(chk) {
 	int result = fdao.foodupdate(fdto);
 
-	String msg = result > 0 ? "회원정보수정성공" : "회원정보수정실패";
+	String msg = result > 0 ? "음식정보수정성공" : "음식정보수정실패";
 	
 	
 	%>

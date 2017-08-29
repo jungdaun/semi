@@ -10,12 +10,13 @@
 <%
 int i = Integer.parseInt(request.getParameter("i"));
 int store_idx=Integer.parseInt(request.getParameter("store_idx"));
-
+String store_type=request.getParameter("store_type");
+String c_sub_s = request.getParameter("c_sub_s");
 ArrayList<ReviewDTO> brr = rdao.show(store_idx);
 int result = rdao.deleteReview(store_idx, brr.get(i).getC_idx(), brr.get(i).getR_idx(), brr.get(i).getScore_num());
 String msg = (result>0)?"리뷰가 삭제되었습니다.":"리뷰가 삭제되지 않았습니다.";
 %>
 <script>
 	window.alert('<%=msg%>');
-	location.href="postReview.jsp?store_idx=<%=store_idx%>";
+	location.href="postReview.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>&c_sub_s=<%=c_sub_s%>";
 </script>

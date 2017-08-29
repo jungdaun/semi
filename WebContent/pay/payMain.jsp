@@ -141,8 +141,11 @@ fieldset {
 
 
 function addOrder() {
-	var add1 = document.pay.add1.value ; 
-	var add2 = document.pay.add2.value ; 
+	var add1 = document.pay.add1.value; 
+	var add2 = document.pay.add2.value; 
+	
+	
+	
 	
 	document.pay.c_addr.value = add1+" "+add2;
 	pay.submit (); 

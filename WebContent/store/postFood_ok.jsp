@@ -20,7 +20,7 @@ if (isOpen.equals("false")){
 	%>
 	<script>
 	window.alert ('영업 시간이 아닙니다. ');
-	window.location.href = 'postFood.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>n&c_sub_s=<%=c_sub_s%>';
+	window.location.href = 'postFood.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>&c_sub_s=<%=c_sub_s%>';
 	</script>	
 	<%
 	return ; 
@@ -40,5 +40,5 @@ String msg = (num==-1)? "장바구니에 추가되지 않았습니다.": "장바
 %>
 <script>
    window.alert('<%=msg%>');
-   location.href='postFood.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>';
+   location.href='postFood.jsp?store_idx=<%=store_idx%>&store_type=<%=store_type%>&c_sub_s=<%=c_sub_s%>';
 </script>

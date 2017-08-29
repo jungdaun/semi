@@ -18,6 +18,7 @@
 	function menumanager() {
 		location.href = "/semi/store/editMenu.jsp"
 	}
+	
 </script>
 <style>
 h2 {
@@ -46,9 +47,11 @@ h2 {
 				wf.setUserid(sid);
 				wf.userFolderExixts();
 				wf.setCrpath(wf.getUserid());
-		%><h2>사진업로드</h2>
-		<input type="button" value="사진등록하기" onclick="image()"> <input
+		%><h2>가게 정보</h2>
+		<input type="button" value="가게사진등록하기" onclick="image()"> <input
 			type="button" value="메뉴수정하기" onclick="menumanager()">
+			
+			<input type="button" value="가게 시간 바꾸기" onclick="changeTime()">
 		<%
 			} else {
 		%><h3>등록된 가게가 없습니다.</h3>
@@ -59,5 +62,10 @@ h2 {
 	</div>
 	<%@include file="footer.jsp"%>
 	</div>
+	<script>
+	function changeTime() {
+		location.href = "/semi/store/changeTime.jsp?idx=<%=my_idx%>"
+	}
+	</script>
 </body>
 </html>
