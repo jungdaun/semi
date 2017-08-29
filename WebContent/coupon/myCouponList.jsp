@@ -49,7 +49,14 @@
 		
 	
 	}
-	
+	#myCouponList{
+	width: 850px;
+	height: 100%;
+	margin-top: 200px;
+	margin-bottom: 160px;
+	margin-left: 30px;
+   margin-right: 30px;
+   }
 </style>
 </head>
 <body>
@@ -61,7 +68,7 @@
 
 <%@include file="/header.jsp"%>
 		<div id="bodywrap">
-
+		<div id="myCouponList">
 
 
 
@@ -179,9 +186,10 @@ ArrayList<CouponDTO> dtos = cdao.myCouponList(sid);
 	%>
 	</table>
 <!-- -------------------------------------------------------------- -->
-		</div>
+		
 <%@include file="/footer.jsp"%>
-
+</div>
+</div>
 
 
 
